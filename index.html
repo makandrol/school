@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Матеріали уроків</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0f23;--card:#1a1a2e;--text:#e0e0e0;--muted:#888;--border:#2a2a3e;
+  --purple:#667eea;--purple2:#764ba2;--green:#00b894;--green2:#00cec9;--accent:#f39c12}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+.header{text-align:center;padding:40px 20px 10px;background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.header h1{font-size:2.2em;margin-bottom:6px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header p{color:var(--muted);font-size:1.05em}
+.admin-link{position:absolute;top:16px;right:20px;color:#444;font-size:.75em;text-decoration:none}
+.admin-link:hover{color:#666}
+
+/* Tabs */
+.tabs{display:flex;justify-content:center;gap:8px;padding:20px;flex-wrap:wrap}
+.tab{padding:10px 22px;border-radius:25px;border:2px solid #333;background:transparent;color:var(--text);cursor:pointer;font-size:.93em;transition:all .3s}
+.tab:hover{border-color:#555}
+.tab.active[data-type=robotics]{border-color:var(--purple);background:rgba(102,126,234,.12);color:var(--purple)}
+.tab.active[data-type=modeling]{border-color:var(--green);background:rgba(0,184,148,.12);color:var(--green)}
+
+/* Container */
+.container{max-width:1000px;margin:0 auto;padding:0 20px 60px}
+.group{display:none;animation:fadeIn .3s}.group.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Group header */
+.gh{display:flex;align-items:center;gap:12px;margin:16px 0;padding-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.badge{padding:4px 14px;border-radius:12px;font-size:.78em;font-weight:600}
+.badge.robotics{background:rgba(102,126,234,.18);color:var(--purple)}
+.badge.modeling{background:rgba(0,184,148,.18);color:var(--green)}
+.gh h2{font-size:1.3em}
+.gh .schedule{margin-left:auto;color:var(--muted);font-size:.85em}
+
+/* Extras */
+.extras{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.extras a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;background:rgba(255,255,255,.05);color:#bbb;font-size:.88em;border:1px solid var(--border);transition:all .2s}
+.extras a:hover{background:rgba(255,255,255,.1);border-color:#444}
+
+/* Lessons grid */
+.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:20px}
+.card{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);transition:all .3s}
+.card:hover{border-color:#444;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.card .num{font-size:.78em;color:var(--muted);margin-bottom:3px}
+.card .title{font-size:1.08em;font-weight:600;margin-bottom:6px}
+.card .date{font-size:.8em;color:var(--muted);margin-bottom:14px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.link{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:8px;font-size:.83em;font-weight:500;transition:all .2s}
+.link.presentation{background:rgba(102,126,234,.14);color:#8b9cf7}
+.link.presentation:hover{background:rgba(102,126,234,.28)}
+.link.handout{background:rgba(0,184,148,.14);color:#4fd1c5}
+.link.handout:hover{background:rgba(0,184,148,.28)}
+.link.makecode{background:rgba(102,126,234,.1);color:#a0b0ff}
+.link.makecode:hover{background:rgba(102,126,234,.2)}
+.link.tinkercad{background:rgba(0,184,148,.1);color:#4fd1c5}
+.link.tinkercad:hover{background:rgba(0,184,148,.2)}
+/* MakeCode embed */
+.mc-embed{border-radius:10px;overflow:hidden;margin-top:10px;border:1px solid var(--border)}
+.mc-embed iframe{width:100%;height:340px;border:none}
+
+/* Empty state */
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty .icon{font-size:3em;margin-bottom:12px}
+
+/* Footer */
+.footer{text-align:center;padding:20px;color:#333;font-size:.75em}
+</style>
+</head>
+<body>
+
+<div class="header" style="position:relative">
+  <h1>📚 Матеріали уроків</h1>
+  <p id="subtitle"></p>
+  <a href="admin.html" class="admin-link">🔐</a>
+</div>
+<div class="tabs" id="tabs"></div>
+<div class="container" id="content"></div>
+<div class="footer">© 2026 Андрій Макаревич</div>
+
+<script>
+const PUBLIC_FILE_TYPES = ['presentation.html', 'handout.html'];
+
+async function loadManifest() {
+  const r = await fetch('manifest.json?_=' + Date.now());
+  return r.json();
+}
+
+function fileInfo(f) {
+  if (f.includes('presentation')) return {cls:'presentation', icon:'🖥️', label:'Презентація'};
+  if (f.includes('handout')) return {cls:'handout', icon:'🖨️', label:'Роздатковий'};
+  return null;
+}
+
+function render(data) {
+  document.getElementById('subtitle').textContent = data.site.subtitle;
+  document.title = data.site.title;
+
+  const tabsEl = document.getElementById('tabs');
+  const contentEl = document.getElementById('content');
+
+  // Only groups that have at least one published lesson
+  const visibleGroups = data.groups.filter(g =>
+    g.lessons.some(l => l.published) || (g.extras && g.extras.length)
+  );
+
+  if (!visibleGroups.length) {
+    contentEl.innerHTML = '<div class="empty"><div class="icon">📭</div><p>Матеріали ще не опубліковані</p></div>';
+    return;
+  }
+
+  // Tabs
+  tabsEl.innerHTML = visibleGroups.map((g, i) => {
+    const icon = g.type === 'robotics' ? '🤖' : '🎨';
+    return `<button class="tab${i===0?' active':''}" data-type="${g.type}" data-id="${g.id}">${icon} ${g.name}</button>`;
+  }).join('');
+
+  // Groups
+  contentEl.innerHTML = visibleGroups.map((g, i) => {
+    let html = `<div class="group${i===0?' active':''}" id="${g.id}">`;
+    html += `<div class="gh"><span class="badge ${g.type}">${g.type==='robotics'?'Робототехніка':'3D-моделювання'}</span>`;
+    html += `<h2>${g.name}</h2><span class="schedule">📅 ${g.schedule}</span></div>`;
+
+    // Extras
+    if (g.extras && g.extras.length) {
+      html += '<div class="extras">';
+      g.extras.forEach(e => { html += `<a href="${g.path}/${e.file}" target="_blank">${e.label}</a>`; });
+      html += '</div>';
+    }
+
+    // Published lessons
+    const published = g.lessons.filter(l => l.published);
+    if (published.length) {
+      html += '<div class="lessons">';
+      published.forEach(l => {
+        html += `<div class="card"><div class="num">Урок ${l.n}</div>`;
+        html += `<div class="title">${l.title}</div>`;
+        html += `<div class="date">📅 ${l.date}</div>`;
+        const publicFiles = (l.files || []).filter(f => PUBLIC_FILE_TYPES.includes(f));
+        if (publicFiles.length || l.makecode || l.tinkercad) {
+          html += '<div class="links">';
+          publicFiles.forEach(f => {
+            const info = fileInfo(f);
+            if (info) {
+              const href = `${g.path}/lesson-${String(l.n).padStart(2,'0')}/${f}`;
+              html += `<a class="link ${info.cls}" href="${href}" target="_blank">${info.icon} ${info.label}</a>`;
+            }
+          });
+          // MakeCode project links
+          if (l.makecode) {
+            l.makecode.forEach(m => {
+              if (m.url) html += `<a class="link makecode" href="${m.url}" target="_blank">🎮 ${m.label}</a>`;
+            });
+          }
+          // Tinkercad project links
+          if (l.tinkercad) {
+            l.tinkercad.forEach(t => {
+              if (t.url) html += `<a class="link tinkercad" href="${t.url}" target="_blank">🔗 ${t.label}</a>`;
+            });
+          }
+          html += '</div>';
+        }
+        // Embedded MakeCode simulators
+        if (l.makecode) {
+          l.makecode.forEach(m => {
+            if (m.url) {
+              const embedUrl = m.url.replace('/#pub:', '/---run?id=');
+              html += `<div class="mc-embed"><iframe src="${embedUrl}" allowfullscreen sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>`;
+            }
+          });
+        }
+        html += '</div>';
+      });
+      html += '</div>';
+    } else {
+      html += '<div class="empty"><div class="icon">📭</div><p>Матеріали скоро з\'являться</p></div>';
+    }
+
+    html += '</div>';
+    return html;
+  }).join('');
+
+  // Tab click
+  tabsEl.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      contentEl.querySelectorAll('.group').forEach(g => g.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.id).classList.add('active');
+    });
+  });
+}
+
+loadManifest().then(render).catch(e => {
+  document.getElementById('content').innerHTML =
+    '<div class="empty"><div class="icon">⚠️</div><p>Не вдалося завантажити матеріали</p></div>';
+});
+</script>
+</body>
+</html>

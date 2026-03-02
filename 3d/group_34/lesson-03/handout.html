@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 3 — Будиночок</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #2d3436;
+  }
+  .page {
+    page-break-after: always;
+    min-height: 257mm;
+    padding: 0;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  h1 { font-size: 20px; color: #2d3436; border-bottom: 2.5px solid #00b894; padding-bottom: 3px; margin-bottom: 8px; }
+  h2 { font-size: 15px; color: #00b894; margin: 8px 0 4px; }
+  h3 { font-size: 13px; color: #6c5ce7; margin: 6px 0 3px; }
+  p { margin: 3px 0; }
+  ul { padding-left: 20px; margin: 3px 0; }
+  li { margin: 1px 0; }
+  strong { color: #2d3436; }
+  .step { margin: 5px 0; }
+  .step-title { font-weight: bold; color: #2d3436; }
+  .hint { background: #f0fff4; border-left: 3px solid #00b894; padding: 4px 10px; margin: 5px 0; font-size: 12px; border-radius: 0 4px 4px 0; }
+  .done { background: #e8f8f5; border: 1px solid #00b894; border-radius: 5px; padding: 5px 10px; margin: 6px 0; text-align: center; font-weight: bold; }
+  .bonus { font-size: 12px; color: #636e72; margin-top: 4px; }
+  .img-container { text-align: center; margin: 6px 0; }
+  .img-container svg { max-width: 100%; }
+  .img-caption { font-size: 11px; color: #636e72; margin-top: 2px; }
+  .tools-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 5px 0; }
+  .tools-table td { padding: 3px 8px; border: 1px solid #ddd; }
+  .tools-table td:first-child { font-weight: bold; width: 35%; }
+
+  @media print {
+    body { font-size: 12px; }
+    .page { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== СТОРІНКА 1: Вступ ==================== -->
+<div class="page">
+<h1>🎨 3D-моделювання | Заняття 3</h1>
+<p><strong>Тема:</strong> Будиночок. Обертання та вирівнювання</p>
+
+<h2>🆕 Нові інструменти</h2>
+
+<table class="tools-table">
+<tr><td>🔄 Обертання (Rotate)</td><td>Клікни на об'єкт → тягни за <strong>вигнуту стрілку</strong> (дугу). Тримай <strong>Shift</strong> = повертає рівно по <strong>45°</strong></td></tr>
+<tr><td>📐 Вирівнювання (Align)</td><td>Виділи 2+ об'єкти (Shift+клік) → натисни <strong>L</strong> → клікни на <strong>центральну точку</strong></td></tr>
+</table>
+
+<h2>⌨️ Корисні клавіші</h2>
+<table class="tools-table">
+<tr><td>Скасувати</td><td><strong>Ctrl + Z</strong></td></tr>
+<tr><td>Дублювати</td><td><strong>Ctrl + D</strong></td></tr>
+<tr><td>Групувати</td><td><strong>Ctrl + G</strong></td></tr>
+<tr><td>Виділити все</td><td><strong>Ctrl + A</strong></td></tr>
+<tr><td>Вирівняти</td><td><strong>L</strong></td></tr>
+<tr><td>Видалити</td><td><strong>Delete</strong></td></tr>
+</table>
+
+<h2>📋 Завдання на сьогодні</h2>
+<ul>
+  <li>⭐ <strong>Завдання 1:</strong> Будиночок</li>
+  <li>⭐⭐ <strong>Завдання 2:</strong> Дерево</li>
+  <li>⭐⭐⭐ <strong>Завдання 3:</strong> Сніговик</li>
+  <li>⭐⭐⭐⭐ <strong>Завдання 4:</strong> Вулиця</li>
+</ul>
+</div>
+
+<!-- ==================== СТОРІНКА 2: Будиночок ==================== -->
+<div class="page">
+<h1>⭐ Завдання 1: «Будиночок»</h1>
+<p>Моделюємо простий будиночок з дахом, дверима, вікнами та трубою</p>
+
+<div class="img-container">
+<svg width="320" height="180" viewBox="0 0 320 180">
+  <!-- Ground line -->
+  <line x1="10" y1="165" x2="310" y2="165" stroke="#b2bec3" stroke-width="1"/>
+  <!-- Walls -->
+  <rect x="80" y="80" width="120" height="85" fill="#ffeaa7" stroke="#2d3436" stroke-width="1.5" rx="1"/>
+  <!-- Roof (diamond) -->
+  <polygon points="140,20 220,65 140,65 60,65" fill="#e17055" stroke="#2d3436" stroke-width="1.5"/>
+  <!-- Door -->
+  <rect x="125" y="115" width="28" height="50" fill="#6c5ce7" stroke="#2d3436" stroke-width="1" rx="1"/>
+  <!-- Windows -->
+  <rect x="92" y="100" width="22" height="22" fill="#74b9ff" stroke="#2d3436" stroke-width="1"/>
+  <line x1="103" y1="100" x2="103" y2="122" stroke="#2d3436" stroke-width="0.7"/>
+  <line x1="92" y1="111" x2="114" y2="111" stroke="#2d3436" stroke-width="0.7"/>
+  <rect x="164" y="100" width="22" height="22" fill="#74b9ff" stroke="#2d3436" stroke-width="1"/>
+  <line x1="175" y1="100" x2="175" y2="122" stroke="#2d3436" stroke-width="0.7"/>
+  <line x1="164" y1="111" x2="186" y2="111" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- Chimney -->
+  <rect x="170" y="28" width="16" height="35" fill="#d63031" stroke="#2d3436" stroke-width="1"/>
+  <!-- Labels -->
+  <text x="250" y="50" font-size="10" fill="#636e72">← Труба (Box)</text>
+  <text x="225" y="45" font-size="10" fill="#636e72">↗</text>
+  <text x="250" y="70" font-size="10" fill="#e17055">← Дах (Box 45°)</text>
+  <text x="250" y="110" font-size="10" fill="#636e72">← Вікна (Hole)</text>
+  <text x="250" y="140" font-size="10" fill="#636e72">← Двері (Hole)</text>
+  <text x="10" y="130" font-size="10" fill="#ffeaa7" stroke="#2d3436" stroke-width="0.3">Стіни (Box)</text>
+</svg>
+<div class="img-caption">Так має виглядати будиночок</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Стіни</span> — перетягни <strong>Box</strong> → розмір: <strong>60 × 50 × 40</strong></div>
+
+<div class="step"><span class="step-title">Крок 2. Дах</span> — перетягни <strong>Box</strong> → розмір: <strong>65 × 55 × 40</strong> → <strong>оберни на 45°</strong> (тягни за дугу, тримай Shift!) → підніми над стінами → виділи стіни+дах → <strong>L</strong> → центр по X та Y</div>
+
+<div class="step"><span class="step-title">Крок 3. Двері</span> — <strong>Box</strong> → розмір: <strong>12 × 5 × 25</strong> → зміни на <strong>Hole</strong> → постав на передню стінку внизу по центру</div>
+
+<div class="step"><span class="step-title">Крок 4. Вікна</span> — <strong>Box</strong> → розмір: <strong>10 × 5 × 10</strong> → <strong>Hole</strong> → постав зліва від дверей → <strong>Ctrl+D</strong> → перетягни копію праворуч</div>
+
+<div class="step"><span class="step-title">Крок 5. Труба</span> — <strong>Box</strong> → розмір: <strong>8 × 8 × 20</strong> → постав зверху на дах збоку</div>
+
+<div class="step"><span class="step-title">Крок 6. Групуємо</span> — <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong> — двері та вікна «вирізались»!</div>
+
+<div class="done">✅ Готово! Будиночок змодельовано! 🏠</div>
+<p class="bonus">🎨 Бонус: зміни кольори — стіни жовті, дах червоний, труба коричнева!</p>
+</div>
+
+<!-- ==================== СТОРІНКА 3: Дерево ==================== -->
+<div class="page">
+<h1>⭐⭐ Завдання 2: «Дерево»</h1>
+<p>Моделюємо дерево з товстим стовбуром та пишною кроною</p>
+
+<div class="img-container">
+<svg width="200" height="180" viewBox="0 0 200 180">
+  <line x1="10" y1="170" x2="190" y2="170" stroke="#b2bec3" stroke-width="1"/>
+  <!-- Trunk -->
+  <rect x="88" y="110" width="24" height="60" fill="#b87333" stroke="#2d3436" stroke-width="1.2" rx="2"/>
+  <!-- Lower canopy -->
+  <ellipse cx="100" cy="80" rx="55" ry="40" fill="#00b894" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Upper canopy -->
+  <ellipse cx="100" cy="50" rx="40" ry="32" fill="#55efc4" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Labels -->
+  <text x="140" y="52" font-size="10" fill="#636e72">← Sphere 35×35×30</text>
+  <text x="140" y="82" font-size="10" fill="#636e72">← Sphere 45×45×35</text>
+  <text x="120" y="140" font-size="10" fill="#636e72">← Cylinder 10×10×40</text>
+</svg>
+<div class="img-caption">Дерево: стовбур + 2 сфери для крони</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Стовбур</span> — перетягни <strong>Cylinder</strong> → розмір: <strong>10 × 10 × 40</strong> → колір: коричневий</div>
+
+<div class="step"><span class="step-title">Крок 2. Крона (нижня)</span> — <strong>Sphere</strong> → розмір: <strong>45 × 45 × 35</strong> → підніми на верхівку стовбура → колір: зелений</div>
+
+<div class="step"><span class="step-title">Крок 3. Крона (верхня)</span> — <strong>Ctrl+D</strong> (дублюй сферу) → зменш: <strong>35 × 35 × 30</strong> → підніми вище → виділи обидві сфери → <strong>L</strong> → по центру</div>
+
+<div class="step"><span class="step-title">Крок 4. Групуємо</span> — <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+
+<div class="done">✅ Готово! Дерево змодельовано! 🌳</div>
+<p class="bonus">🎨 Бонус: постав дерево поруч із будиночком!</p>
+</div>
+
+<!-- ==================== СТОРІНКА 4: Сніговик ==================== -->
+<div class="page">
+<h1>⭐⭐⭐ Завдання 3: «Сніговик»</h1>
+<p>Моделюємо сніговика з трьох куль, з носом-морквою та капелюхом</p>
+
+<div class="img-container">
+<svg width="200" height="200" viewBox="0 0 200 200">
+  <line x1="10" y1="190" x2="190" y2="190" stroke="#b2bec3" stroke-width="1"/>
+  <!-- Bottom sphere -->
+  <circle cx="100" cy="155" r="35" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Middle sphere -->
+  <circle cx="100" cy="100" r="27" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Head sphere -->
+  <circle cx="100" cy="60" r="20" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Eyes -->
+  <circle cx="93" cy="55" r="2.5" fill="#2d3436"/>
+  <circle cx="107" cy="55" r="2.5" fill="#2d3436"/>
+  <!-- Carrot nose -->
+  <polygon points="100,62 120,64 100,66" fill="#e17055" stroke="#2d3436" stroke-width="0.8"/>
+  <!-- Hat brim -->
+  <rect x="78" y="38" width="44" height="4" fill="#2d3436" rx="1"/>
+  <!-- Hat top -->
+  <rect x="85" y="20" width="30" height="18" fill="#2d3436" rx="2"/>
+  <!-- Arms -->
+  <line x1="73" y1="95" x2="40" y2="75" stroke="#b87333" stroke-width="3" stroke-linecap="round"/>
+  <line x1="127" y1="95" x2="160" y2="75" stroke="#b87333" stroke-width="3" stroke-linecap="round"/>
+  <!-- Buttons -->
+  <circle cx="100" cy="90" r="2" fill="#2d3436"/>
+  <circle cx="100" cy="100" r="2" fill="#2d3436"/>
+  <circle cx="100" cy="110" r="2" fill="#2d3436"/>
+  <!-- Labels -->
+  <text x="140" y="25" font-size="9" fill="#636e72">Капелюх: Cylinder</text>
+  <text x="130" y="65" font-size="9" fill="#e17055">Ніс: Cone 90°</text>
+  <text x="8" y="60" font-size="9" fill="#636e72">Sphere 22</text>
+  <text x="8" y="100" font-size="9" fill="#636e72">Sphere 30</text>
+  <text x="8" y="155" font-size="9" fill="#636e72">Sphere 40</text>
+</svg>
+<div class="img-caption">Сніговик: 3 сфери + морква + капелюх + руки</div>
+</div>
+
+<h3>Підказки:</h3>
+
+<p><strong>Тіло:</strong> Три <strong>Sphere</strong> одна на одній — нижня 40×40×40, середня 30×30×30, верхня 22×22×22. Вирівняй по центру (<strong>L</strong>)!</p>
+
+<p><strong>Ніс-морква:</strong> <strong>Cone</strong> (конус), оранжевий → <strong>оберни на 90°</strong> горизонтально → постав на обличчя</p>
+
+<p><strong>Очі:</strong> дві маленькі <strong>Sphere</strong> (3×3×3), чорні</p>
+
+<p><strong>Капелюх:</strong> поля — плоский <strong>Cylinder</strong> (30×30×3), тулія — <strong>Cylinder</strong> (15×15×15). Обидва чорні.</p>
+
+<p><strong>Руки:</strong> два тонкі <strong>Cylinder</strong>, повернути під кутом</p>
+
+<div class="step"><span class="step-title">Фінал:</span> <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+
+<div class="done">✅ Готово! Сніговик змодельовано! ⛄</div>
+</div>
+
+<!-- ==================== СТОРІНКА 5: Вулиця ==================== -->
+<div class="page">
+<h1>⭐⭐⭐⭐ Завдання 4: «Вулиця»</h1>
+<p>Створи цілу вулицю з кількох будиночків, дерев та інших об'єктів!</p>
+
+<div class="img-container">
+<svg width="380" height="140" viewBox="0 0 380 140">
+  <!-- Road -->
+  <rect x="0" y="105" width="380" height="30" fill="#636e72" rx="2"/>
+  <line x1="20" y1="120" x2="60" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="80" y1="120" x2="120" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="140" y1="120" x2="180" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="200" y1="120" x2="240" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="260" y1="120" x2="300" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <line x1="320" y1="120" x2="360" y2="120" stroke="#ffeaa7" stroke-width="2" stroke-dasharray="8,8"/>
+  <!-- House 1 -->
+  <rect x="20" y="55" width="55" height="50" fill="#ffeaa7" stroke="#2d3436" stroke-width="1"/>
+  <polygon points="47,25 80,50 15,50" fill="#e17055" stroke="#2d3436" stroke-width="1"/>
+  <rect x="40" y="78" width="12" height="27" fill="#6c5ce7" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- House 2 (bigger) -->
+  <rect x="110" y="40" width="70" height="65" fill="#dfe6e9" stroke="#2d3436" stroke-width="1"/>
+  <polygon points="145,12 185,35 105,35" fill="#d63031" stroke="#2d3436" stroke-width="1"/>
+  <rect x="135" y="72" width="14" height="33" fill="#6c5ce7" stroke="#2d3436" stroke-width="0.7"/>
+  <rect x="115" y="55" width="12" height="12" fill="#74b9ff" stroke="#2d3436" stroke-width="0.7"/>
+  <rect x="157" y="55" width="12" height="12" fill="#74b9ff" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- Tree 1 -->
+  <rect x="90" y="75" width="8" height="30" fill="#b87333" stroke="#2d3436" stroke-width="0.7"/>
+  <circle cx="94" cy="62" r="18" fill="#00b894" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- Tree 2 -->
+  <rect x="205" y="70" width="8" height="35" fill="#b87333" stroke="#2d3436" stroke-width="0.7"/>
+  <circle cx="209" cy="55" r="20" fill="#55efc4" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- House 3 (small) -->
+  <rect x="240" y="65" width="45" height="40" fill="#fab1a0" stroke="#2d3436" stroke-width="1"/>
+  <polygon points="262,40 290,60 235,60" fill="#e17055" stroke="#2d3436" stroke-width="1"/>
+  <rect x="255" y="82" width="10" height="23" fill="#6c5ce7" stroke="#2d3436" stroke-width="0.7"/>
+  <!-- Car -->
+  <rect x="310" y="93" width="40" height="16" fill="#74b9ff" stroke="#2d3436" stroke-width="1" rx="3"/>
+  <rect x="318" y="83" width="24" height="12" fill="#74b9ff" stroke="#2d3436" stroke-width="1" rx="2"/>
+  <circle cx="320" cy="112" r="5" fill="#2d3436"/>
+  <circle cx="340" cy="112" r="5" fill="#2d3436"/>
+</svg>
+<div class="img-caption">Приклад вулиці: будиночки + дерева + дорога + машина</div>
+</div>
+
+<h2>Що потрібно зробити:</h2>
+<p>Створи сцену, в якій є <strong>щонайменше</strong>:</p>
+<ul>
+  <li>🏠 <strong>2-3 будиночки</strong> (можна різних розмірів і кольорів)</li>
+  <li>🌳 <strong>1-2 дерева</strong></li>
+  <li>🛤️ <strong>Дорога</strong> — плоский довгий Box (сірий колір)</li>
+</ul>
+
+<h2>Додаткові ідеї:</h2>
+<ul>
+  <li>🚗 <strong>Машина</strong> — кузов = Box + колеса = Cylinder, повернутий на 90°</li>
+  <li>🏫 <strong>Школа</strong> — більший будиночок з багатьма вікнами</li>
+  <li>🌻 <strong>Клумба</strong> — маленькі кольорові циліндри + сфери</li>
+  <li>🪑 <strong>Лавочка</strong> — з кількох Box</li>
+</ul>
+
+<h2>Правила:</h2>
+<ul>
+  <li>Мінімум <strong>8 об'єктів</strong> в сцені</li>
+  <li>Хоча б <strong>3 різні кольори</strong></li>
+  <li>Використай <strong>обертання</strong> хоча б 1 раз</li>
+  <li>Використай <strong>Align</strong> хоча б 1 раз</li>
+</ul>
+
+<div class="done">🏆 Покажи вчителю — найкращі роботи покажемо всьому класу!</div>
+</div>
+
+</body>
+</html>

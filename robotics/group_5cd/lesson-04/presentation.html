@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Урок 4 — Камінь-Ножиці-Папір</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide {
+    display: none;
+    width: 100vw; height: 100vh;
+    padding: 50px 70px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.active { display: flex; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    text-align: center;
+    align-items: center;
+  }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #6c5ce7; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #00b894; margin: 12px 0 6px; }
+  p, li { font-size: 1.15em; line-height: 1.6; }
+  ul { padding-left: 30px; }
+  li { margin: 5px 0; }
+  table { border-collapse: collapse; margin: 12px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 8px 14px; text-align: left; font-size: 1.05em; }
+  th { background: #f1f2f6; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #6c5ce7; background: #f8f9fa; padding: 10px 18px; margin: 10px 0; border-radius: 0 6px 6px 0; font-size: 1.05em; }
+  .warn { border-left-color: #fdcb6e; background: #fef9e7; }
+  pre { background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; padding: 12px 16px; font-size: 1em; line-height: 1.5; overflow-x: auto; }
+  .rules { display: flex; justify-content: center; gap: 60px; margin: 20px 0; font-size: 1.8em; }
+  .rules span { text-align: center; }
+  .cols { display: flex; gap: 40px; }
+  .cols > div { flex: 1; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка | Урок 4</h1>
+  <h2>🎮 Камінь-Ножиці-Папір</h2>
+  <p>26.02.2026 | Група: 5-В, 5-Г</p>
+</div>
+
+<!-- Slide 2: Rules + New blocks -->
+<div class="slide light">
+  <h2>🎮 Камінь-Ножиці-Папір — правила</h2>
+
+  <div class="rules">
+    <span>🪨 &gt; ✂️</span>
+    <span>✂️ &gt; 📄</span>
+    <span>📄 &gt; 🪨</span>
+  </div>
+  <p style="text-align:center; margin-bottom: 18px;">Камінь б'є ножиці · Ножиці ріжуть папір · Папір загортає камінь</p>
+
+  <h3>Нові блоки MakeCode</h3>
+  <table>
+    <tr><th>Блок</th><th>Що робить</th><th>Де знайти</th></tr>
+    <tr><td><code>on shake</code></td><td>Спрацьовує при струшуванні</td><td><strong>Input</strong></td></tr>
+    <tr><td><code>pick random 0 to 2</code></td><td>Випадкове число 0, 1 або 2</td><td><strong>Math</strong></td></tr>
+    <tr><td><code>if / else if / else</code></td><td>Перевірка кількох умов</td><td><strong>Logic</strong> (➕)</td></tr>
+    <tr><td><code>on button A+B</code></td><td>Обидві кнопки одночасно</td><td><strong>Input</strong></td></tr>
+  </table>
+  <blockquote>💡 В блоці <code>if</code> натисни маленький <strong>➕</strong> внизу, щоб додати <code>else if</code>!</blockquote>
+</div>
+
+<!-- Slide 3: Task 1 -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Генератор фігур</h2>
+  <p><strong>Трусимо → micro:bit показує випадкову фігуру</strong></p>
+
+  <div class="cols">
+    <div>
+      <h3>Що будуємо:</h3>
+      <ul>
+        <li>Змінна <code>рука</code></li>
+        <li><code>on shake</code> → <code>set рука to pick random 0 to 2</code></li>
+        <li><code>if рука = 0</code> → камінь (заповнений квадрат)</li>
+        <li><code>else if рука = 1</code> → ножиці (хрестик)</li>
+        <li><code>else</code> → папір (рамка)</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Таблиця фігур:</h3>
+      <table>
+        <tr><th>Число</th><th>Фігура</th><th>LED</th></tr>
+        <tr><td>0</td><td>🪨 Камінь</td><td>Квадрат</td></tr>
+        <tr><td>1</td><td>✂️ Ножиці</td><td>Хрестик</td></tr>
+        <tr><td>2</td><td>📄 Папір</td><td>Рамка</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Task 2 -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Гра проти micro:bit!</h2>
+  <p>Micro:bit — наш суперник 🤖. Змінні: <code>бот</code>, <code>я</code>, <code>бот_готовий</code></p>
+
+  <table>
+    <tr><th>Кнопка</th><th>Що відбувається</th></tr>
+    <tr><td><strong>A</strong></td><td>Бот обирає фігуру → показує <strong>?</strong></td></tr>
+    <tr><td><strong>B</strong></td><td>Ми обираємо фігуру → бачимо свою картинку. <em>Без A → покаже <strong>"A!"</strong></em></td></tr>
+    <tr><td><strong>A+B</strong></td><td>Хто виграв? → <strong>:)</strong> перемога / <strong>:(</strong> програш / <strong>=</strong> нічия</td></tr>
+    <tr><td><strong>SHAKE</strong></td><td>Скидаємо все → нова гра! Показує "КНП"</td></tr>
+  </table>
+
+  <div class="cols" style="margin-top: 10px;">
+    <div>
+      <h3>Кнопка A (бот):</h3>
+      <pre>set бот to pick random 0 to 2
+set бот_готовий to 1
+show icon [?]</pre>
+      <h3>Кнопка B (ми):</h3>
+      <pre>if бот_готовий = 0 → show "A!"
+else → set я to pick random 0 to 2
+       show картинку (if/else if/else)</pre>
+    </div>
+    <div>
+      <h3>A+B (результат):</h3>
+      <pre>if я = бот       → "="  (нічия)
+if я=0 AND бот=1 → ":)" (камінь > ножиці)
+if я=1 AND бот=2 → ":)" (ножиці > папір)
+if я=2 AND бот=0 → ":)" (папір > камінь)
+else             → ":(" (бот виграв)</pre>
+      <h3>SHAKE (скидання):</h3>
+      <pre>set бот=-1, я=-1, бот_готовий=0
+show string "КНП"</pre>
+    </div>
+  </div>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+</script>
+</body>
+</html>

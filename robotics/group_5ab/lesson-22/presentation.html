@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Урок 22</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; }
+  .slide.active { display: flex; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: center; align-items: center; }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #6c5ce7; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #00b894; margin: 12px 0 6px; }
+  p, li { font-size: 1.2em; line-height: 1.6; }
+  ul, ol { padding-left: 30px; }
+  li { margin: 6px 0; }
+  table { border-collapse: collapse; margin: 15px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 10px 16px; text-align: left; font-size: 1.1em; }
+  th { background: #f1f2f6; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #6c5ce7; background: #f8f9fa; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.1em; }
+  .warn { border-left-color: #fdcb6e; background: #fef9e7; }
+  .fun { border-left-color: #00b894; background: #f0fff4; }
+  .f1 { border-left-color: #e74c3c; background: #fef0f0; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+  .emoji-big { font-size: 2em; margin: 5px 0; }
+  .led-grid { display: inline-grid; grid-template-columns: repeat(5, 36px); gap: 4px; margin: 10px 0; }
+  .led-grid span { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: #b2bec3; }
+  .led-grid span.on { background: #e74c3c; border-color: #c0392b; color: #fff; font-weight: bold; }
+  .led-grid span.car { background: #fdcb6e; border-color: #f39c12; color: #2d3436; font-weight: bold; }
+  .led-grid span.tire { background: #6c5ce7; border-color: #5b4cdb; color: #fff; font-weight: bold; }
+  .two-col { display: flex; gap: 40px; align-items: flex-start; }
+  .two-col > div { flex: 1; }
+  .block { display: inline-block; background: #f1f2f6; border: 1px solid #ddd; border-radius: 6px; padding: 4px 10px; margin: 2px 0; font-size: 0.95em; }
+  .block.led { background: #fef0f0; border-color: #e74c3c; }
+  .block.basic { background: #e8f8f5; border-color: #00b894; }
+  .block.var { background: #fef9e7; border-color: #f39c12; }
+  .block.input { background: #edf2ff; border-color: #6c5ce7; }
+  .block.logic { background: #f0e6ff; border-color: #9b59b6; }
+  .block.math { background: #e8f0fe; border-color: #3498db; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка | Урок 22</h1>
+  <h2>🏎️ Формула-1 на micro:bit</h2>
+  <p>10.03.2026 | Група: 5-А, 5-Б</p>
+  <p style="margin-top:20px; font-size:1.1em;">«Старт Ф1» • «Гонка» • «Піт-стоп»</p>
+</div>
+
+<!-- Slide 2: Ф1 вчора! -->
+<div class="slide light">
+  <h2>🏁 Перша гонка сезону Ф1-2026!</h2>
+  <p>Гран-прі Австралії — вчора, Мельбурн 🇦🇺</p>
+  <table>
+    <tr><th>Місце</th><th>Пілот</th><th>Команда</th></tr>
+    <tr><td>🥇 1</td><td>George Russell</td><td>Mercedes</td></tr>
+    <tr><td>🥈 2</td><td>Kimi Antonelli</td><td>Mercedes</td></tr>
+    <tr><td>🥉 3</td><td>Charles Leclerc</td><td>Ferrari</td></tr>
+  </table>
+  <blockquote class="f1">🏎️ Найшвидше коло: <strong>Max Verstappen — 1:22.091</strong></blockquote>
+  <p>Сьогодні ми зробимо <strong>3 проєкти</strong> у стилі Формули-1!</p>
+</div>
+
+<!-- Slide 3: Координати LED -->
+<div class="slide light">
+  <h2>🆕 Координати LED-матриці</h2>
+  <div class="two-col">
+    <div>
+      <p>LED-матриця micro:bit — <strong>сітка 5×5</strong>. Кожен діод має координати:</p>
+      <ul>
+        <li><strong>x</strong> — стовпець (0-4, зліва → направо)</li>
+        <li><strong>y</strong> — рядок (0-4, зверху → вниз)</li>
+      </ul>
+      <table>
+        <tr><th>Блок</th><th>Що робить</th><th>Категорія</th></tr>
+        <tr><td><span class="block led">plot x _ y _</span></td><td>Запалити діод</td><td><strong>Led</strong></td></tr>
+        <tr><td><span class="block led">unplot x _ y _</span></td><td>Погасити діод</td><td><strong>Led</strong></td></tr>
+      </table>
+    </div>
+    <div style="text-align:center;">
+      <p style="margin-bottom:5px;"><strong>x →</strong></p>
+      <div class="led-grid">
+        <span>0,0</span><span>1,0</span><span>2,0</span><span>3,0</span><span>4,0</span>
+        <span>0,1</span><span>1,1</span><span class="on">2,1</span><span>3,1</span><span>4,1</span>
+        <span>0,2</span><span>1,2</span><span>2,2</span><span>3,2</span><span>4,2</span>
+        <span>0,3</span><span>1,3</span><span>2,3</span><span>3,3</span><span>4,3</span>
+        <span>0,4</span><span>1,4</span><span>2,4</span><span>3,4</span><span>4,4</span>
+      </div>
+      <p style="font-size:0.9em; color:#636e72;"><strong>y ↓</strong> &nbsp; Приклад: <span class="block led">plot x 2 y 1</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Старт Ф1 — ідея -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Світлофор Ф1 🚦</h2>
+  <p>На старті Ф1 — <strong>5 червоних вогнів горизонтально</strong>.<br>Загоряються по черзі зліва → направо. Коли всі горять — <strong>ВСІ ГАСНУТЬ</strong> = СТАРТ!</p>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>Крок</th><th>Що відбувається</th></tr>
+        <tr><td>1</td><td>Натисни <strong>A</strong> — починається</td></tr>
+        <tr><td>2</td><td>5 вогнів загораються зліва → направо ⏳</td></tr>
+        <tr><td>3</td><td>Всі горять... пауза 1-4 сек...</td></tr>
+        <tr><td>4</td><td>💡 ВСІ ГАСНУТЬ — <strong>СТАРТ!</strong></td></tr>
+        <tr><td>5</td><td>Натисни <strong>B</strong> якнайшвидше!</td></tr>
+        <tr><td>6</td><td>Micro:bit покаже час в <strong>мс</strong></td></tr>
+      </table>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Вогні на LED (рядок y=2):</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span><span class="on">●</span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">← Всі 5 горять горизонтально!</p>
+    </div>
+  </div>
+  <blockquote class="f1">🏎️ Реакція пілотів Ф1 — приблизно <strong>200 мс</strong>. А ти зможеш?</blockquote>
+</div>
+
+<!-- Slide 5: Старт Ф1 — блоки -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Світлофор Ф1» — блоки</h2>
+  <p><strong>Створи змінні:</strong> <code>старт</code>, <code>реакція</code></p>
+  <div class="two-col">
+    <div>
+      <h3>on button A pressed:</h3>
+      <p><span class="block led">plot x 0 y 2</span> ← 1-й вогонь</p>
+      <p><span class="block basic">pause 1000</span></p>
+      <p><span class="block led">plot x 1 y 2</span> ← 2-й</p>
+      <p><span class="block basic">pause 1000</span></p>
+      <p><span class="block led">plot x 2 y 2</span> ← 3-й</p>
+      <p><span class="block basic">pause 1000</span></p>
+      <p><span class="block led">plot x 3 y 2</span> ← 4-й</p>
+      <p><span class="block basic">pause 1000</span></p>
+      <p><span class="block led">plot x 4 y 2</span> ← 5-й!</p>
+      <p><span class="block basic">pause</span> <span class="block math">pick random 1000 to 4000</span></p>
+      <p><span class="block basic">clear screen</span> ← СТАРТ!</p>
+      <p><span class="block var">set старт to</span> <span class="block input">running time (ms)</span></p>
+    </div>
+    <div>
+      <h3>on button B pressed:</h3>
+      <p><span class="block var">set реакція to</span></p>
+      <p style="padding-left:20px;"><span class="block math">running time (ms) − старт</span></p>
+      <p><span class="block basic">show number</span> <span class="block var">реакція</span></p>
+      <blockquote class="warn">⚠️ <span class="block led">plot x y</span> знайдеш в категорії <strong>Led</strong>.<br>
+      <span class="block input">running time</span> — в <strong>Input → ...more</strong></blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Гонка — ідея -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Гонка 🏁</h2>
+  <p>Твоя машинка — <strong>один діод</strong>, який їде по трасі (рядок y=2)!</p>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>Кнопка</th><th>Дія</th></tr>
+        <tr><td><strong>A</strong></td><td>Прискорити! 🏎️💨</td></tr>
+        <tr><td><strong>B</strong></td><td>Гальмувати! 🛑</td></tr>
+      </table>
+      <ul>
+        <li>Машинка рухається зліва → направо</li>
+        <li>Доїхала до краю = <strong>1 коло</strong> пройдено!</li>
+        <li>Проїдь <strong>5 кіл</strong> — фініш! 🏆</li>
+      </ul>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Машинка їде:</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span class="car">🏎</span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">← Машинка на x=1, y=2</p>
+    </div>
+  </div>
+  <blockquote class="fun">🏆 Хто проїде 5 кіл найшвидше?</blockquote>
+</div>
+
+<!-- Slide 7: Гонка — блоки -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Гонку» — блоки</h2>
+  <p><strong>Змінні:</strong> <code>швидкість</code>, <code>коло</code>, <code>позиція</code></p>
+  <div class="two-col">
+    <div>
+      <h3>on start:</h3>
+      <p><span class="block var">set швидкість to 300</span></p>
+      <p><span class="block var">set коло to 0</span></p>
+      <p><span class="block var">set позиція to 0</span></p>
+      <h3>forever:</h3>
+      <p><span class="block basic">clear screen</span></p>
+      <p><span class="block led">plot x <em>позиція</em> y 2</span></p>
+      <p><span class="block basic">pause <em>швидкість</em></span></p>
+      <p><span class="block var">change позиція by 1</span></p>
+      <p><span class="block logic">if позиція &gt; 4</span></p>
+      <p style="padding-left:15px;"><span class="block var">set позиція to 0</span></p>
+      <p style="padding-left:15px;"><span class="block var">change коло by 1</span></p>
+      <p style="padding-left:15px;"><span class="block basic">show number <em>коло</em></span></p>
+      <p style="padding-left:15px;"><span class="block basic">pause 300</span></p>
+      <p><span class="block logic">if коло = 5</span></p>
+      <p style="padding-left:15px;"><span class="block basic">show string "P1"</span></p>
+    </div>
+    <div>
+      <h3>on button A (газ):</h3>
+      <p><span class="block var">change швидкість by −50</span></p>
+      <p><span class="block logic">if швидкість &lt; 50</span></p>
+      <p style="padding-left:15px;"><span class="block var">set швидкість to 50</span></p>
+      <h3>on button B (гальмо):</h3>
+      <p><span class="block var">change швидкість by 50</span></p>
+      <p><span class="block logic">if швидкість &gt; 500</span></p>
+      <p style="padding-left:15px;"><span class="block var">set швидкість to 500</span></p>
+      <blockquote>💡 Перетягуй <strong>змінні</strong> з категорії <strong>Variables</strong> в поля блоків!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Піт-стоп — ідея -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Піт-стоп ⏱️</h2>
+  <p>Заміна 4 шин! Кожна шина з'являється в своєму куті. Micro:bit рахує загальний час!</p>
+  <div class="two-col">
+    <div>
+      <p><strong>4 шини по черзі:</strong></p>
+      <ol style="padding-left:20px;">
+        <li>Зліва зверху (x=1, y=1)</li>
+        <li>Справа зверху (x=3, y=1)</li>
+        <li>Зліва знизу (x=1, y=3)</li>
+        <li>Справа знизу (x=3, y=3)</li>
+      </ol>
+      <p>Після кожної шини — ✓<br>В кінці — загальний час!</p>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Позиції шин:</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span class="tire">1</span><span></span><span class="tire">2</span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span class="tire">3</span><span></span><span class="tire">4</span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">← 4 кути = 4 шини</p>
+    </div>
+  </div>
+  <blockquote class="f1">🏎️ Рекорд піт-стопу в Ф1 — <strong>1.8 секунди</strong> (Red Bull, 2019)!</blockquote>
+</div>
+
+<!-- Slide 9: Піт-стоп — блоки -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Піт-стоп» — блоки</h2>
+  <p><strong>Змінні:</strong> <code>старт</code>, <code>результат</code></p>
+  <h3>on button A pressed:</h3>
+  <div class="two-col">
+    <div>
+      <p><span class="block var">set старт to</span> <span class="block input">running time (ms)</span></p>
+      <p style="margin-top:8px;"><strong>Шина 1:</strong></p>
+      <p><span class="block basic">clear screen</span></p>
+      <p><span class="block led">plot x 1 y 1</span></p>
+      <p><span class="block basic">pause</span> <span class="block math">pick random 500 to 1500</span></p>
+      <p><span class="block basic">show icon ✓</span> → <span class="block basic">pause 200</span></p>
+      <p style="margin-top:8px;"><strong>Шина 2:</strong></p>
+      <p><span class="block basic">clear screen</span></p>
+      <p><span class="block led">plot x 3 y 1</span></p>
+      <p><span class="block basic">pause</span> <span class="block math">pick random 500 to 1500</span></p>
+      <p><span class="block basic">show icon ✓</span> → <span class="block basic">pause 200</span></p>
+    </div>
+    <div>
+      <p style="margin-top:8px;"><strong>Шина 3:</strong></p>
+      <p><span class="block basic">clear screen</span></p>
+      <p><span class="block led">plot x 1 y 3</span></p>
+      <p><span class="block basic">pause</span> <span class="block math">pick random 500 to 1500</span></p>
+      <p><span class="block basic">show icon ✓</span> → <span class="block basic">pause 200</span></p>
+      <p style="margin-top:8px;"><strong>Шина 4:</strong></p>
+      <p><span class="block basic">clear screen</span></p>
+      <p><span class="block led">plot x 3 y 3</span></p>
+      <p><span class="block basic">pause</span> <span class="block math">pick random 500 to 1500</span></p>
+      <p><span class="block basic">show icon ✓</span> → <span class="block basic">pause 200</span></p>
+      <p style="margin-top:8px;"><strong>Результат:</strong></p>
+      <p><span class="block var">set результат to</span> <span class="block math">running time − старт</span></p>
+      <p><span class="block basic">show number</span> <span class="block var">результат</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10: Граємо + підсумки -->
+<div class="slide light">
+  <h2>🏁 Граємо та підсумки!</h2>
+  <h3>Змагання:</h3>
+  <ul>
+    <li>🚦 <strong>Світлофор Ф1</strong> — хто найшвидший? Зіграй 3 рази!</li>
+    <li>🏎️ <strong>Гонка</strong> — хто проїде 5 кіл найшвидше?</li>
+    <li>🔧 <strong>Піт-стоп</strong> — хто замінить шини за менший час?</li>
+  </ul>
+  <h3>Що ми сьогодні вивчили:</h3>
+  <ul>
+    <li>✅ <span class="block led">plot x y</span> — запалити окремий діод за координатами</li>
+    <li>✅ <span class="block led">unplot x y</span> — погасити окремий діод</li>
+    <li>✅ Координати LED: x (0-4 зліва→), y (0-4 зверху↓)</li>
+    <li>✅ Створили 3 проєкти у стилі Ф1! 🏎️🏎️🏎️</li>
+  </ul>
+  <blockquote class="fun">🏠 Вдома: додай звук при загорянні вогнів (<span class="block" style="background:#ffe0e0;border-color:#e74c3c;">play tone</span> з <strong>Music</strong>), або перешкоди на трасі!</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+</script>
+</body>
+</html>

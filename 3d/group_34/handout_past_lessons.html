@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Заняття 1-2 (повторення)</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #2d3436;
+  }
+  .page {
+    page-break-after: always;
+    padding: 0;
+  }
+  .page:last-child { page-break-after: avoid; }
+  h1 { font-size: 20px; color: #2d3436; border-bottom: 2.5px solid #00b894; padding-bottom: 3px; margin-bottom: 8px; }
+  h3 { font-size: 13px; color: #6c5ce7; margin: 6px 0 3px; }
+  p { margin: 3px 0; }
+  ul { padding-left: 20px; margin: 3px 0; }
+  li { margin: 1px 0; }
+  strong { color: #2d3436; }
+  .step { margin: 5px 0; }
+  .step-title { font-weight: bold; }
+  .done { background: #e8f8f5; border: 1px solid #00b894; border-radius: 5px; padding: 5px 10px; margin: 6px 0; text-align: center; font-weight: bold; }
+  .img-container { text-align: center; margin: 8px 0; }
+  .img-caption { font-size: 11px; color: #636e72; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- Сторінка 1: Чашка -->
+<div class="page">
+<h1>⭐ Завдання 1. Чашка</h1>
+<p><strong>Що моделюємо:</strong> звичайну чашку з ручкою</p>
+
+<div class="img-container">
+<svg width="220" height="160" viewBox="0 0 220 160">
+  <!-- Cup body (outer) -->
+  <rect x="40" y="20" width="100" height="120" rx="5" fill="#74b9ff" stroke="#2d3436" stroke-width="1.5"/>
+  <!-- Cup hole (inner) -->
+  <rect x="50" y="28" width="80" height="112" rx="4" fill="#fff" stroke="#2d3436" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Handle -->
+  <ellipse cx="150" cy="70" rx="18" ry="28" fill="none" stroke="#2d3436" stroke-width="6"/>
+  <ellipse cx="150" cy="70" rx="18" ry="28" fill="none" stroke="#74b9ff" stroke-width="3"/>
+  <!-- Labels -->
+  <text x="60" y="80" font-size="10" fill="#636e72">Hole</text>
+  <text x="155" y="120" font-size="10" fill="#636e72">Ручка</text>
+  <text x="5" y="80" font-size="10" fill="#636e72">Cylinder</text>
+  <text x="5" y="92" font-size="10" fill="#636e72">50×50×75</text>
+</svg>
+<div class="img-caption">Чашка: зовнішній циліндр + отвір (Hole) + ручка</div>
+</div>
+
+<h3>Покрокова інструкція:</h3>
+<div class="step"><span class="step-title">Крок 1. Основа</span> — перетягни <strong>Cylinder</strong> → розмір: <strong>50 × 50 × 75</strong></div>
+<div class="step"><span class="step-title">Крок 2. Отвір</span> — ще один <strong>Cylinder</strong> → розмір: <strong>40 × 40 × 75</strong> → зміни на <strong>Hole</strong> → постав всередину → підніми трохи вгору (щоб дно залишилось)</div>
+<div class="step"><span class="step-title">Крок 3. Ручка</span> — <strong>Cylinder</strong> → розмір: <strong>10 × 10 × 40</strong> → постав збоку чашки → підніми на середину висоти</div>
+<div class="step"><span class="step-title">Крок 4.</span> <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+<div class="done">✅ Чашку змодельовано!</div>
+</div>
+
+<!-- Сторінка 2: Пальма -->
+<div class="page">
+<h1>⭐ Завдання 2. Пальма</h1>
+<p><strong>Що моделюємо:</strong> тропічну пальму з островом</p>
+
+<div class="img-container">
+<svg width="220" height="180" viewBox="0 0 220 180">
+  <!-- Water -->
+  <ellipse cx="110" cy="170" rx="100" ry="12" fill="#74b9ff" stroke="#2d3436" stroke-width="0.8"/>
+  <!-- Sand -->
+  <ellipse cx="110" cy="165" rx="60" ry="10" fill="#ffeaa7" stroke="#2d3436" stroke-width="0.8"/>
+  <!-- Trunk segments (slightly tilted) -->
+  <rect x="100" y="125" width="16" height="22" rx="2" fill="#b87333" stroke="#2d3436" stroke-width="0.8" transform="rotate(-2 108 136)"/>
+  <rect x="99" y="105" width="15" height="22" rx="2" fill="#cd8844" stroke="#2d3436" stroke-width="0.8" transform="rotate(-4 106 116)"/>
+  <rect x="97" y="85" width="14" height="22" rx="2" fill="#b87333" stroke="#2d3436" stroke-width="0.8" transform="rotate(-6 104 96)"/>
+  <rect x="94" y="67" width="13" height="20" rx="2" fill="#cd8844" stroke="#2d3436" stroke-width="0.8" transform="rotate(-8 100 77)"/>
+  <!-- Leaves -->
+  <ellipse cx="80" cy="55" rx="35" ry="8" fill="#00b894" stroke="#2d3436" stroke-width="0.8" transform="rotate(-20 80 55)"/>
+  <ellipse cx="120" cy="50" rx="35" ry="8" fill="#55efc4" stroke="#2d3436" stroke-width="0.8" transform="rotate(15 120 50)"/>
+  <ellipse cx="95" cy="42" rx="30" ry="7" fill="#00b894" stroke="#2d3436" stroke-width="0.8" transform="rotate(-5 95 42)"/>
+  <!-- Labels -->
+  <text x="150" y="80" font-size="9" fill="#636e72">Cone ×5-7</text>
+  <text x="150" y="92" font-size="9" fill="#636e72">(r12/r10)</text>
+  <text x="150" y="135" font-size="9" fill="#636e72">Ctrl+D</text>
+  <text x="150" y="147" font-size="9" fill="#636e72">+ нахиляй</text>
+</svg>
+<div class="img-caption">Пальма: конуси стовбуром + листя + острів</div>
+</div>
+
+<h3>Покрокова інструкція:</h3>
+<div class="step"><span class="step-title">Крок 1. Стовбур</span> — <strong>Cone</strong> → верхній радіус <strong>12</strong>, нижній <strong>10</strong>, висота ~30</div>
+<div class="step"><span class="step-title">Крок 2. Нарощуємо</span> — <strong>Ctrl+D</strong> → тягни вгору → трохи нахили (3-5°). Повтори <strong>5-7 разів</strong>: дублюй → вгору → нахиляй</div>
+<div class="step"><span class="step-title">Крок 3. Листя</span> — кілька <strong>Box</strong> (плоских і довгих) або сплюснутих <strong>Cone</strong> → поверни горизонтально → постав зверху, нахили в різні сторони</div>
+<div class="step"><span class="step-title">Крок 4. Острів</span> — плоский <strong>Cylinder</strong> (пісок, жовтий) + більший плоский <strong>Cylinder</strong> (вода, блакитний)</div>
+<div class="step"><span class="step-title">Крок 5.</span> <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+<div class="done">✅ Тропічний острів з пальмою готовий!</div>
+</div>
+
+</body>
+</html>

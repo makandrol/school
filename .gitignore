@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+*.pyc
+__pycache__/
+.venv/
+.cursor/
+
+# Teacher-only documents (not for site)
+*.doc
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+*.zip

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 3 — Автомобіль, дублювання та патерни</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #2d3436;
+  }
+  .page {
+    page-break-after: always;
+    min-height: 257mm;
+    padding: 0;
+  }
+  .page:last-child { page-break-after: avoid; }
+  h1 { font-size: 20px; color: #2d3436; border-bottom: 2.5px solid #00b894; padding-bottom: 3px; margin-bottom: 8px; }
+  h2 { font-size: 15px; color: #00b894; margin: 8px 0 4px; }
+  h3 { font-size: 13px; color: #6c5ce7; margin: 6px 0 3px; }
+  p { margin: 3px 0; }
+  ul { padding-left: 20px; margin: 3px 0; }
+  li { margin: 1px 0; }
+  strong { color: #2d3436; }
+  .step { margin: 5px 0; }
+  .step-title { font-weight: bold; color: #2d3436; }
+  .hint { background: #f0fff4; border-left: 3px solid #00b894; padding: 4px 10px; margin: 5px 0; font-size: 12px; border-radius: 0 4px 4px 0; }
+  .done { background: #e8f8f5; border: 1px solid #00b894; border-radius: 5px; padding: 5px 10px; margin: 6px 0; text-align: center; font-weight: bold; }
+  .bonus { font-size: 12px; color: #636e72; margin-top: 4px; }
+  .img-container { text-align: center; margin: 6px 0; }
+  .img-container svg { max-width: 100%; }
+  .img-caption { font-size: 11px; color: #636e72; margin-top: 2px; }
+  .tools-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 5px 0; }
+  .tools-table td { padding: 3px 8px; border: 1px solid #ddd; }
+  .tools-table td:first-child { font-weight: bold; width: 35%; }
+  @media print {
+    body { font-size: 12px; }
+    .page { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== СТОРІНКА 1: Вступ ==================== -->
+<div class="page">
+<h1>🎨 3D-моделювання | Заняття 3</h1>
+<p><strong>Тема:</strong> Завершення автомобіля. Дублювання та патерни</p>
+
+<h2>🆕 Нові прийоми</h2>
+<table class="tools-table">
+<tr><td>📋 Ctrl+D (Duplicate)</td><td>Копіює об'єкт точно в тому ж місці</td></tr>
+<tr><td>📋→📋→📋 Патерн</td><td><strong>Ctrl+D → зсунь → Ctrl+D</strong> — повторює той самий зсув автоматично!</td></tr>
+<tr><td>📐 Align (L)</td><td>Виділи 2+ об'єкти → <strong>L</strong> → клікни центральну точку</td></tr>
+<tr><td>🔄 Flip</td><td>Дзеркальне відбиття об'єкта</td></tr>
+</table>
+
+<h2>⌨️ Корисні клавіші</h2>
+<table class="tools-table">
+<tr><td>Дублювати</td><td><strong>Ctrl + D</strong></td></tr>
+<tr><td>Вирівняти</td><td><strong>L</strong></td></tr>
+<tr><td>Групувати</td><td><strong>Ctrl + G</strong></td></tr>
+<tr><td>Скасувати</td><td><strong>Ctrl + Z</strong></td></tr>
+<tr><td>Виділити все</td><td><strong>Ctrl + A</strong></td></tr>
+<tr><td>Видалити</td><td><strong>Delete</strong></td></tr>
+</table>
+
+<h2>📋 Завдання на сьогодні</h2>
+<ul>
+  <li>⭐ <strong>Завдання 1:</strong> Доробити автомобіль</li>
+  <li>⭐⭐ <strong>Завдання 2:</strong> Робот</li>
+  <li>⭐⭐⭐ <strong>Завдання 3:</strong> Ракета</li>
+  <li>⭐⭐⭐⭐ <strong>Завдання 4:</strong> Космічна станція</li>
+</ul>
+</div>
+
+<!-- ==================== СТОРІНКА 2: Автомобіль ==================== -->
+<div class="page">
+<h1>⭐ Завдання 1: Доробити автомобіль</h1>
+<p>Додаємо до автомобіля вікна, фари та бампер</p>
+
+<div class="img-container">
+<svg width="340" height="160" viewBox="0 0 340 160">
+  <!-- Ground -->
+  <line x1="10" y1="140" x2="330" y2="140" stroke="#b2bec3" stroke-width="1"/>
+  <!-- Body -->
+  <rect x="40" y="75" width="240" height="55" fill="#74b9ff" stroke="#2d3436" stroke-width="1.5" rx="5"/>
+  <!-- Cabin -->
+  <rect x="120" y="35" width="120" height="45" fill="#74b9ff" stroke="#2d3436" stroke-width="1.5" rx="4"/>
+  <!-- Windows (holes) -->
+  <rect x="130" y="42" width="45" height="28" fill="#dfe6e9" stroke="#2d3436" stroke-width="1" rx="2"/>
+  <rect x="183" y="42" width="45" height="28" fill="#dfe6e9" stroke="#2d3436" stroke-width="1" rx="2"/>
+  <!-- Wheels -->
+  <circle cx="100" cy="135" r="20" fill="#2d3436"/>
+  <circle cx="100" cy="135" r="10" fill="#636e72"/>
+  <circle cx="220" cy="135" r="20" fill="#2d3436"/>
+  <circle cx="220" cy="135" r="10" fill="#636e72"/>
+  <!-- Headlights -->
+  <ellipse cx="282" cy="95" rx="6" ry="8" fill="#ffeaa7" stroke="#2d3436" stroke-width="1"/>
+  <!-- Taillights -->
+  <ellipse cx="40" cy="95" rx="5" ry="8" fill="#e17055" stroke="#2d3436" stroke-width="1"/>
+  <!-- Bumper -->
+  <rect x="275" y="115" width="12" height="15" fill="#b2bec3" stroke="#2d3436" stroke-width="1" rx="2"/>
+  <rect x="35" y="115" width="12" height="15" fill="#b2bec3" stroke="#2d3436" stroke-width="1" rx="2"/>
+  <!-- Labels -->
+  <text x="240" y="52" font-size="9" fill="#636e72">← Вікна (Hole)</text>
+  <text x="290" y="92" font-size="9" fill="#636e72">← Фари (Cyl.)</text>
+  <text x="290" y="125" font-size="9" fill="#636e72">← Бампер</text>
+  <text x="100" y="155" font-size="9" fill="#636e72">Колеса (Ctrl+D!)</text>
+</svg>
+<div class="img-caption">Завершений автомобіль з вікнами, фарами та бампером</div>
+</div>
+
+<h3>Якщо авто ще не почато — швидкий старт:</h3>
+<div class="step"><span class="step-title">Кузов</span> — <strong>Box</strong> → розмір: <strong>80 × 35 × 20</strong> → колір: синій</div>
+<div class="step"><span class="step-title">Кабіна</span> — <strong>Box</strong> → розмір: <strong>40 × 35 × 18</strong> → підняти на кузов → вирівняти (<strong>L</strong>)</div>
+<div class="step"><span class="step-title">Колеса</span> — <strong>Cylinder</strong> → 12 × 12 × 10 → обернути на <strong>90°</strong> → розмістити під кузовом → <strong>Ctrl+D</strong> → зсунути вправо (x3 для 4 коліс)</div>
+
+<h3>Доробляємо:</h3>
+<div class="step"><span class="step-title">Крок 1. Вікна</span> — <strong>Box</strong> → <strong>Hole</strong> → розмір: 16 × 5 × 10 → постав на кабіну (передня стінка) → <strong>Ctrl+D</strong> → зсунь для другого вікна</div>
+<div class="step"><span class="step-title">Крок 2. Фари</span> — <strong>Cylinder</strong> → 4 × 4 × 3 → жовтий колір → обернути на 90° → постав спереду → <strong>Ctrl+D</strong> → зсунь для другої фари</div>
+<div class="step"><span class="step-title">Крок 3. Бампер</span> — <strong>Box</strong> → 36 × 4 × 6 → сірий → постав спереду внизу</div>
+<div class="step"><span class="step-title">Крок 4. Задні ліхтарі</span> — <strong>Cylinder</strong> → 3 × 3 × 2 → червоний → ззаду → <strong>Ctrl+D</strong></div>
+<div class="step"><span class="step-title">Крок 5. Групуємо</span> — <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+
+<div class="done">✅ Готово! Автомобіль завершено! 🚗</div>
+<p class="bonus">🎨 Бонус: додай дзеркала (маленькі Box), номерний знак, спойлер!</p>
+</div>
+
+<!-- ==================== СТОРІНКА 3: Робот ==================== -->
+<div class="page">
+<h1>⭐⭐ Завдання 2: «Робот»</h1>
+<p>Моделюємо робота з дублюванням парних частин</p>
+
+<div class="img-container">
+<svg width="220" height="220" viewBox="0 0 220 220">
+  <line x1="10" y1="210" x2="210" y2="210" stroke="#b2bec3" stroke-width="1"/>
+  <!-- Legs -->
+  <rect x="72" y="165" width="22" height="45" fill="#636e72" stroke="#2d3436" stroke-width="1.2" rx="2"/>
+  <rect x="126" y="165" width="22" height="45" fill="#636e72" stroke="#2d3436" stroke-width="1.2" rx="2"/>
+  <!-- Feet -->
+  <rect x="65" y="200" width="34" height="10" fill="#2d3436" stroke="#2d3436" stroke-width="1" rx="3"/>
+  <rect x="121" y="200" width="34" height="10" fill="#2d3436" stroke="#2d3436" stroke-width="1" rx="3"/>
+  <!-- Body -->
+  <rect x="60" y="90" width="100" height="80" fill="#74b9ff" stroke="#2d3436" stroke-width="1.5" rx="4"/>
+  <!-- Chest panel -->
+  <rect x="85" y="105" width="50" height="30" fill="#dfe6e9" stroke="#2d3436" stroke-width="0.8" rx="2"/>
+  <circle cx="100" cy="118" r="4" fill="#e17055"/>
+  <circle cx="110" cy="118" r="4" fill="#00b894"/>
+  <circle cx="120" cy="118" r="4" fill="#ffeaa7"/>
+  <!-- Arms -->
+  <rect x="25" y="95" width="18" height="55" fill="#636e72" stroke="#2d3436" stroke-width="1.2" rx="3"/>
+  <rect x="177" y="95" width="18" height="55" fill="#636e72" stroke="#2d3436" stroke-width="1.2" rx="3"/>
+  <!-- Hands -->
+  <circle cx="34" cy="155" r="9" fill="#b2bec3" stroke="#2d3436" stroke-width="1"/>
+  <circle cx="186" cy="155" r="9" fill="#b2bec3" stroke="#2d3436" stroke-width="1"/>
+  <!-- Head -->
+  <rect x="75" y="40" width="70" height="52" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.5" rx="5"/>
+  <!-- Eyes -->
+  <circle cx="97" cy="60" r="8" fill="#fff" stroke="#2d3436" stroke-width="1"/>
+  <circle cx="97" cy="60" r="4" fill="#6c5ce7"/>
+  <circle cx="123" cy="60" r="8" fill="#fff" stroke="#2d3436" stroke-width="1"/>
+  <circle cx="123" cy="60" r="4" fill="#6c5ce7"/>
+  <!-- Mouth -->
+  <rect x="95" y="75" width="30" height="6" fill="#2d3436" rx="2"/>
+  <!-- Antenna -->
+  <line x1="110" y1="40" x2="110" y2="18" stroke="#2d3436" stroke-width="2"/>
+  <circle cx="110" cy="14" r="5" fill="#e17055" stroke="#2d3436" stroke-width="1"/>
+  <!-- Labels -->
+  <text x="1" y="88" font-size="8" fill="#636e72">Руки: Ctrl+D</text>
+  <text x="1" y="195" font-size="8" fill="#636e72">Ноги: Ctrl+D</text>
+  <text x="150" y="60" font-size="8" fill="#636e72">Очі: Ctrl+D</text>
+</svg>
+<div class="img-caption">Робот: тулуб + голова + руки + ноги (парні — Ctrl+D!)</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Тулуб</span> — <strong>Box</strong> → 40 × 30 × 50 → синій</div>
+<div class="step"><span class="step-title">Крок 2. Голова</span> — <strong>Box</strong> → 30 × 25 × 25 → сірий → підняти над тулубом → <strong>L</strong> (вирівняти по центру X та Y)</div>
+<div class="step"><span class="step-title">Крок 3. Очі</span> — <strong>Sphere</strong> → 6 × 6 × 6 → білий → на передню сторону голови → <strong>Ctrl+D</strong> → зсунь вбік</div>
+<div class="step"><span class="step-title">Крок 4. Рот</span> — <strong>Box</strong> → 15 × 3 × 4 → чорний → нижче очей</div>
+<div class="step"><span class="step-title">Крок 5. Руки</span> — <strong>Box</strong> → 8 × 8 × 35 → сірий → збоку від тулуба → <strong>Ctrl+D</strong> → зсунь на інший бік</div>
+<div class="step"><span class="step-title">Крок 6. Ноги</span> — <strong>Box</strong> → 10 × 10 × 30 → сірий → знизу → <strong>Ctrl+D</strong> → зсунь вбік</div>
+<div class="step"><span class="step-title">Крок 7. Антена</span> — <strong>Cylinder</strong> → 3 × 3 × 15 → зверху голови + <strong>Sphere</strong> → 6 × 6 × 6 → червона → на кінчику</div>
+<div class="step"><span class="step-title">Крок 8.</span> — <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
+
+<div class="done">✅ Готово! Робот змодельовано! 🤖</div>
+<p class="bonus">🎨 Бонус: додай панель на грудях з кнопками (маленькі Cylinder різних кольорів)</p>
+</div>
+
+<!-- ==================== СТОРІНКА 4: Ракета ==================== -->
+<div class="page">
+<h1>⭐⭐⭐ Завдання 3: «Ракета»</h1>
+<p>Моделюємо ракету з корпусом, носовим конусом та стабілізаторами</p>
+
+<div class="img-container">
+<svg width="180" height="240" viewBox="0 0 180 240">
+  <!-- Flame -->
+  <polygon points="90,235 75,200 90,215 105,200" fill="#ffeaa7" stroke="#e17055" stroke-width="1" opacity="0.8"/>
+  <polygon points="90,230 80,205 90,218 100,205" fill="#e17055" stroke="#d63031" stroke-width="0.8"/>
+  <!-- Body -->
+  <rect x="65" y="60" width="50" height="140" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.5" rx="3"/>
+  <!-- Nose cone -->
+  <polygon points="90,10 65,60 115,60" fill="#e17055" stroke="#2d3436" stroke-width="1.5"/>
+  <!-- Window -->
+  <circle cx="90" cy="95" r="14" fill="#74b9ff" stroke="#2d3436" stroke-width="1.2"/>
+  <circle cx="90" cy="95" r="10" fill="#a3d8f4" stroke="#2d3436" stroke-width="0.5"/>
+  <!-- Stripe -->
+  <rect x="65" y="140" width="50" height="8" fill="#e17055" stroke="none"/>
+  <!-- Fins (left) -->
+  <polygon points="65,170 30,205 65,200" fill="#636e72" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Fins (right) -->
+  <polygon points="115,170 150,205 115,200" fill="#636e72" stroke="#2d3436" stroke-width="1.2"/>
+  <!-- Labels -->
+  <text x="120" y="25" font-size="9" fill="#636e72">← Cone (ніс)</text>
+  <text x="120" y="95" font-size="9" fill="#636e72">← Ілюмінатор</text>
+  <text x="120" y="145" font-size="9" fill="#e17055">← Смуга</text>
+  <text x="130" y="195" font-size="9" fill="#636e72">← Стабілізатор</text>
+  <text x="5" y="195" font-size="9" fill="#636e72">Ctrl+D →</text>
+</svg>
+<div class="img-caption">Ракета: корпус + конус + ілюмінатор + стабілізатори</div>
+</div>
+
+<h3>Підказки:</h3>
+<p><strong>Корпус:</strong> <strong>Cylinder</strong> → 30 × 30 × 80 → білий/сірий</p>
+<p><strong>Ніс:</strong> <strong>Cone</strong> → 30 × 30 × 25 → червоний → поставити зверху → <strong>L</strong> по центру</p>
+<p><strong>Ілюмінатор:</strong> <strong>Sphere</strong> → 12 × 12 × 5 → блакитний → на передню стінку корпусу</p>
+<p><strong>Смуга:</strong> <strong>Cylinder</strong> → 31 × 31 × 4 → червоний → по центру корпусу (трохи ширший за корпус)</p>
+<p><strong>Стабілізатор:</strong> <strong>Roof</strong> (або Box повернутий) → розмістити збоку внизу → <strong>Ctrl+D</strong> → обернути на <strong>90°</strong> → <strong>Ctrl+D</strong> → 90° → <strong>Ctrl+D</strong> (4 стабілізатори по колу!)</p>
+<p><strong>Сопло:</strong> <strong>Cylinder</strong> → 20 × 20 × 10 → темно-сірий → знизу корпусу + <strong>Cylinder Hole</strong> всередині</p>
+
+<div class="hint">💡 Патерн для стабілізаторів: зроби один → Ctrl+D → оберни на 90° → Ctrl+D → ще 90° → Ctrl+D!</div>
+
+<div class="done">✅ Готово! Ракета змодельовано! 🚀</div>
+</div>
+
+<!-- ==================== СТОРІНКА 5: Космічна станція ==================== -->
+<div class="page">
+<h1>⭐⭐⭐⭐ Завдання 4: «Космічна станція»</h1>
+<p>Створи космічну станцію! Використай автомобіль, робота та ракету як натхнення 🌌</p>
+
+<div class="img-container">
+<svg width="380" height="160" viewBox="0 0 380 160">
+  <!-- Central module -->
+  <rect x="140" y="50" width="100" height="50" fill="#dfe6e9" stroke="#2d3436" stroke-width="1.2" rx="8"/>
+  <circle cx="190" cy="75" r="6" fill="#74b9ff" stroke="#2d3436" stroke-width="0.8"/>
+  <!-- Left module -->
+  <rect x="50" y="60" width="70" height="30" fill="#b2bec3" stroke="#2d3436" stroke-width="1" rx="5"/>
+  <line x1="120" y1="75" x2="140" y2="75" stroke="#2d3436" stroke-width="3"/>
+  <!-- Right module -->
+  <rect x="260" y="55" width="80" height="40" fill="#b2bec3" stroke="#2d3436" stroke-width="1" rx="5"/>
+  <line x1="240" y1="75" x2="260" y2="75" stroke="#2d3436" stroke-width="3"/>
+  <!-- Solar panels left -->
+  <rect x="10" y="35" width="35" height="80" fill="#74b9ff" stroke="#2d3436" stroke-width="1" rx="1"/>
+  <line x1="27" y1="35" x2="27" y2="115" stroke="#2d3436" stroke-width="0.5"/>
+  <line x1="10" y1="55" x2="45" y2="55" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="10" y1="75" x2="45" y2="75" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="10" y1="95" x2="45" y2="95" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="45" y1="75" x2="50" y2="75" stroke="#2d3436" stroke-width="2"/>
+  <!-- Solar panels right -->
+  <rect x="345" y="35" width="35" height="80" fill="#74b9ff" stroke="#2d3436" stroke-width="1" rx="1"/>
+  <line x1="362" y1="35" x2="362" y2="115" stroke="#2d3436" stroke-width="0.5"/>
+  <line x1="345" y1="55" x2="380" y2="55" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="345" y1="75" x2="380" y2="75" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="345" y1="95" x2="380" y2="95" stroke="#2d3436" stroke-width="0.3"/>
+  <line x1="340" y1="75" x2="345" y2="75" stroke="#2d3436" stroke-width="2"/>
+  <!-- Top antenna -->
+  <line x1="190" y1="50" x2="190" y2="25" stroke="#2d3436" stroke-width="1.5"/>
+  <circle cx="190" cy="22" r="4" fill="#e17055" stroke="#2d3436" stroke-width="0.8"/>
+  <!-- Docking module bottom -->
+  <rect x="175" y="100" width="30" height="20" fill="#b2bec3" stroke="#2d3436" stroke-width="1" rx="3"/>
+  <!-- Labels -->
+  <text x="140" y="145" font-size="9" fill="#636e72">Модулі + з'єднання + панелі</text>
+</svg>
+<div class="img-caption">Приклад космічної станції: модулі, сонячні панелі, антена</div>
+</div>
+
+<h2>Що потрібно зробити:</h2>
+<p>Створи станцію, в якій є <strong>щонайменше</strong>:</p>
+<ul>
+  <li>🏗️ <strong>Центральний модуль</strong> — великий Cylinder або Box</li>
+  <li>🔗 <strong>2+ бічних модулі</strong> — з'єднані тонкими Cylinder (перехідні шлюзи)</li>
+  <li>☀️ <strong>Сонячні панелі</strong> — плоскі Box з патерном ліній (Ctrl+D!)</li>
+  <li>📡 <strong>Антена</strong> — Cylinder + Cone або Sphere зверху</li>
+</ul>
+
+<h2>Додаткові ідеї:</h2>
+<ul>
+  <li>🚀 <strong>Пристикована ракета</strong> — використай Завдання 3!</li>
+  <li>🤖 <strong>Робот-космонавт</strong> — маленька копія робота з Завдання 2</li>
+  <li>🌍 <strong>Планета</strong> — велика Sphere під станцією</li>
+  <li>🛸 <strong>НЛО</strong> — Sphere + плоский Cylinder</li>
+</ul>
+
+<h2>Правила:</h2>
+<ul>
+  <li>Мінімум <strong>10 об'єктів</strong></li>
+  <li>Використай <strong>Ctrl+D</strong> хоча б 3 рази</li>
+  <li>Використай <strong>Align (L)</strong> хоча б 2 рази</li>
+  <li>Хоча б <strong>4 різні кольори</strong></li>
+</ul>
+
+<div class="done">🏆 Покажи вчителю — найкращі роботи покажемо всьому класу!</div>
+</div>
+
+</body>
+</html>

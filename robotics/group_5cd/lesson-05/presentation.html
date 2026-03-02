@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Урок 5</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; }
+  .slide.active { display: flex; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: center; align-items: center; }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #6c5ce7; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #00b894; margin: 12px 0 6px; }
+  p, li { font-size: 1.15em; line-height: 1.6; }
+  ul { padding-left: 30px; }
+  li { margin: 5px 0; }
+  table { border-collapse: collapse; margin: 12px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 8px 14px; text-align: left; font-size: 1.05em; }
+  th { background: #f1f2f6; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #6c5ce7; background: #f8f9fa; padding: 10px 18px; margin: 10px 0; border-radius: 0 6px 6px 0; font-size: 1.05em; }
+  .warn { border-left-color: #fdcb6e; background: #fef9e7; }
+  .fun { border-left-color: #00b894; background: #f0fff4; }
+  pre { background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; padding: 12px 16px; font-size: 1em; line-height: 1.5; overflow-x: auto; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+  .emoji-big { font-size: 2em; margin: 5px 0; }
+  .f1-lights { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
+  .f1-light { width: 50px; height: 50px; border-radius: 50%; background: #ddd; border: 3px solid #636e72; }
+  .f1-light.on { background: #e74c3c; box-shadow: 0 0 20px #e74c3c; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка | Урок 5</h1>
+  <h2>🏎️ Ігри: «Старт Ф1», «Вгадай число» та «Зворотний відлік»</h2>
+  <p>05.03.2026 | Група: 5-В, 5-Г</p>
+</div>
+
+<!-- Slide 2: Нагадування -->
+<div class="slide light">
+  <h2>🔄 Минулий урок — КНП</h2>
+  <ul>
+    <li>✅ <code>pick random</code> — випадкові числа</li>
+    <li>✅ <code>on shake</code> — жест «Трусити»</li>
+    <li>✅ <code>if / else if / else</code> — перевірка кількох умов</li>
+    <li>✅ Змінні-прапорці — контроль стану гри</li>
+  </ul>
+  <p class="emoji-big">🏎️ Сьогодні — чотири ігри!</p>
+</div>
+
+<!-- Slide 3: Running time -->
+<div class="slide light">
+  <h2>🆕 Новий блок: <code>running time</code></h2>
+  <p>У micro:bit є вбудований «годинник» — рахує <strong>мілісекунди</strong> з моменту ввімкнення.</p>
+  <table>
+    <tr><th>Блок</th><th>Що робить</th><th>Де знайти</th></tr>
+    <tr><td><code>running time (ms)</code></td><td>Поточний час в мілісекундах</td><td><strong>Input → ...more</strong></td></tr>
+  </table>
+  <blockquote>💡 1 секунда = 1000 мілісекунд. Якщо micro:bit увімкнений 5 секунд, <code>running time</code> = 5000!</blockquote>
+  <p><strong>Навіщо?</strong> Можна виміряти, скільки часу пройшло між двома моментами:</p>
+  <pre>час_реакції = running time ЗАРАЗ − running time ТОДІ</pre>
+</div>
+
+<!-- Slide 4: Завдання 1 — Знайомство з часом -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Знайомство з часом ⏰</h2>
+  <p>Спробуй вбудований таймер micro:bit!</p>
+  <h3>Кнопка A — час у мілісекундах:</h3>
+  <pre>on button A:
+  show number running time (ms)         ← скільки мс працює micro:bit</pre>
+  <h3>Кнопка B — час у секундах:</h3>
+  <pre>on button B:
+  show number running time (ms) / 1000  ← переводимо в секунди</pre>
+  <blockquote class="fun">🧪 Натисни А кілька разів — число зростає! Бо micro:bit працює все довше. Це як секундомір, який ніколи не зупиняється!</blockquote>
+  <blockquote class="warn">⚠️ <code>running time</code> знайдеш: <strong>Input → ...more</strong> (натисни «...more» внизу категорії Input!)</blockquote>
+</div>
+
+<!-- Slide 5: Старт Ф1 — ідея -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Гра «Старт Ф1» 🏎️</h2>
+  <p>Як справжній старт у Формулі-1! 5 вогнів загораються → гаснуть → СТАРТ!</p>
+  <div class="f1-lights">
+    <div class="f1-light on"></div>
+    <div class="f1-light on"></div>
+    <div class="f1-light on"></div>
+    <div class="f1-light on"></div>
+    <div class="f1-light on"></div>
+  </div>
+  <table>
+    <tr><th>Крок</th><th>Кнопка</th><th>Що відбувається</th></tr>
+    <tr><td>1</td><td><strong>A</strong></td><td>5 вогнів загораються по черзі 🔴🔴🔴🔴🔴</td></tr>
+    <tr><td>2</td><td>—</td><td>Випадкова пауза 1-3 секунди...</td></tr>
+    <tr><td>3</td><td>—</td><td>Всі вогні гаснуть! 💨 СТАРТ!</td></tr>
+    <tr><td>4</td><td><strong>B</strong></td><td>Натискай <strong>якнайшвидше!</strong> Побачиш час в мс</td></tr>
+  </table>
+  <blockquote class="fun">🏆 Нормальна реакція людини: <strong>200-400 мс</strong>. Менше 200 = суперпілот! 🦸</blockquote>
+</div>
+
+<!-- Slide 6: Старт Ф1 — код -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Старт Ф1»</h2>
+  <p><strong>Змінні:</strong> <code>старт</code>, <code>реакція</code></p>
+  <h3>Кнопка A — старт:</h3>
+  <pre>on button A:
+  plot x 0 y 2                          ← 🔴 перший вогонь
+  pause 500
+  plot x 1 y 2                          ← 🔴🔴 другий
+  pause 500
+  plot x 2 y 2                          ← 🔴🔴🔴 третій
+  pause 500
+  plot x 3 y 2                          ← 🔴🔴🔴🔴 четвертий
+  pause 500
+  plot x 4 y 2                          ← 🔴🔴🔴🔴🔴 всі горять!
+  pause (pick random 1000 to 3000)      ← пауза 1-3 сек...
+  clear screen                           ← ВОГНІ ПОГАСЛИ = СТАРТ!
+  set старт = running time (ms)          ← запам'ятали час</pre>
+  <h3>Кнопка B — результат:</h3>
+  <pre>on button B:
+  set реакція = running time (ms) − старт
+  show number реакція                    ← час в мілісекундах!</pre>
+  <blockquote>💡 <code>plot x y</code> — запалює один діод. Знайдеш: <strong>Led → plot x y</strong></blockquote>
+</div>
+
+<!-- Slide 7: Вгадай число — ідея -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 3 — Гра «Вгадай число» 🔢</h2>
+  <p>Micro:bit загадав число від 1 до 10. Вгадай!</p>
+  <table>
+    <tr><th>Кнопка</th><th>Дія</th></tr>
+    <tr><td><strong>A</strong></td><td>Збільшити число на 1 (▲)</td></tr>
+    <tr><td><strong>B</strong></td><td>Зменшити число на 1 (▼)</td></tr>
+    <tr><td><strong>SHAKE</strong></td><td>Перевірити! ↑ більше / ↓ менше / ✓ вгадав!</td></tr>
+  </table>
+  <blockquote class="fun">🎯 Підказка: якщо думати логічно, можна вгадати за <strong>4-5 спроб</strong> максимум!</blockquote>
+</div>
+
+<!-- Slide 8: Вгадай число — код -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Вгадай число»</h2>
+  <p><strong>Змінні:</strong> <code>загадане</code>, <code>спроба</code></p>
+  <h3>on start:</h3>
+  <pre>set загадане = pick random 1 to 10
+set спроба = 5
+show number спроба</pre>
+  <h3>Кнопки A / B:</h3>
+  <pre>on button A → change спроба by 1
+               if спроба > 10 → set спроба = 10
+               show number спроба
+
+on button B → change спроба by −1
+               if спроба &lt; 1 → set спроба = 1
+               show number спроба</pre>
+</div>
+
+<!-- Slide 9: Вгадай число — перевірка -->
+<div class="slide light">
+  <h2>🛠️ SHAKE — перевірка!</h2>
+  <pre>on shake:
+  if спроба = загадане:
+    show icon ✓ (happy face)       ← ВГАДАВ!
+    show string "YES!"
+    pause 2000
+    ← НОВА ГРА:
+    set загадане = pick random 1 to 10
+    set спроба = 5
+    show number спроба
+
+  else if спроба &lt; загадане:
+    show arrow North               ← ↑ БІЛЬШЕ!
+    pause 500
+    show number спроба
+
+  else:
+    show arrow South               ← ↓ МЕНШЕ!
+    pause 500
+    show number спроба</pre>
+  <blockquote>💡 <code>show arrow</code> знайдеш в <strong>Basic → show arrow</strong>, вибери North (↑) або South (↓)</blockquote>
+</div>
+
+<!-- Slide 10: Зворотний відлік — ідея -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 4 — Гра «Зворотний відлік» ⏱️</h2>
+  <p>Micro:bit рахує 10, 9, 8... але <strong>зупиняється</strong> на випадковому числі! 💀</p>
+  <table>
+    <tr><th>Кнопка</th><th>Дія</th></tr>
+    <tr><td><strong>A</strong></td><td>Запустити відлік! 10→0</td></tr>
+    <tr><td><strong>B</strong></td><td>Спробувати зупинити таймер вчасно!</td></tr>
+  </table>
+  <blockquote class="warn">💀 Відлік зупиняється на <strong>випадковому</strong> числі від 3 до 8. Ти не знаєш коли! Натисни B <strong>до</strong> зупинки!</blockquote>
+  <blockquote class="fun">🎮 Можна грати по черзі — передавай micro:bit одногрупнику! В кого зупиниться — той програв!</blockquote>
+</div>
+
+<!-- Slide 11: Зворотний відлік — код -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Зворотний відлік»</h2>
+  <p><strong>Змінні:</strong> <code>стоп</code>, <code>рахунок</code>, <code>зупинено</code></p>
+  <h3>Кнопка A — запуск:</h3>
+  <pre>on button A:
+  set стоп = pick random 3 to 8       ← коли зупиниться?
+  set рахунок = 10
+  set зупинено = 0
+  while рахунок > 0:
+    show number рахунок
+    pause 400
+    if рахунок = стоп:
+      show icon 💀                      ← КІНЕЦЬ!
+      show string "END"
+      set зупинено = 1
+      ← вихід з циклу (break)
+    change рахунок by −1</pre>
+  <h3>Кнопка B — зупинити:</h3>
+  <pre>on button B:
+  set рахунок = 0                      ← зупиняємо відлік!
+  if зупинено = 0:
+    show icon ✓                        ← Встиг!
+    show string "OK!"</pre>
+  <blockquote>💡 <code>while</code> — цикл «поки». Знайдеш: <strong>Loops → while</strong></blockquote>
+</div>
+
+<!-- Slide 12: Граємо + підсумки -->
+<div class="slide light">
+  <h2>🎮 Граємо!</h2>
+  <h3>Змагання «Старт Ф1» 🏎️:</h3>
+  <ul>
+    <li>Кожен грає 3 рази → записує найкращий час</li>
+    <li>Хто найшвидший у класі? ⏱️🏆</li>
+  </ul>
+  <h3>Що ми сьогодні вивчили:</h3>
+  <ul>
+    <li>✅ <code>running time (ms)</code> — вимірювання часу</li>
+    <li>✅ <code>plot x y</code> — запалювання окремих діодів</li>
+    <li>✅ <code>show arrow</code> — стрілки ↑↓</li>
+    <li>✅ <code>while</code> — цикл «поки умова виконується»</li>
+    <li>✅ Обмеження діапазону (не менше 1, не більше 10)</li>
+    <li>✅ Створили 4 ігри! 🎮🎮🎮🎮</li>
+  </ul>
+  <blockquote class="fun">🏠 Вдома: додай лічильник спроб у «Вгадай число» або зроби діапазон 1-20!</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+</script>
+</body>
+</html>

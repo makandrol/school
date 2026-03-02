@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Урок 20</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide {
+    display: none;
+    width: 100vw; height: 100vh;
+    padding: 50px 70px;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.active { display: flex; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    text-align: center;
+    align-items: center;
+  }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #6c5ce7; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #00b894; margin: 12px 0 6px; }
+  p, li { font-size: 1.2em; line-height: 1.6; }
+  ul { padding-left: 30px; }
+  li { margin: 6px 0; }
+  table { border-collapse: collapse; margin: 15px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 10px 16px; text-align: left; font-size: 1.1em; }
+  th { background: #f1f2f6; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #6c5ce7; background: #f8f9fa; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.1em; }
+  .warn { border-left-color: #fdcb6e; background: #fef9e7; }
+  pre { background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; padding: 14px 18px; font-size: 1.05em; line-height: 1.5; overflow-x: auto; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка | Урок 20</h1>
+  <h2>🎮 Камінь-Ножиці-Папір</h2>
+  <p>24.02.2026 | Група: 5-А, 5-Б</p>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide light">
+  <h2>🆕 Випадкові числа (Random)</h2>
+  <p>Іноді програмі потрібно обрати щось <strong>навмання</strong> — як підкинути монетку!</p>
+  <ul>
+    <li>Блок <code>pick random 0 to 2</code> → дає число: <strong>0</strong>, <strong>1</strong> або <strong>2</strong></li>
+    <li>Кожен раз — інше! Ніколи не знаєш заздалегідь 🎲</li>
+    <li>Де знайти: категорія <strong>Math</strong></li>
+  </ul>
+  <blockquote>💡 Випадкові числа — це основа всіх комп'ютерних ігор! Кубики, карти, генерація монстрів — все це random!</blockquote>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide light">
+  <h2>🆕 Жест «Shake» (Струсити)</h2>
+  <ul>
+    <li>Ми вже знаємо: <code>on button A</code>, <code>on tilt left</code>...</li>
+    <li>Є ще: <strong><code>on shake</code></strong> — спрацьовує коли <strong>струсити</strong> micro:bit!</li>
+    <li>В симуляторі: натисни кнопку <strong>SHAKE</strong> 🫨</li>
+    <li>Де знайти: категорія <strong>Input</strong></li>
+  </ul>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide light">
+  <h2>Нові блоки MakeCode</h2>
+  <table>
+    <tr><th>Блок</th><th>Що робить</th><th>Де знайти</th></tr>
+    <tr><td><code>on shake</code></td><td>Спрацьовує при струшуванні</td><td><strong>Input</strong></td></tr>
+    <tr><td><code>pick random 0 to 2</code></td><td>Випадкове число 0, 1 або 2</td><td><strong>Math</strong></td></tr>
+    <tr><td><code>if / else if / else</code></td><td>Перевірка кількох умов</td><td><strong>Logic</strong> (➕)</td></tr>
+    <tr><td><code>on button A+B</code></td><td>Обидві кнопки одночасно</td><td><strong>Input</strong></td></tr>
+  </table>
+  <blockquote>💡 В блоці <code>if</code> натисни <strong>➕</strong> внизу, щоб додати <code>else if</code>!</blockquote>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Генератор фігур</h2>
+  <p><strong>Просте:</strong> Трусимо → micro:bit показує фігуру</p>
+  <table>
+    <tr><th>Число</th><th>Фігура</th><th>Картинка LED</th></tr>
+    <tr><td>0</td><td>🪨 Камінь</td><td>Квадрат (кулак)</td></tr>
+    <tr><td>1</td><td>✂️ Ножиці</td><td>Хрест-навхрест</td></tr>
+    <tr><td>2</td><td>📄 Папір</td><td>Рамка (долоня)</td></tr>
+  </table>
+  <h3>Будуємо:</h3>
+  <ul>
+    <li>Змінна <code>рука</code></li>
+    <li><code>on shake</code> → <code>set рука to pick random 0 to 2</code></li>
+    <li><code>if рука=0</code> → камінь, <code>else if рука=1</code> → ножиці, <code>else</code> → папір</li>
+  </ul>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Гра проти micro:bit!</h2>
+  <p>Граємо <strong>ПРОТИ</strong> плати! Micro:bit — наш суперник 🤖</p>
+  <table>
+    <tr><th>Крок</th><th>Кнопка</th><th>Що відбувається</th></tr>
+    <tr><td>1</td><td><strong>A</strong></td><td>Бот обирає (показує <strong>?</strong>)</td></tr>
+    <tr><td>2</td><td><strong>SHAKE</strong></td><td>Ми обираємо (бачимо свою фігуру)</td></tr>
+    <tr><td>3</td><td><strong>B</strong></td><td>Хто виграв? <strong>:)</strong> / <strong>:(</strong> / <strong>=</strong></td></tr>
+    <tr><td>4</td><td><strong>A+B</strong></td><td>Скидаємо — нова гра!</td></tr>
+  </table>
+  <blockquote class="warn">⚠️ Якщо SHAKE без A → micro:bit покаже <strong>"A!"</strong> — нагадає натиснути A!</blockquote>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide light">
+  <h2>🛠️ Завдання 2 — Змінні</h2>
+  <p>Потрібні <strong>3 змінні:</strong></p>
+  <table>
+    <tr><th>Змінна</th><th>Для чого</th></tr>
+    <tr><td><code>бот</code></td><td>Вибір micro:bit (0, 1 або 2)</td></tr>
+    <tr><td><code>я</code></td><td>Наш вибір (0, 1 або 2)</td></tr>
+    <tr><td><code>бот_готовий</code></td><td>Чи натиснули A? (0 = ні, 1 = так)</td></tr>
+  </table>
+  <pre>on start → set бот = -1, я = -1, бот_готовий = 0
+           show string "КНП"</pre>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide light">
+  <h2>🛠️ Кнопки A та SHAKE</h2>
+  <h3>Кнопка A — хід бота:</h3>
+  <pre>on button A → set бот to pick random 0 to 2
+              set бот_готовий to 1
+              show icon [?]</pre>
+  <h3>SHAKE — наш хід:</h3>
+  <pre>on shake →
+  if бот_готовий = 0 → show string "A!"
+  else → set я to pick random 0 to 2
+         if я=0 → камінь, я=1 → ножиці, else → папір</pre>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide light">
+  <h2>🛠️ Кнопка Б і результат</h2>
+  <h3>Кнопка Б — хто виграв?</h3>
+  <pre>on button B →
+  if я = бот          → show "="   (нічия)
+  if я=0 AND бот=1    → show ":)"  (камінь б'є ножиці)
+  if я=1 AND бот=2    → show ":)"  (ножиці ріжуть папір)
+  if я=2 AND бот=0    → show ":)"  (папір загортає камінь)
+  else                → show ":("  (бот виграв)</pre>
+  <h3>Кнопка A+Б — нова гра:</h3>
+  <pre>on button A+B → set бот=-1, я=-1, бот_готовий=0
+                show string "КНП"</pre>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide light">
+  <h2>🎮 Граємо!</h2>
+  <h3>Порядок гри:</h3>
+  <ul>
+    <li><strong>A</strong> → бачимо <strong>?</strong> (бот обрав!)</li>
+    <li><strong>SHAKE</strong> → бачимо свою фігуру</li>
+    <li><strong>B</strong> → результат: <strong>:)</strong> / <strong>:(</strong> / <strong>=</strong></li>
+    <li><strong>A+B</strong> → нова гра!</li>
+  </ul>
+  <h3>Що ми сьогодні вивчили:</h3>
+  <ul>
+    <li>✅ Випадкові числа (<code>pick random</code>)</li>
+    <li>✅ Жест «Shake»</li>
+    <li>✅ Складний <code>if / else if / else</code></li>
+    <li>✅ Змінні як <strong>«прапорці»</strong> — контроль стану програми</li>
+    <li>✅ Створили повноцінну гру проти micro:bit! 🏆</li>
+  </ul>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+</script>
+</body>
+</html>

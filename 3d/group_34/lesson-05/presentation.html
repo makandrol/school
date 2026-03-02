@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 5</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; }
+  .slide.active { display: flex; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: #fff; text-align: center; align-items: center; }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #00b894; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #6c5ce7; margin: 12px 0 6px; }
+  p, li { font-size: 1.2em; line-height: 1.6; }
+  ul, ol { padding-left: 30px; }
+  li { margin: 6px 0; }
+  table { border-collapse: collapse; margin: 15px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 10px 16px; text-align: left; font-size: 1.1em; }
+  th { background: #f0fff4; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #00b894; background: #f0fff4; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.1em; }
+  .f1 { border-left-color: #e74c3c; background: #fef0f0; }
+  .tip { border-left-color: #f39c12; background: #fef9e7; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+  .two-col { display: flex; gap: 40px; align-items: flex-start; }
+  .two-col > div { flex: 1; }
+  .team-colors { display: flex; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+  .team-box { width: 80px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 0.65em; text-shadow: 0 1px 2px rgba(0,0,0,.4); text-align: center; line-height: 1.2; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>3D-моделювання | Заняття 5</h1>
+  <h2>🏎️ Формула-1</h2>
+  <p>10.03.2026 | Група: 3-4 клас</p>
+  <p style="margin-top:15px; font-size:1.1em;">Світлофор • Траса • Автомобіль • Подіум</p>
+</div>
+
+<!-- Slide 2: Ф1 вступ -->
+<div class="slide light">
+  <h2>🏁 Що таке Формула-1?</h2>
+  <div class="two-col">
+    <div>
+      <ul>
+        <li>Найшвидші гоночні автомобілі у світі!</li>
+        <li>Швидкість — до <strong>370 км/год</strong> 🤯</li>
+        <li>20 пілотів, 10 команд</li>
+        <li>Вчора пройшла перша гонка сезону — <strong>Гран-прі Австралії</strong> 🇦🇺</li>
+      </ul>
+      <blockquote class="f1">🏎️ Переміг <strong>George Russell</strong> (Mercedes)!</blockquote>
+    </div>
+    <div>
+      <h3>Команди та кольори:</h3>
+      <div class="team-colors">
+        <div class="team-box" style="background:#e74c3c">Ferrari</div>
+        <div class="team-box" style="background:#1a3a6b">Red Bull</div>
+        <div class="team-box" style="background:#00d2be">Mercedes</div>
+        <div class="team-box" style="background:#ff8000">McLaren</div>
+        <div class="team-box" style="background:#006f62">Aston Martin</div>
+        <div class="team-box" style="background:#0090ff">Alpine</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:1.4em; margin-top:15px;">Сьогодні ми будемо моделювати <strong>власний світ Ф1!</strong></p>
+</div>
+
+<!-- Slide 3: Завдання на сьогодні -->
+<div class="slide light">
+  <h2>📋 Завдання на сьогодні</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Що моделюємо</th></tr>
+    <tr><td>⭐</td><td><strong>Світлофор Ф1</strong></td><td>Стовп + панель + 5 червоних вогнів</td></tr>
+    <tr><td>⭐⭐</td><td><strong>Траса з розміткою</strong></td><td>Асфальт + бордюри + стартова лінія</td></tr>
+    <tr><td>⭐⭐⭐</td><td><strong>Гоночний автомобіль</strong></td><td>Кузов + колеса + спойлер</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td><strong>Подіум переможців</strong></td><td>3 ступені + P1, P2, P3</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td><strong>Трофей Ф1</strong></td><td>Кубок на основі</td></tr>
+  </table>
+  <blockquote>📄 Детальна інструкція — у роздатковому матеріалі!</blockquote>
+</div>
+
+<!-- Slide 4: Світлофор — демонстрація -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Світлофор Ф1 🚦</h2>
+  <div class="two-col">
+    <div>
+      <p>На старті Ф1 — панель з <strong>5 червоними вогнями</strong>.</p>
+      <p>Загоряються по одному → всі гаснуть → <strong>СТАРТ!</strong></p>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Cylinder</strong> (стовп) — ⌀5, H=60, сірий</li>
+        <li><strong>Box</strong> (панель) — 50×12×5, чорний, ↑55</li>
+        <li><strong>Align</strong> стовп + панель по центру</li>
+        <li><strong>Cylinder</strong> (вогонь) — ⌀8, H=3, червоний, ↑59</li>
+        <li><strong>Ctrl+D</strong> → зсунути вправо (×4 рази)</li>
+        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+      </ol>
+    </div>
+    <div style="text-align:center;">
+      <svg width="200" height="250" viewBox="0 0 200 250">
+        <!-- Стовп -->
+        <rect x="93" y="60" width="14" height="170" rx="3" fill="#95a5a6"/>
+        <!-- Панель -->
+        <rect x="25" y="20" width="150" height="45" rx="6" fill="#2c3e50"/>
+        <!-- 5 вогнів -->
+        <circle cx="55" cy="42" r="12" fill="#e74c3c"/>
+        <circle cx="80" cy="42" r="12" fill="#e74c3c"/>
+        <circle cx="105" cy="42" r="12" fill="#e74c3c"/>
+        <circle cx="130" cy="42" r="12" fill="#e74c3c"/>
+        <circle cx="155" cy="42" r="12" fill="#e74c3c"/>
+        <!-- Підписи -->
+        <text x="100" y="248" text-anchor="middle" font-size="11" fill="#636e72">Стартовий світлофор Ф1</text>
+      </svg>
+    </div>
+  </div>
+  <blockquote class="tip">💡 <strong>Ctrl+D</strong> — копіює об'єкт! Зсунь його вправо і отримаєш 5 однакових вогнів.</blockquote>
+</div>
+
+<!-- Slide 5: Траса -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Траса з розміткою 🏁</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Box</strong> (асфальт) — 120×80×2, темно-сірий</li>
+        <li>Бордюр: маленький <strong>Box</strong> 10×5×1, червоний</li>
+        <li><strong>Ctrl+D</strong> → зсунути → білий → Ctrl+D → червоний...</li>
+        <li>Повторити знизу</li>
+        <li>Стартова лінія: <strong>Box</strong> 2×60×0.5, білий</li>
+        <li>Стартові позиції: <strong>Box</strong> 5×10×0.5, білий</li>
+      </ol>
+    </div>
+    <div style="text-align:center;">
+      <svg width="260" height="180" viewBox="0 0 260 180">
+        <!-- Асфальт -->
+        <rect x="10" y="20" width="240" height="140" rx="4" fill="#636e72"/>
+        <!-- Бордюри верхні -->
+        <rect x="10" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="30" y="20" width="20" height="10" fill="#fff"/>
+        <rect x="50" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="70" y="20" width="20" height="10" fill="#fff"/>
+        <rect x="90" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="110" y="20" width="20" height="10" fill="#fff"/>
+        <rect x="130" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="150" y="20" width="20" height="10" fill="#fff"/>
+        <rect x="170" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="190" y="20" width="20" height="10" fill="#fff"/>
+        <rect x="210" y="20" width="20" height="10" fill="#e74c3c"/>
+        <rect x="230" y="20" width="20" height="10" fill="#fff"/>
+        <!-- Бордюри нижні -->
+        <rect x="10" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="30" y="150" width="20" height="10" fill="#e74c3c"/>
+        <rect x="50" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="70" y="150" width="20" height="10" fill="#e74c3c"/>
+        <rect x="90" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="110" y="150" width="20" height="10" fill="#e74c3c"/>
+        <rect x="130" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="150" y="150" width="20" height="10" fill="#e74c3c"/>
+        <rect x="170" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="190" y="150" width="20" height="10" fill="#e74c3c"/>
+        <rect x="210" y="150" width="20" height="10" fill="#fff"/>
+        <rect x="230" y="150" width="20" height="10" fill="#e74c3c"/>
+        <!-- Стартова лінія -->
+        <rect x="60" y="32" width="3" height="116" fill="#fff"/>
+        <!-- Стартові позиції -->
+        <rect x="75" y="55" width="12" height="20" rx="1" fill="rgba(255,255,255,0.4)" stroke="#fff" stroke-width="1"/>
+        <rect x="95" y="70" width="12" height="20" rx="1" fill="rgba(255,255,255,0.4)" stroke="#fff" stroke-width="1"/>
+        <rect x="75" y="100" width="12" height="20" rx="1" fill="rgba(255,255,255,0.4)" stroke="#fff" stroke-width="1"/>
+        <rect x="95" y="115" width="12" height="20" rx="1" fill="rgba(255,255,255,0.4)" stroke="#fff" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+  <blockquote class="f1">🏎️ Бордюри (curbs) — це червоно-білі смуги по краях траси. Пілоти їздять по них на поворотах!</blockquote>
+</div>
+
+<!-- Slide 6: Автомобіль -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Гоночний автомобіль 🏎️</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Box</strong> (кузов) — 40×15×6, Radius 2, колір команди</li>
+        <li><strong>Box</strong> (кокпіт) → Hole → Group з кузовом</li>
+        <li><strong>Cylinder</strong> (колесо) — ⌀8, H=4, чорний, повернути 90°</li>
+        <li><strong>Ctrl+D</strong> → розставити 4 колеса</li>
+        <li><strong>Box</strong> (переднє крило) — 20×3×1, спереду</li>
+        <li><strong>Box</strong> (спойлер) — 18×2×8, ззаду, ↑6</li>
+        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+      </ol>
+      <h3>Вибери колір команди:</h3>
+      <div class="team-colors">
+        <div class="team-box" style="background:#e74c3c;width:65px;height:35px;font-size:.6em">Ferrari</div>
+        <div class="team-box" style="background:#1a3a6b;width:65px;height:35px;font-size:.6em">Red Bull</div>
+        <div class="team-box" style="background:#00d2be;width:65px;height:35px;font-size:.6em">Mercedes</div>
+        <div class="team-box" style="background:#ff8000;width:65px;height:35px;font-size:.6em">McLaren</div>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <svg width="220" height="140" viewBox="0 0 220 140">
+        <!-- Тінь -->
+        <ellipse cx="110" cy="125" rx="80" ry="8" fill="#eee"/>
+        <!-- Кузов -->
+        <rect x="40" y="60" width="140" height="35" rx="12" fill="#e74c3c"/>
+        <!-- Кокпіт (виріз) -->
+        <rect x="95" y="55" width="30" height="20" rx="6" fill="#fff" stroke="#c0392b" stroke-width="1.5"/>
+        <!-- Переднє крило -->
+        <rect x="172" y="75" width="8" height="30" rx="2" fill="#c0392b"/>
+        <!-- Спойлер -->
+        <rect x="30" y="52" width="6" height="30" rx="2" fill="#c0392b"/>
+        <rect x="28" y="48" width="10" height="8" rx="2" fill="#c0392b"/>
+        <!-- Колеса -->
+        <ellipse cx="65" cy="98" rx="14" ry="12" fill="#2c3e50"/>
+        <ellipse cx="155" cy="98" rx="14" ry="12" fill="#2c3e50"/>
+        <!-- Номер -->
+        <text x="75" y="82" font-size="14" font-weight="bold" fill="#fff" font-family="Arial">1</text>
+        <!-- Підпис -->
+        <text x="110" y="138" text-anchor="middle" font-size="10" fill="#636e72">Болід Ф1 (вид збоку)</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Подіум + Трофей -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4–5 — Подіум та Трофей 🏆</h2>
+  <div class="two-col">
+    <div>
+      <h3>Подіум переможців:</h3>
+      <ul>
+        <li>3 ступені (Box) різної висоти</li>
+        <li>P1 = 25 мм (🥇 золотий)</li>
+        <li>P2 = 18 мм (🥈 срібний)</li>
+        <li>P3 = 12 мм (🥉 бронзовий)</li>
+        <li>Text "P1", "P2", "P3" зверху</li>
+      </ul>
+    </div>
+    <div style="text-align:center;">
+      <svg width="200" height="160" viewBox="0 0 200 160">
+        <!-- P2 -->
+        <rect x="20" y="65" width="55" height="80" rx="3" fill="#bdc3c7"/>
+        <text x="47" y="60" text-anchor="middle" font-size="16" font-weight="bold" fill="#7f8c8d">P2</text>
+        <!-- P1 (вищий) -->
+        <rect x="75" y="30" width="55" height="115" rx="3" fill="#f1c40f"/>
+        <text x="102" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#f39c12">P1</text>
+        <!-- Трофей на P1 -->
+        <rect x="95" y="12" width="14" height="6" rx="2" fill="#e67e22"/>
+        <rect x="99" y="6" width="6" height="8" rx="1" fill="#e67e22"/>
+        <!-- P3 -->
+        <rect x="130" y="85" width="55" height="60" rx="3" fill="#cd6133"/>
+        <text x="157" y="80" text-anchor="middle" font-size="15" font-weight="bold" fill="#a04000">P3</text>
+      </svg>
+    </div>
+  </div>
+  <blockquote>🏆 <strong>Трофей:</strong> Box (основа) + Cylinder (ніжка) + Half Sphere або перевернутий конус (чаша). Колір — золотий!</blockquote>
+</div>
+
+<!-- Slide 8: Демонстрація -->
+<div class="slide light">
+  <h2>👀 Робимо світлофор разом!</h2>
+  <ol>
+    <li>1️⃣ <strong>Cylinder</strong> — діаметр 5, висота 60 → колір <strong>сірий</strong></li>
+    <li>2️⃣ <strong>Box</strong> — 50 × 12 × 5 → колір <strong>чорний</strong> → підняти на <strong>55 мм</strong></li>
+    <li>3️⃣ Виділити обидва → <strong>L</strong> (Align) → центруємо</li>
+    <li>4️⃣ <strong>Cylinder</strong> — діаметр 8, висота 3 → колір <strong>червоний</strong> → підняти на <strong>59 мм</strong></li>
+    <li>5️⃣ Поставити зліва на панелі</li>
+    <li>6️⃣ <strong>Ctrl+D</strong> → зсунути вправо → <strong>Ctrl+D</strong> → зсунути → повторити (5 вогнів!)</li>
+    <li>7️⃣ <strong>Ctrl+A → Ctrl+G</strong> — готово! 🚦</li>
+  </ol>
+  <blockquote class="tip">💡 Після першого <strong>Ctrl+D</strong> і зсуву — наступні <strong>Ctrl+D</strong> зсуватимуть на таку ж відстань автоматично!</blockquote>
+</div>
+
+<!-- Slide 9: Підсумки -->
+<div class="slide light">
+  <h2>✅ Підсумки</h2>
+  <ul>
+    <li>✅ Створили <strong>світлофор Ф1</strong> зі стовпом і 5 вогнями</li>
+    <li>✅ Зробили <strong>трасу</strong> з бордюрами та розміткою</li>
+    <li>✅ Побудували <strong>гоночний автомобіль</strong> з колесами та спойлером</li>
+    <li>✅ Закріпили: <strong>Ctrl+D</strong> (дублювання), <strong>Align</strong>, <strong>Hole</strong>, кольори</li>
+  </ul>
+  <blockquote>🏆 Покажи вчителю свою роботу! Найкращі моделі — на виставку!</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides.forEach(s => s.classList.remove('active'));
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+</script>
+</body>
+</html>

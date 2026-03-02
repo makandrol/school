@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 4 — 3D-текст, гравірування та дизайн</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; font-size: 13px; line-height: 1.5; color: #2d3436; }
+  .page { page-break-after: always; min-height: 257mm; padding: 0; }
+  .page:last-child { page-break-after: avoid; }
+  h1 { font-size: 20px; color: #2d3436; border-bottom: 2.5px solid #00b894; padding-bottom: 3px; margin-bottom: 8px; }
+  h2 { font-size: 15px; color: #00b894; margin: 8px 0 4px; }
+  h3 { font-size: 13px; color: #6c5ce7; margin: 6px 0 3px; }
+  p { margin: 3px 0; }
+  ul { padding-left: 20px; margin: 3px 0; }
+  li { margin: 1px 0; }
+  .step { margin: 4px 0; }
+  .step-title { font-weight: bold; color: #2d3436; }
+  .hint { background: #f0fff4; border-left: 3px solid #00b894; padding: 4px 10px; margin: 5px 0; font-size: 12px; border-radius: 0 4px 4px 0; }
+  .done { background: #e8f8f5; border: 1px solid #00b894; border-radius: 5px; padding: 5px 10px; margin: 6px 0; text-align: center; font-weight: bold; }
+  .bonus { font-size: 12px; color: #636e72; margin-top: 4px; }
+  .img-container { text-align: center; margin: 6px 0; }
+  .img-caption { font-size: 11px; color: #636e72; margin-top: 2px; }
+  .tools-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 5px 0; }
+  .tools-table td { padding: 3px 8px; border: 1px solid #ddd; }
+  .tools-table td:first-child { font-weight: bold; width: 35%; }
+  @media print { body { font-size: 12px; } .page { min-height: auto; } }
+</style>
+</head>
+<body>
+
+<!-- ==================== СТОРІНКА 1: Вступ ==================== -->
+<div class="page">
+<h1>🔤 3D-моделювання | Заняття 4</h1>
+<p><strong>Тема:</strong> 3D-текст, гравірування та дизайн</p>
+
+<h2>🆕 Нові інструменти</h2>
+<table class="tools-table">
+<tr><td>🎨 Кольори / HEX</td><td>Клікни на об'єкт → палітра справа → вибери колір або введи HEX (#FF5733)</td></tr>
+<tr><td>🔤 3D-текст (Text)</td><td>Basic Shapes → Text → перетягни → Inspector: Text, Height, Font, Bevel</td></tr>
+<tr><td>✏️ Гравірування</td><td>Text → зроби <strong>Hole</strong> → опусти на 1-2 мм в об'єкт → Ctrl+G</td></tr>
+<tr><td>⬆️ Опуклий текст</td><td>Text (Solid) → підніми на поверхню → Ctrl+G</td></tr>
+<tr><td>👻 Прозорість</td><td>Колір → <strong>Transparent</strong> (для скла, вікон)</td></tr>
+</table>
+
+<h2>⌨️ Нагадування клавіш</h2>
+<table class="tools-table">
+<tr><td>Ctrl + Z</td><td>Скасувати</td></tr>
+<tr><td>Ctrl + D</td><td>Дублювати</td></tr>
+<tr><td>Ctrl + G</td><td>Групувати</td></tr>
+<tr><td>L</td><td>Align (вирівнювання)</td></tr>
+<tr><td>Delete</td><td>Видалити</td></tr>
+</table>
+
+<h2>📋 Завдання на сьогодні</h2>
+<ul>
+  <li>⭐ <strong>Завдання 1:</strong> Іменний кубик (гравірування)</li>
+  <li>⭐⭐ <strong>Завдання 2:</strong> Трофей</li>
+  <li>⭐⭐⭐ <strong>Завдання 3:</strong> Смартфон</li>
+  <li>⭐⭐⭐⭐ <strong>Завдання 4:</strong> Дизайн кімнати</li>
+</ul>
+</div>
+
+<!-- ==================== СТОРІНКА 2: Завдання 1 — Іменний кубик ==================== -->
+<div class="page">
+<h1>⭐ Завдання 1: «Іменний кубик»</h1>
+<p>Куб з гравірованим ім'ям на одній грані та опуклим текстом на іншій.</p>
+
+<div class="img-container">
+<svg width="280" height="180" viewBox="0 0 280 180">
+  <!-- Ізометричний куб -->
+  <polygon points="140,20 240,70 240,140 140,170 40,140 40,70" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+  <polygon points="140,20 240,70 240,140 140,90" fill="#2980b9" opacity="0.3"/>
+  <polygon points="140,20 40,70 40,140 140,90" fill="#1a6fa0" opacity="0.2"/>
+  <!-- Верхня грань -->
+  <polygon points="140,20 240,70 140,90 40,70" fill="#5dade2"/>
+  <!-- Гравірований текст (вдавлений) на передній грані -->
+  <text x="140" y="138" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a5276" font-family="Arial">МАРКО</text>
+  <text x="90" y="155" font-size="8" fill="#636e72">← гравірування (Text → Hole)</text>
+  <!-- Виноска -->
+  <line x1="40" y1="30" x2="15" y2="15" stroke="#636e72" stroke-dasharray="3"/>
+  <text x="0" y="12" font-size="9" fill="#636e72">Box 40×40×40</text>
+</svg>
+<div class="img-caption">Іменний кубик — куб з гравірованим ім'ям</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Куб</span> — <strong>Box</strong> 40×40×40 → вибери колір (наприклад, синій #3498DB)</div>
+<div class="step"><span class="step-title">Крок 2. Текст</span> — <strong>Text</strong> → введи своє ім'я → Height: <strong>10</strong> → Font: Sans</div>
+<div class="step"><span class="step-title">Крок 3. Гравірування</span> — клікни на текст → зроби <strong>Hole</strong> (інспектор → Hole)</div>
+<div class="step"><span class="step-title">Крок 4. Позиція</span> — поверни текст вертикально (обертання 90° по X) → постав на передню грань куба</div>
+<div class="step"><span class="step-title">Крок 5. «Втопи»</span> — зсунь текст на <strong>1-2 мм всередину</strong> куба</div>
+<div class="step"><span class="step-title">Крок 6. Вирізай</span> — виділи куб + текст → <strong>Ctrl+G</strong> → текст вирізається!</div>
+
+<div class="hint">💡 Якщо хочеш опуклий текст — не роби Hole, а підніми Text на 1 мм над гранню і згрупуй.</div>
+
+<div class="done">✅ Готово! Іменний кубик створено! 🎲</div>
+<p class="bonus">🎨 Бонус: додай символ або декор на іншу грань. Спробуй різні шрифти (Serif, Mono).</p>
+</div>
+
+<!-- ==================== СТОРІНКА 3: Завдання 2 — Трофей ==================== -->
+<div class="page">
+<h1>⭐⭐ Завдання 2: «Трофей»</h1>
+<p>Кубок на підставці з гравірованим написом "ПЕРЕМОЖЕЦЬ" або своїм ім'ям.</p>
+
+<div class="img-container">
+<svg width="200" height="190" viewBox="0 0 200 190">
+  <!-- Підставка -->
+  <rect x="50" y="150" width="100" height="15" rx="3" fill="#2c3e50"/>
+  <rect x="60" y="140" width="80" height="15" rx="2" fill="#34495e"/>
+  <!-- Гравірований текст на підставці -->
+  <text x="100" y="163" text-anchor="middle" font-size="8" fill="#f1c40f" font-family="Arial">#1 PLACE</text>
+  <!-- Ніжка -->
+  <rect x="90" y="95" width="20" height="48" rx="2" fill="#f39c12"/>
+  <!-- Чаша -->
+  <ellipse cx="100" cy="95" rx="8" ry="3" fill="#e67e22"/>
+  <path d="M55,45 Q55,95 100,95 Q145,95 145,45" fill="#f1c40f" stroke="#e67e22" stroke-width="1.5"/>
+  <ellipse cx="100" cy="45" rx="45" ry="12" fill="#f39c12"/>
+  <ellipse cx="100" cy="45" rx="38" ry="9" fill="#f1c40f"/>
+  <!-- Ручки -->
+  <ellipse cx="45" cy="62" rx="10" ry="15" fill="none" stroke="#e67e22" stroke-width="3"/>
+  <ellipse cx="155" cy="62" rx="10" ry="15" fill="none" stroke="#e67e22" stroke-width="3"/>
+  <!-- Зірка зверху -->
+  <polygon points="100,18 104,28 115,29 107,36 109,47 100,41 91,47 93,36 85,29 96,28" fill="#e74c3c"/>
+</svg>
+<div class="img-caption">Трофей — кубок + підставка + напис</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Чаша</span> — <strong>Cylinder</strong> d=40, h=30 → зверху <strong>Cylinder</strong> d=34, h=28 як <strong>Hole</strong> → Ctrl+G (чаша!)</div>
+<div class="step"><span class="step-title">Крок 2. Ніжка</span> — <strong>Cylinder</strong> d=8, h=25 → Align по центру чаші → опустити</div>
+<div class="step"><span class="step-title">Крок 3. Підставка</span> — <strong>Box</strong> 50×50×8 → колір темний → Align</div>
+<div class="step"><span class="step-title">Крок 4. Напис</span> — <strong>Text</strong> → "ПЕРЕМОЖЕЦЬ" або "#1" → Height 5 → <strong>Hole</strong> → помістити на підставку → Ctrl+G</div>
+<div class="step"><span class="step-title">Крок 5. Кольори</span> — чаша: золотий (#F1C40F), підставка: темний (#2C3E50), ніжка: темно-золотий</div>
+<div class="step"><span class="step-title">Крок 6. Групуємо все</span> — <strong>Ctrl+A → Ctrl+G</strong></div>
+
+<div class="done">✅ Готово! Трофей створено! 🏆</div>
+<p class="bonus">🎨 Бонус: додай ручки (тонкі Cylinder або Torus) та зірку зверху.</p>
+</div>
+
+<!-- ==================== СТОРІНКА 4: Завдання 3 — Смартфон ==================== -->
+<div class="page">
+<h1>⭐⭐⭐ Завдання 3: «Смартфон»</h1>
+<p>Моделюй реалістичний смартфон: корпус, екран, камера, кнопки, текст бренду.</p>
+
+<div class="img-container">
+<svg width="140" height="190" viewBox="0 0 140 190">
+  <!-- Корпус -->
+  <rect x="20" y="10" width="100" height="170" rx="12" fill="#2c3e50"/>
+  <!-- Екран -->
+  <rect x="28" y="30" width="84" height="130" rx="4" fill="#74b9ff"/>
+  <!-- Камера -->
+  <circle cx="70" cy="20" r="4" fill="#636e72"/>
+  <circle cx="70" cy="20" r="2" fill="#2d3436"/>
+  <!-- Кнопка -->
+  <rect x="60" y="166" width="20" height="3" rx="1.5" fill="#636e72"/>
+  <!-- Текст бренду -->
+  <text x="70" y="185" text-anchor="middle" font-size="6" fill="#95a5a6" font-family="Arial">MyPhone</text>
+  <!-- Іконки на екрані -->
+  <rect x="34" y="38" width="16" height="16" rx="3" fill="#e74c3c"/>
+  <rect x="54" y="38" width="16" height="16" rx="3" fill="#2ecc71"/>
+  <rect x="74" y="38" width="16" height="16" rx="3" fill="#3498db"/>
+  <rect x="94" y="38" width="16" height="16" rx="3" fill="#f39c12"/>
+  <rect x="34" y="58" width="16" height="16" rx="3" fill="#9b59b6"/>
+  <rect x="54" y="58" width="16" height="16" rx="3" fill="#1abc9c"/>
+  <!-- Виноски -->
+  <text x="0" y="100" font-size="8" fill="#636e72" transform="rotate(-90, 10, 100)">Box → Hole = екран</text>
+</svg>
+<div class="img-caption">Смартфон — корпус + екран (Hole) + деталі</div>
+</div>
+
+<div class="step"><span class="step-title">Крок 1. Корпус</span> — <strong>Box</strong> 35×70×4, Radius: 3 (заокруглення) → колір темний</div>
+<div class="step"><span class="step-title">Крок 2. Екран</span> — <strong>Box</strong> 30×58×3 → <strong>Hole</strong> → Align по центру → трохи підняти → Ctrl+G (вирізаємо)</div>
+<div class="step"><span class="step-title">Крок 3. Скло</span> — <strong>Box</strong> 30×58×1 → <strong>Transparent</strong> → помістити в екран</div>
+<div class="step"><span class="step-title">Крок 4. Камера</span> — <strong>Cylinder</strong> d=4, h=1 → зверху → колір сірий</div>
+<div class="step"><span class="step-title">Крок 5. Бренд</span> — <strong>Text</strong> → назва твого бренду → Height 3 → гравірувати на задній панелі</div>
+<div class="step"><span class="step-title">Крок 6. Кнопки</span> — маленькі Box на бічних гранях (гучність, живлення)</div>
+
+<div class="done">✅ Готово! Смартфон створено! 📱</div>
+<p class="bonus">🎨 Бонус: додай чохол (трохи більший Box, Hole всередині), додай «іконки» на екран (маленькі кольорові Box).</p>
+</div>
+
+<!-- ==================== СТОРІНКА 5: Завдання 4 — Дизайн кімнати ==================== -->
+<div class="page">
+<h1>⭐⭐⭐⭐ Завдання 4: «Дизайн кімнати»</h1>
+<p>Створи 3D-модель кімнати з меблями. Мінімум 3 предмети!</p>
+
+<div class="img-container">
+<svg width="340" height="150" viewBox="0 0 340 150">
+  <!-- Підлога -->
+  <polygon points="50,130 170,80 320,130 200,145" fill="#dfe6e9"/>
+  <!-- Задня стіна -->
+  <polygon points="50,130 170,80 170,10 50,40" fill="#b2bec3"/>
+  <!-- Бічна стіна -->
+  <polygon points="170,80 320,130 320,50 170,10" fill="#95a5a6"/>
+  <!-- Ліжко -->
+  <rect x="70" y="85" width="55" height="35" rx="2" fill="#e17055" transform="skewX(-15)"/>
+  <rect x="66" y="78" width="55" height="10" rx="2" fill="#d63031" transform="skewX(-15)"/>
+  <!-- Стіл -->
+  <rect x="195" y="75" width="50" height="4" fill="#b97d4b" transform="skewX(10)"/>
+  <rect x="198" y="79" width="3" height="25" fill="#a0694b" transform="skewX(10)"/>
+  <rect x="237" y="79" width="3" height="25" fill="#a0694b" transform="skewX(10)"/>
+  <!-- Вікно -->
+  <rect x="200" y="25" width="35" height="30" rx="1" fill="#74b9ff" stroke="#636e72" stroke-width="1"/>
+  <line x1="217" y1="25" x2="217" y2="55" stroke="#636e72" stroke-width="1"/>
+  <line x1="200" y1="40" x2="235" y2="40" stroke="#636e72" stroke-width="1"/>
+  <!-- Підпис -->
+  <text x="170" y="148" text-anchor="middle" font-size="9" fill="#636e72">Мінімум: підлога + 2 стіни + 3 предмети</text>
+</svg>
+<div class="img-caption">Приклад кімнати — стіни + ліжко + стіл + вікно</div>
+</div>
+
+<h2>Що потрібно зробити:</h2>
+<ul>
+  <li><strong>Підлога</strong> — Box (велика плоска площина, наприклад 100×80×1)</li>
+  <li><strong>2 стіни</strong> — Box (тонкі, високі, по краях підлоги)</li>
+  <li><strong>Мінімум 3 предмети меблів</strong> на твій вибір</li>
+  <li><strong>Вікно</strong> — Box → Hole в стіні (або прозоре скло)</li>
+</ul>
+
+<h2>Ідеї для меблів:</h2>
+<ul>
+  <li>🛏️ <strong>Ліжко</strong> — Box (матрац) + Box (спинка) + подушка (Box менша)</li>
+  <li>🪑 <strong>Стілець</strong> — Box (сидіння) + 4 Cylinder (ніжки) + Box (спинка)</li>
+  <li>🖥️ <strong>Стіл з комп'ютером</strong> — Box (стільниця) + ніжки + Box (монітор)</li>
+  <li>📚 <strong>Книжкова полиця</strong> — Box (каркас) + маленькі Box (книги, різні кольори)</li>
+  <li>🪟 <strong>Вікно</strong> — Box → Hole в стіні → Transparent Box (скло)</li>
+</ul>
+
+<div class="hint">💡 Використовуй Ctrl+D для дублювання однакових предметів (ніжки стільця, книги).</div>
+
+<div class="done">🏆 Покажи вчителю — найкращі кімнати покажемо всьому класу!</div>
+</div>
+
+</body>
+</html>
