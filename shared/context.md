@@ -16,13 +16,12 @@
 - **Хостинг:** Netlify (безкоштовно, автоматичний деплой при пуші)
 
 ### Git-воркфлоу
-1. **Робоча гілка:** `preview` — всі зміни робимо тут
+1. **Завжди працюємо в гілці `preview`!**
 2. Після пушу в `preview` → Netlify автоматично деплоїть на preview URL
 3. Вчитель перевіряє preview → каже "ок"
 4. Мержимо `preview` → `main` → прод оновлюється автоматично
-5. **Завжди працюємо в гілці `preview`!**
 
-### Git-команди (для агента):
+### Git-команди:
 ```bash
 cd /Users/andrii.makarevych/squad/school
 git checkout preview
@@ -40,16 +39,58 @@ Remote використовує `github-school` host (не звичайний `g
 origin  git@github-school:makandrol/school.git
 ```
 
-### manifest.json — конфіг сайту
-Файл `manifest.json` в корені репо визначає що показується на сайті:
-- Кожен урок з `"published": true` відображається на сайті
-- При створенні нового уроку — **обов'язково додати його в manifest.json**
-- Структура уроку в маніфесті:
+---
+
+## Групи — короткі ідентифікатори
+
+Вчитель може сказати одне з цих слів. Ось що означає кожне:
+
+| Вчитель каже | Група | Папка | Тип |
+|-------------|-------|-------|-----|
+| **роботи 5а** або **5аб** | Робототехніка 5-А / 5-Б | `robotics/group_5ab/` | robotics |
+| **роботи 5в** або **5вг** | Робототехніка 5-В / 5-Г | `robotics/group_5cd/` | robotics |
+| **3д 3-4** | 3D-моделювання 3-4 клас | `3d/group_34/` | modeling |
+| **3д 5-7** | 3D-моделювання 5-7 клас | `3d/group_57/` | modeling |
+
+---
+
+## Як створювати новий урок
+
+### Крок 1 — Прочитай контекст
+
+Для **будь-якої** групи, завжди прочитай:
+1. `shared/context.md` (цей файл)
+2. `<папка_групи>/curriculum.md` — курикулум (що вже пройдено, що далі)
+3. **ВСІ `summary.md`** в папках уроків групи — щоб розуміти повний контекст
+
+Також прочитай відповідні **шаблони**:
+- Робототехніка: `shared/templates/presentation_robotics.html`, `shared/templates/google_classroom_robotics.md`
+- 3D: `shared/templates/presentation_3d.html`, `shared/templates/handout_3d.html`
+
+### Крок 2 — Створи файли уроку
+
+**Робототехніка** — створи папку `lesson-XX/` з:
+| Файл | Опис | На сайті? |
+|------|------|-----------|
+| `presentation.html` | Презентація (самодостатній HTML, навігація стрілками) | ✅ |
+| `google_classroom.md` | Текст для Google Classroom | ✅ |
+| `summary.md` | Підсумок для наступного агента | ❌ |
+
+**3D-моделювання** — створи папку `lesson-XX/` з:
+| Файл | Опис | На сайті? |
+|------|------|-----------|
+| `presentation.html` | Презентація (самодостатній HTML) | ✅ |
+| `handout.html` | Роздатковий матеріал для друку (HTML з SVG) | ✅ |
+| `summary.md` | Підсумок для наступного агента | ❌ |
+
+### Крок 3 — Онови manifest.json
+
+Додай урок в масив `lessons` відповідної групи в `manifest.json`:
 
 Для робототехніки:
 ```json
 {
-  "n": 22, "title": "🏎️ Формула-1", "date": "10.03.2026",
+  "n": 23, "title": "🎯 Назва уроку", "date": "17.03.2026",
   "published": true,
   "files": ["presentation.html", "google_classroom.md"],
   "makecode": [
@@ -61,7 +102,7 @@ origin  git@github-school:makandrol/school.git
 Для 3D-моделювання:
 ```json
 {
-  "n": 5, "title": "🏎️ Формула-1", "date": "10.03.2026",
+  "n": 6, "title": "🎨 Назва заняття", "date": "17.03.2026",
   "published": true,
   "files": ["presentation.html", "handout.html"],
   "tinkercad": [
@@ -70,47 +111,47 @@ origin  git@github-school:makandrol/school.git
 }
 ```
 
-**Поля `makecode`/`tinkercad`:** масив проєктів. URL заповнюється пізніше вчителем через адмін-панель на сайті або вручну. Залишай `"url": ""` якщо URL ще невідомий.
+**Поля `makecode`/`tinkercad`:** URL заповнюється пізніше вчителем. Залишай `"url": ""`.
 
-**Файли в `files`:**
-- Робототехніка: `["presentation.html", "google_classroom.md"]`
-- 3D-моделювання: `["presentation.html", "handout.html"]`
-- **НЕ додавай** `plan.md` — він не для учнів
+### Крок 4 — Онови curriculum.md
+
+### Крок 5 — Закоміть і запуш в preview
+```bash
+git checkout preview && git add . && git commit -m "Lesson XX: назва" && git push
+```
+
+### Крок 6 — Скинь preview URL вчителю
+```
+Готово! Перевір: https://preview--makarevych-school.netlify.app/
+```
 
 ---
 
-## Курси та групи
+## Деталі курсів
 
-### 1. Робототехніка — група 5-А, 5-Б (`robotics/group_5ab/`)
+### Робототехніка 5-А, 5-Б (`robotics/group_5ab/`)
 - **Розклад:** вівторок, 14:10–14:50 (1 урок, 40 хв)
 - **Формат:** дистанційно через Zoom
 - **Платформа:** micro:bit + MakeCode (симулятор)
-- **Google Classroom:** так, потрібен текст для публікації (шаблон — `shared/templates/google_classroom_robotics.md`)
+- **Google Classroom:** так, потрібен текст для публікації
 - **Домашнє завдання:** самостійна робота за бажанням
-- **Курикулум:** `robotics/group_5ab/curriculum.md`
 
-### 2. Робототехніка — група 5-В, 5-Г (`robotics/group_5cd/`)
+### Робототехніка 5-В, 5-Г (`robotics/group_5cd/`)
 - **Розклад:** четвер, 14:10–14:50 (1 урок, 40 хв)
 - **Формат:** дистанційно через Zoom
 - **Платформа:** micro:bit + MakeCode (симулятор)
-- **Google Classroom:** так, потрібен текст для публікації (шаблон — `shared/templates/google_classroom_robotics.md`)
-- **Домашнє завдання:** самостійна робота за бажанням
-- **Курикулум:** `robotics/group_5cd/curriculum.md`
 - **Примітка:** ця група почала пізніше, має менше пройденого матеріалу
 
-### 3. 3D-моделювання — група 3-4 клас (`3d/group_34/`)
+### 3D-моделювання 3-4 клас (`3d/group_34/`)
 - **Розклад:** вівторок, 15:00–17:20 (3 уроки поспіль)
 - **Формат:** очно, за комп'ютерами
 - **Платформа:** Tinkercad
 - **Структура заняття:** 1-2 урок — новий матеріал, 3-й урок — повторення/закріплення
-- **Курикулум:** `3d/group_34/curriculum.md`
 
-### 4. 3D-моделювання — група 5-7 клас (`3d/group_57/`)
+### 3D-моделювання 5-7 клас (`3d/group_57/`)
 - **Розклад:** четвер, 15:00–17:20 (3 уроки поспіль)
 - **Формат:** очно, за комп'ютерами
 - **Платформа:** Tinkercad (можливо Blender у другій половині семестру)
-- **Структура заняття:** 1-2 урок — новий матеріал, 3-й урок — повторення/закріплення
-- **Курикулум:** `3d/group_57/curriculum.md`
 
 ---
 
@@ -153,34 +194,6 @@ origin  git@github-school:makandrol/school.git
 | 11 | 14.05.2026 | |
 | 12 | 21.05.2026 | |
 | 13 | 28.05.2026 | Останній тиждень |
-
----
-
-## Як створювати новий урок
-
-### Для робототехніки:
-1. Прочитай `shared/context.md` (цей файл)
-2. Прочитай курикулум групи (`robotics/group_5ab/curriculum.md` або `robotics/group_5cd/curriculum.md`)
-3. Подивись останні уроки в папці групи (summary.md, plan.md), щоб зрозуміти контекст
-4. Створи папку `lesson-XX/` з файлами:
-   - `plan.md` — план уроку (за шаблоном `shared/templates/lesson_plan_robotics.md`)
-   - `presentation.html` — **презентація** — самодостатній HTML (за шаблоном `shared/templates/presentation_robotics.html`)
-   - `google_classroom.md` — текст для Google Classroom (за шаблоном `shared/templates/google_classroom_robotics.md`)
-   - `summary.md` — підсумок для наступного агента
-5. Онови `curriculum.md` — зазнач що урок створений
-6. **Додай урок в `manifest.json`** — з `"published": true` та переліком файлів
-
-### Для 3D-моделювання:
-1. Прочитай `shared/context.md` (цей файл)
-2. Прочитай курикулум групи (`3d/group_34/curriculum.md` або `3d/group_57/curriculum.md`)
-3. Подивись останні уроки в папці групи
-4. Створи папку `lesson-XX/` з файлами:
-   - `plan.md` — план заняття, 3 уроки (за шаблоном `shared/templates/lesson_plan_3d.md`)
-   - `presentation.html` — **презентація** — самодостатній HTML (за шаблоном `shared/templates/presentation_3d.html`)
-   - `handout.html` — **роздатковий матеріал** для друку — самодостатній HTML (за шаблоном `shared/templates/handout_3d.html`)
-   - `summary.md` — підсумок для наступного агента
-5. Онови `curriculum.md`
-6. **Додай урок в `manifest.json`** — з `"published": true` та переліком файлів
 
 ---
 

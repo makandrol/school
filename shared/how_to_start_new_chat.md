@@ -1,138 +1,62 @@
-# Інструкція для нового чату (агента)
+# Промпти для нового чату
 
-## Як почати роботу в новому чаті Cursor
-
-Коли потрібно створити новий урок, відкрий новий чат і вставте промпт нижче.
+Відкрий новий чат в Cursor і вставте **один** промпт нижче.
 
 ---
 
-### Для робототехніки (група 5-АБ):
+## 🤖 Робототехніка 5-А / 5-Б (наступний урок):
+
 ```
-Прочитай файли:
-- @shared/context.md
-- @robotics/group_5ab/curriculum.md
-- summary.md останнього уроку в robotics/group_5ab/
-- @shared/templates/presentation_robotics.html
-- @shared/templates/google_classroom_robotics.md
-
-Створи наступний урок за планом. Зроби:
-1. plan.md — план уроку
-2. presentation.html — презентацію (самодостатній HTML, навігація стрілками)
-3. google_classroom.md — текст для Google Classroom
-4. summary.md
-5. Додай урок в manifest.json (published: true, files: ["presentation.html", "google_classroom.md"])
-6. Онови curriculum.md
-7. Закоміть в гілку preview і запуш (git checkout preview && git add . && git commit && git push)
-
-Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
+Прочитай @shared/context.md — там все описано.
+Група: роботи 5аб
+Прочитай curriculum та всі summary в robotics/group_5ab/.
+Створи наступний урок, запуш в preview, скинь мені preview URL.
 ```
 
-### Для робототехніки (група 5-ВГ):
+## 🤖 Робототехніка 5-В / 5-Г (наступний урок):
+
 ```
-Прочитай файли:
-- @shared/context.md
-- @robotics/group_5cd/curriculum.md
-- summary.md останнього уроку в robotics/group_5cd/
-- @shared/templates/presentation_robotics.html
-- @shared/templates/google_classroom_robotics.md
-
-Створи наступний урок. Зроби:
-1. plan.md — план уроку
-2. presentation.html — презентацію (самодостатній HTML, навігація стрілками)
-3. google_classroom.md — текст для Google Classroom
-4. summary.md
-5. Додай урок в manifest.json (published: true, files: ["presentation.html", "google_classroom.md"])
-6. Онови curriculum.md
-7. Закоміть в гілку preview і запуш
-
-Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
+Прочитай @shared/context.md — там все описано.
+Група: роботи 5вг
+Прочитай curriculum та всі summary в robotics/group_5cd/.
+Створи наступний урок, запуш в preview, скинь мені preview URL.
 ```
 
-### Для 3D-моделювання (група 3-4 клас):
+## 🎨 3D-моделювання 3-4 клас (наступне заняття):
+
 ```
-Прочитай файли:
-- @shared/context.md
-- @3d/group_34/curriculum.md
-- summary.md останнього заняття в 3d/group_34/
-- @shared/templates/presentation_3d.html
-- @shared/templates/handout_3d.html
-
-Створи наступне заняття (3 уроки). Зроби:
-1. plan.md — план заняття
-2. presentation.html — презентацію (самодостатній HTML)
-3. handout.html — роздатковий матеріал для друку (HTML з SVG-картинками, page-break між завданнями)
-4. summary.md
-5. Додай урок в manifest.json (published: true, files: ["presentation.html", "handout.html"])
-6. Онови curriculum.md
-7. Закоміть в гілку preview і запуш
-
-Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
+Прочитай @shared/context.md — там все описано.
+Група: 3д 3-4
+Прочитай curriculum та всі summary в 3d/group_34/.
+Створи наступне заняття, запуш в preview, скинь мені preview URL.
 ```
 
-### Для 3D-моделювання (група 5-7 клас):
+## 🎨 3D-моделювання 5-7 клас (наступне заняття):
+
 ```
-Прочитай файли:
-- @shared/context.md
-- @3d/group_57/curriculum.md
-- summary.md останнього заняття в 3d/group_57/
-- @shared/templates/presentation_3d.html
-- @shared/templates/handout_3d.html
-
-Створи наступне заняття (3 уроки). Зроби:
-1. plan.md — план заняття
-2. presentation.html — презентацію (самодостатній HTML)
-3. handout.html — роздатковий матеріал для друку (HTML з SVG-картинками, page-break між завданнями)
-4. summary.md
-5. Додай урок в manifest.json (published: true, files: ["presentation.html", "handout.html"])
-6. Онови curriculum.md
-7. Закоміть в гілку preview і запуш
-
-Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
+Прочитай @shared/context.md — там все описано.
+Група: 3д 5-7
+Прочитай curriculum та всі summary в 3d/group_57/.
+Створи наступне заняття, запуш в preview, скинь мені preview URL.
 ```
 
 ---
 
-## Після перевірки preview — мержимо в прод:
+## Після перевірки preview:
+
+Якщо все ок:
 ```
-Все ок, мержни в main:
-git checkout main && git merge preview && git push && git checkout preview
+Все ок, мержни в main.
 ```
+
+Якщо потрібні правки — просто опиши що виправити.
 
 ---
 
-## Після створення уроку — чекліст:
-1. ✅ `plan.md` створений
-2. ✅ `presentation.html` створений
-3. ✅ `google_classroom.md` (робототехніка) або `handout.html` (3D) створений
-4. ✅ `summary.md` створений
-5. ✅ `curriculum.md` оновлений
-6. ✅ `manifest.json` оновлений (урок додано з `published: true`)
-7. ✅ Зміни закомічені в гілку `preview` і запушені
-8. ✅ Preview URL надісланий вчителю для перевірки
+## Для змін на сайті (не урок):
 
-## Файли, які створюються для кожного уроку
-
-### Робототехніка:
-| Файл | Опис | На сайті? |
-|------|------|-----------|
-| `plan.md` | План уроку (хід уроку, мета, блоки MakeCode) | ❌ |
-| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → | ✅ |
-| `google_classroom.md` | Текст для публікації в Google Classroom | ✅ (в деталях уроку) |
-| `summary.md` | Короткий підсумок (для контексту наступного агента) | ❌ |
-
-### 3D-моделювання:
-| Файл | Опис | На сайті? |
-|------|------|-----------|
-| `plan.md` | План заняття (3 уроки, хід, мета) | ❌ |
-| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → | ✅ |
-| `handout.html` | Роздатковий матеріал — відкрити в браузері → Cmd+P друк | ✅ |
-| `summary.md` | Короткий підсумок (для контексту наступного агента) | ❌ |
-
-## Шаблони
-Шаблони лежать в `shared/templates/`:
-- `lesson_plan_robotics.md` — план уроку для робототехніки
-- `lesson_plan_3d.md` — план заняття для 3D-моделювання
-- `presentation_robotics.html` — HTML-презентація (фіолетова тема)
-- `presentation_3d.html` — HTML-презентація (зелена тема)
-- `handout_3d.html` — HTML роздатковий матеріал з SVG-картинками
-- `google_classroom_robotics.md` — текст для Google Classroom
+```
+Прочитай @shared/context.md — там інфо про сайт.
+Зроби: <опис змін>
+Запуш в preview, скинь URL.
+```
