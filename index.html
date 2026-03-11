@@ -6,200 +6,441 @@
 <title>Матеріали уроків</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0f0f23;--card:#1a1a2e;--text:#e0e0e0;--muted:#888;--border:#2a2a3e;
-  --purple:#667eea;--purple2:#764ba2;--green:#00b894;--green2:#00cec9;--accent:#f39c12}
-body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+:root{--bg:#0f0f23;--sidebar:#141432;--card:#1a1a2e;--text:#e0e0e0;--muted:#888;--border:#2a2a3e;
+  --purple:#667eea;--purple2:#764ba2;--green:#00b894;--green2:#00cec9;--accent:#f39c12;--red:#e74c3c}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
 a{color:inherit;text-decoration:none}
 
 /* Header */
-.header{text-align:center;padding:40px 20px 10px;background:linear-gradient(135deg,#1a1a2e,#16213e)}
-.header h1{font-size:2.2em;margin-bottom:6px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.header p{color:var(--muted);font-size:1.05em}
-.admin-link{position:absolute;top:16px;right:20px;color:#444;font-size:.75em;text-decoration:none}
-.admin-link:hover{color:#666}
+.header{text-align:center;padding:24px 20px 0;background:linear-gradient(135deg,#1a1a2e,#16213e);position:relative}
+.header h1{font-size:1.8em;margin-bottom:4px;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header .sub{color:var(--muted);font-size:.9em;margin-bottom:16px}
+.admin-link{position:absolute;top:12px;right:16px;color:#333;font-size:.7em;cursor:pointer;padding:4px 8px;border-radius:6px}
+.admin-link:hover{color:#555;background:rgba(255,255,255,.05)}
 
-/* Tabs */
-.tabs{display:flex;justify-content:center;gap:8px;padding:20px;flex-wrap:wrap}
-.tab{padding:10px 22px;border-radius:25px;border:2px solid #333;background:transparent;color:var(--text);cursor:pointer;font-size:.93em;transition:all .3s}
-.tab:hover{border-color:#555}
-.tab.active[data-type=robotics]{border-color:var(--purple);background:rgba(102,126,234,.12);color:var(--purple)}
-.tab.active[data-type=modeling]{border-color:var(--green);background:rgba(0,184,148,.12);color:var(--green)}
+/* Category tabs */
+.cat-tabs{display:flex;justify-content:center;gap:0;margin:0 auto;max-width:600px}
+.cat-tab{flex:1;padding:12px 24px;text-align:center;cursor:pointer;font-size:1em;font-weight:600;border-bottom:3px solid transparent;transition:all .2s;color:var(--muted)}
+.cat-tab:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.cat-tab.active.robotics{border-bottom-color:var(--purple);color:var(--purple)}
+.cat-tab.active.modeling{border-bottom-color:var(--green);color:var(--green)}
 
-/* Container */
-.container{max-width:1000px;margin:0 auto;padding:0 20px 60px}
-.group{display:none;animation:fadeIn .3s}.group.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* Main layout */
+.main{display:flex;flex:1;max-width:1400px;width:100%;margin:0 auto}
 
-/* Group header */
-.gh{display:flex;align-items:center;gap:12px;margin:16px 0;padding-bottom:12px;border-bottom:1px solid var(--border);flex-wrap:wrap}
-.badge{padding:4px 14px;border-radius:12px;font-size:.78em;font-weight:600}
-.badge.robotics{background:rgba(102,126,234,.18);color:var(--purple)}
-.badge.modeling{background:rgba(0,184,148,.18);color:var(--green)}
-.gh h2{font-size:1.3em}
-.gh .schedule{margin-left:auto;color:var(--muted);font-size:.85em}
+/* Sidebar */
+.sidebar{width:320px;min-width:320px;border-right:1px solid var(--border);padding:16px 0;overflow-y:auto;max-height:calc(100vh - 120px);position:sticky;top:0}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+.grp-header{padding:8px 20px;font-size:.82em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+.grp-header .dot{width:6px;height:6px;border-radius:50%}
+.grp-header .dot.robotics{background:var(--purple)}
+.grp-header .dot.modeling{background:var(--green)}
+.grp-schedule{padding:0 20px 6px;font-size:.72em;color:#555}
+.lesson-item{display:flex;align-items:center;gap:10px;padding:8px 20px;cursor:pointer;transition:all .15s;border-left:3px solid transparent;font-size:.88em}
+.lesson-item:hover{background:rgba(255,255,255,.04)}
+.lesson-item.active{background:rgba(102,126,234,.1);border-left-color:var(--purple)}
+.lesson-item.active.modeling-active{background:rgba(0,184,148,.08);border-left-color:var(--green)}
+.lesson-item .num{color:var(--muted);font-size:.78em;min-width:24px}
+.lesson-item .date{color:#555;font-size:.75em;min-width:70px}
+.lesson-item .name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lesson-item.unpublished{opacity:.35}
+.lesson-item.unpublished .name{font-style:italic}
+
+/* Content area */
+.content{flex:1;padding:24px 32px;overflow-y:auto;max-height:calc(100vh - 120px)}
+.content::-webkit-scrollbar{width:4px}
+.content::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:400px;color:var(--muted);text-align:center}
+.empty-state .icon{font-size:3em;margin-bottom:12px}
+
+/* Lesson detail */
+.lesson-detail h2{font-size:1.6em;margin-bottom:4px}
+.lesson-meta{display:flex;gap:16px;margin-bottom:20px;color:var(--muted);font-size:.88em;flex-wrap:wrap;align-items:center}
+.lesson-meta .badge{padding:2px 10px;border-radius:8px;font-size:.8em;font-weight:600}
+.lesson-meta .badge.robotics{background:rgba(102,126,234,.15);color:var(--purple)}
+.lesson-meta .badge.modeling{background:rgba(0,184,148,.15);color:var(--green)}
+
+/* Section */
+.section{margin-bottom:24px}
+.section-title{font-size:.85em;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+
+/* Links row */
+.file-links{display:flex;flex-wrap:wrap;gap:8px}
+.file-link{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:.88em;font-weight:500;transition:all .2s;border:1px solid var(--border)}
+.file-link:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.file-link.presentation{background:rgba(102,126,234,.12);border-color:rgba(102,126,234,.25);color:#8b9cf7}
+.file-link.handout{background:rgba(0,184,148,.12);border-color:rgba(0,184,148,.25);color:#4fd1c5}
+.file-link.classroom{background:rgba(66,133,244,.1);border-color:rgba(66,133,244,.2);color:#6ea8fe}
+
+/* Project cards */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .2s}
+.project-card:hover{border-color:#444;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.project-thumb{width:100%;height:180px;background:#12122a;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.project-thumb img{width:100%;height:100%;object-fit:contain}
+.project-thumb iframe{width:100%;height:100%;border:none}
+.project-thumb .no-thumb{color:#444;font-size:2.5em}
+.project-info{padding:12px 14px}
+.project-info .label{font-weight:600;font-size:.92em;margin-bottom:4px}
+.project-info .proj-link{display:inline-flex;align-items:center;gap:4px;font-size:.8em;color:var(--purple);word-break:break-all}
+.project-info .proj-link:hover{text-decoration:underline}
+.project-info .proj-link.tinkercad-link{color:var(--green)}
+
+/* MakeCode embed */
+.mc-sim{border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-top:10px}
+.mc-sim iframe{width:100%;height:360px;border:none}
+
+/* Classroom text */
+.classroom-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:.9em;line-height:1.7;white-space:pre-wrap;max-height:300px;overflow-y:auto}
+.classroom-box::-webkit-scrollbar{width:4px}
+.classroom-box::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
+
+/* Admin mode */
+.admin-bar{display:none;background:#1a0a2e;border-bottom:1px solid rgba(102,126,234,.3);padding:6px 16px;text-align:center;font-size:.8em;color:var(--purple)}
+.admin-bar.show{display:flex;align-items:center;justify-content:center;gap:12px}
+.admin-bar button{padding:4px 12px;border-radius:6px;border:1px solid rgba(102,126,234,.3);background:rgba(102,126,234,.1);color:var(--purple);cursor:pointer;font-size:.85em}
+.admin-bar button:hover{background:rgba(102,126,234,.2)}
+.admin-bar button.save{background:var(--purple);color:#fff;border-color:var(--purple)}
+.edit-url{display:none;width:100%;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:#0d0d1a;color:var(--text);font-size:.82em;margin-top:6px}
+.admin-mode .edit-url{display:block}
+.add-project{display:none;padding:8px 14px;border-radius:10px;border:2px dashed var(--border);color:var(--muted);cursor:pointer;font-size:.85em;text-align:center;transition:all .2s}
+.add-project:hover{border-color:#555;color:var(--text)}
+.admin-mode .add-project{display:block}
 
 /* Extras */
-.extras{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.extras a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;background:rgba(255,255,255,.05);color:#bbb;font-size:.88em;border:1px solid var(--border);transition:all .2s}
-.extras a:hover{background:rgba(255,255,255,.1);border-color:#444}
+.extras-list{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 12px}
+.extras-link{padding:6px 12px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);font-size:.8em;color:#aaa}
+.extras-link:hover{background:rgba(255,255,255,.08)}
 
-/* Lessons grid */
-.lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:20px}
-.card{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);transition:all .3s}
-.card:hover{border-color:#444;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.card .num{font-size:.78em;color:var(--muted);margin-bottom:3px}
-.card .title{font-size:1.08em;font-weight:600;margin-bottom:6px}
-.card .date{font-size:.8em;color:var(--muted);margin-bottom:14px}
-.links{display:flex;flex-wrap:wrap;gap:8px}
-.link{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:8px;font-size:.83em;font-weight:500;transition:all .2s}
-.link.presentation{background:rgba(102,126,234,.14);color:#8b9cf7}
-.link.presentation:hover{background:rgba(102,126,234,.28)}
-.link.handout{background:rgba(0,184,148,.14);color:#4fd1c5}
-.link.handout:hover{background:rgba(0,184,148,.28)}
-.link.makecode{background:rgba(102,126,234,.1);color:#a0b0ff}
-.link.makecode:hover{background:rgba(102,126,234,.2)}
-.link.tinkercad{background:rgba(0,184,148,.1);color:#4fd1c5}
-.link.tinkercad:hover{background:rgba(0,184,148,.2)}
-/* MakeCode embed */
-.mc-embed{border-radius:10px;overflow:hidden;margin-top:10px;border:1px solid var(--border)}
-.mc-embed iframe{width:100%;height:340px;border:none}
+/* Toast */
+.toast{position:fixed;top:20px;right:20px;padding:10px 18px;border-radius:10px;background:#2d3436;color:#fff;font-size:.85em;z-index:9999;transform:translateX(120%);transition:transform .3s;border-left:4px solid var(--green)}
+.toast.show{transform:translateX(0)}
 
-/* Empty state */
-.empty{text-align:center;padding:60px 20px;color:var(--muted)}
-.empty .icon{font-size:3em;margin-bottom:12px}
-
-/* Footer */
-.footer{text-align:center;padding:20px;color:#333;font-size:.75em}
+/* Responsive */
+@media(max-width:900px){
+  .main{flex-direction:column}
+  .sidebar{width:100%;min-width:0;max-height:none;position:static;border-right:none;border-bottom:1px solid var(--border)}
+  .content{max-height:none}
+}
 </style>
 </head>
 <body>
 
-<div class="header" style="position:relative">
-  <h1>📚 Матеріали уроків</h1>
-  <p id="subtitle"></p>
-  <a href="admin.html" class="admin-link">🔐</a>
+<div class="admin-bar" id="adminBar">
+  <span>🔐 Адмін-режим</span>
+  <button class="save" onclick="saveToGitHub()">💾 Зберегти в GitHub</button>
+  <button onclick="exitAdmin()">✕ Вийти</button>
 </div>
-<div class="tabs" id="tabs"></div>
-<div class="container" id="content"></div>
-<div class="footer">© 2026 Андрій Макаревич</div>
+
+<div class="header">
+  <h1>📚 Матеріали уроків</h1>
+  <div class="sub" id="subtitle"></div>
+  <div class="cat-tabs" id="catTabs"></div>
+  <span class="admin-link" id="adminToggle" title="Адмін">🔐</span>
+</div>
+
+<div class="main">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="content" id="content">
+    <div class="empty-state"><div class="icon">📚</div><p>Оберіть урок зі списку зліва</p></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-const PUBLIC_FILE_TYPES = ['presentation.html', 'handout.html'];
+let manifest = null;
+let currentCat = 'robotics';
+let currentLesson = null;
+let isAdmin = false;
+let ghToken = localStorage.getItem('gh_token') || '';
 
-async function loadManifest() {
+// --- Load ---
+async function init() {
   const r = await fetch('manifest.json?_=' + Date.now());
-  return r.json();
+  manifest = await r.json();
+  document.getElementById('subtitle').textContent = manifest.site.subtitle;
+  document.title = manifest.site.title;
+  renderCatTabs();
+  renderSidebar();
 }
 
-function fileInfo(f) {
-  if (f.includes('presentation')) return {cls:'presentation', icon:'🖥️', label:'Презентація'};
-  if (f.includes('handout')) return {cls:'handout', icon:'🖨️', label:'Роздатковий'};
-  return null;
+// --- Category Tabs ---
+function renderCatTabs() {
+  const el = document.getElementById('catTabs');
+  const cats = [
+    {id:'robotics', label:'🤖 Робототехніка, 5 клас'},
+    {id:'modeling', label:'🎨 3D-моделювання'}
+  ];
+  el.innerHTML = cats.map(c =>
+    `<div class="cat-tab ${c.id}${c.id===currentCat?' active':''}" onclick="switchCat('${c.id}')">${c.label}</div>`
+  ).join('');
 }
 
-function render(data) {
-  document.getElementById('subtitle').textContent = data.site.subtitle;
-  document.title = data.site.title;
+function switchCat(cat) {
+  currentCat = cat;
+  currentLesson = null;
+  renderCatTabs();
+  renderSidebar();
+  document.getElementById('content').innerHTML =
+    '<div class="empty-state"><div class="icon">📚</div><p>Оберіть урок зі списку зліва</p></div>';
+}
 
-  const tabsEl = document.getElementById('tabs');
-  const contentEl = document.getElementById('content');
-
-  // Only groups that have at least one published lesson
-  const visibleGroups = data.groups.filter(g =>
-    g.lessons.some(l => l.published) || (g.extras && g.extras.length)
-  );
-
-  if (!visibleGroups.length) {
-    contentEl.innerHTML = '<div class="empty"><div class="icon">📭</div><p>Матеріали ще не опубліковані</p></div>';
-    return;
-  }
-
-  // Tabs
-  tabsEl.innerHTML = visibleGroups.map((g, i) => {
-    const icon = g.type === 'robotics' ? '🤖' : '🎨';
-    return `<button class="tab${i===0?' active':''}" data-type="${g.type}" data-id="${g.id}">${icon} ${g.name}</button>`;
-  }).join('');
-
-  // Groups
-  contentEl.innerHTML = visibleGroups.map((g, i) => {
-    let html = `<div class="group${i===0?' active':''}" id="${g.id}">`;
-    html += `<div class="gh"><span class="badge ${g.type}">${g.type==='robotics'?'Робототехніка':'3D-моделювання'}</span>`;
-    html += `<h2>${g.name}</h2><span class="schedule">📅 ${g.schedule}</span></div>`;
-
+// --- Sidebar ---
+function renderSidebar() {
+  const el = document.getElementById('sidebar');
+  const groups = manifest.groups.filter(g => g.type === currentCat);
+  let html = '';
+  groups.forEach(g => {
+    const shortName = g.name.replace(/^(Робототехніка|3D-моделювання)\s*/,'');
+    html += `<div class="grp-header"><span class="dot ${g.type}"></span>${shortName}</div>`;
+    html += `<div class="grp-schedule">📅 ${g.schedule}</div>`;
     // Extras
     if (g.extras && g.extras.length) {
-      html += '<div class="extras">';
-      g.extras.forEach(e => { html += `<a href="${g.path}/${e.file}" target="_blank">${e.label}</a>`; });
-      html += '</div>';
-    }
-
-    // Published lessons
-    const published = g.lessons.filter(l => l.published);
-    if (published.length) {
-      html += '<div class="lessons">';
-      published.forEach(l => {
-        html += `<div class="card"><div class="num">Урок ${l.n}</div>`;
-        html += `<div class="title">${l.title}</div>`;
-        html += `<div class="date">📅 ${l.date}</div>`;
-        const publicFiles = (l.files || []).filter(f => PUBLIC_FILE_TYPES.includes(f));
-        if (publicFiles.length || l.makecode || l.tinkercad) {
-          html += '<div class="links">';
-          publicFiles.forEach(f => {
-            const info = fileInfo(f);
-            if (info) {
-              const href = `${g.path}/lesson-${String(l.n).padStart(2,'0')}/${f}`;
-              html += `<a class="link ${info.cls}" href="${href}" target="_blank">${info.icon} ${info.label}</a>`;
-            }
-          });
-          // MakeCode project links
-          if (l.makecode) {
-            l.makecode.forEach(m => {
-              if (m.url) html += `<a class="link makecode" href="${m.url}" target="_blank">🎮 ${m.label}</a>`;
-            });
-          }
-          // Tinkercad project links
-          if (l.tinkercad) {
-            l.tinkercad.forEach(t => {
-              if (t.url) html += `<a class="link tinkercad" href="${t.url}" target="_blank">🔗 ${t.label}</a>`;
-            });
-          }
-          html += '</div>';
-        }
-        // Embedded MakeCode simulators
-        if (l.makecode) {
-          l.makecode.forEach(m => {
-            if (m.url) {
-              const embedUrl = m.url.replace('/#pub:', '/---run?id=');
-              html += `<div class="mc-embed"><iframe src="${embedUrl}" allowfullscreen sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>`;
-            }
-          });
-        }
-        html += '</div>';
+      html += '<div class="extras-list">';
+      g.extras.forEach(e => {
+        html += `<a class="extras-link" href="${g.path}/${e.file}" target="_blank">${e.label}</a>`;
       });
       html += '</div>';
-    } else {
-      html += '<div class="empty"><div class="icon">📭</div><p>Матеріали скоро з\'являться</p></div>';
     }
-
-    html += '</div>';
-    return html;
-  }).join('');
-
-  // Tab click
-  tabsEl.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabsEl.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      contentEl.querySelectorAll('.group').forEach(g => g.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.id).classList.add('active');
+    // Lessons (published first, then unpublished)
+    const published = g.lessons.filter(l => l.published);
+    const unpublished = g.lessons.filter(l => !l.published);
+    const allLessons = isAdmin ? [...published, ...unpublished] : published;
+    allLessons.forEach(l => {
+      const key = g.id + '-' + l.n;
+      const isActive = currentLesson === key;
+      const isPub = !!l.published;
+      const activeClass = isActive ? (g.type==='modeling'?' active modeling-active':' active') : '';
+      const pubClass = isPub ? '' : ' unpublished';
+      html += `<div class="lesson-item${activeClass}${pubClass}" onclick="selectLesson('${g.id}',${l.n})">`;
+      html += `<span class="num">№${l.n}</span>`;
+      html += `<span class="date">${l.date}</span>`;
+      html += `<span class="name">${l.title}</span>`;
+      html += '</div>';
     });
   });
+  el.innerHTML = html;
 }
 
-loadManifest().then(render).catch(e => {
-  document.getElementById('content').innerHTML =
-    '<div class="empty"><div class="icon">⚠️</div><p>Не вдалося завантажити матеріали</p></div>';
+// --- Select lesson ---
+function selectLesson(groupId, lessonN) {
+  currentLesson = groupId + '-' + lessonN;
+  const group = manifest.groups.find(g => g.id === groupId);
+  const lesson = group.lessons.find(l => l.n === lessonN);
+  renderSidebar();
+  renderLesson(group, lesson);
+}
+
+// --- Render lesson detail ---
+function renderLesson(group, lesson) {
+  const el = document.getElementById('content');
+  const basePath = `${group.path}/lesson-${String(lesson.n).padStart(2,'0')}`;
+  let html = '<div class="lesson-detail">';
+
+  // Title
+  html += `<h2>${lesson.title}</h2>`;
+  html += '<div class="lesson-meta">';
+  html += `<span class="badge ${group.type}">${group.type==='robotics'?'Робототехніка':'3D-моделювання'}</span>`;
+  html += `<span>📅 ${lesson.date}</span>`;
+  html += `<span>Урок №${lesson.n}</span>`;
+  html += '</div>';
+
+  // File links
+  const files = (lesson.files || []);
+  if (files.length) {
+    html += '<div class="section">';
+    html += '<div class="section-title">📎 Матеріали</div>';
+    html += '<div class="file-links">';
+    files.forEach(f => {
+      const href = `${basePath}/${f}`;
+      if (f.includes('presentation')) {
+        html += `<a class="file-link presentation" href="${href}" target="_blank">🖥️ Презентація</a>`;
+      } else if (f.includes('handout')) {
+        html += `<a class="file-link handout" href="${href}" target="_blank">🖨️ Роздатковий матеріал</a>`;
+      }
+    });
+    html += '</div></div>';
+  }
+
+  // Projects (MakeCode / Tinkercad)
+  const mcProjects = lesson.makecode || [];
+  const tcProjects = lesson.tinkercad || [];
+  const allProjects = [...mcProjects.map(p=>({...p,type:'makecode'})), ...tcProjects.map(p=>({...p,type:'tinkercad'}))];
+
+  if (allProjects.length || isAdmin) {
+    html += '<div class="section">';
+    html += `<div class="section-title">${group.type==='robotics'?'🎮':'🔗'} Проєкти</div>`;
+    html += '<div class="projects-grid">';
+    allProjects.forEach((p, i) => {
+      html += renderProjectCard(p, group, lesson, i);
+    });
+    html += `<div class="add-project" onclick="addProject('${group.id}',${lesson.n})">+ Додати проєкт</div>`;
+    html += '</div></div>';
+  }
+
+  // MakeCode simulators
+  const mcWithUrl = mcProjects.filter(m => m.url);
+  if (mcWithUrl.length) {
+    html += '<div class="section">';
+    html += '<div class="section-title">▶️ Симулятор</div>';
+    mcWithUrl.forEach(m => {
+      const embedUrl = m.url.replace('/#pub:', '/---run?id=');
+      html += `<div class="mc-sim"><iframe src="${embedUrl}" allowfullscreen sandbox="allow-popups allow-forms allow-scripts allow-same-origin"></iframe></div>`;
+    });
+    html += '</div>';
+  }
+
+  // Google Classroom text
+  if (files.includes('google_classroom.md')) {
+    html += '<div class="section">';
+    html += '<div class="section-title">📝 Google Classroom</div>';
+    html += `<div class="classroom-box" id="classroomBox">Завантаження...</div>`;
+    html += '</div>';
+    loadClassroomText(`${basePath}/google_classroom.md`);
+  }
+
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function renderProjectCard(proj, group, lesson, idx) {
+  const type = proj.type;
+  const hasUrl = !!proj.url;
+  let thumbHtml = '<div class="no-thumb">📦</div>';
+
+  if (hasUrl && type === 'makecode') {
+    const id = proj.url.split('/#pub:')[1] || proj.url.split('id=')[1] || '';
+    if (id) thumbHtml = `<img src="https://makecode.microbit.org/api/${id}/thumb" alt="${proj.label}" onerror="this.parentElement.innerHTML='<div class=no-thumb>🎮</div>'">`;
+  } else if (hasUrl && type === 'tinkercad') {
+    const thingId = proj.url.split('/things/')[1]?.split(/[?#/]/)[0] || '';
+    if (thingId) thumbHtml = `<iframe src="https://www.tinkercad.com/embed/${thingId}?editbtn=1" loading="lazy"></iframe>`;
+  }
+
+  const linkClass = type === 'tinkercad' ? 'proj-link tinkercad-link' : 'proj-link';
+  const icon = type === 'makecode' ? '🎮' : '🔗';
+
+  let html = '<div class="project-card">';
+  html += `<div class="project-thumb">${thumbHtml}</div>`;
+  html += '<div class="project-info">';
+  html += `<div class="label">${icon} ${proj.label}</div>`;
+  if (hasUrl) html += `<a class="${linkClass}" href="${proj.url}" target="_blank">↗ Відкрити проєкт</a>`;
+  else html += `<span style="font-size:.8em;color:#555">Посилання ще не додано</span>`;
+
+  // Admin edit URL
+  const arrKey = type === 'makecode' ? 'makecode' : 'tinkercad';
+  html += `<input class="edit-url" placeholder="Вставте URL проєкту" value="${proj.url||''}" onchange="updateProjectUrl('${group.id}',${lesson.n},'${arrKey}',${idx},this.value)">`;
+  html += '</div></div>';
+  return html;
+}
+
+async function loadClassroomText(url) {
+  try {
+    const r = await fetch(url + '?_=' + Date.now());
+    const text = await r.text();
+    const box = document.getElementById('classroomBox');
+    if (box) box.textContent = text;
+  } catch(e) {
+    const box = document.getElementById('classroomBox');
+    if (box) box.textContent = '(не вдалося завантажити)';
+  }
+}
+
+// --- Admin ---
+document.getElementById('adminToggle').addEventListener('click', () => {
+  if (isAdmin) { exitAdmin(); return; }
+  const pass = prompt('Пароль:');
+  if (!pass) return;
+  sha256(pass).then(hash => {
+    if (hash === '5e4d982a45de7366faf49e14cfc97e4d89fd8a46fc8bb0a72e29b5d15c103b5f') {
+      isAdmin = true;
+      document.body.classList.add('admin-mode');
+      document.getElementById('adminBar').classList.add('show');
+      if (!ghToken) {
+        ghToken = prompt('GitHub Personal Access Token (repo scope):') || '';
+        if (ghToken) localStorage.setItem('gh_token', ghToken);
+      }
+      renderSidebar();
+      toast('Адмін-режим увімкнено');
+    } else {
+      alert('Невірний пароль');
+    }
+  });
 });
+
+function exitAdmin() {
+  isAdmin = false;
+  document.body.classList.remove('admin-mode');
+  document.getElementById('adminBar').classList.remove('show');
+  renderSidebar();
+}
+
+function updateProjectUrl(groupId, lessonN, arrKey, idx, value) {
+  const group = manifest.groups.find(g => g.id === groupId);
+  const lesson = group.lessons.find(l => l.n === lessonN);
+  if (!lesson[arrKey]) lesson[arrKey] = [];
+  if (lesson[arrKey][idx]) lesson[arrKey][idx].url = value;
+  // Re-render to show thumbnail
+  renderLesson(group, lesson);
+}
+
+function addProject(groupId, lessonN) {
+  const group = manifest.groups.find(g => g.id === groupId);
+  const lesson = group.lessons.find(l => l.n === lessonN);
+  const type = group.type === 'robotics' ? 'makecode' : 'tinkercad';
+  if (!lesson[type]) lesson[type] = [];
+  const label = prompt('Назва проєкту:');
+  if (!label) return;
+  lesson[type].push({label, url: ''});
+  renderLesson(group, lesson);
+}
+
+async function saveToGitHub() {
+  if (!ghToken) {
+    ghToken = prompt('GitHub Personal Access Token:') || '';
+    if (!ghToken) return;
+    localStorage.setItem('gh_token', ghToken);
+  }
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(manifest, null, 2) + '\n')));
+  try {
+    // Get current file SHA
+    const getR = await fetch('https://api.github.com/repos/makandrol/school/contents/manifest.json', {
+      headers: {'Authorization': 'token ' + ghToken}
+    });
+    const getData = await getR.json();
+    const sha = getData.sha;
+    // Update file
+    const putR = await fetch('https://api.github.com/repos/makandrol/school/contents/manifest.json', {
+      method: 'PUT',
+      headers: {'Authorization': 'token ' + ghToken, 'Content-Type': 'application/json'},
+      body: JSON.stringify({message: 'Update project links via admin', content, sha, branch: 'preview'})
+    });
+    if (putR.ok) {
+      toast('✅ Збережено в GitHub! Netlify перебудує сайт.');
+    } else {
+      const err = await putR.json();
+      toast('❌ Помилка: ' + (err.message || putR.status));
+    }
+  } catch(e) {
+    toast('❌ ' + e.message);
+  }
+}
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+init();
 </script>
 </body>
 </html>
