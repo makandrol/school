@@ -2,6 +2,14 @@
   publish = "."
   command = ""
 
+# Enable branch deploy for preview
+[context.branch-deploy]
+  command = ""
+
+# Only deploy main + preview branches (ignore others)
+[context.production]
+  command = ""
+
 # Cache static assets (presentations, handouts)
 [[headers]]
   for = "/robotics/*"
