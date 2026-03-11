@@ -2,7 +2,7 @@
 
 ## Як почати роботу в новому чаті Cursor
 
-Коли потрібно створити новий урок, відкрий новий чат і напиши приблизно так:
+Коли потрібно створити новий урок, відкрий новий чат і вставте промпт нижче.
 
 ---
 
@@ -20,6 +20,11 @@
 2. presentation.html — презентацію (самодостатній HTML, навігація стрілками)
 3. google_classroom.md — текст для Google Classroom
 4. summary.md
+5. Додай урок в manifest.json (published: true, files: ["presentation.html", "google_classroom.md"])
+6. Онови curriculum.md
+7. Закоміть в гілку preview і запуш (git checkout preview && git add . && git commit && git push)
+
+Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
 ```
 
 ### Для робототехніки (група 5-ВГ):
@@ -36,6 +41,11 @@
 2. presentation.html — презентацію (самодостатній HTML, навігація стрілками)
 3. google_classroom.md — текст для Google Classroom
 4. summary.md
+5. Додай урок в manifest.json (published: true, files: ["presentation.html", "google_classroom.md"])
+6. Онови curriculum.md
+7. Закоміть в гілку preview і запуш
+
+Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
 ```
 
 ### Для 3D-моделювання (група 3-4 клас):
@@ -52,6 +62,11 @@
 2. presentation.html — презентацію (самодостатній HTML)
 3. handout.html — роздатковий матеріал для друку (HTML з SVG-картинками, page-break між завданнями)
 4. summary.md
+5. Додай урок в manifest.json (published: true, files: ["presentation.html", "handout.html"])
+6. Онови curriculum.md
+7. Закоміть в гілку preview і запуш
+
+Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
 ```
 
 ### Для 3D-моделювання (група 5-7 клас):
@@ -68,31 +83,50 @@
 2. presentation.html — презентацію (самодостатній HTML)
 3. handout.html — роздатковий матеріал для друку (HTML з SVG-картинками, page-break між завданнями)
 4. summary.md
+5. Додай урок в manifest.json (published: true, files: ["presentation.html", "handout.html"])
+6. Онови curriculum.md
+7. Закоміть в гілку preview і запуш
+
+Після пушу — скинь мені preview URL: https://preview--makarevych-school.netlify.app/
 ```
 
 ---
 
-## Після створення уроку — не забудь попросити:
-1. Оновити `curriculum.md` — поставити ✅ навпроти пройденого уроку
-2. Перевірити що `summary.md` створений в папці уроку — щоб наступний агент знав контекст
+## Після перевірки preview — мержимо в прод:
+```
+Все ок, мержни в main:
+git checkout main && git merge preview && git push && git checkout preview
+```
+
+---
+
+## Після створення уроку — чекліст:
+1. ✅ `plan.md` створений
+2. ✅ `presentation.html` створений
+3. ✅ `google_classroom.md` (робототехніка) або `handout.html` (3D) створений
+4. ✅ `summary.md` створений
+5. ✅ `curriculum.md` оновлений
+6. ✅ `manifest.json` оновлений (урок додано з `published: true`)
+7. ✅ Зміни закомічені в гілку `preview` і запушені
+8. ✅ Preview URL надісланий вчителю для перевірки
 
 ## Файли, які створюються для кожного уроку
 
 ### Робототехніка:
-| Файл | Опис |
-|------|------|
-| `plan.md` | План уроку (хід уроку, мета, блоки MakeCode) |
-| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → |
-| `google_classroom.md` | Текст для публікації в Google Classroom |
-| `summary.md` | Короткий підсумок (для контексту наступного агента) |
+| Файл | Опис | На сайті? |
+|------|------|-----------|
+| `plan.md` | План уроку (хід уроку, мета, блоки MakeCode) | ❌ |
+| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → | ✅ |
+| `google_classroom.md` | Текст для публікації в Google Classroom | ✅ (в деталях уроку) |
+| `summary.md` | Короткий підсумок (для контексту наступного агента) | ❌ |
 
 ### 3D-моделювання:
-| Файл | Опис |
-|------|------|
-| `plan.md` | План заняття (3 уроки, хід, мета) |
-| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → |
-| `handout.html` | Роздатковий матеріал — відкрити в браузері → Cmd+P друк |
-| `summary.md` | Короткий підсумок (для контексту наступного агента) |
+| Файл | Опис | На сайті? |
+|------|------|-----------|
+| `plan.md` | План заняття (3 уроки, хід, мета) | ❌ |
+| `presentation.html` | Презентація — відкрити в браузері, стрілки ← → | ✅ |
+| `handout.html` | Роздатковий матеріал — відкрити в браузері → Cmd+P друк | ✅ |
+| `summary.md` | Короткий підсумок (для контексту наступного агента) | ❌ |
 
 ## Шаблони
 Шаблони лежать в `shared/templates/`:
@@ -102,8 +136,3 @@
 - `presentation_3d.html` — HTML-презентація (зелена тема)
 - `handout_3d.html` — HTML роздатковий матеріал з SVG-картинками
 - `google_classroom_robotics.md` — текст для Google Classroom
-
-## Формати файлів
-- **plan.md, summary.md, curriculum.md, google_classroom.md** — залишаються Markdown (тільки для читання агентом та копіювання тексту)
-- **presentation.html** — самодостатній HTML, відкривається в браузері як слайд-шоу
-- **handout.html** — самодостатній HTML, друкується через Cmd+P з правильними розривами сторінок та SVG-ілюстраціями

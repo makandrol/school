@@ -7,6 +7,78 @@
 
 ---
 
+## Сайт та Git
+
+### Сайт
+- **Прод:** https://makarevych-school.netlify.app/ (автодеплой з гілки `main`)
+- **Preview:** https://preview--makarevych-school.netlify.app/ (автодеплой з гілки `preview`)
+- **GitHub:** https://github.com/makandrol/school (приватний репо)
+- **Хостинг:** Netlify (безкоштовно, автоматичний деплой при пуші)
+
+### Git-воркфлоу
+1. **Робоча гілка:** `preview` — всі зміни робимо тут
+2. Після пушу в `preview` → Netlify автоматично деплоїть на preview URL
+3. Вчитель перевіряє preview → каже "ок"
+4. Мержимо `preview` → `main` → прод оновлюється автоматично
+5. **Завжди працюємо в гілці `preview`!**
+
+### Git-команди (для агента):
+```bash
+cd /Users/andrii.makarevych/squad/school
+git checkout preview
+# ... зміни ...
+git add .
+git commit -m "Опис змін"
+git push
+# Після апруву вчителя:
+git checkout main && git merge preview && git push && git checkout preview
+```
+
+### SSH-конфіг
+Remote використовує `github-school` host (не звичайний `github.com`):
+```
+origin  git@github-school:makandrol/school.git
+```
+
+### manifest.json — конфіг сайту
+Файл `manifest.json` в корені репо визначає що показується на сайті:
+- Кожен урок з `"published": true` відображається на сайті
+- При створенні нового уроку — **обов'язково додати його в manifest.json**
+- Структура уроку в маніфесті:
+
+Для робототехніки:
+```json
+{
+  "n": 22, "title": "🏎️ Формула-1", "date": "10.03.2026",
+  "published": true,
+  "files": ["presentation.html", "google_classroom.md"],
+  "makecode": [
+    {"label": "Назва проєкту", "url": ""}
+  ]
+}
+```
+
+Для 3D-моделювання:
+```json
+{
+  "n": 5, "title": "🏎️ Формула-1", "date": "10.03.2026",
+  "published": true,
+  "files": ["presentation.html", "handout.html"],
+  "tinkercad": [
+    {"label": "Назва моделі", "url": ""}
+  ]
+}
+```
+
+**Поля `makecode`/`tinkercad`:** масив проєктів. URL заповнюється пізніше вчителем через адмін-панель на сайті або вручну. Залишай `"url": ""` якщо URL ще невідомий.
+
+**Файли в `files`:**
+- Робототехніка: `["presentation.html", "google_classroom.md"]`
+- 3D-моделювання: `["presentation.html", "handout.html"]`
+- **НЕ додавай** `plan.md` — він не для учнів
+
+---
+
 ## Курси та групи
 
 ### 1. Робототехніка — група 5-А, 5-Б (`robotics/group_5ab/`)
@@ -89,13 +161,14 @@
 ### Для робототехніки:
 1. Прочитай `shared/context.md` (цей файл)
 2. Прочитай курикулум групи (`robotics/group_5ab/curriculum.md` або `robotics/group_5cd/curriculum.md`)
-3. Подивись останні уроки в папці групи, щоб зрозуміти контекст
+3. Подивись останні уроки в папці групи (summary.md, plan.md), щоб зрозуміти контекст
 4. Створи папку `lesson-XX/` з файлами:
    - `plan.md` — план уроку (за шаблоном `shared/templates/lesson_plan_robotics.md`)
    - `presentation.html` — **презентація** — самодостатній HTML (за шаблоном `shared/templates/presentation_robotics.html`)
    - `google_classroom.md` — текст для Google Classroom (за шаблоном `shared/templates/google_classroom_robotics.md`)
    - `summary.md` — підсумок для наступного агента
 5. Онови `curriculum.md` — зазнач що урок створений
+6. **Додай урок в `manifest.json`** — з `"published": true` та переліком файлів
 
 ### Для 3D-моделювання:
 1. Прочитай `shared/context.md` (цей файл)
@@ -107,6 +180,7 @@
    - `handout.html` — **роздатковий матеріал** для друку — самодостатній HTML (за шаблоном `shared/templates/handout_3d.html`)
    - `summary.md` — підсумок для наступного агента
 5. Онови `curriculum.md`
+6. **Додай урок в `manifest.json`** — з `"published": true` та переліком файлів
 
 ---
 
@@ -117,6 +191,7 @@
 - Для 5 класу: можна складніші терміни, але з поясненнями
 - Для 5-7 класу: можна ще складніші поняття, але все одно пояснювати
 - Кожен урок починається з інструктажу з БЖД (для робототехніки — нагадування)
+- Для робототехніки: **описуй все через MakeCode блоки** (не pseudocode, не raw JavaScript)
 
 ---
 
