@@ -120,6 +120,17 @@
           "n": 5, "title": "🏎️ Формула-1 — траса, автомобіль і світлофор", "date": "10.03.2026",
           "published": true,
           "files": ["presentation.html", "handout.html"]
+        },
+        {
+          "n": 6, "title": "🚀 Космічна подорож — ракета, Сатурн, космонавт", "date": "17.03.2026",
+          "published": true,
+          "files": ["presentation.html", "handout.html"],
+          "tinkercad": [
+            {"label": "Ракета", "url": ""},
+            {"label": "Планета Сатурн", "url": ""},
+            {"label": "Космонавт", "url": ""},
+            {"label": "Космічна станція", "url": ""}
+          ]
         }
       ]
     },
