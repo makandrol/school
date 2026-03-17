@@ -49,6 +49,16 @@
           "n": 22, "title": "🏎️ Формула-1 — «Старт Ф1», «Гонка», «Піт-стоп»", "date": "10.03.2026",
           "published": true,
           "files": ["presentation.html", "google_classroom.md"]
+        },
+        {
+          "n": 23, "title": "🚗 Машинка — «Машинка», «Збирач палива», «Ухиляйся!»", "date": "17.03.2026",
+          "published": true,
+          "files": ["presentation.html", "google_classroom.md"],
+          "makecode": [
+            {"label": "Завдання 1 — Машинка", "url": ""},
+            {"label": "Завдання 2 — Збирач палива", "url": ""},
+            {"label": "Завдання 3 — Ухиляйся!", "url": ""}
+          ]
         }
       ]
     },
