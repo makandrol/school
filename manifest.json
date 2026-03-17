@@ -157,6 +157,17 @@
           "n": 4, "title": "🔤 3D-текст, гравірування та дизайн", "date": "05.03.2026",
           "published": true,
           "files": ["presentation.html", "handout.html"]
+        },
+        {
+          "n": 5, "title": "🚀 Космічна подорож — ракета, Сатурн, космонавт", "date": "19.03.2026",
+          "published": true,
+          "files": ["presentation.html", "handout.html"],
+          "tinkercad": [
+            {"label": "Ракета", "url": ""},
+            {"label": "Планета Сатурн", "url": ""},
+            {"label": "Космонавт", "url": ""},
+            {"label": "Космічна станція", "url": ""}
+          ]
         }
       ]
     }
