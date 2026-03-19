@@ -255,7 +255,92 @@
   </div>
 </div>
 
-<!-- Slide 8: Підсумки -->
+<!-- Slide 8: Завдання 4 — Ловець зірок (ідея) -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — Гра «Ловець зірок» ⭐</h2>
+  <p>Повноцінна гра, побудована <strong>на функціях</strong>!</p>
+  <div class="two-col">
+    <div>
+      <h3>Правила:</h3>
+      <ul>
+        <li>🧑 Гравець — діод на нижньому рядку (y=4)</li>
+        <li>⭐ Зірка падає зверху вниз (y від 0 до 4)</li>
+        <li>Кнопки A/B — рухають гравця вліво/вправо</li>
+        <li>Зірка впала на гравця → <strong>+1 бал!</strong> Нова зірка!</li>
+        <li>Зірка впала повз → <strong>гра закінчена!</strong></li>
+        <li>Кожні 3 бали — зірка падає <strong>швидше</strong>! 🏎️</li>
+      </ul>
+      <blockquote class="fun">🏆 Хто набере найбільше балів?</blockquote>
+    </div>
+    <div>
+      <h3>Наші функції:</h3>
+      <table>
+        <tr><th>Функція</th><th>Що робить</th></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевіритиКордони</span></td><td>x в межах 0–4</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">новаЗірка</span></td><td>x = випадкове, y = 0</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">зірkaВпала</span></td><td>спіймав? бал! ні? кінець!</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>очистити + засвітити обох</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Завдання 4 — код -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Ловець зірок»</h2>
+  <div class="two-col">
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція новаЗірка</span></div>
+        <div class="line indent"><span class="b var">задати зіркаX =</span> <span class="b math">випадкове 0–4</span></div>
+        <div class="line indent"><span class="b var">задати зіркаY = 0</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція намалювати</span></div>
+        <div class="line indent"><span class="b basic">очистити екран</span></div>
+        <div class="line indent"><span class="b led">засвітити x гравецьX y 4</span></div>
+        <div class="line indent"><span class="b led">засвітити x зіркаX y зіркаY</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція зірkaВпала</span></div>
+        <div class="line indent"><span class="b logic">якщо зіркаX = гравецьX</span></div>
+        <div class="line indent indent"><span class="b var">змінити бали на 1</span></div>
+        <div class="line indent indent"><span class="b func">викликати новаЗірка</span></div>
+        <div class="line indent"><span class="b logic">інакше</span></div>
+        <div class="line indent indent"><span class="b var">задати гра = 0</span></div>
+        <div class="line indent indent"><span class="b basic">показати рядок "X"</span></div>
+        <div class="line indent indent"><span class="b basic">показати число бали</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b basic">при початку</span></div>
+        <div class="line indent"><span class="b var">задати гравецьX = 2</span></div>
+        <div class="line indent"><span class="b var">задати бали = 0</span></div>
+        <div class="line indent"><span class="b var">задати гра = 1</span></div>
+        <div class="line indent"><span class="b var">задати швидкість = 400</span></div>
+        <div class="line indent"><span class="b func">викликати новаЗірка</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b basic">завжди</span></div>
+        <div class="line indent"><span class="b logic">якщо гра = 1</span></div>
+        <div class="line indent indent"><span class="b func">викликати намалювати</span></div>
+        <div class="line indent indent"><span class="b basic">пауза швидкість мс</span></div>
+        <div class="line indent indent"><span class="b var">змінити зіркаY на 1</span></div>
+        <div class="line indent indent"><span class="b logic">якщо зіркаY &gt; 4</span></div>
+        <div class="line indent indent indent"><span class="b func">викликати зірkaВпала</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b input">коли кнопка A натиснута</span></div>
+        <div class="line indent"><span class="b var">змінити гравецьX на 1</span></div>
+        <div class="line indent"><span class="b func">викликати перевіритиКордони</span></div>
+      </div>
+      <blockquote class="warn">⚡ Бонус: кожні 3 бали — <span class="b var">змінити швидкість на −50</span> (мін. 100)</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10: Підсумки -->
 <div class="slide light">
   <h2>🧩 Підсумки</h2>
   <ul>
