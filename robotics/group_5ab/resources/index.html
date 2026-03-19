@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Корисні посилання — Робототехніка</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f0f23; color: #e0e0e0; min-height: 100vh; padding: 30px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8em; margin-bottom: 8px; background: linear-gradient(135deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .sub { color: #888; margin-bottom: 24px; }
+  .section { margin-bottom: 24px; }
+  .section h2 { font-size: 1.2em; color: #667eea; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; transition: all .2s; }
+  .card:hover { border-color: #667eea; transform: translateY(-1px); }
+  .card a { color: #8b9cf7; text-decoration: none; font-weight: 600; display: block; margin-bottom: 4px; }
+  .card a:hover { text-decoration: underline; }
+  .card p { color: #888; font-size: .9em; }
+  .nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .nav a { padding: 8px 16px; border-radius: 8px; background: #1a1a2e; border: 1px solid #2a2a3e; color: #aaa; text-decoration: none; font-size: .9em; transition: all .2s; }
+  .nav a:hover { background: rgba(102,126,234,.1); color: #667eea; border-color: #667eea; }
+  .back { display: inline-block; color: #667eea; text-decoration: none; margin-bottom: 16px; font-size: .9em; }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="../../index.html">← Повернутися до уроків</a>
+  <h1>📚 Корисні посилання</h1>
+  <p class="sub">Робототехніка — micro:bit + MakeCode</p>
+
+  <div class="nav">
+    <a href="led.html">🖥️ LED-дисплей</a>
+    <a href="buttons.html">🔘 Кнопки та введення</a>
+    <a href="variables.html">📊 Змінні та логіка</a>
+  </div>
+
+  <div class="section">
+    <h2>🔗 Основні посилання</h2>
+    <div class="card">
+      <a href="https://makecode.microbit.org/" target="_blank">MakeCode Simulator</a>
+      <p>Онлайн-середовище для програмування micro:bit — тут ми створюємо всі проєкти</p>
+    </div>
+    <div class="card">
+      <a href="https://makecode.microbit.org/reference" target="_blank">Довідник MakeCode</a>
+      <p>Опис усіх блоків та категорій — якщо забув що робить якийсь блок</p>
+    </div>
+    <div class="card">
+      <a href="https://microbit.org/get-started/user-guide/overview/" target="_blank">Що таке micro:bit</a>
+      <p>Офіційний сайт micro:bit — опис плати, датчиків, кнопок</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📖 Довідка по темах</h2>
+    <div class="card">
+      <a href="led.html">🖥️ LED-дисплей 5×5</a>
+      <p>Як працює дисплей, координати, блоки show leds / plot / unplot</p>
+    </div>
+    <div class="card">
+      <a href="buttons.html">🔘 Кнопки та введення</a>
+      <p>Кнопки A, B, A+B, датчики: температура, світло, компас, акселерометр</p>
+    </div>
+    <div class="card">
+      <a href="variables.html">📊 Змінні та логіка</a>
+      <p>Змінні, if/else, цикли, pick random, функції</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Змінні та логіка — Довідка</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f0f23; color: #e0e0e0; min-height: 100vh; padding: 30px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.6em; color: #667eea; margin-bottom: 6px; }
+  h2 { font-size: 1.2em; color: #00b894; margin: 20px 0 8px; }
+  .sub { color: #888; margin-bottom: 20px; }
+  p, li { line-height: 1.6; margin-bottom: 6px; }
+  ul { padding-left: 24px; }
+  .b { display: inline-block; padding: 3px 10px; border-radius: 6px; margin: 1px; font-size: .88em; font-weight: 500; color: #fff; }
+  .b.var { background: #f5a623; }
+  .b.logic { background: #5c9acd; }
+  .b.math { background: #59c059; }
+  .b.func { background: #7b5ea7; }
+  .b.loops { background: #40bf4a; }
+  .b.basic { background: #1e90ff; }
+  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  .back { display: inline-block; color: #667eea; text-decoration: none; margin-bottom: 16px; font-size: .9em; }
+  .back:hover { text-decoration: underline; }
+  code { background: #1a1a2e; padding: 2px 6px; border-radius: 4px; color: #e17055; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Назад до посилань</a>
+  <h1>📊 Змінні та логіка</h1>
+  <p class="sub">Змінні, умови, цикли та функції у MakeCode</p>
+
+  <h2>Змінні</h2>
+  <div class="card">
+    <p>Змінна — це «коробка» з назвою, в якій зберігається число або текст.</p>
+    <p><span class="b var">задати x значення 0</span> — створити змінну та присвоїти значення</p>
+    <p><span class="b var">змінити x на 1</span> — додати число до змінної (можна від'ємне!)</p>
+    <p><span class="b var">x</span> — використати значення змінної</p>
+  </div>
+
+  <h2>Умови (якщо / інакше)</h2>
+  <div class="card">
+    <p><span class="b logic">якщо ... тоді</span> — виконати блоки тільки якщо умова правдива</p>
+    <p><span class="b logic">якщо ... тоді ... інакше</span> — два варіанти дій</p>
+    <p><span class="b logic">і</span> / <span class="b logic">або</span> — поєднати умови</p>
+    <p>Приклад: <span class="b logic">якщо x = паливоX</span> <span class="b logic">і</span> <span class="b logic">y = паливоY</span></p>
+  </div>
+
+  <h2>Порівняння</h2>
+  <div class="card">
+    <p><span class="b logic">x = 5</span> — дорівнює</p>
+    <p><span class="b logic">x &gt; 4</span> — більше за</p>
+    <p><span class="b logic">x &lt; 0</span> — менше за</p>
+    <p><span class="b logic">x ≠ 5</span> — не дорівнює</p>
+  </div>
+
+  <h2>Математика</h2>
+  <div class="card">
+    <p><span class="b math">випадкове число від 0 до 4</span> — генерує випадкове число</p>
+    <p><span class="b math">залишок від ділення</span> — корисно для циклічних лічильників</p>
+  </div>
+
+  <h2>Цикли</h2>
+  <div class="card">
+    <p><span class="b basic">завжди</span> — повторювати безкінечно (основний цикл гри)</p>
+    <p><span class="b loops">повторити 4 рази</span> — повторити фіксовану кількість разів</p>
+    <p><span class="b loops">поки ... виконувати</span> — повторювати поки умова правдива</p>
+  </div>
+
+  <h2>Функції</h2>
+  <div class="card">
+    <p>Функція — іменована частина програми для повторного використання.</p>
+    <p><span class="b func">функція назваФункції</span> — створити функцію (блоки всередині)</p>
+    <p><span class="b func">викликати назваФункції</span> — виконати функцію</p>
+    <p>Категорія: <strong>Розширені → Функції</strong></p>
+  </div>
+</div>
+</body>
+</html>

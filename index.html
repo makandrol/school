@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
 <title>Матеріали уроків</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -46,6 +47,7 @@ a{color:inherit;text-decoration:none}
 .lesson-item .name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lesson-item.unpublished{opacity:.35}
 .lesson-item.unpublished .name{font-style:italic}
+.shared-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:.65em;background:rgba(102,126,234,.15);color:var(--purple);margin-left:4px;vertical-align:middle}
 
 /* Content area */
 .content{flex:1;padding:24px 32px;overflow-y:auto;max-height:calc(100vh - 120px)}
@@ -118,10 +120,21 @@ a{color:inherit;text-decoration:none}
 .toast{position:fixed;top:20px;right:20px;padding:10px 18px;border-radius:10px;background:#2d3436;color:#fff;font-size:.85em;z-index:9999;transform:translateX(120%);transition:transform .3s;border-left:4px solid var(--green)}
 .toast.show{transform:translateX(0)}
 
+/* Copy button */
+.copy-btn{padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--muted);cursor:pointer;font-size:.78em;transition:all .2s}
+.copy-btn:hover{background:rgba(255,255,255,.1);color:var(--text)}
+.copy-btn.copied{background:rgba(0,184,148,.15);color:var(--green);border-color:var(--green)}
+
+/* Mobile toggle */
+.sidebar-toggle{display:none;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);cursor:pointer;font-size:.9em;color:var(--muted);text-align:center}
+.sidebar-toggle:hover{background:rgba(255,255,255,.04)}
+
 /* Responsive */
 @media(max-width:900px){
   .main{flex-direction:column}
   .sidebar{width:100%;min-width:0;max-height:none;position:static;border-right:none;border-bottom:1px solid var(--border)}
+  .sidebar.collapsed{display:none}
+  .sidebar-toggle{display:block}
   .content{max-height:none}
 }
 </style>
@@ -142,6 +155,7 @@ a{color:inherit;text-decoration:none}
 </div>
 
 <div class="main">
+  <div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">📚 Показати список уроків</div>
   <div class="sidebar" id="sidebar"></div>
   <div class="content" id="content">
     <div class="empty-state"><div class="icon">📚</div><p>Оберіть урок зі списку зліва</p></div>
@@ -157,15 +171,37 @@ let currentLesson = null;
 let isAdmin = false;
 let ghToken = localStorage.getItem('gh_token') || '';
 
-// --- Load ---
 async function init() {
-  const r = await fetch('manifest.json?_=' + Date.now());
-  manifest = await r.json();
+  try {
+    const r = await fetch('manifest.json?_=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    manifest = await r.json();
+  } catch(e) {
+    document.getElementById('content').innerHTML =
+      '<div class="empty-state"><div class="icon">⚠️</div><p>Не вдалося завантажити дані.<br>Перезавантажте сторінку.</p></div>';
+    return;
+  }
   document.getElementById('subtitle').textContent = manifest.site.subtitle;
   document.title = manifest.site.title;
   renderCatTabs();
   renderSidebar();
+  restoreFromHash();
 }
+
+function restoreFromHash() {
+  const hash = location.hash.slice(1);
+  if (!hash) return;
+  for (const g of manifest.groups) {
+    const lesson = g.lessons.find(l => g.id + '-' + l.n === hash && l.published);
+    if (lesson) {
+      currentCat = g.type;
+      renderCatTabs();
+      selectLesson(g.id, lesson.n);
+      return;
+    }
+  }
+}
+window.addEventListener('hashchange', restoreFromHash);
 
 // --- Category Tabs ---
 function renderCatTabs() {
@@ -218,26 +254,37 @@ function renderSidebar() {
       html += `<div class="lesson-item${activeClass}${pubClass}" onclick="selectLesson('${g.id}',${l.n})">`;
       html += `<span class="num">№${l.n}</span>`;
       html += `<span class="date">${l.date}</span>`;
-      html += `<span class="name">${l.title}</span>`;
+      html += `<span class="name">${l.title}${l.shared?'<span class=shared-badge>спільний</span>':''}</span>`;
       html += '</div>';
     });
   });
   el.innerHTML = html;
 }
 
-// --- Select lesson ---
 function selectLesson(groupId, lessonN) {
   currentLesson = groupId + '-' + lessonN;
+  location.hash = currentLesson;
   const group = manifest.groups.find(g => g.id === groupId);
   const lesson = group.lessons.find(l => l.n === lessonN);
   renderSidebar();
   renderLesson(group, lesson);
+  if (window.innerWidth <= 900) {
+    document.getElementById('sidebar').classList.add('collapsed');
+    document.getElementById('sidebarToggle').textContent = '📚 Показати список уроків';
+  }
+}
+
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const btn = document.getElementById('sidebarToggle');
+  sb.classList.toggle('collapsed');
+  btn.textContent = sb.classList.contains('collapsed') ? '📚 Показати список уроків' : '📚 Сховати список уроків';
 }
 
 // --- Render lesson detail ---
 function renderLesson(group, lesson) {
   const el = document.getElementById('content');
-  const basePath = `${group.path}/lesson-${String(lesson.n).padStart(2,'0')}`;
+  const basePath = lesson.shared || `${group.path}/lesson-${String(lesson.n).padStart(2,'0')}`;
   let html = '<div class="lesson-detail">';
 
   // Title
@@ -246,6 +293,7 @@ function renderLesson(group, lesson) {
   html += `<span class="badge ${group.type}">${group.type==='robotics'?'Робототехніка':'3D-моделювання'}</span>`;
   html += `<span>📅 ${lesson.date}</span>`;
   html += `<span>Урок №${lesson.n}</span>`;
+  if (lesson.shared) html += '<span class="shared-badge" style="font-size:.85em;padding:2px 10px">🔗 Спільний урок</span>';
   html += '</div>';
 
   // File links
@@ -296,7 +344,7 @@ function renderLesson(group, lesson) {
   // Google Classroom text
   if (files.includes('google_classroom.md')) {
     html += '<div class="section">';
-    html += '<div class="section-title">📝 Google Classroom</div>';
+    html += '<div class="section-title">📝 Google Classroom <button class="copy-btn" onclick="copyClassroom()">📋 Скопіювати</button></div>';
     html += `<div class="classroom-box" id="classroomBox">Завантаження...</div>`;
     html += '</div>';
     loadClassroomText(`${basePath}/google_classroom.md`);
@@ -346,6 +394,15 @@ async function loadClassroomText(url) {
     const box = document.getElementById('classroomBox');
     if (box) box.textContent = '(не вдалося завантажити)';
   }
+}
+
+function copyClassroom() {
+  const box = document.getElementById('classroomBox');
+  if (!box) return;
+  navigator.clipboard.writeText(box.textContent).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    if (btn) { btn.textContent = '✅ Скопійовано!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = '📋 Скопіювати'; btn.classList.remove('copied'); }, 2000); }
+  });
 }
 
 // --- Admin ---

@@ -26,7 +26,8 @@
   .tools-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 5px 0; }
   .tools-table td { padding: 3px 8px; border: 1px solid #ddd; }
   .tools-table td:first-child { font-weight: bold; width: 35%; }
-  @media print { body { font-size: 12px; } .page { min-height: auto; } }
+  @media print { body { font-size: 12px; } .page { min-height: auto; } @bottom-center { content: counter(page); } }
+  .print-footer { position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-size: 10px; color: #999; padding: 4px; }
 </style>
 </head>
 <body>
@@ -34,13 +35,13 @@
 <!-- PAGE 1: Вступ -->
 <div class="page">
 <h1>🚀 3D-моделювання | Заняття 5 — Космічна подорож</h1>
-<p><strong>Тема:</strong> Ракета, планета Сатурн, космонавт і космічна станція</p>
+<p><strong>Тема:</strong> Космічний корабель, планета Сатурн, космонавт і космічна станція</p>
 
 <div class="space-hint">🌍 Перший українець у космосі — <strong>Леонід Каденюк</strong> (1997). МКС летить зі швидкістю 28 000 км/год!</div>
 
 <h2>📋 Завдання на сьогодні</h2>
 <ul>
-  <li>⭐ <strong>Завдання 1:</strong> Ракета</li>
+  <li>⭐ <strong>Завдання 1:</strong> Космічний корабель</li>
   <li>⭐⭐ <strong>Завдання 2:</strong> Планета Сатурн</li>
   <li>⭐⭐⭐ <strong>Завдання 3:</strong> Космонавт</li>
   <li>⭐⭐⭐⭐ <strong>Завдання 4:</strong> Космічна станція</li>
@@ -48,11 +49,11 @@
 
 <h2>🔧 Що будемо використовувати</h2>
 <table class="tools-table">
-<tr><td>🔵 Cylinder</td><td>Корпус ракети, кільце Сатурна, руки/ноги, модулі станції</td></tr>
-<tr><td>🔺 Cone</td><td>Носова частина ракети (Basic Shapes → Cone)</td></tr>
+<tr><td>🔵 Cylinder</td><td>Корпус космічного корабля, кільце Сатурна, руки/ноги, модулі станції</td></tr>
+<tr><td>🔺 Cone</td><td>Носова частина космічного корабля (Basic Shapes → Cone)</td></tr>
 <tr><td>⚽ Sphere</td><td>Планета, шолом космонавта, місяці</td></tr>
 <tr><td>📦 Box</td><td>Стабілізатори, сонячні панелі, рюкзак</td></tr>
-<tr><td>🕳️ Hole + Group</td><td>Вікно ракети, отвір у кільці Сатурна</td></tr>
+<tr><td>🕳️ Hole + Group</td><td>Вікно космічного корабля, отвір у кільці Сатурна</td></tr>
 <tr><td>🎯 Align (L)</td><td>Вирівнювання по центру</td></tr>
 <tr><td>📋 Ctrl+D</td><td>Дублювання деталей</td></tr>
 <tr><td>⬆️ Підняти</td><td>Чорний конус ↑ — підняти деталі</td></tr>
@@ -69,10 +70,10 @@
 </table>
 </div>
 
-<!-- PAGE 2: Ракета -->
+<!-- PAGE 2: Космічний корабель -->
 <div class="page">
-<h1>⭐ Завдання 1: «Ракета» 🚀</h1>
-<p>Космічна ракета з корпусом, носовим конусом, стабілізаторами та вікном!</p>
+<h1>⭐ Завдання 1: «Космічний корабель» 🚀</h1>
+<p>Космічний корабель з корпусом, носовим конусом, стабілізаторами та вікном!</p>
 
 <div class="img-container">
 <svg width="180" height="280" viewBox="0 0 180 280">
@@ -91,9 +92,9 @@
   <line x1="130" y1="185" x2="150" y2="175" stroke="#636e72" stroke-dasharray="2"/>
   <text x="135" y="173" font-size="8" fill="#636e72">Box 3×10×15</text>
   <text x="90" y="240" text-anchor="middle" font-size="8" fill="#636e72">Сопло: Box або Cylinder</text>
-  <text x="90" y="270" text-anchor="middle" font-size="11" fill="#636e72">Ракета — вид спереду</text>
+  <text x="90" y="270" text-anchor="middle" font-size="11" fill="#636e72">Космічний корабель — вид спереду</text>
 </svg>
-<div class="img-caption">Ракета: корпус + конус + стабілізатори + вікно</div>
+<div class="img-caption">Космічний корабель: корпус + конус + стабілізатори + вікно</div>
 </div>
 
 <div class="step"><span class="step-title">Крок 1. Корпус</span> — <strong>Cylinder</strong> → діаметр <strong>20</strong>, висота <strong>50</strong> → колір <strong>білий</strong></div>
@@ -105,7 +106,7 @@
 <div class="step"><span class="step-title">Крок 7. Вікно (ілюмінатор)</span> — <strong>Sphere</strong> → діаметр <strong>10</strong> → колір <strong>блакитний</strong> → постав на середину корпусу</div>
 <div class="step"><span class="step-title">Крок 8. Групуємо</span> — <strong>Ctrl+A</strong> → <strong>Ctrl+G</strong></div>
 
-<div class="done">✅ Готово! Космічна ракета! 🚀</div>
+<div class="done">✅ Готово! Космічний корабель! 🚀</div>
 <p class="bonus">🎨 Бонус: додай сопло (Cylinder, помаранчевий, внизу) або напис на корпусі (Text)</p>
 </div>
 
@@ -237,5 +238,6 @@
 <div class="done">🏆 Покажи вчителю — найкращі роботи покажемо всьому класу!</div>
 </div>
 
+<div class="print-footer">3D-моделювання | Заняття 5 | 5-7 клас</div>
 </body>
 </html>

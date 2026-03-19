@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кнопки та введення — Довідка</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", system-ui, sans-serif; background: #0f0f23; color: #e0e0e0; min-height: 100vh; padding: 30px 20px; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.6em; color: #667eea; margin-bottom: 6px; }
+  h2 { font-size: 1.2em; color: #00b894; margin: 20px 0 8px; }
+  .sub { color: #888; margin-bottom: 20px; }
+  p, li { line-height: 1.6; margin-bottom: 6px; }
+  ul { padding-left: 24px; }
+  .b { display: inline-block; padding: 3px 10px; border-radius: 6px; margin: 1px; font-size: .88em; font-weight: 500; color: #fff; }
+  .b.input { background: #d672c0; }
+  .b.basic { background: #1e90ff; }
+  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  th, td { border: 1px solid #2a2a3e; padding: 8px 12px; text-align: left; }
+  th { background: #1a1a2e; color: #667eea; }
+  .back { display: inline-block; color: #667eea; text-decoration: none; margin-bottom: 16px; font-size: .9em; }
+  .back:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Назад до посилань</a>
+  <h1>🔘 Кнопки та введення</h1>
+  <p class="sub">Як micro:bit реагує на дії користувача</p>
+
+  <h2>Кнопки</h2>
+  <div class="card">
+    <table>
+      <tr><th>Подія</th><th>Блок</th><th>Опис</th></tr>
+      <tr><td>Кнопка A</td><td><span class="b input">коли кнопка A натиснута</span></td><td>Ліва кнопка на платі</td></tr>
+      <tr><td>Кнопка B</td><td><span class="b input">коли кнопка B натиснута</span></td><td>Права кнопка на платі</td></tr>
+      <tr><td>Обидві</td><td><span class="b input">коли кнопка A+B натиснута</span></td><td>Натиснути одночасно</td></tr>
+    </table>
+  </div>
+
+  <h2>Датчики</h2>
+  <div class="card">
+    <table>
+      <tr><th>Датчик</th><th>Блок</th><th>Значення</th></tr>
+      <tr><td>🌡️ Температура</td><td><span class="b input">температура (°C)</span></td><td>Число в градусах Цельсія</td></tr>
+      <tr><td>💡 Освітлення</td><td><span class="b input">рівень освітлення</span></td><td>0 (темно) – 255 (яскраво)</td></tr>
+      <tr><td>🧭 Компас</td><td><span class="b input">напрямок компаса (°)</span></td><td>0–360 градусів (0 = Північ)</td></tr>
+      <tr><td>📐 Акселерометр</td><td><span class="b input">прискорення (mg) x</span></td><td>Нахил по осях x, y, z</td></tr>
+    </table>
+  </div>
+
+  <h2>Жести</h2>
+  <div class="card">
+    <p><span class="b input">коли струснути</span> — спрацьовує при потрусі плати</p>
+    <p><span class="b input">коли нахил вліво</span> / <span class="b input">коли нахил вправо</span> — нахил плати</p>
+    <p><span class="b input">коли логотипом вниз</span> — перевернути плату</p>
+  </div>
+
+  <h2>Час</h2>
+  <div class="card">
+    <p><span class="b input">час роботи (мс)</span> — скільки мілісекунд пройшло з моменту запуску</p>
+    <p>Корисно для ігор на реакцію: збережи час до і після натискання, порахуй різницю!</p>
+  </div>
+</div>
+</body>
+</html>

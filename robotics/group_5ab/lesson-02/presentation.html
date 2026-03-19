@@ -6,8 +6,8 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
-  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; }
-  .slide.active { display: flex; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; overflow-y: auto; opacity: 0; transition: opacity .3s ease; }
+  .slide.active { display: flex; opacity: 1; }
   .slide.light { background: #fff; color: #2d3436; }
   .slide.lead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: center; align-items: center; }
   h1 { font-size: 2.8em; margin-bottom: 15px; }
@@ -37,7 +37,7 @@
 <!-- Slide 1: Title -->
 <div class="slide lead">
   <h1>Робототехніка | Урок 21</h1>
-  <h2>🎯 Ігри: «Реакція», «Вгадай число» та «Бомба»</h2>
+  <h2>🎯 Ігри: «Реакція», «Вгадай число» та «Зворотний відлік»</h2>
   <p>03.03.2026 | Група: 5-А, 5-Б</p>
 </div>
 
@@ -153,41 +153,41 @@ on button B → change спроба by −1
   <blockquote>💡 <code>show arrow</code> знайдеш в <strong>Basic → show arrow</strong>, вибери North (↑) або South (↓)</blockquote>
 </div>
 
-<!-- Slide 9: Бомба — ідея -->
+<!-- Slide 9: Зворотний відлік — ідея -->
 <div class="slide light">
-  <h2>⭐⭐⭐ Завдання 3 — Гра «Бомба» 💣</h2>
-  <p>Micro:bit — це бомба! Рахує 10, 9, 8... але <strong>вибухає</strong> на випадковому числі! 💀</p>
+  <h2>⭐⭐⭐ Завдання 3 — Гра «Зворотний відлік» ⏰</h2>
+  <p>Micro:bit — це таймер! Рахує 10, 9, 8... але <strong>зупиняється</strong> на випадковому числі! ❌</p>
   <table>
     <tr><th>Кнопка</th><th>Дія</th></tr>
-    <tr><td><strong>A</strong></td><td>Запустити бомбу! Починається відлік 10→0</td></tr>
-    <tr><td><strong>B</strong></td><td>Спробувати «розмінувати» (зупинити таймер)</td></tr>
+    <tr><td><strong>A</strong></td><td>Запустити таймер! Починається відлік 10→0</td></tr>
+    <tr><td><strong>B</strong></td><td>Спробувати зупинити таймер</td></tr>
   </table>
-  <blockquote class="warn">💀 Бомба вибухає на <strong>випадковому</strong> числі від 3 до 8. Ти не знаєш коли! Натисни B <strong>до</strong> вибуху!</blockquote>
-  <blockquote class="fun">🎮 Можна грати по черзі — передавай micro:bit одногрупнику! В кого вибухне — той програв!</blockquote>
+  <blockquote class="warn">❌ Таймер зупиняється на <strong>випадковому</strong> числі від 3 до 8. Ти не знаєш коли! Натисни B <strong>до</strong> зупинки!</blockquote>
+  <blockquote class="fun">🎮 Можна грати по черзі — передавай micro:bit одногрупнику! В кого зупиниться — той програв!</blockquote>
 </div>
 
-<!-- Slide 10: Бомба — код -->
+<!-- Slide 10: Зворотний відлік — код -->
 <div class="slide light">
-  <h2>🛠️ Будуємо «Бомбу»</h2>
-  <p><strong>Змінні:</strong> <code>бомба</code>, <code>рахунок</code>, <code>вибухнула</code></p>
+  <h2>🛠️ Будуємо «Зворотний відлік»</h2>
+  <p><strong>Змінні:</strong> <code>стоп</code>, <code>рахунок</code>, <code>програв</code></p>
   <h3>Кнопка A — запуск:</h3>
   <pre>on button A:
-  set бомба = pick random 3 to 8     ← коли вибухне?
+  set стоп = pick random 3 to 8     ← коли зупиниться?
   set рахунок = 10
-  set вибухнула = 0
+  set програв = 0
   while рахунок > 0:
     show number рахунок
     pause 400
-    if рахунок = бомба:
-      show icon 💀                    ← БУУУМ!
-      show string "BOOM"
-      set вибухнула = 1
+    if рахунок = стоп:
+      show icon ❌                    ← СТОП!
+      show string "СТОП"
+      set програв = 1
       ← вихід з циклу (break)
     change рахунок by −1</pre>
-  <h3>Кнопка B — розмінувати:</h3>
+  <h3>Кнопка B — зупинити:</h3>
   <pre>on button B:
   set рахунок = 0                    ← зупиняємо відлік!
-  if вибухнула = 0:
+  if програв = 0:
     show icon ✓                      ← Врятувався!
     show string "OK!"</pre>
   <blockquote>💡 <code>while</code> — цикл «поки». Знайдеш: <strong>Loops → while</strong></blockquote>
@@ -220,7 +220,7 @@ const slides = document.querySelectorAll('.slide');
 let idx = 0;
 document.getElementById('total').textContent = slides.length;
 function show(i) {
-  slides.forEach(s => s.classList.remove('active'));
+  slides[idx].classList.remove('active');
   idx = Math.max(0, Math.min(i, slides.length - 1));
   slides[idx].classList.add('active');
   document.getElementById('current').textContent = idx + 1;
@@ -236,6 +236,9 @@ document.addEventListener('click', e => {
   if (e.clientX > window.innerWidth / 2) show(idx + 1);
   else show(idx - 1);
 });
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { dx < 0 ? show(idx+1) : show(idx-1); } }, {passive:true});
 </script>
 </body>
 </html>

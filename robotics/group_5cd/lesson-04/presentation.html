@@ -12,8 +12,11 @@
     padding: 50px 70px;
     flex-direction: column;
     justify-content: center;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity .3s ease;
   }
-  .slide.active { display: flex; }
+  .slide.active { display: flex; opacity: 1; }
   .slide.light { background: #fff; color: #2d3436; }
   .slide.lead {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -150,7 +153,7 @@ const slides = document.querySelectorAll('.slide');
 let idx = 0;
 document.getElementById('total').textContent = slides.length;
 function show(i) {
-  slides.forEach(s => s.classList.remove('active'));
+  slides[idx].classList.remove('active');
   idx = Math.max(0, Math.min(i, slides.length - 1));
   slides[idx].classList.add('active');
   document.getElementById('current').textContent = idx + 1;
@@ -166,6 +169,9 @@ document.addEventListener('click', e => {
   if (e.clientX > window.innerWidth / 2) show(idx + 1);
   else show(idx - 1);
 });
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { dx < 0 ? show(idx+1) : show(idx-1); } }, {passive:true});
 </script>
 </body>
 </html>

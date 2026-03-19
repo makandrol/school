@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Урок 6</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; overflow-y: auto; opacity: 0; transition: opacity .3s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: center; align-items: center; }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #6c5ce7; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #00b894; margin: 12px 0 6px; }
+  p, li { font-size: 1.15em; line-height: 1.6; }
+  ul { padding-left: 30px; }
+  li { margin: 5px 0; }
+  table { border-collapse: collapse; margin: 12px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 8px 14px; text-align: left; font-size: 1.05em; }
+  th { background: #f1f2f6; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #6c5ce7; background: #f8f9fa; padding: 10px 18px; margin: 10px 0; border-radius: 0 6px 6px 0; font-size: 1.05em; }
+  .warn { border-left-color: #fdcb6e; background: #fef9e7; }
+  .fun { border-left-color: #00b894; background: #f0fff4; }
+  pre { background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px; padding: 12px 16px; font-size: 1em; line-height: 1.5; overflow-x: auto; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+  .emoji-big { font-size: 2em; margin: 5px 0; }
+  .led-grid { display: inline-grid; grid-template-columns: repeat(5, 36px); gap: 4px; margin: 10px 0; }
+  .led-grid span { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #ddd; display: flex; align-items: center; justify-content: center; font-size: 0.7em; color: #b2bec3; }
+  .led-grid span.on { background: #e74c3c; border-color: #c0392b; color: #fff; font-weight: bold; }
+  .led-grid span.car { background: #fdcb6e; border-color: #f39c12; color: #2d3436; font-weight: bold; }
+  .led-grid span.fuel { background: #00b894; border-color: #00a885; color: #fff; font-weight: bold; }
+  .led-grid span.wall { background: #636e72; border-color: #2d3436; color: #fff; font-weight: bold; }
+  .two-col { display: flex; gap: 40px; align-items: flex-start; }
+  .two-col > div { flex: 1; }
+  .block { display: inline-block; padding: 4px 12px; border-radius: 8px; margin: 2px; font-size: 0.95em; font-weight: 500; color: #fff; }
+  .block.basic { background: #1e90ff; }
+  .block.led { background: #e74c3c; }
+  .block.var { background: #f5a623; }
+  .block.input { background: #d672c0; }
+  .block.logic { background: #5c9acd; }
+  .block.math { background: #59c059; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка | Урок 6</h1>
+  <h2>🚗 Машинка на micro:bit</h2>
+  <p>19.03.2026 | Група: 5-В, 5-Г</p>
+  <p style="margin-top:20px; font-size:1.1em;">«Машинка» • «Збирач палива» • «Не зачепи!»</p>
+</div>
+
+<!-- Slide 2: Повторення координат LED -->
+<div class="slide light">
+  <h2>🔄 Повторення координат LED</h2>
+  <div class="two-col">
+    <div>
+      <p>Нагадаємо: LED-екран micro:bit — це сітка 5×5 діодів.</p>
+      <ul>
+        <li><strong>x</strong> — стовпець (0–4, зліва → направо)</li>
+        <li><strong>y</strong> — рядок (0–4, зверху → вниз)</li>
+      </ul>
+      <p style="margin-top:10px;">Блоки для роботи з діодами:</p>
+      <p><span class="block led">засвітити x __ y __</span> — запалити діод</p>
+      <p><span class="block led">погасити x __ y __</span> — погасити діод</p>
+      <blockquote>💡 Сьогодні ключове: <strong>перевірка кордонів</strong> — щоб машинка не «вилетіла» за межі екрану!</blockquote>
+    </div>
+    <div style="text-align:center;">
+      <p style="margin-bottom:5px;"><strong>x →</strong></p>
+      <div class="led-grid">
+        <span>0,0</span><span>1,0</span><span>2,0</span><span>3,0</span><span>4,0</span>
+        <span>0,1</span><span>1,1</span><span>2,1</span><span>3,1</span><span>4,1</span>
+        <span>0,2</span><span>1,2</span><span>2,2</span><span>3,2</span><span>4,2</span>
+        <span>0,3</span><span>1,3</span><span>2,3</span><span>3,3</span><span>4,3</span>
+        <span>0,4</span><span>1,4</span><span>2,4</span><span>3,4</span><span>4,4</span>
+      </div>
+      <p style="font-size:0.9em; color:#636e72;"><strong>y ↓</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Нове — перевірка кордонів -->
+<div class="slide light">
+  <h2>🆕 Нове — перевірка кордонів</h2>
+  <p>Коли машинка рухається кнопками, вона може «вилетіти» за край екрану!</p>
+  <p>Рішення — після кожного руху <strong>перевіряємо</strong> значення:</p>
+  <table>
+    <tr><th>Проблема</th><th>Рішення</th></tr>
+    <tr><td>x стає <strong>менше 0</strong></td><td><span class="block logic">якщо x &lt; 0</span> → <span class="block var">задати x значення 0</span></td></tr>
+    <tr><td>x стає <strong>більше 4</strong></td><td><span class="block logic">якщо x &gt; 4</span> → <span class="block var">задати x значення 4</span></td></tr>
+    <tr><td>y стає <strong>менше 0</strong></td><td><span class="block logic">якщо y &lt; 0</span> → <span class="block var">задати y значення 0</span></td></tr>
+    <tr><td>y стає <strong>більше 4</strong></td><td><span class="block logic">якщо y &gt; 4</span> → <span class="block var">задати y значення 4</span></td></tr>
+  </table>
+  <blockquote>💡 Це як стіни кімнати — машинка впирається і далі не їде!</blockquote>
+  <blockquote class="warn">⚠️ Без цієї перевірки діод «зникне» за край і ти його не побачиш!</blockquote>
+</div>
+
+<!-- Slide 4: Завдання 1 — Машинка -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Машинка 🚗</h2>
+  <p>Машинка їде по нижньому рядку (y = 4). Керуй кнопками!</p>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>Кнопка</th><th>Дія</th></tr>
+        <tr><td><strong>A</strong></td><td>Вправо → (x + 1)</td></tr>
+        <tr><td><strong>B</strong></td><td>Вліво ← (x − 1)</td></tr>
+      </table>
+      <ul>
+        <li>Машинка — це <strong>один діод</strong> на LED-екрані</li>
+        <li>Рухається тільки вліво-вправо</li>
+        <li>Не може вилізти за кордони! (0 ≤ x ≤ 4)</li>
+      </ul>
+      <p><strong>Змінна:</strong> <code>x</code></p>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Машинка на рядку y=4:</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span class="car">🚗</span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">B: ← вліво &nbsp; | &nbsp; A: вправо →</p>
+    </div>
+  </div>
+  <blockquote class="warn">⚠️ Запам'ятай: A — вправо (+1), B — вліво (−1)!</blockquote>
+</div>
+
+<!-- Slide 5: Будуємо Машинку — блоки -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Машинку» — блоки</h2>
+  <p><strong>Створи змінну:</strong> <code>x</code></p>
+  <div class="two-col">
+    <div>
+      <h3>при старті:</h3>
+      <p><span class="block var">задати x значення 2</span></p>
+      <h3>постійно:</h3>
+      <p><span class="block basic">очистити екран</span></p>
+      <p><span class="block led">засвітити x <em>x</em> y 4</span></p>
+      <p><span class="block basic">пауза 100 мс</span></p>
+    </div>
+    <div>
+      <h3>коли кнопка A натиснута:</h3>
+      <p><span class="block var">змінити x на 1</span></p>
+      <p><span class="block logic">якщо x &gt; 4</span></p>
+      <p style="padding-left:15px;"><span class="block var">задати x значення 4</span></p>
+      <h3>коли кнопка B натиснута:</h3>
+      <p><span class="block var">змінити x на −1</span></p>
+      <p><span class="block logic">якщо x &lt; 0</span></p>
+      <p style="padding-left:15px;"><span class="block var">задати x значення 0</span></p>
+    </div>
+  </div>
+  <blockquote>💡 <span class="block basic">очистити екран</span> + <span class="block led">засвітити</span> в циклі <strong>постійно</strong> — так машинка «рухається» (старий діод гасне, новий загорається).</blockquote>
+</div>
+
+<!-- Slide 6: Завдання 2 — Збирач палива -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Збирач палива ⛽</h2>
+  <p>Машинка їздить по всьому полю 5×5! На екрані з'являється «паливо» — збери його!</p>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>Кнопка</th><th>Дія</th></tr>
+        <tr><td><strong>A</strong></td><td>Рух вправо → (x + 1)</td></tr>
+        <tr><td><strong>B</strong></td><td>Рух вліво ← (x − 1)</td></tr>
+        <tr><td><strong>A+B</strong></td><td>Рух вниз ↓ (y + 1)</td></tr>
+      </table>
+      <ul>
+        <li>Машинка їде в 3 напрямках</li>
+        <li>Паливо — випадковий діод на екрані</li>
+        <li>Зібрав 5 бочок = перемога! 🏆</li>
+        <li>Кордони перевіряємо для x <strong>і</strong> y!</li>
+      </ul>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Машинка + паливо:</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span class="fuel">⛽</span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span class="car">🚗</span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">Машинка (1,2) збирає паливо (3,0)</p>
+    </div>
+  </div>
+  <blockquote class="fun">🏆 Хто збере 5 бочок найшвидше?</blockquote>
+</div>
+
+<!-- Slide 7: Будуємо Збирач палива — блоки -->
+<div class="slide light">
+  <h2>🛠️ Будуємо «Збирач палива» — блоки</h2>
+  <p><strong>Змінні:</strong> <code>x</code>, <code>y</code>, <code>паливоX</code>, <code>паливоY</code>, <code>бали</code></p>
+  <div class="two-col">
+    <div>
+      <h3>при старті:</h3>
+      <p><span class="block var">задати x значення 2</span></p>
+      <p><span class="block var">задати y значення 2</span></p>
+      <p><span class="block var">задати бали значення 0</span></p>
+      <p><span class="block var">задати паливоX значення</span> <span class="block math">випадкове від 0 до 4</span></p>
+      <p><span class="block var">задати паливоY значення</span> <span class="block math">випадкове від 0 до 4</span></p>
+      <h3>постійно:</h3>
+      <p><span class="block basic">очистити екран</span></p>
+      <p><span class="block led">засвітити x <em>x</em> y <em>y</em></span></p>
+      <p><span class="block led">засвітити x <em>паливоX</em> y <em>паливоY</em></span></p>
+      <p><span class="block logic">якщо x = паливоX і y = паливоY</span></p>
+      <p style="padding-left:15px;"><span class="block var">змінити бали на 1</span></p>
+      <p style="padding-left:15px;"><span class="block var">задати паливоX значення</span> <span class="block math">випадкове від 0 до 4</span></p>
+      <p style="padding-left:15px;"><span class="block var">задати паливоY значення</span> <span class="block math">випадкове від 0 до 4</span></p>
+      <p><span class="block logic">якщо бали = 5</span></p>
+      <p style="padding-left:15px;"><span class="block basic">показати рядок "WIN"</span></p>
+      <p><span class="block basic">пауза 200 мс</span></p>
+    </div>
+    <div>
+      <h3>коли кнопка A (вправо):</h3>
+      <p><span class="block var">змінити x на 1</span></p>
+      <p><span class="block logic">якщо x &gt; 4</span> → <span class="block var">задати x значення 4</span></p>
+      <h3>коли кнопка B (вліво):</h3>
+      <p><span class="block var">змінити x на −1</span></p>
+      <p><span class="block logic">якщо x &lt; 0</span> → <span class="block var">задати x значення 0</span></p>
+      <h3>коли кнопка A+B (вниз):</h3>
+      <p><span class="block var">змінити y на 1</span></p>
+      <p><span class="block logic">якщо y &gt; 4</span> → <span class="block var">задати y значення 4</span></p>
+      <blockquote class="warn">⚠️ Для перевірки <strong>двох умов одночасно</strong> (x = паливоX <em>і</em> y = паливоY), використай блок <span class="block logic">і (and)</span> з категорії <strong>Logic</strong>!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Завдання 3 — Не зачепи! -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Не зачепи! 🚧</h2>
+  <p>Перешкоди падають зверху вниз! Керуй машинкою і не зачепи!</p>
+  <div class="two-col">
+    <div>
+      <table>
+        <tr><th>Елемент</th><th>Опис</th></tr>
+        <tr><td>🚗 Машинка</td><td>Нижній рядок (y=4), рухається вліво/вправо</td></tr>
+        <tr><td>🚧 Перешкода</td><td>Починає з y=0, рухається вниз</td></tr>
+        <tr><td>🏆 Бали</td><td>+1 за кожну перешкоду, яку оминув</td></tr>
+      </table>
+      <ul>
+        <li>Перешкода — діод у випадковому стовпці</li>
+        <li>Рухається зверху вниз</li>
+        <li>Якщо торкнулась машинки — <strong>Game Over!</strong></li>
+      </ul>
+      <p><strong>Змінні:</strong> <code>x</code>, <code>перешкодаX</code>, <code>перешкодаY</code>, <code>бали</code>, <code>гра</code></p>
+    </div>
+    <div style="text-align:center;">
+      <p><strong>Перешкода падає:</strong></p>
+      <div class="led-grid">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span class="wall">🚧</span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span class="car">🚗</span><span></span><span></span>
+      </div>
+      <p style="font-size:0.9em;">Не зачепи! A → вправо, B → вліво</p>
+    </div>
+  </div>
+  <blockquote>💡 Це як справжня гра на телефоні — тільки на micro:bit!</blockquote>
+</div>
+
+<!-- Slide 9: Підсумки -->
+<div class="slide light">
+  <h2>🏁 Граємо та підсумки!</h2>
+  <h3>Міні-змагання:</h3>
+  <ul>
+    <li>🚗 <strong>Машинка</strong> — покеруй 30 секунд, не вилазь за кордони!</li>
+    <li>⛽ <strong>Збирач палива</strong> — хто збере 5 бочок найшвидше?</li>
+    <li>🚧 <strong>Не зачепи!</strong> — хто набере найбільше балів?</li>
+  </ul>
+  <h3>Що ми сьогодні вивчили:</h3>
+  <ul>
+    <li>✅ <strong>Перевірка кордонів</strong> — щоб об'єкт не виходив за межі 0–4</li>
+    <li>✅ Керування <strong>рухом діода</strong> кнопками A, B, A+B</li>
+    <li>✅ <strong>Зіткнення</strong> — перевірка, чи два об'єкти на одному місці</li>
+    <li>✅ <strong>Змінна-прапорець</strong> (<code>гра</code>) — для зупинки програми</li>
+    <li>✅ Створили <strong>3 ігри!</strong> 🎮🎮🎮</li>
+  </ul>
+  <blockquote class="fun">🏠 Вдома: зроби перешкоди швидшими з часом (зменшуй <code>pause</code> кожні 5 балів), або додай рух вгору у «Збирач палива»!</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides[idx].classList.remove('active');
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { dx < 0 ? show(idx+1) : show(idx-1); } }, {passive:true});
+</script>
+</body>
+</html>
