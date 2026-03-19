@@ -11,10 +11,12 @@
       "schedule": "Вівторок, 14:10–14:50 (Zoom)",
       "path": "robotics/group_5ab",
       "extras": [
-        {"label": "📚 Корисні посилання", "file": "resources/index.html"},
-        {"label": "🖥️ LED-дисплей", "file": "resources/led.html"},
-        {"label": "🔘 Кнопки та введення", "file": "resources/buttons.html"},
-        {"label": "📊 Змінні та логіка", "file": "resources/variables.html"}
+        {"label": "📚 Матеріали", "id": "resources", "tabs": [
+          {"label": "🔗 Посилання", "id": "links"},
+          {"label": "🖥️ LED-дисплей", "id": "led"},
+          {"label": "🔘 Кнопки та введення", "id": "buttons"},
+          {"label": "📊 Змінні та логіка", "id": "variables"}
+        ]}
       ],
       "lessons": [
         {

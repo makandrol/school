@@ -49,6 +49,27 @@ a{color:inherit;text-decoration:none}
 .lesson-item.unpublished .name{font-style:italic}
 .shared-badge{display:inline-block;padding:1px 6px;border-radius:4px;font-size:.65em;background:rgba(102,126,234,.15);color:var(--purple);margin-left:4px;vertical-align:middle}
 
+/* Resource tabs inline */
+.res-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.res-tab{padding:6px 14px;border-radius:8px;background:var(--card);border:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:.85em;transition:all .2s}
+.res-tab:hover{background:rgba(102,126,234,.08);color:var(--text)}
+.res-tab.active{background:rgba(102,126,234,.15);color:var(--purple);border-color:var(--purple)}
+.res-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.res-card a{color:#8b9cf7;font-weight:600;display:block;margin-bottom:2px}
+.res-card a:hover{text-decoration:underline}
+.res-card p{color:var(--muted);font-size:.88em}
+.res-card table{width:100%;border-collapse:collapse;margin:6px 0;font-size:.88em}
+.res-card th,.res-card td{border:1px solid var(--border);padding:6px 10px;text-align:left}
+.res-card th{background:rgba(102,126,234,.08);color:var(--purple)}
+.res-section h3{font-size:1.05em;color:var(--purple);margin:16px 0 8px}
+.b{display:inline-block;padding:2px 8px;border-radius:6px;margin:1px;font-size:.82em;font-weight:500;color:#fff}
+.b.basic{background:#1e90ff}.b.input{background:#d672c0}.b.led{background:#e74c3c}
+.b.var{background:#f5a623}.b.logic{background:#5c9acd}.b.math{background:#59c059}
+.b.func{background:#7b5ea7}.b.loops{background:#40bf4a}
+.led-grid{display:inline-grid;grid-template-columns:repeat(5,28px);gap:2px;margin:6px 0}
+.led-grid span{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.55em;color:#555}
+.led-grid span.on{background:#e74c3c;border-color:#c0392b;color:#fff}
+
 /* Content area */
 .content{flex:1;padding:24px 32px;overflow-y:auto;max-height:calc(100vh - 120px)}
 .content::-webkit-scrollbar{width:4px}
@@ -191,6 +212,11 @@ async function init() {
 function restoreFromHash() {
   const hash = location.hash.slice(1);
   if (!hash) return;
+  if (hash.endsWith('-res')) {
+    const gId = hash.replace('-res','');
+    const g = manifest.groups.find(g => g.id === gId);
+    if (g) { currentCat = g.type; renderCatTabs(); selectResources(gId); return; }
+  }
   for (const g of manifest.groups) {
     const lesson = g.lessons.find(l => g.id + '-' + l.n === hash && l.published);
     if (lesson) {
@@ -233,13 +259,16 @@ function renderSidebar() {
     const shortName = g.name.replace(/^(Робототехніка|3D-моделювання)\s*/,'');
     html += `<div class="grp-header"><span class="dot ${g.type}"></span>${shortName}</div>`;
     html += `<div class="grp-schedule">📅 ${g.schedule}</div>`;
-    // Extras
+    // Extras — single clickable item in sidebar
     if (g.extras && g.extras.length) {
-      html += '<div class="extras-list">';
       g.extras.forEach(e => {
-        html += `<a class="extras-link" href="${g.path}/${e.file}" target="_blank">${e.label}</a>`;
+        if (e.tabs) {
+          const isActive = currentLesson === g.id + '-res';
+          const activeClass = isActive ? ' active' : '';
+          html += `<div class="lesson-item${activeClass}" onclick="selectResources('${g.id}')" style="margin-top:4px">`;
+          html += `<span class="num">📚</span><span class="name">${e.label}</span></div>`;
+        }
       });
-      html += '</div>';
     }
     // Lessons (published first, then unpublished)
     const published = g.lessons.filter(l => l.published);
@@ -279,6 +308,75 @@ function toggleSidebar() {
   const btn = document.getElementById('sidebarToggle');
   sb.classList.toggle('collapsed');
   btn.textContent = sb.classList.contains('collapsed') ? '📚 Показати список уроків' : '📚 Сховати список уроків';
+}
+
+let resTab = 'links';
+function selectResources(groupId) {
+  currentLesson = groupId + '-res';
+  location.hash = currentLesson;
+  renderSidebar();
+  renderResources(groupId);
+  if (window.innerWidth <= 900) {
+    document.getElementById('sidebar').classList.add('collapsed');
+    document.getElementById('sidebarToggle').textContent = '📚 Показати список уроків';
+  }
+}
+
+function renderResources(groupId) {
+  const group = manifest.groups.find(g => g.id === groupId);
+  const extra = group.extras.find(e => e.tabs);
+  if (!extra) return;
+  const el = document.getElementById('content');
+  let html = '<div class="lesson-detail"><h2>📚 Матеріали</h2>';
+  html += '<div class="res-tabs">';
+  extra.tabs.forEach(t => {
+    html += `<div class="res-tab${resTab===t.id?' active':''}" onclick="resTab=\'${t.id}\';renderResources(\'${groupId}\')">${t.label}</div>`;
+  });
+  html += '</div><div class="res-section">';
+  html += getResContent(resTab);
+  html += '</div></div>';
+  el.innerHTML = html;
+}
+
+function getResContent(tab) {
+  if (tab === 'links') return `
+    <h3>🔗 Основні посилання</h3>
+    <div class="res-card"><a href="https://makecode.microbit.org/" target="_blank">MakeCode Simulator</a><p>Онлайн-середовище для програмування micro:bit — тут ми створюємо всі проєкти</p></div>
+    <div class="res-card"><a href="https://makecode.microbit.org/reference" target="_blank">Довідник MakeCode</a><p>Опис усіх блоків та категорій — якщо забув що робить якийсь блок</p></div>
+    <div class="res-card"><a href="https://microbit.org/get-started/user-guide/overview/" target="_blank">Що таке micro:bit</a><p>Офіційний сайт micro:bit — опис плати, датчиків, кнопок</p></div>`;
+  if (tab === 'led') return `
+    <h3>Координати</h3>
+    <div class="res-card"><p><strong>x</strong> — стовпець (0–4, зліва направо) · <strong>y</strong> — рядок (0–4, зверху вниз)</p>
+    <div class="led-grid"><span>0,0</span><span>1,0</span><span>2,0</span><span>3,0</span><span>4,0</span><span>0,1</span><span>1,1</span><span>2,1</span><span>3,1</span><span>4,1</span><span>0,2</span><span>1,2</span><span class="on">2,2</span><span>3,2</span><span>4,2</span><span>0,3</span><span>1,3</span><span>2,3</span><span>3,3</span><span>4,3</span><span>0,4</span><span>1,4</span><span>2,4</span><span>3,4</span><span>4,4</span></div></div>
+    <h3>Основні блоки</h3>
+    <div class="res-card"><p><span class="b basic">показати значок</span> — вивести іконку (серце, смайлик тощо)</p><p><span class="b basic">показати рядок "текст"</span> — прокрутити текст</p><p><span class="b basic">показати число 5</span> — показати число</p><p><span class="b basic">показати світлодіоди</span> — довільний паттерн 5×5</p><p><span class="b basic">очистити екран</span> — вимкнути всі діоди</p></div>
+    <h3>Точкове керування</h3>
+    <div class="res-card"><p><span class="b led">засвітити x y</span> — увімкнути один діод</p><p><span class="b led">погасити x y</span> — вимкнути один діод</p></div>
+    <h3>Перевірка кордонів</h3>
+    <div class="res-card"><p>Координати в межах 0–4. Завжди перевіряй: якщо x &gt; 4 → задати x = 4, якщо x &lt; 0 → задати x = 0</p></div>`;
+  if (tab === 'buttons') return `
+    <h3>Кнопки</h3>
+    <div class="res-card"><table><tr><th>Подія</th><th>Блок</th><th>Опис</th></tr><tr><td>Кнопка A</td><td><span class="b input">коли кнопка A натиснута</span></td><td>Ліва кнопка</td></tr><tr><td>Кнопка B</td><td><span class="b input">коли кнопка B натиснута</span></td><td>Права кнопка</td></tr><tr><td>Обидві</td><td><span class="b input">коли кнопка A+B натиснута</span></td><td>Одночасно</td></tr></table></div>
+    <h3>Датчики</h3>
+    <div class="res-card"><table><tr><th>Датчик</th><th>Блок</th><th>Значення</th></tr><tr><td>🌡️ Температура</td><td><span class="b input">температура (°C)</span></td><td>Градуси Цельсія</td></tr><tr><td>💡 Освітлення</td><td><span class="b input">рівень освітлення</span></td><td>0–255</td></tr><tr><td>🧭 Компас</td><td><span class="b input">напрямок компаса (°)</span></td><td>0–360°</td></tr><tr><td>📐 Акселерометр</td><td><span class="b input">прискорення (mg) x</span></td><td>Нахил по осях</td></tr></table></div>
+    <h3>Жести</h3>
+    <div class="res-card"><p><span class="b input">коли струснути</span> — потрус плати</p><p><span class="b input">коли нахил вліво / вправо</span> — нахил плати</p></div>
+    <h3>Час</h3>
+    <div class="res-card"><p><span class="b input">час роботи (мс)</span> — мілісекунди з моменту запуску. Для ігор на реакцію!</p></div>`;
+  if (tab === 'variables') return `
+    <h3>Змінні</h3>
+    <div class="res-card"><p><span class="b var">задати x значення 0</span> — створити та присвоїти</p><p><span class="b var">змінити x на 1</span> — додати (можна від'ємне)</p></div>
+    <h3>Умови</h3>
+    <div class="res-card"><p><span class="b logic">якщо ... тоді</span> — виконати якщо правда</p><p><span class="b logic">якщо ... тоді ... інакше</span> — два варіанти</p><p><span class="b logic">і</span> / <span class="b logic">або</span> — поєднати умови</p></div>
+    <h3>Порівняння</h3>
+    <div class="res-card"><p><span class="b logic">x = 5</span> дорівнює · <span class="b logic">x &gt; 4</span> більше · <span class="b logic">x &lt; 0</span> менше · <span class="b logic">x ≠ 5</span> не дорівнює</p></div>
+    <h3>Математика</h3>
+    <div class="res-card"><p><span class="b math">випадкове число від 0 до 4</span> — генерує випадкове число</p></div>
+    <h3>Цикли</h3>
+    <div class="res-card"><p><span class="b basic">завжди</span> — безкінечно</p><p><span class="b loops">повторити 4 рази</span> — фіксована кількість</p><p><span class="b loops">поки ... виконувати</span> — поки умова правдива</p></div>
+    <h3>Функції</h3>
+    <div class="res-card"><p><span class="b func">функція назваФункції</span> — створити</p><p><span class="b func">викликати назваФункції</span> — виконати</p><p>Категорія: <strong>Розширені → Функції</strong></p></div>`;
+  return '';
 }
 
 // --- Render lesson detail ---
