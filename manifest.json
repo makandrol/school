@@ -58,6 +58,17 @@
           "published": true,
           "shared": "robotics/shared/lesson-functions",
           "files": ["presentation.html", "google_classroom.md"]
+        },
+        {
+          "n": 6, "title": "🎮 Функції у грі — закріплення", "date": "07.04.2026",
+          "published": true,
+          "files": ["presentation.html", "google_classroom.md"],
+          "makecode": [
+            {"label": "Завдання 1 — Кубик емоцій", "url": ""},
+            {"label": "Завдання 2 — Влучний стрілець", "url": ""},
+            {"label": "Завдання 3 — Космічний дощ", "url": ""},
+            {"label": "Завдання 4 — Пінг-понг", "url": ""}
+          ]
         }
       ]
     },
