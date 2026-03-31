@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 7</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
+  .slide { display: none; width: 100vw; height: 100vh; padding: 50px 70px; flex-direction: column; justify-content: center; overflow-y: auto; opacity: 0; transition: opacity .3s ease; }
+  .slide.active { display: flex; opacity: 1; }
+  .slide.light { background: #fff; color: #2d3436; }
+  .slide.lead { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); color: #fff; text-align: center; align-items: center; }
+  h1 { font-size: 2.8em; margin-bottom: 15px; }
+  h2 { font-size: 2em; color: #00b894; margin-bottom: 18px; }
+  .lead h1, .lead h2, .lead p { color: #fff; }
+  .lead h2 { font-size: 2.2em; }
+  .lead p { font-size: 1.3em; opacity: 0.9; }
+  h3 { font-size: 1.3em; color: #6c5ce7; margin: 12px 0 6px; }
+  p, li { font-size: 1.2em; line-height: 1.6; }
+  ul, ol { padding-left: 30px; }
+  li { margin: 6px 0; }
+  table { border-collapse: collapse; margin: 15px 0; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: 10px 16px; text-align: left; font-size: 1.1em; }
+  th { background: #f0fff4; }
+  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
+  blockquote { border-left: 4px solid #00b894; background: #f0fff4; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.1em; }
+  .space { border-left-color: #6c5ce7; background: #f0e6ff; }
+  .tip { border-left-color: #f39c12; background: #fef9e7; }
+  .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
+  .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
+  .two-col { display: flex; gap: 40px; align-items: flex-start; }
+  .two-col > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>3D-моделювання | Заняття 7</h1>
+  <h2>🐠 Підводний світ</h2>
+  <p>31.03.2026 | Група: 3-4 клас</p>
+  <p style="margin-top:15px; font-size:1.1em;">Рибка • Морська зірка • Підводний човен • Восьминіг</p>
+</div>
+
+<!-- Slide 2: Цікаві факти -->
+<div class="slide light">
+  <h2>🌊 Дивовижний океан!</h2>
+  <div class="two-col">
+    <div>
+      <ul>
+        <li>🌊 Океан покриває <strong>70% поверхні Землі</strong></li>
+        <li>🐠 У морі живе понад <strong>230 000 видів тварин</strong></li>
+        <li>🐙 Восьминіг має <strong>3 серця</strong> і блакитну кров!</li>
+        <li>🌟 Морська зірка може <strong>відрощувати загублені промені!</strong></li>
+      </ul>
+      <blockquote class="space">🐋 Синій кит — найбільша тварина на Землі. Його серце розміром з <strong>автомобіль!</strong></blockquote>
+    </div>
+    <div style="text-align:center;">
+      <svg width="220" height="200" viewBox="0 0 220 200">
+        <rect x="0" y="0" width="220" height="200" rx="12" fill="#0984e3"/>
+        <ellipse cx="110" cy="190" rx="110" ry="25" fill="#006cb8" opacity="0.5"/>
+        <rect x="70" y="160" width="8" height="30" rx="2" fill="#00b894"/>
+        <rect x="82" y="150" width="6" height="40" rx="2" fill="#00cec9"/>
+        <rect x="60" y="155" width="5" height="35" rx="2" fill="#55efc4"/>
+        <rect x="140" y="158" width="7" height="32" rx="2" fill="#00b894"/>
+        <rect x="150" y="148" width="5" height="42" rx="2" fill="#55efc4"/>
+        <ellipse cx="70" cy="80" rx="22" ry="14" fill="#e17055"/>
+        <polygon points="48,80 35,70 35,90" fill="#e17055"/>
+        <circle cx="82" cy="76" r="3" fill="#fff"/>
+        <circle cx="83" cy="76" r="1.5" fill="#2d3436"/>
+        <ellipse cx="160" cy="110" rx="16" ry="10" fill="#fdcb6e"/>
+        <polygon points="144,110 134,103 134,117" fill="#fdcb6e"/>
+        <circle cx="169" cy="107" r="2" fill="#fff"/>
+        <circle cx="170" cy="107" r="1" fill="#2d3436"/>
+        <ellipse cx="130" cy="50" rx="12" ry="8" fill="#a29bfe"/>
+        <polygon points="118,50 110,44 110,56" fill="#a29bfe"/>
+        <circle cx="20" cy="30" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="50" cy="55" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="180" cy="40" r="2" fill="rgba(255,255,255,0.4)"/>
+        <circle cx="200" cy="75" r="1.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="30" cy="130" r="2" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="190" cy="150" r="1.5" fill="rgba(255,255,255,0.3)"/>
+      </svg>
+    </div>
+  </div>
+  <p style="font-size:1.4em; margin-top:15px;">Сьогодні ми створимо <strong>підводний світ</strong> у Tinkercad! 🌊</p>
+</div>
+
+<!-- Slide 3: Завдання -->
+<div class="slide light">
+  <h2>📋 Завдання на сьогодні</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Що моделюємо</th></tr>
+    <tr><td>⭐</td><td><strong>Рибка</strong></td><td>Овал + хвіст + око + плавці</td></tr>
+    <tr><td>⭐⭐</td><td><strong>Морська зірка</strong></td><td>5 промінів + Ctrl+D + обертання</td></tr>
+    <tr><td>⭐⭐⭐</td><td><strong>Підводний човен</strong></td><td>Корпус + вікна + перископ + гвинт</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td><strong>Восьминіг</strong></td><td>Голова + 8 щупалець + очі</td></tr>
+  </table>
+  <blockquote>📄 Детальна інструкція — у роздатковому матеріалі!</blockquote>
+</div>
+
+<!-- Slide 4: Рибка -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Рибка 🐟</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Sphere</strong> (тіло) — витягнути в овал (40×25×20), помаранчевий</li>
+        <li><strong>Cone</strong> (хвіст) — ⌀20, H=15, помаранчевий, повернути на бік → приставити ззаду</li>
+        <li><strong>Sphere</strong> (око) — ⌀5, білий, на боку. Менша Sphere ⌀2 — чорний (зіниця)</li>
+        <li><strong>Box</strong> (плавець верхній) — тонкий 15×8×2, жовтий, зверху → повернути</li>
+        <li><strong>Ctrl+A → Ctrl+G</strong> — готово!</li>
+      </ol>
+      <blockquote class="tip">💡 Щоб зробити овал — розтягни <strong>Sphere</strong> за один бік!</blockquote>
+    </div>
+    <div style="text-align:center;">
+      <svg width="280" height="260" viewBox="0 0 280 260">
+        <ellipse cx="155" cy="120" rx="75" ry="48" fill="#e17055"/>
+        <ellipse cx="155" cy="120" rx="75" ry="48" fill="url(#fishGrad)"/>
+        <defs>
+          <linearGradient id="fishGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fab1a0"/>
+            <stop offset="100%" stop-color="#e17055"/>
+          </linearGradient>
+        </defs>
+        <polygon points="58,120 20,80 20,160" fill="#e17055"/>
+        <polygon points="58,120 25,85 25,155" fill="#d63031"/>
+        <ellipse cx="155" cy="88" rx="30" ry="6" fill="#fdcb6e" transform="rotate(-10 155 88)"/>
+        <ellipse cx="160" cy="148" rx="18" ry="4" fill="#fdcb6e" transform="rotate(8 160 148)"/>
+        <circle cx="205" cy="105" r="14" fill="#fff"/>
+        <circle cx="209" cy="103" r="7" fill="#2d3436"/>
+        <circle cx="211" cy="101" r="2.5" fill="#fff"/>
+        <ellipse cx="230" cy="120" rx="4" ry="8" fill="#e17055" opacity="0.5"/>
+        <path d="M 120 115 Q 140 125 120 130" fill="none" stroke="#d63031" stroke-width="1.5" opacity="0.5"/>
+        <text x="155" y="250" text-anchor="middle" font-size="13" fill="#636e72">Рибка</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Морська зірка -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Морська зірка ⭐</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Cylinder</strong> (промінь) — ⌀8, H=30, помаранчевий</li>
+        <li><strong>Cone</strong> (кінчик) — ⌀8, H=10, підняти на 30 → Align з циліндром → Group</li>
+        <li><strong>Ctrl+D</strong> → повернути на 72° (= 360 ÷ 5)</li>
+        <li><strong>Ctrl+D</strong> ще 3 рази (автоматично повернеться на 72°!)</li>
+        <li><strong>Sphere</strong> (центр) — ⌀15, помаранчевий → Align по центру</li>
+        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+      </ol>
+      <blockquote class="tip">💡 360° ÷ 5 = 72°. Після першого повороту, кожен <strong>Ctrl+D</strong> автоматично повторить поворот!</blockquote>
+    </div>
+    <div style="text-align:center;">
+      <svg width="270" height="270" viewBox="0 0 270 270">
+        <defs>
+          <linearGradient id="starGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fab1a0"/>
+            <stop offset="100%" stop-color="#e17055"/>
+          </linearGradient>
+        </defs>
+        <polygon points="135,15 155,100 240,100 170,145 195,230 135,180 75,230 100,145 30,100 115,100" fill="url(#starGrad)" stroke="#d63031" stroke-width="2"/>
+        <circle cx="135" cy="130" r="25" fill="#e17055"/>
+        <circle cx="135" cy="130" r="18" fill="#d63031" opacity="0.3"/>
+        <circle cx="120" cy="80" r="3" fill="#fab1a0" opacity="0.6"/>
+        <circle cx="150" cy="75" r="2.5" fill="#fab1a0" opacity="0.6"/>
+        <circle cx="100" cy="115" r="2" fill="#fab1a0" opacity="0.5"/>
+        <circle cx="170" cy="112" r="2.5" fill="#fab1a0" opacity="0.5"/>
+        <circle cx="112" cy="160" r="2" fill="#fab1a0" opacity="0.5"/>
+        <circle cx="158" cy="158" r="2" fill="#fab1a0" opacity="0.5"/>
+        <text x="135" y="262" text-anchor="middle" font-size="13" fill="#636e72">Морська зірка</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Підводний човен -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Підводний човен 🚢</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Cylinder</strong> (корпус) — ⌀25, H=60, темно-сірий, покласти на бік</li>
+        <li><strong>Half Sphere</strong> (ніс) — ⌀25, ззаду</li>
+        <li><strong>Half Sphere</strong> (хвіст) — ⌀25, спереду</li>
+        <li><strong>Cylinder</strong> (вежа/рубка) — ⌀15, H=15, зверху по центру</li>
+        <li><strong>Sphere → Hole</strong> (ілюмінатори) — ⌀6, ×3, в ряд по боку → Group</li>
+        <li><strong>Cylinder</strong> (перископ) — ⌀3, H=20, на вежі</li>
+        <li><strong>Box</strong> (кермо хвоста) — тонкі хрестом ззаду</li>
+      </ol>
+      <blockquote>🎨 Розфарбуй: корпус <strong>темно-сірий</strong>, рубка — <strong>світло-сіра</strong>, ілюмінатори — <strong>жовті!</strong></blockquote>
+    </div>
+    <div style="text-align:center;">
+      <svg width="300" height="250" viewBox="0 0 300 250">
+        <defs>
+          <linearGradient id="subGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#636e72"/>
+            <stop offset="100%" stop-color="#2d3436"/>
+          </linearGradient>
+        </defs>
+        <rect x="55" y="105" width="200" height="55" rx="27" fill="url(#subGrad)"/>
+        <ellipse cx="55" cy="132" rx="15" ry="27" fill="#2d3436"/>
+        <ellipse cx="255" cy="132" rx="18" ry="27" fill="#636e72"/>
+        <rect x="125" y="70" width="50" height="35" rx="8" fill="#95a5a6"/>
+        <rect x="147" y="35" width="6" height="38" rx="3" fill="#636e72"/>
+        <rect x="140" y="35" width="20" height="6" rx="3" fill="#636e72"/>
+        <circle cx="120" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
+        <circle cx="155" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
+        <circle cx="190" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
+        <circle cx="120" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="155" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="190" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
+        <rect x="38" y="112" width="6" height="40" rx="2" fill="#636e72"/>
+        <rect x="25" y="118" width="20" height="28" rx="2" fill="#636e72"/>
+        <ellipse cx="265" cy="132" rx="4" ry="15" fill="#95a5a6" opacity="0.7"/>
+        <circle cx="280" cy="140" r="3" fill="rgba(255,255,255,0.2)"/>
+        <circle cx="285" cy="148" r="2" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="290" cy="138" r="2.5" fill="rgba(255,255,255,0.15)"/>
+        <text x="150" y="240" text-anchor="middle" font-size="13" fill="#636e72">Підводний човен</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Восьминіг -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — Восьминіг 🐙</h2>
+  <div class="two-col">
+    <div>
+      <h3>Будуємо:</h3>
+      <ol>
+        <li><strong>Sphere</strong> (голова) — ⌀35, фіолетовий</li>
+        <li><strong>Sphere</strong> (око) — ⌀8, білий × 2, з боків. Менша Sphere ⌀3, чорний (зіниця)</li>
+        <li><strong>Cylinder</strong> (щупальце) — ⌀5, H=40, фіолетовий → зігнути (повернути на ~20°)</li>
+        <li><strong>Ctrl+D</strong> → повернути на 45° (= 360 ÷ 8)</li>
+        <li><strong>Ctrl+D</strong> ще 6 разів — 8 щупалець!</li>
+        <li><strong>Sphere</strong> (присоски) — ⌀2, світло-фіолетовий, по кілька на щупальце (за бажанням)</li>
+        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+      </ol>
+      <blockquote>🏆 Це найскладніша модель! 8 щупалець = <strong>Ctrl+D</strong> з поворотом на <strong>45°</strong>. Покажи вчителю!</blockquote>
+    </div>
+    <div style="text-align:center;">
+      <svg width="270" height="280" viewBox="0 0 270 280">
+        <defs>
+          <linearGradient id="octoGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a29bfe"/>
+            <stop offset="100%" stop-color="#6c5ce7"/>
+          </linearGradient>
+        </defs>
+        <path d="M 50,140 Q 30,180 15,240" stroke="#6c5ce7" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <path d="M 70,155 Q 45,200 25,255" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M 95,165 Q 80,210 65,260" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M 120,170 Q 115,215 110,265" stroke="#6c5ce7" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 150,170 Q 155,215 160,265" stroke="#6c5ce7" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M 175,165 Q 190,210 205,260" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M 200,155 Q 225,200 245,255" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M 220,140 Q 240,180 255,240" stroke="#6c5ce7" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="240" r="4" fill="#a29bfe"/>
+        <circle cx="28" cy="255" r="3.5" fill="#a29bfe"/>
+        <circle cx="68" cy="260" r="3.5" fill="#a29bfe"/>
+        <circle cx="113" cy="265" r="3" fill="#a29bfe"/>
+        <circle cx="157" cy="265" r="3" fill="#a29bfe"/>
+        <circle cx="202" cy="260" r="3.5" fill="#a29bfe"/>
+        <circle cx="242" cy="255" r="3.5" fill="#a29bfe"/>
+        <circle cx="252" cy="240" r="4" fill="#a29bfe"/>
+        <ellipse cx="135" cy="100" rx="68" ry="62" fill="url(#octoGrad)"/>
+        <ellipse cx="135" cy="85" rx="50" ry="20" fill="#a29bfe" opacity="0.3"/>
+        <ellipse cx="105" cy="95" rx="18" ry="20" fill="#fff"/>
+        <circle cx="110" cy="95" r="10" fill="#2d3436"/>
+        <circle cx="113" cy="92" r="3.5" fill="#fff"/>
+        <ellipse cx="165" cy="95" rx="18" ry="20" fill="#fff"/>
+        <circle cx="160" cy="95" r="10" fill="#2d3436"/>
+        <circle cx="157" cy="92" r="3.5" fill="#fff"/>
+        <path d="M 120 120 Q 135 130 150 120" stroke="#6c5ce7" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Підсумки -->
+<div class="slide light">
+  <h2>✅ Підсумки</h2>
+  <ul>
+    <li>✅ Побудували <strong>рибку</strong> — овал зі Sphere!</li>
+    <li>✅ Зробили <strong>морську зірку</strong> — Ctrl+D з поворотом на 72°</li>
+    <li>✅ Змоделювали <strong>підводний човен</strong> з ілюмінаторами (Hole!)</li>
+    <li>✅ Створили <strong>восьминіга</strong> — 8 щупалець через Ctrl+D на 45°</li>
+    <li>✅ Закріпили: <strong>Ctrl+D</strong>, <strong>Align</strong>, <strong>Hole</strong>, <strong>Group</strong>, обертання на точний кут</li>
+  </ul>
+  <blockquote>🏆 Покажи вчителю! Найкращі моделі — на виставку! 🎨</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let idx = 0;
+document.getElementById('total').textContent = slides.length;
+function show(i) {
+  slides[idx].classList.remove('active');
+  idx = Math.max(0, Math.min(i, slides.length - 1));
+  slides[idx].classList.add('active');
+  document.getElementById('current').textContent = idx + 1;
+}
+show(0);
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+  if (e.key === 'Home') show(0);
+  if (e.key === 'End') show(slides.length - 1);
+});
+document.addEventListener('click', e => {
+  if (e.clientX > window.innerWidth / 2) show(idx + 1);
+  else show(idx - 1);
+});
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.changedTouches[0].clientX; }, {passive:true});
+document.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { dx < 0 ? show(idx+1) : show(idx-1); } }, {passive:true});
+</script>
+</body>
+</html>
