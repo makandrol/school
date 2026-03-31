@@ -16,19 +16,17 @@
   .lead h2 { font-size: 2.2em; }
   .lead p { font-size: 1.3em; opacity: 0.9; }
   h3 { font-size: 1.3em; color: #6c5ce7; margin: 12px 0 6px; }
-  p, li { font-size: 1.2em; line-height: 1.6; }
+  p, li { font-size: 1.15em; line-height: 1.5; }
   ul, ol { padding-left: 30px; }
-  li { margin: 6px 0; }
+  li { margin: 5px 0; }
   table { border-collapse: collapse; margin: 15px 0; width: 100%; }
   th, td { border: 1px solid #ddd; padding: 10px 16px; text-align: left; font-size: 1.1em; }
   th { background: #f0fff4; }
-  code { background: #f1f2f6; padding: 2px 8px; border-radius: 4px; color: #e17055; font-size: 1em; }
-  blockquote { border-left: 4px solid #00b894; background: #f0fff4; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.1em; }
-  .space { border-left-color: #6c5ce7; background: #f0e6ff; }
+  blockquote { border-left: 4px solid #00b894; background: #f0fff4; padding: 12px 20px; margin: 12px 0; border-radius: 0 6px 6px 0; font-size: 1.05em; }
   .tip { border-left-color: #f39c12; background: #fef9e7; }
   .page-num { position: fixed; bottom: 20px; right: 30px; color: #b2bec3; font-size: 0.9em; }
   .nav-hint { position: fixed; bottom: 20px; left: 30px; color: #b2bec3; font-size: 0.8em; }
-  .two-col { display: flex; gap: 40px; align-items: flex-start; }
+  .two-col { display: flex; gap: 30px; align-items: flex-start; }
   .two-col > div { flex: 1; }
 </style>
 </head>
@@ -39,260 +37,319 @@
   <h1>3D-моделювання | Заняття 7</h1>
   <h2>🐠 Підводний світ</h2>
   <p>31.03.2026 | Група: 3-4 клас</p>
-  <p style="margin-top:15px; font-size:1.1em;">Рибка • Морська зірка • Підводний човен • Восьминіг</p>
+  <p style="margin-top:15px; font-size:1.1em;">Рибка з водоростями • Акула з зубами • Підводний човен і корали • Восьминіг зі скарбами</p>
 </div>
 
-<!-- Slide 2: Цікаві факти -->
+<!-- Slide 2: Fun facts -->
 <div class="slide light">
-  <h2>🌊 Дивовижний океан!</h2>
+  <h2>🌊 Підводний світ — дивовижний!</h2>
   <div class="two-col">
     <div>
       <ul>
-        <li>🌊 Океан покриває <strong>70% поверхні Землі</strong></li>
-        <li>🐠 У морі живе понад <strong>230 000 видів тварин</strong></li>
+        <li>🌊 Океан покриває <strong>70%</strong> поверхні Землі</li>
+        <li>🦈 У акули до <strong>3000 зубів</strong> — і постійно ростуть нові!</li>
         <li>🐙 Восьминіг має <strong>3 серця</strong> і блакитну кров!</li>
-        <li>🌟 Морська зірка може <strong>відрощувати загублені промені!</strong></li>
+        <li>🌿 Водорості дають більше кисню, ніж усі дерева на Землі!</li>
       </ul>
-      <blockquote class="space">🐋 Синій кит — найбільша тварина на Землі. Його серце розміром з <strong>автомобіль!</strong></blockquote>
+      <blockquote>🐠 Найглибше місце — Маріанська западина: <strong>11 034 м</strong>. Туристичний підводний човен занурюється лише на 300 м!</blockquote>
     </div>
     <div style="text-align:center;">
-      <svg width="220" height="200" viewBox="0 0 220 200">
-        <rect x="0" y="0" width="220" height="200" rx="12" fill="#0984e3"/>
-        <ellipse cx="110" cy="190" rx="110" ry="25" fill="#006cb8" opacity="0.5"/>
-        <rect x="70" y="160" width="8" height="30" rx="2" fill="#00b894"/>
-        <rect x="82" y="150" width="6" height="40" rx="2" fill="#00cec9"/>
-        <rect x="60" y="155" width="5" height="35" rx="2" fill="#55efc4"/>
-        <rect x="140" y="158" width="7" height="32" rx="2" fill="#00b894"/>
-        <rect x="150" y="148" width="5" height="42" rx="2" fill="#55efc4"/>
-        <ellipse cx="70" cy="80" rx="22" ry="14" fill="#e17055"/>
-        <polygon points="48,80 35,70 35,90" fill="#e17055"/>
-        <circle cx="82" cy="76" r="3" fill="#fff"/>
-        <circle cx="83" cy="76" r="1.5" fill="#2d3436"/>
-        <ellipse cx="160" cy="110" rx="16" ry="10" fill="#fdcb6e"/>
-        <polygon points="144,110 134,103 134,117" fill="#fdcb6e"/>
-        <circle cx="169" cy="107" r="2" fill="#fff"/>
-        <circle cx="170" cy="107" r="1" fill="#2d3436"/>
-        <ellipse cx="130" cy="50" rx="12" ry="8" fill="#a29bfe"/>
-        <polygon points="118,50 110,44 110,56" fill="#a29bfe"/>
-        <circle cx="20" cy="30" r="2" fill="rgba(255,255,255,0.4)"/>
-        <circle cx="50" cy="55" r="1.5" fill="rgba(255,255,255,0.3)"/>
-        <circle cx="180" cy="40" r="2" fill="rgba(255,255,255,0.4)"/>
-        <circle cx="200" cy="75" r="1.5" fill="rgba(255,255,255,0.3)"/>
-        <circle cx="30" cy="130" r="2" fill="rgba(255,255,255,0.3)"/>
-        <circle cx="190" cy="150" r="1.5" fill="rgba(255,255,255,0.3)"/>
+      <svg width="200" height="200" viewBox="0 0 200 200">
+        <rect width="200" height="200" rx="16" fill="#0984e3" opacity="0.15"/>
+        <ellipse cx="100" cy="185" rx="90" ry="12" fill="#b2bec3" opacity="0.4"/>
+        <rect x="70" y="155" width="8" height="30" rx="4" fill="#00b894" transform="rotate(-10 74 170)"/>
+        <rect x="85" y="145" width="7" height="40" rx="3" fill="#00cec9" transform="rotate(5 88 165)"/>
+        <rect x="105" y="150" width="6" height="35" rx="3" fill="#55efc4" transform="rotate(-8 108 168)"/>
+        <ellipse cx="60" cy="90" rx="22" ry="13" fill="#f39c12"/>
+        <polygon points="36,90 24,80 24,100" fill="#e67e22"/>
+        <circle cx="70" cy="87" r="3" fill="#fff"/><circle cx="71" cy="87" r="1.5" fill="#2d3436"/>
+        <ellipse cx="150" cy="120" rx="16" ry="10" fill="#fd79a8"/>
+        <polygon points="132,120 122,113 122,127" fill="#e84393"/>
+        <circle cx="158" cy="117" r="2.5" fill="#fff"/><circle cx="159" cy="117" r="1" fill="#2d3436"/>
+        <circle cx="40" cy="50" r="4" fill="#74b9ff" opacity="0.5"/>
+        <circle cx="160" cy="40" r="3" fill="#74b9ff" opacity="0.4"/>
+        <circle cx="90" cy="35" r="5" fill="#74b9ff" opacity="0.3"/>
       </svg>
     </div>
   </div>
-  <p style="font-size:1.4em; margin-top:15px;">Сьогодні ми створимо <strong>підводний світ</strong> у Tinkercad! 🌊</p>
+  <p style="font-size:1.3em; margin-top:10px;">Сьогодні ми створимо <strong>підводний світ</strong> у Tinkercad! 🌊</p>
 </div>
 
-<!-- Slide 3: Завдання -->
+
+<!-- Slide 3: Task overview -->
 <div class="slide light">
   <h2>📋 Завдання на сьогодні</h2>
   <table>
     <tr><th>⭐</th><th>Завдання</th><th>Що моделюємо</th></tr>
-    <tr><td>⭐</td><td><strong>Рибка</strong></td><td>Овал + хвіст + око + плавці</td></tr>
-    <tr><td>⭐⭐</td><td><strong>Морська зірка</strong></td><td>5 промінів + Ctrl+D + обертання</td></tr>
-    <tr><td>⭐⭐⭐</td><td><strong>Підводний човен</strong></td><td>Корпус + вікна + перископ + гвинт</td></tr>
-    <tr><td>⭐⭐⭐⭐</td><td><strong>Восьминіг</strong></td><td>Голова + 8 щупалець + очі</td></tr>
+    <tr><td>⭐</td><td><strong>Рибка з водоростями</strong> 🐟🌿</td><td>Рибка-овал + хвіст + водорості на камінці</td></tr>
+    <tr><td>⭐⭐</td><td><strong>Акула з зубами</strong> 🦈</td><td>Акула + конуси-зуби + маленька рибка</td></tr>
+    <tr><td>⭐⭐⭐</td><td><strong>Підводний човен і корали</strong> 🚢🪸</td><td>Жовтий човен + кораловий риф</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td><strong>Восьминіг зі скарбами</strong> 🐙💰</td><td>Восьминіг + скриня з монетами і перлинами</td></tr>
   </table>
-  <blockquote>📄 Детальна інструкція — у роздатковому матеріалі!</blockquote>
+  <blockquote>📄 Кожне завдання — це <strong>ціла сцена</strong> з кількох моделей!</blockquote>
 </div>
 
-<!-- Slide 4: Рибка -->
+<!-- Slide 4: Task 1 — Fish + seaweed -->
 <div class="slide light">
-  <h2>⭐ Завдання 1 — Рибка 🐟</h2>
+  <h2>⭐ Завдання 1 — Рибка з водоростями 🐟🌿</h2>
   <div class="two-col">
     <div>
-      <h3>Будуємо:</h3>
+      <h3>🐟 Рибка:</h3>
       <ol>
-        <li><strong>Sphere</strong> (тіло) — витягнути в овал (40×25×20), помаранчевий</li>
-        <li><strong>Cone</strong> (хвіст) — ⌀20, H=15, помаранчевий, повернути на бік → приставити ззаду</li>
-        <li><strong>Sphere</strong> (око) — ⌀5, білий, на боку. Менша Sphere ⌀2 — чорний (зіниця)</li>
-        <li><strong>Box</strong> (плавець верхній) — тонкий 15×8×2, жовтий, зверху → повернути</li>
-        <li><strong>Ctrl+A → Ctrl+G</strong> — готово!</li>
+        <li><strong>Sphere</strong> → розтягни в овал: 40×25×20, помаранчевий</li>
+        <li><strong>Cone</strong> (хвіст) — ⌀20, H=15 → поверни на бік → ззаду</li>
+        <li><strong>Sphere</strong> (око) — ⌀6 білий + ⌀2 чорний (зіниця)</li>
+        <li><strong>Box</strong> (плавець зверху) — 15×8×2, жовтий</li>
       </ol>
-      <blockquote class="tip">💡 Щоб зробити овал — розтягни <strong>Sphere</strong> за один бік!</blockquote>
+      <h3>🌿 Водорості на камені:</h3>
+      <ol start="5">
+        <li><strong>Half Sphere</strong> (камінь) — ⌀20, сірий</li>
+        <li><strong>Cylinder</strong> (стебло) — ⌀3, H=25, зелений ×3 → нахили кожне</li>
+        <li><strong>Sphere</strong> (листок) — ⌀8, зелений → розтягни</li>
+      </ol>
+      <blockquote class="tip">💡 Нахили водорості в різні боки — буде як справжні!</blockquote>
     </div>
     <div style="text-align:center;">
-      <svg width="280" height="260" viewBox="0 0 280 260">
-        <ellipse cx="155" cy="120" rx="75" ry="48" fill="#e17055"/>
-        <ellipse cx="155" cy="120" rx="75" ry="48" fill="url(#fishGrad)"/>
-        <defs>
-          <linearGradient id="fishGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#fab1a0"/>
-            <stop offset="100%" stop-color="#e17055"/>
-          </linearGradient>
-        </defs>
-        <polygon points="58,120 20,80 20,160" fill="#e17055"/>
-        <polygon points="58,120 25,85 25,155" fill="#d63031"/>
-        <ellipse cx="155" cy="88" rx="30" ry="6" fill="#fdcb6e" transform="rotate(-10 155 88)"/>
-        <ellipse cx="160" cy="148" rx="18" ry="4" fill="#fdcb6e" transform="rotate(8 160 148)"/>
-        <circle cx="205" cy="105" r="14" fill="#fff"/>
-        <circle cx="209" cy="103" r="7" fill="#2d3436"/>
-        <circle cx="211" cy="101" r="2.5" fill="#fff"/>
-        <ellipse cx="230" cy="120" rx="4" ry="8" fill="#e17055" opacity="0.5"/>
-        <path d="M 120 115 Q 140 125 120 130" fill="none" stroke="#d63031" stroke-width="1.5" opacity="0.5"/>
-        <text x="155" y="250" text-anchor="middle" font-size="13" fill="#636e72">Рибка</text>
+      <svg width="280" height="240" viewBox="0 0 280 240">
+        <rect width="280" height="240" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <ellipse cx="140" cy="225" rx="130" ry="15" fill="#b2bec3" opacity="0.3"/>
+        <!-- seaweed -->
+        <ellipse cx="210" cy="215" rx="22" ry="10" fill="#95a5a6"/>
+        <rect x="200" y="140" width="7" height="75" rx="3" fill="#00b894" transform="rotate(-12 203 178)"/>
+        <ellipse cx="195" cy="138" rx="10" ry="6" fill="#00b894" transform="rotate(-15 195 138)"/>
+        <rect x="215" y="130" width="6" height="85" rx="3" fill="#00cec9" transform="rotate(8 218 173)"/>
+        <ellipse cx="222" cy="128" rx="9" ry="5" fill="#00cec9" transform="rotate(10 222 128)"/>
+        <rect x="230" y="148" width="5" height="67" rx="3" fill="#55efc4" transform="rotate(-5 233 182)"/>
+        <ellipse cx="228" cy="146" rx="8" ry="5" fill="#55efc4"/>
+        <!-- fish body -->
+        <ellipse cx="90" cy="120" rx="45" ry="28" fill="#f39c12"/>
+        <ellipse cx="90" cy="120" rx="42" ry="25" fill="#f9a825"/>
+        <!-- tail -->
+        <polygon points="135,120 160,100 160,140" fill="#e67e22"/>
+        <!-- top fin -->
+        <polygon points="75,92 95,72 105,92" fill="#f1c40f"/>
+        <!-- bottom fin -->
+        <polygon points="85,148 95,160 105,148" fill="#f1c40f" opacity="0.8"/>
+        <!-- eye -->
+        <circle cx="62" cy="112" r="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <circle cx="60" cy="111" r="4" fill="#2d3436"/>
+        <circle cx="58" cy="109" r="1.5" fill="#fff"/>
+        <!-- mouth -->
+        <path d="M48,125 Q53,130 48,135" fill="none" stroke="#e67e22" stroke-width="2"/>
+        <text x="140" y="15" text-anchor="middle" font-size="11" fill="#636e72">Рибка з водоростями</text>
       </svg>
     </div>
   </div>
 </div>
 
-<!-- Slide 5: Морська зірка -->
+
+<!-- Slide 5: Task 2 — Shark -->
 <div class="slide light">
-  <h2>⭐⭐ Завдання 2 — Морська зірка ⭐</h2>
+  <h2>⭐⭐ Завдання 2 — Акула з зубами 🦈</h2>
   <div class="two-col">
     <div>
-      <h3>Будуємо:</h3>
+      <h3>🦈 Акула:</h3>
       <ol>
-        <li><strong>Cylinder</strong> (промінь) — ⌀8, H=30, помаранчевий</li>
-        <li><strong>Cone</strong> (кінчик) — ⌀8, H=10, підняти на 30 → Align з циліндром → Group</li>
-        <li><strong>Ctrl+D</strong> → повернути на 72° (= 360 ÷ 5)</li>
-        <li><strong>Ctrl+D</strong> ще 3 рази (автоматично повернеться на 72°!)</li>
-        <li><strong>Sphere</strong> (центр) — ⌀15, помаранчевий → Align по центру</li>
-        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+        <li><strong>Sphere</strong> → довгий овал 60×20×18, сірий</li>
+        <li><strong>Cone</strong> (морда) — ⌀18, H=20, сірий → спереду</li>
+        <li><strong>Box</strong> (хвіст) — 5×20×15, під кутом ззаду</li>
+        <li><strong>Box</strong> (спинний плавець) — 3×15×12, зверху</li>
+        <li><strong>Cone</strong> (зуб!) — ⌀2, H=4, білий → <strong>Ctrl+D</strong> ×6-8 в ряд</li>
+        <li><strong>Sphere</strong> (очі) — ⌀4 білий + ⌀2 чорний ×2</li>
+        <li><strong>Box</strong> (бокові плавці) — 3×12×8, ×2</li>
       </ol>
-      <blockquote class="tip">💡 360° ÷ 5 = 72°. Після першого повороту, кожен <strong>Ctrl+D</strong> автоматично повторить поворот!</blockquote>
+      <h3>🐟 Маленька рибка:</h3>
+      <ol start="8">
+        <li><strong>Sphere</strong> овал 15×10×8, жовтий + <strong>Cone</strong> хвостик</li>
+      </ol>
+      <blockquote class="tip">🦈 Зуби — це маленькі конуси! Зроби один → <strong>Ctrl+D</strong> → розстав у ряд!</blockquote>
     </div>
     <div style="text-align:center;">
-      <svg width="270" height="270" viewBox="0 0 270 270">
-        <defs>
-          <linearGradient id="starGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#fab1a0"/>
-            <stop offset="100%" stop-color="#e17055"/>
-          </linearGradient>
-        </defs>
-        <polygon points="135,15 155,100 240,100 170,145 195,230 135,180 75,230 100,145 30,100 115,100" fill="url(#starGrad)" stroke="#d63031" stroke-width="2"/>
-        <circle cx="135" cy="130" r="25" fill="#e17055"/>
-        <circle cx="135" cy="130" r="18" fill="#d63031" opacity="0.3"/>
-        <circle cx="120" cy="80" r="3" fill="#fab1a0" opacity="0.6"/>
-        <circle cx="150" cy="75" r="2.5" fill="#fab1a0" opacity="0.6"/>
-        <circle cx="100" cy="115" r="2" fill="#fab1a0" opacity="0.5"/>
-        <circle cx="170" cy="112" r="2.5" fill="#fab1a0" opacity="0.5"/>
-        <circle cx="112" cy="160" r="2" fill="#fab1a0" opacity="0.5"/>
-        <circle cx="158" cy="158" r="2" fill="#fab1a0" opacity="0.5"/>
-        <text x="135" y="262" text-anchor="middle" font-size="13" fill="#636e72">Морська зірка</text>
+      <svg width="300" height="230" viewBox="0 0 300 230">
+        <rect width="300" height="230" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <!-- shark body -->
+        <ellipse cx="150" cy="100" rx="75" ry="25" fill="#636e72"/>
+        <ellipse cx="150" cy="100" rx="72" ry="22" fill="#74838a"/>
+        <!-- belly lighter -->
+        <ellipse cx="150" cy="108" rx="60" ry="12" fill="#b2bec3" opacity="0.5"/>
+        <!-- nose cone -->
+        <polygon points="75,100 48,90 48,110" fill="#636e72"/>
+        <!-- tail -->
+        <polygon points="225,100 260,70 250,100 260,130" fill="#636e72"/>
+        <!-- dorsal fin -->
+        <polygon points="140,78 155,50 168,78" fill="#636e72"/>
+        <!-- pectoral fins -->
+        <polygon points="120,115 100,140 135,125" fill="#636e72"/>
+        <polygon points="175,115 195,140 160,125" fill="#636e72"/>
+        <!-- eye -->
+        <circle cx="72" cy="93" r="5" fill="#fff"/>
+        <circle cx="71" cy="93" r="2.5" fill="#2d3436"/>
+        <!-- mouth line -->
+        <path d="M55,105 Q75,112 100,105" fill="none" stroke="#4a5568" stroke-width="1.5"/>
+        <!-- teeth -->
+        <polygon points="60,105 62,113 64,105" fill="#fff"/>
+        <polygon points="68,106 70,114 72,106" fill="#fff"/>
+        <polygon points="76,106 78,114 80,106" fill="#fff"/>
+        <polygon points="84,106 86,113 88,106" fill="#fff"/>
+        <polygon points="92,105 94,112 96,105" fill="#fff"/>
+        <!-- small fish fleeing -->
+        <ellipse cx="270" cy="160" rx="14" ry="9" fill="#f9a825"/>
+        <polygon points="256,160 245,153 245,167" fill="#f1c40f"/>
+        <circle cx="278" cy="157" r="2" fill="#fff"/>
+        <circle cx="279" cy="157" r="1" fill="#2d3436"/>
+        <text x="150" y="220" text-anchor="middle" font-size="11" fill="#636e72">Акула полює на рибку!</text>
       </svg>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: Підводний човен -->
+
+<!-- Slide 6: Task 3 — Submarine + corals -->
 <div class="slide light">
-  <h2>⭐⭐⭐ Завдання 3 — Підводний човен 🚢</h2>
+  <h2>⭐⭐⭐ Завдання 3 — Підводний човен і корали 🚢🪸</h2>
   <div class="two-col">
     <div>
-      <h3>Будуємо:</h3>
+      <h3>🚢 Човен (Yellow Submarine!):</h3>
       <ol>
-        <li><strong>Cylinder</strong> (корпус) — ⌀25, H=60, темно-сірий, покласти на бік</li>
-        <li><strong>Half Sphere</strong> (ніс) — ⌀25, ззаду</li>
-        <li><strong>Half Sphere</strong> (хвіст) — ⌀25, спереду</li>
-        <li><strong>Cylinder</strong> (вежа/рубка) — ⌀15, H=15, зверху по центру</li>
-        <li><strong>Sphere → Hole</strong> (ілюмінатори) — ⌀6, ×3, в ряд по боку → Group</li>
-        <li><strong>Cylinder</strong> (перископ) — ⌀3, H=20, на вежі</li>
-        <li><strong>Box</strong> (кермо хвоста) — тонкі хрестом ззаду</li>
+        <li><strong>Cylinder</strong> (корпус) — ⌀25, H=60, жовтий → на бік</li>
+        <li><strong>Half Sphere</strong> — ⌀25, ніс + хвіст</li>
+        <li><strong>Cylinder</strong> (рубка) — ⌀15, H=15, зверху</li>
+        <li><strong>Sphere</strong> → <strong>Hole</strong> (ілюмінатор) ⌀6, ×3 → Group</li>
+        <li><strong>Cylinder</strong> (перископ) — ⌀3, H=20</li>
+        <li><strong>Box</strong> (кермо) — 2×15×10, ×2 хрестом</li>
       </ol>
-      <blockquote>🎨 Розфарбуй: корпус <strong>темно-сірий</strong>, рубка — <strong>світло-сіра</strong>, ілюмінатори — <strong>жовті!</strong></blockquote>
+      <h3>🪸 Кораловий риф:</h3>
+      <ol start="7">
+        <li><strong>Half Sphere</strong> (дно) — ⌀30, пісочний</li>
+        <li><strong>Cylinder</strong> (корал) — ⌀6, H=20, червоний ×3 різної висоти</li>
+        <li><strong>Sphere</strong> (бульбашки) — ⌀4, рожевий</li>
+        <li><strong>Cylinder</strong> (водорість) — ⌀3, H=15, зелений ×2</li>
+      </ol>
+      <blockquote class="tip">🎨 Жовтий човен як Yellow Submarine! Корали — яскраві: червоний, рожевий, помаранчевий!</blockquote>
     </div>
     <div style="text-align:center;">
-      <svg width="300" height="250" viewBox="0 0 300 250">
-        <defs>
-          <linearGradient id="subGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#636e72"/>
-            <stop offset="100%" stop-color="#2d3436"/>
-          </linearGradient>
-        </defs>
-        <rect x="55" y="105" width="200" height="55" rx="27" fill="url(#subGrad)"/>
-        <ellipse cx="55" cy="132" rx="15" ry="27" fill="#2d3436"/>
-        <ellipse cx="255" cy="132" rx="18" ry="27" fill="#636e72"/>
-        <rect x="125" y="70" width="50" height="35" rx="8" fill="#95a5a6"/>
-        <rect x="147" y="35" width="6" height="38" rx="3" fill="#636e72"/>
-        <rect x="140" y="35" width="20" height="6" rx="3" fill="#636e72"/>
-        <circle cx="120" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
-        <circle cx="155" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
-        <circle cx="190" cy="132" r="10" fill="#fdcb6e" stroke="#f39c12" stroke-width="2"/>
-        <circle cx="120" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
-        <circle cx="155" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
-        <circle cx="190" cy="132" r="5" fill="rgba(255,255,255,0.3)"/>
-        <rect x="38" y="112" width="6" height="40" rx="2" fill="#636e72"/>
-        <rect x="25" y="118" width="20" height="28" rx="2" fill="#636e72"/>
-        <ellipse cx="265" cy="132" rx="4" ry="15" fill="#95a5a6" opacity="0.7"/>
-        <circle cx="280" cy="140" r="3" fill="rgba(255,255,255,0.2)"/>
-        <circle cx="285" cy="148" r="2" fill="rgba(255,255,255,0.15)"/>
-        <circle cx="290" cy="138" r="2.5" fill="rgba(255,255,255,0.15)"/>
-        <text x="150" y="240" text-anchor="middle" font-size="13" fill="#636e72">Підводний човен</text>
+      <svg width="300" height="230" viewBox="0 0 300 230">
+        <rect width="300" height="230" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <!-- sandy bottom -->
+        <ellipse cx="230" cy="210" rx="60" ry="18" fill="#deb887" opacity="0.6"/>
+        <!-- corals -->
+        <rect x="205" y="155" width="10" height="55" rx="5" fill="#e74c3c"/>
+        <circle cx="210" cy="152" r="8" fill="#e74c3c"/>
+        <rect x="225" y="165" width="8" height="45" rx="4" fill="#fd79a8"/>
+        <circle cx="229" cy="162" r="6" fill="#fd79a8"/>
+        <rect x="243" y="170" width="9" height="40" rx="4" fill="#e67e22"/>
+        <circle cx="248" cy="168" r="7" fill="#e67e22"/>
+        <!-- small seaweed -->
+        <rect x="265" y="175" width="5" height="35" rx="2" fill="#00b894" transform="rotate(5 267 193)"/>
+        <rect x="278" y="180" width="4" height="30" rx="2" fill="#55efc4" transform="rotate(-8 280 195)"/>
+        <!-- submarine body -->
+        <ellipse cx="105" cy="105" rx="65" ry="22" fill="#f1c40f"/>
+        <ellipse cx="105" cy="105" rx="62" ry="19" fill="#f9a825"/>
+        <!-- nose -->
+        <ellipse cx="40" cy="105" rx="14" ry="20" fill="#f1c40f"/>
+        <!-- tail -->
+        <ellipse cx="170" cy="105" rx="12" ry="18" fill="#f1c40f"/>
+        <!-- tower -->
+        <rect x="90" y="72" width="25" height="18" rx="5" fill="#f39c12"/>
+        <!-- periscope -->
+        <rect x="100" y="52" width="4" height="22" rx="2" fill="#95a5a6"/>
+        <rect x="96" y="50" width="12" height="4" rx="2" fill="#95a5a6"/>
+        <!-- portholes -->
+        <circle cx="65" cy="105" r="7" fill="#74b9ff" stroke="#e67e22" stroke-width="2"/>
+        <circle cx="105" cy="105" r="7" fill="#74b9ff" stroke="#e67e22" stroke-width="2"/>
+        <circle cx="145" cy="105" r="7" fill="#74b9ff" stroke="#e67e22" stroke-width="2"/>
+        <!-- tail fins -->
+        <rect x="178" y="90" width="12" height="4" rx="2" fill="#e67e22" transform="rotate(30 184 92)"/>
+        <rect x="178" y="116" width="12" height="4" rx="2" fill="#e67e22" transform="rotate(-30 184 118)"/>
+        <!-- bubbles -->
+        <circle cx="25" cy="80" r="4" fill="#74b9ff" opacity="0.4"/>
+        <circle cx="18" cy="65" r="3" fill="#74b9ff" opacity="0.3"/>
+        <circle cx="30" cy="55" r="2" fill="#74b9ff" opacity="0.3"/>
+        <text x="150" y="15" text-anchor="middle" font-size="11" fill="#636e72">Підводний човен біля коралового рифу</text>
       </svg>
     </div>
   </div>
 </div>
 
-<!-- Slide 7: Восьминіг -->
+
+<!-- Slide 7: Task 4 — Octopus + treasure -->
 <div class="slide light">
-  <h2>⭐⭐⭐⭐ Завдання 4 — Восьминіг 🐙</h2>
+  <h2>⭐⭐⭐⭐ Завдання 4 — Восьминіг зі скарбами 🐙💰</h2>
   <div class="two-col">
     <div>
-      <h3>Будуємо:</h3>
+      <h3>🐙 Восьминіг:</h3>
       <ol>
         <li><strong>Sphere</strong> (голова) — ⌀35, фіолетовий</li>
-        <li><strong>Sphere</strong> (око) — ⌀8, білий × 2, з боків. Менша Sphere ⌀3, чорний (зіниця)</li>
-        <li><strong>Cylinder</strong> (щупальце) — ⌀5, H=40, фіолетовий → зігнути (повернути на ~20°)</li>
-        <li><strong>Ctrl+D</strong> → повернути на 45° (= 360 ÷ 8)</li>
-        <li><strong>Ctrl+D</strong> ще 6 разів — 8 щупалець!</li>
-        <li><strong>Sphere</strong> (присоски) — ⌀2, світло-фіолетовий, по кілька на щупальце (за бажанням)</li>
-        <li><strong>Ctrl+A → Ctrl+G</strong></li>
+        <li><strong>Sphere</strong> (очі) — ⌀8 білий + ⌀3 чорний ×2</li>
+        <li><strong>Cylinder</strong> (щупальце) — ⌀5, H=40 → нахили ~20°</li>
+        <li><strong>Ctrl+D</strong> → поверни на <strong>45°</strong> → Ctrl+D ×6 = 8 щупалець!</li>
+        <li><strong>Sphere</strong> (присоски) — ⌀2, рожевий (бонус)</li>
       </ol>
-      <blockquote>🏆 Це найскладніша модель! 8 щупалець = <strong>Ctrl+D</strong> з поворотом на <strong>45°</strong>. Покажи вчителю!</blockquote>
+      <h3>💰 Скриня зі скарбами:</h3>
+      <ol start="6">
+        <li><strong>Box</strong> (скриня) — 30×20×18, коричневий</li>
+        <li><strong>Box</strong> (кришка) — 30×20×3, нахили (відчинена!)</li>
+        <li><strong>Cylinder</strong> (монети) — ⌀4, H=1, золотий ×5-6</li>
+        <li><strong>Sphere</strong> (перлина) — ⌀5, білий</li>
+        <li><strong>Half Sphere</strong> (мушля) — ⌀8, рожевий</li>
+      </ol>
+      <blockquote class="tip">🏆 Найскладніше! 360° ÷ 8 = <strong>45°</strong> для кожного Ctrl+D. Покажи вчителю!</blockquote>
     </div>
     <div style="text-align:center;">
-      <svg width="270" height="280" viewBox="0 0 270 280">
-        <defs>
-          <linearGradient id="octoGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#a29bfe"/>
-            <stop offset="100%" stop-color="#6c5ce7"/>
-          </linearGradient>
-        </defs>
-        <path d="M 50,140 Q 30,180 15,240" stroke="#6c5ce7" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <path d="M 70,155 Q 45,200 25,255" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M 95,165 Q 80,210 65,260" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M 120,170 Q 115,215 110,265" stroke="#6c5ce7" stroke-width="10" fill="none" stroke-linecap="round"/>
-        <path d="M 150,170 Q 155,215 160,265" stroke="#6c5ce7" stroke-width="10" fill="none" stroke-linecap="round"/>
-        <path d="M 175,165 Q 190,210 205,260" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M 200,155 Q 225,200 245,255" stroke="#6c5ce7" stroke-width="11" fill="none" stroke-linecap="round"/>
-        <path d="M 220,140 Q 240,180 255,240" stroke="#6c5ce7" stroke-width="12" fill="none" stroke-linecap="round"/>
-        <circle cx="18" cy="240" r="4" fill="#a29bfe"/>
-        <circle cx="28" cy="255" r="3.5" fill="#a29bfe"/>
-        <circle cx="68" cy="260" r="3.5" fill="#a29bfe"/>
-        <circle cx="113" cy="265" r="3" fill="#a29bfe"/>
-        <circle cx="157" cy="265" r="3" fill="#a29bfe"/>
-        <circle cx="202" cy="260" r="3.5" fill="#a29bfe"/>
-        <circle cx="242" cy="255" r="3.5" fill="#a29bfe"/>
-        <circle cx="252" cy="240" r="4" fill="#a29bfe"/>
-        <ellipse cx="135" cy="100" rx="68" ry="62" fill="url(#octoGrad)"/>
-        <ellipse cx="135" cy="85" rx="50" ry="20" fill="#a29bfe" opacity="0.3"/>
-        <ellipse cx="105" cy="95" rx="18" ry="20" fill="#fff"/>
-        <circle cx="110" cy="95" r="10" fill="#2d3436"/>
-        <circle cx="113" cy="92" r="3.5" fill="#fff"/>
-        <ellipse cx="165" cy="95" rx="18" ry="20" fill="#fff"/>
-        <circle cx="160" cy="95" r="10" fill="#2d3436"/>
-        <circle cx="157" cy="92" r="3.5" fill="#fff"/>
-        <path d="M 120 120 Q 135 130 150 120" stroke="#6c5ce7" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <svg width="280" height="250" viewBox="0 0 280 250">
+        <rect width="280" height="250" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <!-- octopus head -->
+        <ellipse cx="110" cy="65" rx="40" ry="35" fill="#6c5ce7"/>
+        <ellipse cx="110" cy="65" rx="37" ry="32" fill="#7c6fea"/>
+        <!-- eyes -->
+        <ellipse cx="93" cy="58" rx="10" ry="11" fill="#fff"/>
+        <circle cx="91" cy="58" r="5" fill="#2d3436"/>
+        <circle cx="89" cy="56" r="2" fill="#fff"/>
+        <ellipse cx="127" cy="58" rx="10" ry="11" fill="#fff"/>
+        <circle cx="125" cy="58" r="5" fill="#2d3436"/>
+        <circle cx="123" cy="56" r="2" fill="#fff"/>
+        <!-- smile -->
+        <path d="M100,75 Q110,82 120,75" fill="none" stroke="#4a3899" stroke-width="2"/>
+        <!-- tentacles -->
+        <path d="M70,90 Q50,140 40,180" stroke="#6c5ce7" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <path d="M80,95 Q55,150 55,190" stroke="#7c6fea" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M90,98 Q70,155 75,195" stroke="#6c5ce7" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M100,100 Q95,160 100,200" stroke="#7c6fea" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M120,100 Q125,160 120,200" stroke="#6c5ce7" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M130,98 Q150,155 145,195" stroke="#7c6fea" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M140,95 Q165,150 165,190" stroke="#6c5ce7" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path d="M150,90 Q170,140 180,180" stroke="#7c6fea" stroke-width="8" fill="none" stroke-linecap="round"/>
+        <!-- treasure chest -->
+        <rect x="195" y="155" width="55" height="35" rx="3" fill="#8B4513"/>
+        <rect x="195" y="150" width="55" height="8" rx="3" fill="#A0522D" transform="rotate(-8 222 154)"/>
+        <rect x="217" y="158" width="12" height="10" rx="2" fill="#f39c12"/>
+        <!-- coins -->
+        <ellipse cx="210" cy="155" rx="5" ry="3" fill="#f1c40f"/>
+        <ellipse cx="220" cy="152" rx="5" ry="3" fill="#f9a825"/>
+        <ellipse cx="230" cy="154" rx="4" ry="3" fill="#f1c40f"/>
+        <ellipse cx="240" cy="150" rx="5" ry="3" fill="#f9a825"/>
+        <!-- pearl -->
+        <circle cx="255" cy="180" r="6" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <!-- shell -->
+        <ellipse cx="265" cy="200" rx="10" ry="7" fill="#fd79a8"/>
+        <path d="M255,200 Q265,190 275,200" fill="none" stroke="#e84393" stroke-width="1"/>
+        <text x="140" y="242" text-anchor="middle" font-size="11" fill="#636e72">Восьминіг знайшов скарб!</text>
       </svg>
     </div>
   </div>
 </div>
 
-<!-- Slide 8: Підсумки -->
+<!-- Slide 8: Summary -->
 <div class="slide light">
   <h2>✅ Підсумки</h2>
   <ul>
-    <li>✅ Побудували <strong>рибку</strong> — овал зі Sphere!</li>
-    <li>✅ Зробили <strong>морську зірку</strong> — Ctrl+D з поворотом на 72°</li>
-    <li>✅ Змоделювали <strong>підводний човен</strong> з ілюмінаторами (Hole!)</li>
-    <li>✅ Створили <strong>восьминіга</strong> — 8 щупалець через Ctrl+D на 45°</li>
-    <li>✅ Закріпили: <strong>Ctrl+D</strong>, <strong>Align</strong>, <strong>Hole</strong>, <strong>Group</strong>, обертання на точний кут</li>
+    <li>✅ Побудували <strong>рибку з водоростями</strong> — овал зі Sphere + нахилені стебла</li>
+    <li>✅ Зробили <strong>акулу з зубами</strong> — конуси-зуби через Ctrl+D!</li>
+    <li>✅ Змоделювали <strong>підводний човен і корали</strong> — Hole для ілюмінаторів, яскравий риф</li>
+    <li>✅ Створили <strong>восьминіга зі скринею скарбів</strong> — 8 щупалець на 45° + скриня з монетами</li>
+    <li>✅ Закріпили: <strong>Ctrl+D</strong>, <strong>Align</strong>, <strong>Hole</strong>, <strong>Group</strong>, точний кут обертання</li>
   </ul>
-  <blockquote>🏆 Покажи вчителю! Найкращі моделі — на виставку! 🎨</blockquote>
+  <blockquote>🏆 Покажи вчителю свою роботу! Найкращі підводні світи — на виставку! 🎨</blockquote>
 </div>
 
 <div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
