@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Заняття 8</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#1a1a2e;overflow:hidden}
+  .slide{display:none;width:100vw;height:100vh;padding:50px 70px;flex-direction:column;justify-content:center;overflow-y:auto;opacity:0;transition:opacity .3s ease}
+  .slide.active{display:flex;opacity:1}
+  .slide.light{background:#fff;color:#2d3436}
+  .slide.lead{background:linear-gradient(135deg,#00b894 0%,#00cec9 100%);color:#fff;text-align:center;align-items:center}
+  h1{font-size:2.8em;margin-bottom:15px}
+  h2{font-size:2em;color:#00b894;margin-bottom:18px}
+  .lead h1,.lead h2,.lead p{color:#fff}
+  .lead h2{font-size:2.2em}.lead p{font-size:1.3em;opacity:0.9}
+  h3{font-size:1.3em;color:#6c5ce7;margin:12px 0 6px}
+  p,li{font-size:1.15em;line-height:1.5}
+  ul,ol{padding-left:30px}li{margin:5px 0}
+  table{border-collapse:collapse;margin:15px 0;width:100%}
+  th,td{border:1px solid #ddd;padding:10px 16px;text-align:left;font-size:1.1em}
+  th{background:#f0fff4}
+  blockquote{border-left:4px solid #00b894;background:#f0fff4;padding:12px 20px;margin:12px 0;border-radius:0 6px 6px 0;font-size:1.05em}
+  .tip{border-left-color:#f39c12;background:#fef9e7}
+  .page-num{position:fixed;bottom:20px;right:30px;color:#b2bec3;font-size:0.9em}
+  .nav-hint{position:fixed;bottom:20px;left:30px;color:#b2bec3;font-size:0.8em}
+  .two-col{display:flex;gap:30px;align-items:flex-start}.two-col>div{flex:1}
+</style>
+</head>
+<body>
+
+<div class="slide lead">
+  <h1>3D-моделювання | Заняття 8</h1>
+  <h2>🐣 Великдень в Україні</h2>
+  <p>07.04.2026 | Група: 3-4 клас</p>
+  <p style="margin-top:15px;font-size:1.1em">Писанка • Кошик з дарунками • Святковий стіл • Церква зі сценою</p>
+</div>
+
+<div class="slide light">
+  <h2>🐣 Великдень — найбільше свято!</h2>
+  <div class="two-col">
+    <div>
+      <ul>
+        <li>🥚 <strong>Писанки</strong> — яйця з орнаментами, символ нового життя</li>
+        <li>🧺 <strong>Кошик</strong> — несуть освячувати паску, яйця, ковбасу</li>
+        <li>🔔 <strong>Дзвони</strong> — дзвонять на Великдень!</li>
+        <li>🍰 <strong>Паска</strong> — святковий хліб з глазур'ю</li>
+        <li>⛪ <strong>Церква</strong> — родина йде на службу</li>
+      </ul>
+      <blockquote>🇺🇦 В Україні Великдень — найбільше родинне свято! <strong>«Христос Воскрес!»</strong></blockquote>
+    </div>
+    <div style="text-align:center">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <rect width="220" height="220" rx="16" fill="#fef9e7" opacity="0.5"/>
+        <ellipse cx="110" cy="100" rx="35" ry="48" fill="#e74c3c"/>
+        <ellipse cx="110" cy="100" rx="32" ry="45" fill="#c0392b"/>
+        <rect x="78" y="85" width="64" height="4" rx="2" fill="#f1c40f"/>
+        <rect x="78" y="105" width="64" height="4" rx="2" fill="#f1c40f"/>
+        <polygon points="110,78 115,88 105,88" fill="#f1c40f"/>
+        <polygon points="110,112 115,122 105,122" fill="#f1c40f"/>
+        <circle cx="95" cy="96" r="3" fill="#f1c40f"/>
+        <circle cx="125" cy="96" r="3" fill="#f1c40f"/>
+        <ellipse cx="110" cy="150" rx="20" ry="6" fill="#deb887"/>
+        <text x="110" y="180" text-anchor="middle" font-size="12" fill="#636e72">Українська писанка</text>
+      </svg>
+    </div>
+  </div>
+  <p style="font-size:1.3em;margin-top:10px">Сьогодні — <strong>складні великодні моделі</strong> у Tinkercad! 🐣</p>
+</div>
+
+<div class="slide light">
+  <h2>📋 Завдання на сьогодні</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Що моделюємо</th><th>Складність</th></tr>
+    <tr><td>⭐</td><td><strong>Розписана писанка</strong> 🥚</td><td>Яйце + 3 смужки + ромбики + зірочка + підставка-кільце</td><td>6 елементів</td></tr>
+    <tr><td>⭐⭐</td><td><strong>Кошик з дарунками</strong> 🧺</td><td>Кошик (Hole) + ручка + серветка + паска з глазур'ю + 3 писанки</td><td>10+ елементів</td></tr>
+    <tr><td>⭐⭐⭐</td><td><strong>Святковий стіл</strong> 🕯️</td><td>Стіл + скатертина-вишиванка + тарілка + паска + свічка + глечик</td><td>15+ елементів</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td><strong>Церква зі сценою</strong> 🏰</td><td>Церква + 5 куполів + дзвіниця + арки + огорожа + дерево</td><td>25+ елементів</td></tr>
+  </table>
+  <blockquote>🏆 Сьогодні — найскладніші моделі! Багато деталей і Hole-операцій!</blockquote>
+</div>
+
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Розписана писанка 🥚</h2>
+  <div class="two-col">
+    <div>
+      <ol>
+        <li><strong>Sphere</strong> → 20×20×28, червоний (яйце)</li>
+        <li>3 × <strong>Cylinder</strong> (⌀22, H=1, жовтий) — смужки</li>
+        <li>6 × <strong>Box</strong> (3×3×1, повернутий 45°) — ромбики між смужками</li>
+        <li>Зверху: 2 тонких <strong>Box</strong> хрестом (1×6×1), один повернутий 45° → зірочка</li>
+        <li>Підставка: <strong>Cylinder</strong> (⌀14, H=3) − <strong>Cylinder Hole</strong> (⌀10) → кільце</li>
+      </ol>
+      <blockquote class="tip">🎨 Підставка-кільце: великий Cylinder мінус маленький Cylinder Hole!</blockquote>
+    </div>
+    <div style="text-align:center">
+      <svg width="200" height="240" viewBox="0 0 200 240">
+        <rect width="200" height="240" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <ellipse cx="100" cy="100" rx="38" ry="52" fill="#c0392b"/>
+        <rect x="62" y="75" width="76" height="3" rx="1" fill="#f1c40f"/>
+        <rect x="62" y="100" width="76" height="3" rx="1" fill="#f1c40f"/>
+        <rect x="62" y="120" width="76" height="3" rx="1" fill="#f1c40f"/>
+        <g transform="translate(80,87) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <g transform="translate(100,85) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <g transform="translate(120,87) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <g transform="translate(80,112) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <g transform="translate(100,110) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <g transform="translate(120,112) rotate(45)"><rect x="-2" y="-2" width="5" height="5" fill="#f1c40f"/></g>
+        <rect x="97" y="52" width="6" height="2" rx="1" fill="#f1c40f"/>
+        <rect x="99" y="49" width="2" height="8" rx="1" fill="#f1c40f"/>
+        <g transform="translate(100,53) rotate(45)"><rect x="-3" y="-.7" width="6" height="1.4" rx=".5" fill="#f1c40f"/></g>
+        <g transform="translate(100,53) rotate(-45)"><rect x="-3" y="-.7" width="6" height="1.4" rx=".5" fill="#f1c40f"/></g>
+        <ellipse cx="100" cy="158" rx="18" ry="5" fill="#8B4513"/>
+        <ellipse cx="100" cy="158" rx="12" ry="3" fill="#e8f8f5"/>
+        <text x="100" y="185" text-anchor="middle" font-size="11" fill="#636e72">Писанка з орнаментом</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Кошик з дарунками 🧺</h2>
+  <div class="two-col">
+    <div>
+      <h3>🧺 Кошик (Hole-операція):</h3>
+      <ol>
+        <li><strong>Cylinder</strong> (⌀40, H=25, коричневий)</li>
+        <li><strong>Cylinder Hole</strong> (⌀36, H=22, підняти +4) → Group!</li>
+        <li>Ручка: <strong>Half Torus</strong> зверху</li>
+        <li>Серветка: тонкий <strong>Box</strong> (45×35×1, червоний) + 2 білих тонких Box-смужки</li>
+      </ol>
+      <h3>🍰 Вміст кошика:</h3>
+      <ol start="5">
+        <li>Паска: <strong>Cylinder</strong> (⌀18, H=20) + <strong>Half Sphere</strong> (глазур) + 8 × маленька <strong>Sphere</strong> (посипка)</li>
+        <li>3 писанки: <strong>Sphere</strong> розтягнуті, різних кольорів</li>
+      </ol>
+      <blockquote class="tip">💡 Всього 10+ елементів! Кошик = Cylinder − Hole!</blockquote>
+    </div>
+    <div style="text-align:center">
+      <svg width="240" height="220" viewBox="0 0 240 220">
+        <rect width="240" height="220" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <ellipse cx="120" cy="190" rx="55" ry="12" fill="#deb887" opacity="0.3"/>
+        <rect x="75" y="130" width="90" height="55" rx="8" fill="#8B4513"/>
+        <rect x="80" y="134" width="80" height="48" rx="5" fill="#A0522D"/>
+        <path d="M85,130 Q120,78 155,130" fill="none" stroke="#8B4513" stroke-width="6" stroke-linecap="round"/>
+        <rect x="72" y="175" width="96" height="8" rx="2" fill="#e74c3c" opacity="0.5"/>
+        <rect x="105" y="95" width="30" height="38" rx="3" fill="#deb887"/>
+        <ellipse cx="120" cy="93" rx="17" ry="12" fill="#fff"/>
+        <circle cx="112" cy="89" r="2" fill="#e74c3c"/><circle cx="120" cy="86" r="2" fill="#2ecc71"/><circle cx="128" cy="89" r="2" fill="#3498db"/>
+        <circle cx="115" cy="93" r="1.5" fill="#f1c40f"/><circle cx="125" cy="93" r="1.5" fill="#e74c3c"/>
+        <circle cx="118" cy="97" r="1.5" fill="#9b59b6"/><circle cx="122" cy="84" r="1.5" fill="#f39c12"/><circle cx="116" cy="86" r="1.5" fill="#1abc9c"/>
+        <ellipse cx="92" cy="120" rx="8" ry="11" fill="#e74c3c"/>
+        <ellipse cx="148" cy="120" rx="8" ry="11" fill="#2ecc71"/>
+        <ellipse cx="120" cy="125" rx="7" ry="10" fill="#3498db"/>
+        <text x="120" y="210" text-anchor="middle" font-size="11" fill="#636e72">Кошик з дарунками</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Святковий стіл 🕯️</h2>
+  <div class="two-col">
+    <div>
+      <h3>Елементи (15+):</h3>
+      <ol>
+        <li><strong>Стіл</strong>: Box (80×50×3) + 4 ніжки</li>
+        <li><strong>Скатертина-вишиванка</strong>: Box (85×55×0.5) білий + червоні та чорні тонкі Box-смужки як орнамент</li>
+        <li><strong>Тарілка</strong>: Cylinder (⌀30, H=3) − Cylinder Hole → 3 писанки всередині</li>
+        <li><strong>Паска на дошці</strong>: Box-дошка + Cylinder + Half Sphere глазур + посипка</li>
+        <li><strong>Свічка у свічнику</strong>: Cylinder (⌀8, H=4) + Cylinder (⌀3, H=12) + Cone (вогник)</li>
+        <li><strong>Глечик</strong>: Cylinder − Hole + тонкий Cylinder-носик</li>
+      </ol>
+      <blockquote class="tip">🕯️ Свічник = широкий короткий Cylinder. Вогонь = маленький Cone!</blockquote>
+    </div>
+    <div style="text-align:center">
+      <svg width="280" height="200" viewBox="0 0 280 200">
+        <rect width="280" height="200" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <rect x="25" y="95" width="230" height="8" rx="2" fill="#8B4513"/>
+        <rect x="30" y="88" width="220" height="8" rx="1" fill="#fff" opacity="0.8"/>
+        <rect x="30" y="89" width="220" height="2" fill="#e74c3c" opacity="0.4"/>
+        <rect x="30" y="93" width="220" height="2" fill="#2d3436" opacity="0.2"/>
+        <rect x="35" y="103" width="5" height="35" fill="#A0522D"/>
+        <rect x="240" y="103" width="5" height="35" fill="#A0522D"/>
+        <rect x="42" y="58" width="28" height="32" rx="2" fill="#deb887"/>
+        <ellipse cx="56" cy="56" rx="16" ry="10" fill="#fff"/>
+        <circle cx="50" cy="53" r="2" fill="#e74c3c"/><circle cx="58" cy="51" r="2" fill="#2ecc71"/><circle cx="63" cy="54" r="1.5" fill="#f1c40f"/>
+        <ellipse cx="110" cy="80" rx="25" ry="6" fill="#dfe6e9" stroke="#b2bec3"/>
+        <ellipse cx="102" cy="77" rx="6" ry="9" fill="#e74c3c"/>
+        <ellipse cx="115" cy="78" rx="5" ry="8" fill="#2ecc71"/>
+        <ellipse cx="125" cy="77" rx="6" ry="9" fill="#f39c12"/>
+        <rect x="200" y="68" width="4" height="8" rx="1" fill="#A0522D"/>
+        <rect x="198" y="50" width="8" height="20" rx="2" fill="#f1c40f"/>
+        <polygon points="202,50 196,40 208,40" fill="#e67e22"/>
+        <rect x="160" y="65" width="16" height="25" rx="6" fill="#dfe6e9" stroke="#b2bec3"/>
+        <rect x="176" y="72" width="8" height="3" rx="1" fill="#b2bec3"/>
+        <text x="140" y="165" text-anchor="middle" font-size="11" fill="#636e72">Святковий стіл із вишиванкою</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — Церква зі сценою 🏰</h2>
+  <div class="two-col">
+    <div>
+      <h3>⛪ Церква (25+ елементів!):</h3>
+      <ol>
+        <li><strong>Стіни</strong>: Box (40×30×25) білий</li>
+        <li><strong>Дах</strong>: 2 Box під кутом → двосхилий</li>
+        <li><strong>5 куполів</strong>: центральний Sphere (⌀12) + 4 малих (⌀7) на кутах</li>
+        <li><strong>5 хрестів</strong>: по 2 тонких Box на кожному куполі</li>
+        <li><strong>Арочні вікна</strong>: Box + Cylinder Hole зверху ×3</li>
+        <li><strong>Двері</strong>: велика арка (Box + Half Cylinder Hole)</li>
+      </ol>
+      <h3>🔔 Дзвіниця + оточення:</h3>
+      <ol start="7">
+        <li><strong>Cylinder</strong> (⌀14, H=35) + <strong>Cone</strong>-дах + дзвін</li>
+        <li>4 арки у дзвіниці (Box Hole ×4)</li>
+        <li><strong>Огорожа</strong>: 8 Cylinder-стовпчиків + 4 Box-перекладини</li>
+        <li><strong>Дерево</strong>: Cone (зелена крона) + Cylinder (стовбур)</li>
+      </ol>
+      <blockquote class="tip">🏆 Найскладніше! 5 куполів = центральний + 4 по кутах!</blockquote>
+    </div>
+    <div style="text-align:center">
+      <svg width="280" height="240" viewBox="0 0 280 240">
+        <rect width="280" height="240" rx="12" fill="#e8f8f5" opacity="0.5"/>
+        <ellipse cx="140" cy="220" rx="130" ry="12" fill="#90be6d" opacity="0.3"/>
+        <rect x="50" y="130" width="110" height="75" rx="2" fill="#fff" stroke="#ddd"/>
+        <polygon points="50,130 105,75 160,130" fill="#8B4513"/>
+        <circle cx="105" cy="68" r="11" fill="#f1c40f" stroke="#f39c12"/>
+        <rect x="103" y="47" width="4" height="16" rx="1" fill="#f39c12"/>
+        <rect x="97" y="53" width="16" height="4" rx="1" fill="#f39c12"/>
+        <circle cx="60" cy="118" r="6" fill="#f1c40f" opacity="0.8"/>
+        <rect x="59" y="107" width="2" height="8" rx=".5" fill="#f39c12"/>
+        <rect x="55" y="111" width="10" height="2" rx=".5" fill="#f39c12"/>
+        <circle cx="150" cy="118" r="6" fill="#f1c40f" opacity="0.8"/>
+        <rect x="149" y="107" width="2" height="8" rx=".5" fill="#f39c12"/>
+        <rect x="145" y="111" width="10" height="2" rx=".5" fill="#f39c12"/>
+        <circle cx="78" cy="125" r="5" fill="#f1c40f" opacity="0.7"/>
+        <circle cx="132" cy="125" r="5" fill="#f1c40f" opacity="0.7"/>
+        <rect x="90" y="175" width="18" height="30" rx="1" fill="#8B4513"/>
+        <path d="M90,175 Q99,168 108,175" fill="#8B4513"/>
+        <rect x="62" y="148" width="10" height="14" rx="1" fill="#74b9ff" stroke="#5c9acd"/>
+        <rect x="85" y="148" width="10" height="14" rx="1" fill="#74b9ff" stroke="#5c9acd"/>
+        <rect x="115" y="148" width="10" height="14" rx="1" fill="#74b9ff" stroke="#5c9acd"/>
+        <rect x="195" y="100" width="28" height="105" rx="2" fill="#dfe6e9" stroke="#b2bec3"/>
+        <polygon points="195,100 209,60 223,100" fill="#636e72"/>
+        <circle cx="209" cy="55" r="5" fill="#f1c40f"/>
+        <rect x="207" y="43" width="3" height="10" rx="1" fill="#f39c12"/>
+        <rect x="203" y="47" width="11" height="3" rx="1" fill="#f39c12"/>
+        <ellipse cx="209" cy="140" rx="7" ry="5" fill="#95a5a6"/>
+        <rect x="200" y="120" width="5" height="12" rx="1" fill="none" stroke="#b2bec3"/>
+        <rect x="213" y="120" width="5" height="12" rx="1" fill="none" stroke="#b2bec3"/>
+        <rect x="200" y="155" width="5" height="12" rx="1" fill="none" stroke="#b2bec3"/>
+        <rect x="213" y="155" width="5" height="12" rx="1" fill="none" stroke="#b2bec3"/>
+        <rect x="245" y="170" width="6" height="35" rx="1" fill="#8B4513"/>
+        <polygon points="248,120 232,170 264,170" fill="#27ae60"/>
+        <text x="140" y="237" text-anchor="middle" font-size="11" fill="#636e72">Церква з 5 куполами, дзвіницею, огорожею</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="slide light">
+  <h2>✅ Підсумки</h2>
+  <ul>
+    <li>✅ <strong>Писанка</strong> — Sphere + смужки + ромбики + зірочка + підставка-кільце</li>
+    <li>✅ <strong>Кошик</strong> — Hole-операція + ручка + серветка + паска + писанки (10+ елементів)</li>
+    <li>✅ <strong>Святковий стіл</strong> — скатертина-вишиванка, тарілка, глечик, свічка (15+ елементів)</li>
+    <li>✅ <strong>Церква</strong> — 5 куполів, арочні вікна, дзвіниця, огорожа, дерево (25+ елементів)</li>
+    <li>✅ Закріпили: <strong>Hole + Group</strong>, <strong>складні композиції</strong>, <strong>багато деталей</strong></li>
+  </ul>
+  <blockquote>🐣 Христос Воскрес! Покажи вчителю свою роботу! 🏆</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+<script>
+const slides=document.querySelectorAll('.slide');let idx=0;
+document.getElementById('total').textContent=slides.length;
+function show(i){slides[idx].classList.remove('active');idx=Math.max(0,Math.min(i,slides.length-1));slides[idx].classList.add('active');document.getElementById('current').textContent=idx+1}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.addEventListener('click',e=>{e.clientX>window.innerWidth/2?show(idx+1):show(idx-1)});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?show(idx+1):show(idx-1)}},{passive:true});
+</script>
+</body>
+</html>

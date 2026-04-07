@@ -60,14 +60,14 @@
           "files": ["presentation.html", "google_classroom.md"]
         },
         {
-          "n": 6, "title": "🎮 Функції у грі — закріплення", "date": "07.04.2026",
+          "n": 6, "title": "🐣 Великодні функції — закріплення", "date": "07.04.2026",
           "published": true,
           "files": ["presentation.html", "google_classroom.md"],
           "makecode": [
-            {"label": "Завдання 1 — Кубик емоцій", "url": ""},
-            {"label": "Завдання 2 — Влучний стрілець", "url": ""},
-            {"label": "Завдання 3 — Космічний дощ", "url": ""},
-            {"label": "Завдання 4 — Пінг-понг", "url": ""}
+            {"label": "Завдання 1 — Великодній кошик 🧺", "url": ""},
+            {"label": "Завдання 2 — Пошук писанок 🥚", "url": ""},
+            {"label": "Завдання 3 — Великодній дзвін 🔔", "url": ""},
+            {"label": "Завдання 4 — Писанковий змій 🐍", "url": ""}
           ]
         }
       ]
@@ -112,6 +112,16 @@
           "published": true,
           "shared": "robotics/shared/lesson-functions",
           "files": ["presentation.html", "google_classroom.md"]
+        },
+        {
+          "n": 8, "title": "🐣 Великодні функції у MakeCode", "date": "09.04.2026",
+          "published": true,
+          "files": ["presentation.html", "google_classroom.md"],
+          "makecode": [
+            {"label": "Завдання 1 — Великодне привітання", "url": ""},
+            {"label": "Завдання 2 — Кошик з функцією", "url": ""},
+            {"label": "Завдання 3 — Збирач писанок", "url": ""}
+          ]
         }
       ]
     },
@@ -167,6 +177,17 @@
             {"label": "Акула з зубами", "url": ""},
             {"label": "Підводний човен і корали", "url": ""},
             {"label": "Восьминіг зі скарбами", "url": ""}
+          ]
+        },
+        {
+          "n": 8, "title": "🐣 Великдень в Україні — писанка, кошик, стіл, церква", "date": "07.04.2026",
+          "published": true,
+          "files": ["presentation.html", "handout.html"],
+          "tinkercad": [
+            {"label": "Писанка з орнаментом", "url": ""},
+            {"label": "Великодній кошик з паскою", "url": ""},
+            {"label": "Великодній стіл", "url": ""},
+            {"label": "Церква з дзвіницею", "url": ""}
           ]
         }
       ]

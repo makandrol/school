@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Роздатковий — Великдень в Україні</title>
+<style>
+  @page { size: A4 portrait; margin: 8mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Arial, sans-serif; width: 210mm; margin: 0 auto; }
+  @media print { body { width: 100%; } }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3mm;
+    width: 194mm;
+    height: 277mm;
+    margin: 0 auto;
+  }
+  .cell {
+    border: 1.5px solid #00b894;
+    border-radius: 6px;
+    padding: 5mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cell-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #00b894;
+    margin-bottom: 2mm;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cell-title span { font-size: 11px; color: #636e72; font-weight: 400; }
+  .views {
+    display: flex;
+    gap: 2mm;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    min-height: 0;
+  }
+  .views svg { flex-shrink: 0; }
+  .view-label { font-size: 8px; fill: #b2bec3; text-anchor: middle; }
+  .desc {
+    font-size: 10px;
+    color: #2d3436;
+    line-height: 1.4;
+    flex-shrink: 0;
+    margin-top: 2mm;
+    border-top: 1px solid #dfe6e9;
+    padding-top: 2mm;
+  }
+  .desc b { color: #00b894; }
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+<!-- CELL 1: Писанка -->
+<div class="cell">
+  <div class="cell-title">⭐ Розписана писанка 🥚 <span>6 елементів</span></div>
+  <div class="views">
+    <!-- Front view -->
+    <svg width="85" height="120" viewBox="0 0 85 120">
+      <text x="42" y="10" class="view-label">спереду</text>
+      <ellipse cx="42" cy="55" rx="25" ry="35" fill="#c0392b"/>
+      <rect x="17" y="40" width="50" height="2.5" rx="1" fill="#f1c40f"/>
+      <rect x="17" y="57" width="50" height="2.5" rx="1" fill="#f1c40f"/>
+      <rect x="17" y="70" width="50" height="2.5" rx="1" fill="#f1c40f"/>
+      <g transform="translate(28,48) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <g transform="translate(42,47) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <g transform="translate(56,48) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <g transform="translate(28,65) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <g transform="translate(42,63) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <g transform="translate(56,65) rotate(45)"><rect x="-2" y="-2" width="4" height="4" fill="#f1c40f"/></g>
+      <rect x="40" y="20" width="4" height="1.5" rx=".5" fill="#f1c40f"/>
+      <rect x="41" y="18" width="2" height="5.5" rx=".5" fill="#f1c40f"/>
+      <g transform="translate(42,21) rotate(45)"><rect x="-2" y="-.5" width="4" height="1" rx=".3" fill="#f1c40f"/></g>
+      <g transform="translate(42,21) rotate(-45)"><rect x="-2" y="-.5" width="4" height="1" rx=".3" fill="#f1c40f"/></g>
+      <ellipse cx="42" cy="94" rx="13" ry="4" fill="#8B4513"/>
+      <ellipse cx="42" cy="94" rx="8" ry="2.5" fill="#e8f8f5"/>
+    </svg>
+    <!-- Side view -->
+    <svg width="60" height="120" viewBox="0 0 60 120">
+      <text x="30" y="10" class="view-label">збоку</text>
+      <ellipse cx="30" cy="55" rx="18" ry="35" fill="#c0392b"/>
+      <rect x="12" y="40" width="36" height="2.5" rx="1" fill="#f1c40f"/>
+      <rect x="12" y="57" width="36" height="2.5" rx="1" fill="#f1c40f"/>
+      <rect x="12" y="70" width="36" height="2.5" rx="1" fill="#f1c40f"/>
+      <ellipse cx="30" cy="94" rx="13" ry="4" fill="#8B4513"/>
+      <ellipse cx="30" cy="94" rx="8" ry="2.5" fill="#e8f8f5"/>
+    </svg>
+    <!-- Top view -->
+    <svg width="70" height="120" viewBox="0 0 70 120">
+      <text x="35" y="10" class="view-label">зверху</text>
+      <circle cx="35" cy="55" r="22" fill="#c0392b"/>
+      <circle cx="35" cy="55" r="18" fill="none" stroke="#f1c40f" stroke-width="2"/>
+      <circle cx="35" cy="55" r="12" fill="none" stroke="#f1c40f" stroke-width="2"/>
+      <rect x="33" y="51" width="4" height="1.5" rx=".5" fill="#f1c40f"/>
+      <rect x="34" y="49" width="2" height="5.5" rx=".5" fill="#f1c40f"/>
+      <g transform="translate(35,53) rotate(45)"><rect x="-2" y="-.5" width="4" height="1" rx=".3" fill="#f1c40f"/></g>
+      <g transform="translate(35,53) rotate(-45)"><rect x="-2" y="-.5" width="4" height="1" rx=".3" fill="#f1c40f"/></g>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Sphere</b> 20×20×28 (червона) + 3 <b>Cylinder</b>-смужки (жовті, H=1) + 6 <b>Box</b>-ромбиків (45°) + зірочка (2 Box хрестом) + підставка (<b>Cylinder − Hole</b> → кільце)
+  </div>
+</div>
+
+<!-- CELL 2: Кошик -->
+<div class="cell">
+  <div class="cell-title">⭐⭐ Кошик з дарунками 🧺 <span>10+ елементів</span></div>
+  <div class="views">
+    <!-- Front view -->
+    <svg width="100" height="120" viewBox="0 0 100 120">
+      <text x="50" y="10" class="view-label">спереду</text>
+      <rect x="22" y="55" width="56" height="40" rx="5" fill="#8B4513"/>
+      <rect x="26" y="58" width="48" height="34" rx="3" fill="#A0522D"/>
+      <path d="M30,55 Q50,18 70,55" fill="none" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+      <rect x="24" y="82" width="52" height="5" rx="1" fill="#e74c3c" opacity="0.5"/>
+      <rect x="24" y="84" width="52" height="1" fill="#fff" opacity="0.5"/>
+      <rect x="40" y="32" width="20" height="26" rx="2" fill="#deb887"/>
+      <ellipse cx="50" cy="30" rx="12" ry="8" fill="#fff"/>
+      <circle cx="44" cy="28" r="1.5" fill="#e74c3c"/><circle cx="50" cy="26" r="1.5" fill="#2ecc71"/><circle cx="56" cy="28" r="1.5" fill="#3498db"/>
+      <circle cx="47" cy="31" r="1" fill="#f1c40f"/><circle cx="53" cy="31" r="1" fill="#e74c3c"/><circle cx="50" cy="23" r="1" fill="#9b59b6"/>
+      <ellipse cx="34" cy="48" rx="6" ry="9" fill="#e74c3c"/>
+      <rect x="28" y="44" width="12" height="1.5" rx=".5" fill="#f1c40f"/>
+      <ellipse cx="66" cy="48" rx="6" ry="9" fill="#2ecc71"/>
+      <rect x="60" y="44" width="12" height="1.5" rx=".5" fill="#f1c40f"/>
+      <ellipse cx="50" cy="50" rx="5" ry="8" fill="#3498db"/>
+    </svg>
+    <!-- Side view -->
+    <svg width="80" height="120" viewBox="0 0 80 120">
+      <text x="40" y="10" class="view-label">збоку</text>
+      <rect x="18" y="55" width="44" height="40" rx="5" fill="#8B4513"/>
+      <rect x="21" y="58" width="38" height="34" rx="3" fill="#A0522D"/>
+      <path d="M25,55 Q40,18 55,55" fill="none" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+      <rect x="32" y="32" width="16" height="26" rx="2" fill="#deb887"/>
+      <ellipse cx="40" cy="30" rx="10" ry="7" fill="#fff"/>
+      <circle cx="35" cy="28" r="1.5" fill="#e74c3c"/><circle cx="40" cy="26" r="1.5" fill="#2ecc71"/><circle cx="45" cy="28" r="1.5" fill="#3498db"/>
+      <ellipse cx="30" cy="48" rx="5" ry="8" fill="#e74c3c"/>
+      <ellipse cx="50" cy="48" rx="5" ry="8" fill="#2ecc71"/>
+    </svg>
+    <!-- Top view -->
+    <svg width="80" height="120" viewBox="0 0 80 120">
+      <text x="40" y="10" class="view-label">зверху</text>
+      <ellipse cx="40" cy="60" rx="28" ry="22" fill="#8B4513"/>
+      <ellipse cx="40" cy="60" rx="24" ry="18" fill="#A0522D"/>
+      <ellipse cx="40" cy="50" rx="8" ry="6" fill="#fff" opacity="0.8"/>
+      <circle cx="28" cy="56" r="5" fill="#e74c3c" opacity="0.7"/>
+      <circle cx="52" cy="56" r="5" fill="#2ecc71" opacity="0.7"/>
+      <circle cx="40" cy="66" r="4" fill="#3498db" opacity="0.7"/>
+      <rect x="20" y="73" width="40" height="6" rx="1" fill="#e74c3c" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Кошик</b>: Cylinder (⌀40) − <b>Cylinder Hole</b> (⌀36) + <b>Half Torus</b> (ручка). <b>Серветка</b>: Box червоний + білі смужки. <b>Паска</b>: Cylinder + Half Sphere + посипка. <b>3 писанки</b>: Sphere різних кольорів.
+  </div>
+</div>
+
+<!-- CELL 3: Стіл -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐ Святковий стіл 🕯️ <span>15+ елементів</span></div>
+  <div class="views">
+    <!-- Front view -->
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <text x="60" y="10" class="view-label">спереду</text>
+      <rect x="8" y="50" width="104" height="5" rx="1" fill="#8B4513"/>
+      <rect x="8" y="46" width="104" height="5" rx="1" fill="#fff" opacity="0.8"/>
+      <rect x="8" y="47" width="104" height="1.5" fill="#e74c3c" opacity="0.4"/>
+      <rect x="8" y="50" width="104" height="1" fill="#2d3436" opacity="0.15"/>
+      <rect x="12" y="55" width="4" height="25" fill="#A0522D"/>
+      <rect x="104" y="55" width="4" height="25" fill="#A0522D"/>
+      <rect x="18" y="26" width="18" height="22" rx="2" fill="#deb887"/>
+      <ellipse cx="27" cy="24" rx="10" ry="7" fill="#fff"/>
+      <circle cx="23" cy="22" r="1.2" fill="#e74c3c"/><circle cx="27" cy="20" r="1.2" fill="#2ecc71"/><circle cx="31" cy="22" r="1.2" fill="#f1c40f"/>
+      <ellipse cx="55" cy="42" rx="18" ry="4" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+      <ellipse cx="48" cy="38" rx="4" ry="7" fill="#e74c3c"/>
+      <ellipse cx="57" cy="39" rx="4" ry="6" fill="#2ecc71"/>
+      <ellipse cx="65" cy="38" rx="4" ry="7" fill="#f39c12"/>
+      <rect x="88" y="36" width="3" height="5" rx="1" fill="#A0522D"/>
+      <rect x="86" y="22" width="7" height="16" rx="2" fill="#f1c40f"/>
+      <polygon points="89.5,22 84,15 95,15" fill="#e67e22"/>
+      <rect x="74" y="30" width="8" height="16" rx="4" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+      <rect x="82" y="35" width="5" height="2" rx=".5" fill="#b2bec3"/>
+    </svg>
+    <!-- Top view -->
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <text x="60" y="10" class="view-label">зверху</text>
+      <rect x="10" y="25" width="100" height="70" rx="3" fill="#fff" stroke="#ddd"/>
+      <rect x="10" y="25" width="100" height="70" rx="3" fill="none" stroke="#e74c3c" stroke-width="1" stroke-dasharray="2"/>
+      <rect x="10" y="28" width="100" height="2" fill="#e74c3c" opacity="0.3"/>
+      <rect x="10" y="90" width="100" height="2" fill="#e74c3c" opacity="0.3"/>
+      <ellipse cx="22" cy="45" rx="8" ry="6" fill="#deb887" opacity="0.7"/>
+      <ellipse cx="60" cy="60" rx="16" ry="12" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+      <circle cx="54" cy="58" r="4" fill="#e74c3c" opacity="0.6"/>
+      <circle cx="63" cy="55" r="3.5" fill="#2ecc71" opacity="0.6"/>
+      <circle cx="67" cy="62" r="4" fill="#f39c12" opacity="0.6"/>
+      <circle cx="90" cy="40" r="3" fill="#f1c40f"/>
+      <circle cx="90" cy="40" r="1" fill="#e67e22"/>
+      <circle cx="80" cy="60" r="5" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Стіл</b>: Box + 4 ніжки. <b>Скатертина</b>: Box білий + червоні/чорні Box-смужки (вишиванка). <b>Тарілка</b>: Cylinder − Hole + 3 писанки. <b>Паска</b> на дошці + глазур. <b>Свічка</b>: Cylinder + Cone. <b>Глечик</b>: Cylinder − Hole + носик.
+  </div>
+</div>
+
+<!-- CELL 4: Церква -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐⭐ Церква зі сценою 🏰 <span>25+ елементів</span></div>
+  <div class="views">
+    <!-- Front view -->
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <text x="60" y="10" class="view-label">спереду</text>
+      <rect x="15" y="55" width="55" height="40" rx="1" fill="#fff" stroke="#ddd" stroke-width=".5"/>
+      <polygon points="15,55 42,28 70,55" fill="#8B4513"/>
+      <circle cx="42" cy="23" r="6" fill="#f1c40f"/>
+      <rect x="41" y="14" width="2" height="7" rx=".5" fill="#f39c12"/>
+      <rect x="38" y="17" width="8" height="2" rx=".5" fill="#f39c12"/>
+      <circle cx="20" cy="48" r="3.5" fill="#f1c40f" opacity="0.7"/>
+      <circle cx="65" cy="48" r="3.5" fill="#f1c40f" opacity="0.7"/>
+      <circle cx="28" cy="52" r="2.5" fill="#f1c40f" opacity="0.6"/>
+      <circle cx="57" cy="52" r="2.5" fill="#f1c40f" opacity="0.6"/>
+      <rect x="35" y="75" width="10" height="20" rx="1" fill="#8B4513"/>
+      <path d="M35,75 Q40,70 45,75" fill="#8B4513"/>
+      <rect x="22" y="62" width="6" height="9" rx=".5" fill="#74b9ff"/>
+      <rect x="37" y="62" width="6" height="9" rx=".5" fill="#74b9ff"/>
+      <rect x="52" y="62" width="6" height="9" rx=".5" fill="#74b9ff"/>
+      <rect x="82" y="40" width="16" height="55" rx="1" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+      <polygon points="82,40 90,18 98,40" fill="#636e72"/>
+      <circle cx="90" cy="14" r="3" fill="#f1c40f"/>
+      <rect x="89" y="8" width="2" height="5" rx=".5" fill="#f39c12"/>
+      <rect x="86" y="10" width="7" height="2" rx=".5" fill="#f39c12"/>
+      <ellipse cx="90" cy="60" rx="4" ry="3" fill="#95a5a6"/>
+      <rect x="108" y="72" width="3" height="23" rx=".5" fill="#8B4513"/>
+      <polygon points="109.5,48 103,72 116,72" fill="#27ae60"/>
+    </svg>
+    <!-- Side view -->
+    <svg width="80" height="120" viewBox="0 0 80 120">
+      <text x="40" y="10" class="view-label">збоку</text>
+      <rect x="15" y="55" width="35" height="40" rx="1" fill="#fff" stroke="#ddd" stroke-width=".5"/>
+      <ellipse cx="50" cy="75" rx="10" ry="20" fill="#dfe6e9" stroke="#b2bec3" stroke-width=".5"/>
+      <polygon points="15,55 32,28 50,55" fill="#8B4513"/>
+      <circle cx="32" cy="23" r="6" fill="#f1c40f"/>
+      <rect x="31" y="14" width="2" height="7" rx=".5" fill="#f39c12"/>
+      <rect x="28" y="17" width="8" height="2" rx=".5" fill="#f39c12"/>
+      <circle cx="20" cy="48" r="3" fill="#f1c40f" opacity="0.6"/>
+      <circle cx="45" cy="48" r="3" fill="#f1c40f" opacity="0.6"/>
+      <rect x="25" y="62" width="6" height="9" rx=".5" fill="#74b9ff"/>
+      <rect x="36" y="62" width="6" height="9" rx=".5" fill="#74b9ff"/>
+    </svg>
+    <!-- Top-down view -->
+    <svg width="70" height="120" viewBox="0 0 70 120">
+      <text x="35" y="10" class="view-label">план</text>
+      <rect x="8" y="30" width="40" height="55" rx="2" fill="#ddd" stroke="#b2bec3"/>
+      <ellipse cx="28" cy="85" rx="15" ry="8" fill="#ccc" stroke="#b2bec3"/>
+      <circle cx="28" cy="55" r="8" fill="#f1c40f" opacity="0.6"/>
+      <circle cx="12" cy="35" r="4" fill="#f1c40f" opacity="0.4"/>
+      <circle cx="44" cy="35" r="4" fill="#f1c40f" opacity="0.4"/>
+      <circle cx="12" cy="80" r="4" fill="#f1c40f" opacity="0.4"/>
+      <circle cx="44" cy="80" r="4" fill="#f1c40f" opacity="0.4"/>
+      <circle cx="58" cy="60" r="7" fill="#b2bec3" opacity="0.5"/>
+      <text x="58" y="63" text-anchor="middle" font-size="6" fill="#636e72">🔔</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Церква</b>: Box + двосхилий дах + апсида (Half Cylinder). <b>5 куполів</b>: Sphere + хрести. <b>Арочні вікна</b>: Box + Cylinder Hole. <b>Дзвіниця</b>: Cylinder + Cone + 4 арки. <b>Огорожа</b> + <b>дерево</b>.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

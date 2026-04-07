@@ -2,7 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Робототехніка | Функції у грі — закріплення</title>
+<title>Робототехніка | Великодні функції — закріплення</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #1a1a2e; overflow: hidden; }
@@ -37,16 +37,10 @@
   .b.logic { background: #5c9acd; }
   .b.math { background: #59c059; }
   .b.func { background: #7b5ea7; }
-  .b.music { background: #e63022; }
   .b.loops { background: #40bf4a; }
   .code-block { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 10px; padding: 14px 18px; margin: 8px 0; }
   .code-block .line { margin: 3px 0; }
   .indent { padding-left: 24px; }
-  .vs { display: flex; gap: 20px; align-items: stretch; }
-  .vs > div { flex: 1; border: 2px solid #ddd; border-radius: 12px; padding: 14px; }
-  .vs > div.old { border-color: #e74c3c; background: #fff5f5; }
-  .vs > div.new { border-color: #00b894; background: #f0fff4; }
-  .vs-label { font-weight: 700; font-size: 1em; margin-bottom: 8px; text-align: center; }
 </style>
 </head>
 <body>
@@ -54,42 +48,57 @@
 <!-- Slide 1: Title -->
 <div class="slide lead">
   <h1>Робототехніка | Урок 6</h1>
-  <h2>🎮 Функції у грі — закріплення</h2>
+  <h2>🐣 Великодні функції — закріплення</h2>
   <p>07.04.2026 | Група: 5-А / 5-Б</p>
+  <p style="margin-top:15px; font-size:1.1em;">Христос Воскрес! 4 різні ігри з функціями! 🥚🐰🔔🐍</p>
 </div>
 
-<!-- Slide 2: Recap -->
+<!-- Slide 2: Recap + Easter -->
 <div class="slide light">
-  <h2>🧩 Що ми знаємо про функції?</h2>
-  <ul>
-    <li><strong>Функція</strong> — іменована частина програми, яку можна викликати багато разів</li>
-    <li>Створюємо: <span class="b func">функція назва</span> — всередину кладемо потрібні блоки</li>
-    <li>Викликаємо: <span class="b func">викликати назва</span> — з будь-якого місця програми</li>
-    <li>Функція може <strong>викликати іншу функцію</strong></li>
-  </ul>
-  <blockquote class="fun">🎮 Сьогодні ми створимо 4 гри — і в кожній будемо використовувати функції! 🎮</blockquote>
+  <h2>🐣 Великдень + Функції</h2>
+  <div class="two-col">
+    <div>
+      <h3>🇺🇦 Великодні традиції:</h3>
+      <ul>
+        <li>🥚 <strong>Писанки</strong> — розмальовані яйця</li>
+        <li>🧺 <strong>Кошик</strong> — освячення паски</li>
+        <li>🔔 <strong>Дзвони</strong> — дзвонять на свято</li>
+        <li>🐰 <strong>Великодній зайчик</strong></li>
+      </ul>
+    </div>
+    <div>
+      <h3>🧩 Що знаємо про функції:</h3>
+      <ul>
+        <li><span class="b func">функція назва</span> — створити</li>
+        <li><span class="b func">викликати назва</span> — запустити</li>
+        <li>Одна функція — <strong>багато місць виклику</strong></li>
+        <li>Функція може <strong>викликати іншу</strong></li>
+      </ul>
+    </div>
+  </div>
+  <blockquote class="fun">🎮 Сьогодні — 4 РІЗНІ великодні проєкти! Кожен — нова механіка гри!</blockquote>
 </div>
 
-<!-- Slide 3: Завдання 1 — Кубик емоцій -->
+<!-- Slide 3: Task 1 — Великодній кошик -->
 <div class="slide light">
-  <h2>⭐ Завдання 1 — Гра «Кубик емоцій» 🎲</h2>
-  <p>Струсни micro:bit — побач випадкову емоцію!</p>
+  <h2>⭐ Завдання 1 — «Великодній кошик» 🧺</h2>
+  <p>Струсни micro:bit — отримай випадкове великодне вітання!</p>
   <div class="two-col">
     <div>
       <h3>Функція:</h3>
       <div class="code-block">
-        <div class="line"><span class="b func">функція показатиЕмоцію</span></div>
-        <div class="line indent"><span class="b var">задати емоція =</span> <span class="b math">випадкове 0–4</span></div>
-        <div class="line indent"><span class="b logic">якщо емоція = 0</span></div>
+        <div class="line"><span class="b func">функція показатиВітання</span></div>
+        <div class="line indent"><span class="b var">задати вітання =</span> <span class="b math">випадкове 0–4</span></div>
+        <div class="line indent"><span class="b logic">якщо вітання = 0</span></div>
         <div class="line indent indent"><span class="b basic">показати значок ♥</span></div>
-        <div class="line indent"><span class="b logic">інакше якщо емоція = 1</span></div>
+        <div class="line indent"><span class="b logic">інакше якщо вітання = 1</span></div>
+        <div class="line indent indent"><span class="b basic">показати рядок "ХВ"</span></div>
+        <div class="line indent"><span class="b logic">інакше якщо вітання = 2</span></div>
+        <div class="line indent indent"><span class="b basic">показати значок ★</span></div>
+        <div class="line indent"><span class="b logic">інакше якщо вітання = 3</span></div>
         <div class="line indent indent"><span class="b basic">показати значок 😊</span></div>
-        <div class="line indent"><span class="b logic">інакше якщо емоція = 2</span></div>
-        <div class="line indent indent"><span class="b basic">показати значок 😢</span></div>
-        <div class="line indent"><span class="b logic">інакше якщо емоція = 3</span></div>
-        <div class="line indent indent"><span class="b basic">показати значок 😮</span></div>
         <div class="line indent"><span class="b logic">інакше</span></div>
-        <div class="line indent indent"><span class="b basic">показати значок 🦆</span></div>
+        <div class="line indent indent"><span class="b basic">показати значок ✿</span></div>
         <div class="line indent"><span class="b basic">пауза 1000 мс</span></div>
         <div class="line indent"><span class="b basic">очистити екран</span></div>
       </div>
@@ -98,269 +107,178 @@
       <h3>Виклики з трьох подій:</h3>
       <div class="code-block">
         <div class="line"><span class="b input">коли струснути</span></div>
-        <div class="line indent"><span class="b func">викликати показатиЕмоцію</span></div>
+        <div class="line indent"><span class="b func">викликати показатиВітання</span></div>
       </div>
       <div class="code-block">
         <div class="line"><span class="b input">коли кнопка A натиснута</span></div>
-        <div class="line indent"><span class="b func">викликати показатиЕмоцію</span></div>
+        <div class="line indent"><span class="b func">викликати показатиВітання</span></div>
       </div>
       <div class="code-block">
         <div class="line"><span class="b input">коли кнопка B натиснута</span></div>
-        <div class="line indent"><span class="b func">викликати показатиЕмоцію</span></div>
+        <div class="line indent"><span class="b func">викликати показатиВітання</span></div>
       </div>
-      <blockquote class="fun">💡 Одна функція — три виклики! Зміни емоції в одному місці — зміниться скрізь!</blockquote>
+      <blockquote class="fun">💡 Одна функція — три виклики! «ХВ» = «Христос Воскрес!»</blockquote>
     </div>
   </div>
 </div>
 
-<!-- Slide 4: Завдання 2 — Влучний стрілець (функції) -->
+<!-- Slide 4: Task 2 — Пошук писанок (2D навігація) -->
 <div class="slide light">
-  <h2>⭐⭐ Завдання 2 — Гра «Влучний стрілець» 🎯</h2>
-  <p>Ціль з'являється випадково. Прицілься кнопками і стріляй!</p>
+  <h2>⭐⭐ Завдання 2 — «Пошук писанок» 🥚</h2>
+  <p>Ходи по LED-екрану у 4 напрямках і знаходь писанки!</p>
   <div class="two-col">
     <div>
       <h3>Правила:</h3>
       <ul>
-        <li>🎯 Мішень — точка у випадковому місці</li>
-        <li>Кнопка A — приціл вліво, B — вправо</li>
-        <li>A+B — постріл!</li>
-        <li>Влучив → +1 бал, промах → −1 життя</li>
-        <li>3 життя. Гра закінчується коли життя = 0</li>
+        <li>🧑 Гравець — яскравий діод, рухається по всьому екрану</li>
+        <li>🥚 Писанка — інший діод у випадковому місці</li>
+        <li>A = вліво, B = вправо, A+B = вгору, shake = вниз</li>
+        <li>Дійшов до писанки → +1 бал! Нова писанка!</li>
+        <li>⏱️ 30 секунд — скільки встигнеш?</li>
       </ul>
       <h3>Функції:</h3>
       <table>
         <tr><th>Функція</th><th>Що робить</th></tr>
-        <tr><td><span class="b func" style="font-size:.82em">новаМішень</span></td><td>випадкові x, y для мішені</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">перевіритиКордони</span></td><td>приціл x в межах 0–4</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">вистрілити</span></td><td>перевірка влучення</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>очистити + засвітити</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">новаПисанка</span></td><td>випадкові x, y для писанки</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевіритиКордони</span></td><td>гравець x,y в межах 0–4</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевіритиЗбір</span></td><td>гравець на писанці? → бал!</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>очистити + обидві точки</td></tr>
       </table>
     </div>
     <div>
       <div class="code-block">
-        <div class="line"><span class="b func">функція новаМішень</span></div>
-        <div class="line indent"><span class="b var">задати мішеньX =</span> <span class="b math">випадкове 0–4</span></div>
-        <div class="line indent"><span class="b var">задати мішеньY =</span> <span class="b math">випадкове 0–4</span></div>
+        <div class="line"><span class="b func">функція перевіритиЗбір</span></div>
+        <div class="line indent"><span class="b logic">якщо гравецьX = писанкаX</span> <span class="b logic">і гравецьY = писанкаY</span></div>
+        <div class="line indent indent"><span class="b var">змінити бали на 1</span></div>
+        <div class="line indent indent"><span class="b func">викликати новаПисанка</span></div>
       </div>
       <div class="code-block">
         <div class="line"><span class="b func">функція перевіритиКордони</span></div>
-        <div class="line indent"><span class="b logic">якщо прицілX &gt; 4</span></div>
-        <div class="line indent indent"><span class="b var">задати прицілX = 4</span></div>
-        <div class="line indent"><span class="b logic">якщо прицілX &lt; 0</span></div>
-        <div class="line indent indent"><span class="b var">задати прицілX = 0</span></div>
+        <div class="line indent"><span class="b logic">якщо гравецьX &gt; 4</span> → <span class="b var">задати 4</span></div>
+        <div class="line indent"><span class="b logic">якщо гравецьX &lt; 0</span> → <span class="b var">задати 0</span></div>
+        <div class="line indent"><span class="b logic">якщо гравецьY &gt; 4</span> → <span class="b var">задати 4</span></div>
+        <div class="line indent"><span class="b logic">якщо гравецьY &lt; 0</span> → <span class="b var">задати 0</span></div>
       </div>
       <div class="code-block">
         <div class="line"><span class="b func">функція намалювати</span></div>
         <div class="line indent"><span class="b basic">очистити екран</span></div>
-        <div class="line indent"><span class="b led">засвітити прицілX 4</span></div>
-        <div class="line indent"><span class="b led">засвітити мішеньX мішеньY</span></div>
+        <div class="line indent"><span class="b led">засвітити гравецьX гравецьY</span></div>
+        <div class="line indent"><span class="b led">засвітити писанкаX писанкаY</span></div>
       </div>
+      <blockquote class="fun">🥚 2D-рух! Перевірка кордонів для X <strong>і</strong> Y — ідеально для функції!</blockquote>
     </div>
   </div>
 </div>
 
-<!-- Slide 5: Завдання 2 — повний код -->
+<!-- Slide 5: Task 3 — Великодній дзвін (реакція) -->
 <div class="slide light">
-  <h2>🛠️ «Влучний стрілець» — повний код</h2>
+  <h2>⭐⭐⭐ Завдання 3 — «Великодній дзвін» 🔔</h2>
+  <p>Гра на реакцію! Дочекайся дзвону — натисни якнайшвидше!</p>
   <div class="two-col">
     <div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція вистрілити</span></div>
-        <div class="line indent"><span class="b logic">якщо прицілX = мішеньX</span> <span class="b logic">і 4 = мішеньY</span></div>
-        <div class="line indent indent"><span class="b var">змінити бали на 1</span></div>
-        <div class="line indent indent"><span class="b func">викликати новаМішень</span></div>
-        <div class="line indent"><span class="b logic">інакше</span></div>
-        <div class="line indent indent"><span class="b var">змінити життя на −1</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b basic">при початку</span></div>
-        <div class="line indent"><span class="b var">задати прицілX = 2</span></div>
-        <div class="line indent"><span class="b var">задати бали = 0</span></div>
-        <div class="line indent"><span class="b var">задати життя = 3</span></div>
-        <div class="line indent"><span class="b func">викликати новаМішень</span></div>
-      </div>
+      <h3>Правила:</h3>
+      <ul>
+        <li>🔢 Екран показує відлік: 3… 2… 1…</li>
+        <li>⏳ Потім — випадкова пауза (1–3 секунди)</li>
+        <li>🔔 З'являється дзвін (значок ♦)!</li>
+        <li>⚡ Натисни A+B якнайшвидше!</li>
+        <li>📊 3 раунди, бачиш час кожного!</li>
+      </ul>
+      <h3>Функції:</h3>
+      <table>
+        <tr><th>Функція</th><th>Що робить</th></tr>
+        <tr><td><span class="b func" style="font-size:.82em">показатиВідлік</span></td><td>3→2→1 з паузами</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">чекатиДзвін</span></td><td>випадкова пауза + запам'ятати час</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">показатиРезультат</span></td><td>показати час реакції</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">новийРаунд</span></td><td>обнулити + запустити відлік</td></tr>
+      </table>
     </div>
     <div>
       <div class="code-block">
-        <div class="line"><span class="b basic">завжди</span></div>
-        <div class="line indent"><span class="b logic">якщо життя &gt; 0</span></div>
-        <div class="line indent indent"><span class="b func">викликати намалювати</span></div>
-        <div class="line indent indent"><span class="b basic">пауза 200 мс</span></div>
-        <div class="line indent"><span class="b logic">інакше</span></div>
+        <div class="line"><span class="b func">функція показатиВідлік</span></div>
+        <div class="line indent"><span class="b basic">показати число 3</span></div>
+        <div class="line indent"><span class="b basic">пауза 700 мс</span></div>
+        <div class="line indent"><span class="b basic">показати число 2</span></div>
+        <div class="line indent"><span class="b basic">пауза 700 мс</span></div>
+        <div class="line indent"><span class="b basic">показати число 1</span></div>
+        <div class="line indent"><span class="b basic">пауза 700 мс</span></div>
+        <div class="line indent"><span class="b basic">очистити екран</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція чекатиДзвін</span></div>
+        <div class="line indent"><span class="b basic">пауза</span> <span class="b math">випадкове 1000–3000</span> <span class="b basic">мс</span></div>
+        <div class="line indent"><span class="b var">задати старт =</span> <span class="b input">час роботи (мс)</span></div>
+        <div class="line indent"><span class="b basic">показати значок ♦</span></div>
+        <div class="line indent"><span class="b var">задати дзвін = 1</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція новийРаунд</span></div>
+        <div class="line indent"><span class="b var">задати дзвін = 0</span></div>
+        <div class="line indent"><span class="b func">викликати показатиВідлік</span></div>
+        <div class="line indent"><span class="b func">викликати чекатиДзвін</span></div>
+      </div>
+      <blockquote class="warn">⚡ <code>новийРаунд</code> → <code>показатиВідлік</code> → <code>чекатиДзвін</code> — ланцюжок функцій!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Task 4 — Писанковий змій -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — «Писанковий змій» 🐍🥚</h2>
+  <p>Класична змійка! Збирай писанки — змійка росте!</p>
+  <div class="two-col">
+    <div>
+      <h3>Правила:</h3>
+      <ul>
+        <li>🐍 Змійка рухається автоматично</li>
+        <li>A = повернути вліво, B = повернути вправо</li>
+        <li>🥚 З'їв писанку → +1 бал, змійка довша!</li>
+        <li>💀 Вийшов за межі → Game Over!</li>
+      </ul>
+      <h3>Функції:</h3>
+      <table>
+        <tr><th>Функція</th><th>Що робить</th></tr>
+        <tr><td><span class="b func" style="font-size:.82em">рухЗмійки</span></td><td>нова голова за напрямком</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевіритиЗбір</span></td><td>голова на писанці? → ріст</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевіритиКінець</span></td><td>за межами? → Game Over</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>clear + plot вся змійка</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція рухЗмійки</span></div>
+        <div class="line indent"><span class="b logic">якщо напрямок = 0</span> (вправо)</div>
+        <div class="line indent indent"><span class="b var">змінити головаX на 1</span></div>
+        <div class="line indent"><span class="b logic">якщо напрямок = 1</span> (вниз)</div>
+        <div class="line indent indent"><span class="b var">змінити головаY на 1</span></div>
+        <div class="line indent"><span class="b logic">якщо напрямок = 2</span> (вліво)</div>
+        <div class="line indent indent"><span class="b var">змінити головаX на −1</span></div>
+        <div class="line indent"><span class="b logic">якщо напрямок = 3</span> (вгору)</div>
+        <div class="line indent indent"><span class="b var">змінити головаY на −1</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція перевіритиКінець</span></div>
+        <div class="line indent"><span class="b logic">якщо головаX &lt; 0 або &gt; 4 або головаY &lt; 0 або &gt; 4</span></div>
+        <div class="line indent indent"><span class="b var">задати гра = 0</span></div>
         <div class="line indent indent"><span class="b basic">показати рядок "X"</span></div>
         <div class="line indent indent"><span class="b basic">показати число бали</span></div>
       </div>
-      <div class="code-block">
-        <div class="line"><span class="b input">коли кнопка A натиснута</span></div>
-        <div class="line indent"><span class="b var">змінити прицілX на −1</span></div>
-        <div class="line indent"><span class="b func">викликати перевіритиКордони</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b input">коли кнопка B натиснута</span></div>
-        <div class="line indent"><span class="b var">змінити прицілX на 1</span></div>
-        <div class="line indent"><span class="b func">викликати перевіритиКордони</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b input">коли кнопка A+B натиснута</span></div>
-        <div class="line indent"><span class="b func">викликати вистрілити</span></div>
-      </div>
-      <blockquote class="fun">🏆 <code>вистрілити</code> викликає <code>новаМішень</code> — функція викликає функцію!</blockquote>
+      <blockquote class="fun">🐍 Найскладніша гра! 4 функції працюють разом у циклі forever!</blockquote>
     </div>
   </div>
 </div>
 
-<!-- Slide 6: Завдання 3 — Космічний дощ (функції) -->
+<!-- Slide 7: Підсумки -->
 <div class="slide light">
-  <h2>⭐⭐⭐ Завдання 3 — Гра «Космічний дощ» 🌧️</h2>
-  <p>Краплі падають зверху — лови їх гравцем на нижньому рядку!</p>
-  <div class="two-col">
-    <div>
-      <h3>Правила:</h3>
-      <ul>
-        <li>🌧️ Крапля падає зверху (y=0 → y=4)</li>
-        <li>🧑 Гравець на нижньому рядку (y=4)</li>
-        <li>Кнопка A — вліво, B — вправо</li>
-        <li>Зловив краплю → +1 бал, нова крапля</li>
-        <li>Кожні 5 балів — швидкість зростає!</li>
-        <li>⏱️ Гра триває 30 секунд</li>
-      </ul>
-      <h3>Функції:</h3>
-      <table>
-        <tr><th>Функція</th><th>Що робить</th></tr>
-        <tr><td><span class="b func" style="font-size:.82em">новаКрапля</span></td><td>x = випадкове 0–4, y = 0</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">перевіритиКордони</span></td><td>гравець x в межах 0–4</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">перевіритиЗбір</span></td><td>чи зловив краплю?</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>очистити + засвітити обох</td></tr>
-      </table>
-    </div>
-    <div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція новаКрапля</span></div>
-        <div class="line indent"><span class="b var">задати краплюX =</span> <span class="b math">випадкове 0–4</span></div>
-        <div class="line indent"><span class="b var">задати краплюY = 0</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція перевіритиЗбір</span></div>
-        <div class="line indent"><span class="b logic">якщо краплюY &gt; 4</span></div>
-        <div class="line indent indent"><span class="b logic">якщо краплюX = гравецьX</span></div>
-        <div class="line indent indent indent"><span class="b var">змінити бали на 1</span></div>
-        <div class="line indent indent"><span class="b func">викликати новаКрапля</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція намалювати</span></div>
-        <div class="line indent"><span class="b basic">очистити екран</span></div>
-        <div class="line indent"><span class="b led">засвітити гравецьX 4</span></div>
-        <div class="line indent"><span class="b led">засвітити краплюX краплюY</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 7: Завдання 3 — повний код -->
-<div class="slide light">
-  <h2>🛠️ «Космічний дощ» — повний код</h2>
-  <div class="two-col">
-    <div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція перевіритиКордони</span></div>
-        <div class="line indent"><span class="b logic">якщо гравецьX &gt; 4</span></div>
-        <div class="line indent indent"><span class="b var">задати гравецьX = 4</span></div>
-        <div class="line indent"><span class="b logic">якщо гравецьX &lt; 0</span></div>
-        <div class="line indent indent"><span class="b var">задати гравецьX = 0</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b basic">при початку</span></div>
-        <div class="line indent"><span class="b var">задати гравецьX = 2</span></div>
-        <div class="line indent"><span class="b var">задати бали = 0</span></div>
-        <div class="line indent"><span class="b var">задати швидкість = 500</span></div>
-        <div class="line indent"><span class="b func">викликати новаКрапля</span></div>
-      </div>
-    </div>
-    <div>
-      <div class="code-block">
-        <div class="line"><span class="b basic">завжди</span></div>
-        <div class="line indent"><span class="b logic">якщо</span> <span class="b input">час роботи (мс)</span> <span class="b logic">&lt; 30000</span></div>
-        <div class="line indent indent"><span class="b func">викликати намалювати</span></div>
-        <div class="line indent indent"><span class="b basic">пауза швидкість мс</span></div>
-        <div class="line indent indent"><span class="b var">змінити краплюY на 1</span></div>
-        <div class="line indent indent"><span class="b func">викликати перевіритиЗбір</span></div>
-        <div class="line indent indent"><span class="b logic">якщо</span> <span class="b math">остача бали / 5 = 0</span></div>
-        <div class="line indent indent indent"><span class="b var">задати швидкість = 300</span></div>
-        <div class="line indent"><span class="b logic">інакше</span></div>
-        <div class="line indent indent"><span class="b basic">показати рядок "GG"</span></div>
-        <div class="line indent indent"><span class="b basic">показати число бали</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b input">коли кнопка A натиснута</span></div>
-        <div class="line indent"><span class="b var">змінити гравецьX на −1</span></div>
-        <div class="line indent"><span class="b func">викликати перевіритиКордони</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b input">коли кнопка B натиснута</span></div>
-        <div class="line indent"><span class="b var">змінити гравецьX на 1</span></div>
-        <div class="line indent"><span class="b func">викликати перевіритиКордони</span></div>
-      </div>
-      <blockquote class="warn">⏱️ <code>час роботи (мс)</code> — вбудована функція micro:bit для таймера!</blockquote>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 8: Завдання 4 — Пінг-понг -->
-<div class="slide light">
-  <h2>⭐⭐⭐⭐ Завдання 4 — Гра «Пінг-понг» 🏓</h2>
-  <p>М'яч літає по екрану, відбивай його ракеткою!</p>
-  <div class="two-col">
-    <div>
-      <h3>Правила:</h3>
-      <ul>
-        <li>🏓 Ракетка — 3 точки на нижньому рядку</li>
-        <li>🔵 М'яч відскакує від стін і ракетки</li>
-        <li>Кнопка A — ракетка вліво, B — вправо</li>
-        <li>Відбив м'яч → +1 бал</li>
-        <li>Пропустив → Game Over!</li>
-      </ul>
-      <h3>Функції:</h3>
-      <table>
-        <tr><th>Функція</th><th>Що робить</th></tr>
-        <tr><td><span class="b func" style="font-size:.82em">рухМяча</span></td><td>зміна x/y + відскок від стін</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">перевіритиВідбиття</span></td><td>ракетка vs м'яч</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">намалювати</span></td><td>очистити + засвітити все</td></tr>
-        <tr><td><span class="b func" style="font-size:.82em">перевіритиКордони</span></td><td>ракетка в межах 1–3</td></tr>
-      </table>
-    </div>
-    <div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція рухМяча</span></div>
-        <div class="line indent"><span class="b var">змінити м'ячX на напрямокX</span></div>
-        <div class="line indent"><span class="b var">змінити м'ячY на напрямокY</span></div>
-        <div class="line indent"><span class="b logic">якщо м'ячX &lt; 0 або м'ячX &gt; 4</span></div>
-        <div class="line indent indent"><span class="b var">задати напрямокX = напрямокX × (−1)</span></div>
-        <div class="line indent"><span class="b logic">якщо м'ячY &lt; 0</span></div>
-        <div class="line indent indent"><span class="b var">задати напрямокY = напрямокY × (−1)</span></div>
-      </div>
-      <div class="code-block">
-        <div class="line"><span class="b func">функція перевіритиВідбиття</span></div>
-        <div class="line indent"><span class="b logic">якщо м'ячY = 4</span></div>
-        <div class="line indent indent"><span class="b logic">якщо м'ячX ≥ ракеткаX−1 і м'ячX ≤ ракеткаX+1</span></div>
-        <div class="line indent indent indent"><span class="b var">задати напрямокY = −1</span></div>
-        <div class="line indent indent indent"><span class="b var">змінити бали на 1</span></div>
-        <div class="line indent indent"><span class="b logic">інакше</span></div>
-        <div class="line indent indent indent"><span class="b var">задати гра = 0</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Slide 9: Підсумки -->
-<div class="slide light">
-  <h2>🧩 Підсумки</h2>
+  <h2>🐣 Підсумки</h2>
   <ul>
-    <li>✅ <strong>Функція</strong> — зручний спосіб організувати код</li>
-    <li>✅ Одна функція може <strong>викликатись з багатьох місць</strong></li>
-    <li>✅ Функція може <strong>викликати іншу функцію</strong></li>
-    <li>✅ Функції роблять ігри <strong>простішими і зрозумілішими</strong></li>
+    <li>✅ <strong>Кошик</strong> — одна функція з 3 подій (випадковий вибір)</li>
+    <li>✅ <strong>Пошук писанок</strong> — 2D навігація, функції для кордонів X і Y</li>
+    <li>✅ <strong>Великодній дзвін</strong> — гра на реакцію, ланцюжок функцій</li>
+    <li>✅ <strong>Писанковий змій</strong> — класична гра, 4 функції у циклі</li>
   </ul>
-  <blockquote>🏠 <strong>Домашнє завдання:</strong> спробуй додати до будь-якої гри нову функцію — наприклад, анімацію при Game Over!</blockquote>
+  <blockquote>🏠 <strong>Домашнє:</strong> додай до будь-якої гри нову функцію — звук, анімацію, рівень складності!</blockquote>
+  <blockquote class="fun">🐣 Христос Воскрес! Гарних свят! 🐰🥚</blockquote>
 </div>
 
 <div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
