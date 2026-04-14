@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Робототехніка | Математичні задачі та гральний кубик</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#1a1a2e;overflow:hidden}
+  .slide{display:none;width:100vw;height:100vh;padding:50px 70px;flex-direction:column;justify-content:center;overflow-y:auto;opacity:0;transition:opacity .3s ease}
+  .slide.active{display:flex;opacity:1}
+  .slide.light{background:#fff;color:#2d3436}
+  .slide.lead{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;text-align:center;align-items:center}
+  h1{font-size:2.8em;margin-bottom:15px}
+  h2{font-size:2em;color:#6c5ce7;margin-bottom:18px}
+  .lead h1,.lead h2,.lead p{color:#fff}.lead h2{font-size:2.2em}.lead p{font-size:1.3em;opacity:0.9}
+  h3{font-size:1.3em;color:#00b894;margin:12px 0 6px}
+  p,li{font-size:1.15em;line-height:1.6}
+  ul,ol{padding-left:30px}li{margin:5px 0}
+  table{border-collapse:collapse;margin:12px 0;width:100%}
+  th,td{border:1px solid #ddd;padding:8px 14px;text-align:left;font-size:1.05em}
+  th{background:#f1f2f6}
+  blockquote{border-left:4px solid #6c5ce7;background:#f8f9fa;padding:10px 18px;margin:10px 0;border-radius:0 6px 6px 0;font-size:1.05em}
+  .warn{border-left-color:#fdcb6e;background:#fef9e7}
+  .fun{border-left-color:#00b894;background:#f0fff4}
+  .page-num{position:fixed;bottom:20px;right:30px;color:#b2bec3;font-size:0.9em}
+  .nav-hint{position:fixed;bottom:20px;left:30px;color:#b2bec3;font-size:0.8em}
+  .two-col{display:flex;gap:40px;align-items:flex-start}.two-col>div{flex:1}
+  .b{display:inline-block;padding:4px 12px;border-radius:8px;margin:2px 0;font-size:.92em;font-weight:500;color:#fff}
+  .b.basic{background:#1e90ff}.b.input{background:#d672c0}.b.led{background:#e74c3c}
+  .b.var{background:#f5a623}.b.logic{background:#5c9acd}.b.math{background:#59c059}
+  .b.func{background:#7b5ea7}.b.loops{background:#40bf4a}.b.text{background:#5ba58b}
+  .code-block{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:14px 18px;margin:8px 0}
+  .code-block .line{margin:3px 0}.indent{padding-left:24px}
+  .led-grid{display:inline-grid;grid-template-columns:repeat(5,18px);gap:3px;background:#333;padding:6px;border-radius:6px;vertical-align:middle}
+  .led-grid .on{width:18px;height:18px;background:#e74c3c;border-radius:50%}
+  .led-grid .off{width:18px;height:18px;background:#555;border-radius:50%}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>Робототехніка</h1>
+  <h2>🎲 Математичні задачі та гральний кубик</h2>
+  <p>Блок 6: Математичні моделі</p>
+  <p style="margin-top:15px;font-size:1.1em">Кубик 🎲 • Два кубики 🎲🎲 • Тренажер 🧮 • Спринт ⏱️</p>
+</div>
+
+<!-- Slide 2: Math in MakeCode -->
+<div class="slide light">
+  <h2>🧮 Математика в MakeCode</h2>
+  <div class="two-col">
+    <div>
+      <h3>Математичні блоки:</h3>
+      <table>
+        <tr><th>Блок</th><th>Що робить</th><th>Приклад</th></tr>
+        <tr><td><span class="b math">0 + 0</span></td><td>Додавання</td><td>3 + 5 = 8</td></tr>
+        <tr><td><span class="b math">0 − 0</span></td><td>Віднімання</td><td>9 − 4 = 5</td></tr>
+        <tr><td><span class="b math">0 × 0</span></td><td>Множення</td><td>3 × 4 = 12</td></tr>
+        <tr><td><span class="b math">0 ÷ 0</span></td><td>Ділення</td><td>10 ÷ 2 = 5</td></tr>
+        <tr><td><span class="b math">remainder of 0 ÷ 0</span></td><td>Остача</td><td>7 % 3 = 1</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Як показати результат:</h3>
+      <div class="code-block">
+        <div class="line"><span class="b var">задати результат =</span> <span class="b math">3 + 5</span></div>
+        <div class="line"><span class="b basic">показати число результат</span></div>
+      </div>
+      <h3>Як склеїти текст:</h3>
+      <div class="code-block">
+        <div class="line"><span class="b text">join "3" "+" "5" "="</span></div>
+        <div class="line">→ показує: <strong>3+5=</strong></div>
+      </div>
+      <blockquote class="fun">💡 <strong>join</strong> (Text) — склеює рядки в один! Як конструктор LEGO для тексту!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Task 1 — Гральний кубик -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — «Гральний кубик» 🎲</h2>
+  <p>Струсни micro:bit — побач грань кубика!</p>
+  <div class="two-col">
+    <div>
+      <h3>Грані кубика на LED:</h3>
+      <p style="margin:5px 0">
+        <strong>1:</strong> <span class="led-grid"><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span></span>
+        &nbsp;
+        <strong>3:</strong> <span class="led-grid"><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span></span>
+        &nbsp;
+        <strong>6:</strong> <span class="led-grid"><span class="on"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="on"></span><span class="off"></span><span class="on"></span></span>
+      </p>
+      <blockquote class="fun">🎲 Кожна грань — окремий <span class="b basic" style="font-size:.8em">show leds</span>! Малюємо крапки!</blockquote>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція показатиГрань</span></div>
+        <div class="line indent"><span class="b logic">якщо грань = 1</span></div>
+        <div class="line indent indent"><span class="b basic">show leds</span> (1 крапка по центру)</div>
+        <div class="line indent"><span class="b logic">інакше якщо грань = 2</span></div>
+        <div class="line indent indent"><span class="b basic">show leds</span> (2 крапки)</div>
+        <div class="line indent">… і так до 6</div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b input">коли струснути</span></div>
+        <div class="line indent"><span class="b basic">show leds</span> (випадковий патерн)</div>
+        <div class="line indent"><span class="b basic">пауза 100</span></div>
+        <div class="line indent"><span class="b basic">show leds</span> (інший патерн)</div>
+        <div class="line indent"><span class="b basic">пауза 100</span></div>
+        <div class="line indent"><span class="b var">задати грань =</span> <span class="b math">випадкове 1–6</span></div>
+        <div class="line indent"><span class="b func">викликати показатиГрань</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Task 2 — Два кубики -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — «Два кубики» 🎲🎲</h2>
+  <p>Кинь два кубики та порахуй суму!</p>
+  <div class="two-col">
+    <div>
+      <h3>Правила:</h3>
+      <ul>
+        <li>🅰️ Кнопка A → кинути кубик 1</li>
+        <li>🅱️ Кнопка B → кинути кубик 2</li>
+        <li>🔘 A+B → показати суму</li>
+        <li>🎉 Сума = 7 або 11 → БОНУС! +1 бал!</li>
+        <li>🔄 Shake → скинути бали</li>
+      </ul>
+      <h3>Функції:</h3>
+      <table>
+        <tr><th>Функція</th><th>Що робить</th></tr>
+        <tr><td><span class="b func" style="font-size:.82em">кинутиКубик1</span></td><td>random 1–6, показати грань</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">кинутиКубик2</span></td><td>random 1–6, показати грань</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">показатиСуму</span></td><td>сума, бонус якщо 7/11</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b input">коли кнопка A натиснута</span></div>
+        <div class="line indent"><span class="b func">викликати кинутиКубик1</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція показатиСуму</span></div>
+        <div class="line indent"><span class="b var">задати сума = кубик1 + кубик2</span></div>
+        <div class="line indent"><span class="b basic">показати число сума</span></div>
+        <div class="line indent"><span class="b logic">якщо сума = 7 або сума = 11</span></div>
+        <div class="line indent indent"><span class="b var">змінити бали на 1</span></div>
+        <div class="line indent indent"><span class="b basic">показати значок 😊</span></div>
+        <div class="line indent indent"><span class="b basic">пауза 500</span></div>
+        <div class="line indent indent"><span class="b basic">показати число бали</span></div>
+      </div>
+      <blockquote class="warn">⚠️ Спочатку кинь обидва (A та B), потім A+B для суми!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Task 3 — Математичний тренажер -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — «Математичний тренажер» 🧮</h2>
+  <p>micro:bit задає приклад — ти відповідаєш кнопками!</p>
+  <div class="two-col">
+    <div>
+      <h3>Правила гри:</h3>
+      <ul>
+        <li>📋 Екран показує задачу: «3+5=»</li>
+        <li>🅰️ A → зменшити відповідь на 1</li>
+        <li>🅱️ B → збільшити відповідь на 1</li>
+        <li>🔘 A+B → підтвердити відповідь!</li>
+        <li>✅ Правильно → 😊 + бал! Нова задача!</li>
+        <li>❌ Неправильно → 😢 + правильна відповідь</li>
+      </ul>
+      <h3>Функції:</h3>
+      <table>
+        <tr><th>Функція</th><th>Що робить</th></tr>
+        <tr><td><span class="b func" style="font-size:.82em">новаЗадача</span></td><td>a, b = random, операція, правильна відповідь</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">показатиЗадачу</span></td><td>join a + знак + b + "="</td></tr>
+        <tr><td><span class="b func" style="font-size:.82em">перевірити</span></td><td>порівняти відповідь, бал/помилка</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція новаЗадача</span></div>
+        <div class="line indent"><span class="b var">задати a =</span> <span class="b math">випадкове 1–9</span></div>
+        <div class="line indent"><span class="b var">задати b =</span> <span class="b math">випадкове 1–9</span></div>
+        <div class="line indent"><span class="b var">задати операція =</span> <span class="b math">випадкове 0–1</span></div>
+        <div class="line indent"><span class="b logic">якщо операція = 0</span></div>
+        <div class="line indent indent"><span class="b var">задати правильна = a + b</span></div>
+        <div class="line indent indent"><span class="b var">задати знак = "+"</span></div>
+        <div class="line indent"><span class="b logic">інакше</span></div>
+        <div class="line indent indent"><span class="b var">задати правильна = a − b</span></div>
+        <div class="line indent indent"><span class="b var">задати знак = "−"</span></div>
+        <div class="line indent"><span class="b var">задати відповідь = 0</span></div>
+        <div class="line indent"><span class="b func">викликати показатиЗадачу</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція показатиЗадачу</span></div>
+        <div class="line indent"><span class="b basic">показати рядок</span> <span class="b text">join a знак b "="</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Task 4 — Математичний спринт -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — «Математичний спринт» ⏱️</h2>
+  <p>10 задач на час! Хто розв'яже швидше?</p>
+  <div class="two-col">
+    <div>
+      <h3>Правила:</h3>
+      <ul>
+        <li>⏱️ Таймер стартує з першою задачею</li>
+        <li>🧮 10 задач (+ та −) підряд</li>
+        <li>✅ Правильно → наступна задача</li>
+        <li>❌ Неправильно → та сама задача ще раз</li>
+        <li>🏁 Після 10-ї → час у секундах!</li>
+        <li>🔄 Shake → нова гра</li>
+      </ul>
+      <h3>Додаткові змінні:</h3>
+      <table>
+        <tr><th>Змінна</th><th>Для чого</th></tr>
+        <tr><td><span class="b var" style="font-size:.82em">номерЗадачі</span></td><td>лічильник 1→10</td></tr>
+        <tr><td><span class="b var" style="font-size:.82em">правильних</span></td><td>скільки з першого разу</td></tr>
+        <tr><td><span class="b var" style="font-size:.82em">стартЧас</span></td><td>running time на початку</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція почати</span></div>
+        <div class="line indent"><span class="b var">задати номерЗадачі = 1</span></div>
+        <div class="line indent"><span class="b var">задати правильних = 0</span></div>
+        <div class="line indent"><span class="b var">задати стартЧас =</span> <span class="b input">час роботи (мс)</span></div>
+        <div class="line indent"><span class="b func">викликати новаЗадача</span></div>
+      </div>
+      <div class="code-block">
+        <div class="line"><span class="b func">функція показатиРезультат</span></div>
+        <div class="line indent"><span class="b var">задати час =</span></div>
+        <div class="line indent indent"><span class="b math">(час роботи − стартЧас) ÷ 1000</span></div>
+        <div class="line indent"><span class="b basic">показати рядок</span> <span class="b text">join правильних "/10"</span></div>
+        <div class="line indent"><span class="b basic">пауза 2000</span></div>
+        <div class="line indent"><span class="b basic">показати рядок</span> <span class="b text">join час "s"</span></div>
+      </div>
+      <blockquote class="fun">⏱️ <code>running time (мс)</code> → мілісекунди з увімкнення. Ділимо на 1000 = секунди!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Summary -->
+<div class="slide light">
+  <h2>🎲 Підсумки</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Нове</th></tr>
+    <tr><td>⭐</td><td>Гральний кубик</td><td>show leds, функція для грані</td></tr>
+    <tr><td>⭐⭐</td><td>Два кубики</td><td>сума, бонус за 7/11, or</td></tr>
+    <tr><td>⭐⭐⭐</td><td>Математичний тренажер</td><td>join (Text), введення кнопками</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td>Математичний спринт</td><td>running time, таймер, 10 задач</td></tr>
+  </table>
+  <blockquote>🏠 <strong>Домашнє:</strong> додай множення (×) у тренажер! Або зроби рівні складності: легкий (1–5), середній (1–9), важкий (1–20)!</blockquote>
+  <blockquote class="fun">🧮 Математика + програмування = суперсила! 💪</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+<script>
+const slides=document.querySelectorAll('.slide');let idx=0;
+document.getElementById('total').textContent=slides.length;
+function show(i){slides[idx].classList.remove('active');idx=Math.max(0,Math.min(i,slides.length-1));slides[idx].classList.add('active');document.getElementById('current').textContent=idx+1}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.addEventListener('click',e=>{e.clientX>window.innerWidth/2?show(idx+1):show(idx-1)});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?show(idx+1):show(idx-1)}},{passive:true});
+</script>
+</body>
+</html>
