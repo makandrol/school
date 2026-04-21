@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Піратська пригода</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#1a1a2e;overflow:hidden}
+  .slide{display:none;width:100vw;height:100vh;padding:50px 70px;flex-direction:column;justify-content:center;overflow-y:auto;opacity:0;transition:opacity .3s ease}
+  .slide.active{display:flex;opacity:1}
+  .slide.light{background:#fff;color:#2d3436}
+  .slide.lead{background:linear-gradient(135deg,#2d3436 0%,#000 50%,#d35400 100%);color:#fff;text-align:center;align-items:center}
+  h1{font-size:2.8em;margin-bottom:15px}
+  h2{font-size:2em;color:#d35400;margin-bottom:18px}
+  .lead h1,.lead h2,.lead p{color:#fff}.lead h2{font-size:2.2em}.lead p{font-size:1.3em;opacity:0.9}
+  h3{font-size:1.3em;color:#6c5ce7;margin:12px 0 6px}
+  p,li{font-size:1.15em;line-height:1.6}
+  ul,ol{padding-left:30px}li{margin:5px 0}
+  table{border-collapse:collapse;margin:12px 0;width:100%}
+  th,td{border:1px solid #ddd;padding:8px 14px;text-align:left;font-size:1.05em}
+  th{background:#f1f2f6}
+  blockquote{border-left:4px solid #d35400;background:#fef5f0;padding:10px 18px;margin:10px 0;border-radius:0 6px 6px 0;font-size:1.05em}
+  .warn{border-left-color:#fdcb6e;background:#fef9e7}
+  .fun{border-left-color:#00b894;background:#f0fff4}
+  .page-num{position:fixed;bottom:20px;right:30px;color:#b2bec3;font-size:0.9em}
+  .nav-hint{position:fixed;bottom:20px;left:30px;color:#b2bec3;font-size:0.8em}
+  .two-col{display:flex;gap:40px;align-items:flex-start}.two-col>div{flex:1}
+  .step{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:12px 16px;margin:8px 0}
+  .step .num{display:inline-block;background:#d35400;color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;line-height:24px;font-weight:700;font-size:.9em;margin-right:8px}
+  .fig{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.9em;font-weight:600;color:#fff;margin:2px}
+  .fig.box{background:#e17055}.fig.cyl{background:#0984e3}.fig.sph{background:#6c5ce7}
+  .fig.cone{background:#fdcb6e;color:#2d3436}.fig.tor{background:#e84393}
+  .fig.half{background:#00b894}.fig.wedge{background:#636e72}.fig.hole{background:#2d3436}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>3D-моделювання</h1>
+  <h2>🏴‍☠️ Піратська пригода</h2>
+  <p>Заняття 10 — вирушаємо на пошук скарбів!</p>
+  <p style="margin-top:15px;font-size:1.1em">Скриня 💰 • Прапор ☠️ • Маяк 🏗️ • Корабель ⛵</p>
+</div>
+
+<!-- Slide 2: New concepts -->
+<div class="slide light">
+  <h2>🆕 Нові інструменти</h2>
+  <div class="two-col">
+    <div>
+      <h3>Wedge (клин):</h3>
+      <p>Трикутна призма — як шматок сиру. Ідеальна для звуження корпусу корабля!</p>
+      <blockquote>Basic Shapes → <strong>Wedge</strong>. Як Hole — вирізає трикутну форму з боку об'єкта.</blockquote>
+      <h3>Half Cylinder (напівциліндр):</h3>
+      <p>Половинка циліндра — для кришки скрині (напівкруглий верх).</p>
+      <blockquote>Basic Shapes → <strong>Half Cylinder</strong>. Покласти зверху на Box = скриня!</blockquote>
+    </div>
+    <div>
+      <h3>Складна форма з простих:</h3>
+      <p>Корпус корабля — це просто Box, з якого вирізали 2 клини!</p>
+      <svg width="300" height="100" viewBox="0 0 300 100">
+        <rect x="10" y="25" width="80" height="50" rx="2" fill="#8B4513" opacity="0.5"/>
+        <text x="50" y="90" font-size="11" fill="#636e72" text-anchor="middle">Box</text>
+        <text x="115" y="55" font-size="20" fill="#636e72">−</text>
+        <polygon points="140,25 140,75 180,50" fill="#636e72" opacity="0.5"/>
+        <polygon points="195,25 195,75 230,50" fill="#636e72" opacity="0.5" transform="scale(-1,1) translate(-425,0)"/>
+        <text x="182" y="90" font-size="11" fill="#636e72" text-anchor="middle">2× Wedge Hole</text>
+        <text x="250" y="55" font-size="20" fill="#636e72">=</text>
+        <polygon points="270,25 270,75 330,75 330,25 310,15 290,15" fill="#8B4513"/>
+        <text x="300" y="90" font-size="11" fill="#636e72" text-anchor="middle">Корабель!</text>
+      </svg>
+      <blockquote class="fun">💡 Будь-яку складну форму можна скласти з простих фігур + Hole!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Task 1 — Treasure Chest -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Скриня зі скарбами 💰</h2>
+  <p>Відкрита скриня з золотом! ~10 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig box">Box</span> 30×20×14, коричневий → корпус скрині
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> 26×16×12, трохи вище → вирізати порожнину
+      </div>
+      <div class="step">
+        <span class="num">3</span> <span class="fig half">Half Cylinder</span> 30×20, коричн. → кришка (зверху, трохи відхилена)
+      </div>
+      <div class="step">
+        <span class="num">4</span> <span class="fig box">Box</span> 4×2×3, золотий → замок спереду
+      </div>
+      <div class="step">
+        <span class="num">5</span> 4–5 × <span class="fig sph">Sphere</span> ⌀3–5, золоті → скарби всередині
+      </div>
+      <div class="step">
+        <span class="num">6</span> <span class="fig cyl">Cylinder</span> ⌀3, червоний → рубін серед золота
+      </div>
+    </div>
+    <div>
+      <svg width="280" height="180" viewBox="0 0 280 180">
+        <rect x="50" y="85" width="180" height="75" rx="4" fill="#8B4513"/>
+        <rect x="60" y="95" width="160" height="55" rx="2" fill="#5D3A1A"/>
+        <line x1="55" y1="100" x2="225" y2="100" stroke="#6B3E1F" stroke-width="2"/>
+        <line x1="55" y1="135" x2="225" y2="135" stroke="#6B3E1F" stroke-width="2"/>
+        <ellipse cx="140" cy="85" rx="90" ry="28" fill="#8B4513"/>
+        <ellipse cx="140" cy="85" rx="85" ry="24" fill="#6B3E1F"/>
+        <rect x="127" y="85" width="26" height="18" rx="2" fill="#f1c40f"/>
+        <rect x="132" y="90" width="16" height="8" rx="1" fill="#d4a017"/>
+        <circle cx="110" cy="105" r="8" fill="#f1c40f"/>
+        <circle cx="130" cy="112" r="6" fill="#f1c40f"/>
+        <circle cx="155" cy="108" r="7" fill="#f1c40f"/>
+        <circle cx="170" cy="115" r="5" fill="#f1c40f"/>
+        <circle cx="145" cy="118" r="5" fill="#e74c3c"/>
+        <circle cx="120" cy="118" r="6" fill="#f1c40f"/>
+      </svg>
+      <blockquote class="warn">⚠️ Кришку повернути на ~30° назад (як відкрита). Золото має виглядати зверху!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Task 2 — Pirate Flag -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Піратський прапор ☠️</h2>
+  <p>Прапор з черепом та кістками! ~14 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig cyl">Cylinder</span> ⌀2, H=40, сірий → щогла
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig box">Box</span> 22×1×16, чорний → тканина прапора
+      </div>
+      <div class="step">
+        <span class="num">3</span> <span class="fig sph">Sphere</span> ⌀7, білий → череп
+      </div>
+      <div class="step">
+        <span class="num">4</span> 2× <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀1.5 → очниці (вирізати!)
+      </div>
+      <div class="step">
+        <span class="num">5</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> маленький → рот (вирізати)
+      </div>
+      <div class="step">
+        <span class="num">6</span> 2× <span class="fig cyl">Cylinder</span> ⌀1, H=10, білі → кістки, схрестити під 45°
+      </div>
+      <div class="step">
+        <span class="num">7</span> <span class="fig cyl">Cylinder</span> ⌀8, H=2, сірий → підставка
+      </div>
+    </div>
+    <div>
+      <svg width="250" height="220" viewBox="0 0 250 220">
+        <rect x="48" y="10" width="6" height="190" rx="2" fill="#636e72"/>
+        <rect x="54" y="20" width="140" height="90" rx="3" fill="#2d3436"/>
+        <rect x="56" y="22" width="136" height="86" rx="2" fill="#1a1a2e"/>
+        <circle cx="124" cy="50" r="18" fill="#fff"/>
+        <circle cx="117" cy="45" r="4" fill="#1a1a2e"/>
+        <circle cx="131" cy="45" r="4" fill="#1a1a2e"/>
+        <rect x="115" y="56" width="18" height="3" rx="1" fill="#1a1a2e"/>
+        <rect x="117" y="57" width="2" height="2" fill="#fff"/>
+        <rect x="122" y="57" width="2" height="2" fill="#fff"/>
+        <rect x="127" y="57" width="2" height="2" fill="#fff"/>
+        <line x1="105" y1="82" x2="143" y2="66" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <line x1="105" y1="66" x2="143" y2="82" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="51" cy="205" rx="25" ry="5" fill="#636e72"/>
+      </svg>
+      <blockquote>Щоб зробити очниці — <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> вставити в голову і Group!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Task 3 — Lighthouse -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Маяк 🏗️</h2>
+  <p>Маяк на скелях з ліхтарем! ~20 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Конструкція:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig cyl">Cylinder</span> ⌀24, H=4, сірий → фундамент
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig cone">Cone</span> ⌀20→⌀14, H=35, білий → башта
+      </div>
+      <div class="step">
+        <span class="num">3</span> 3× <span class="fig cyl">Cylinder</span> ⌀22, H=4, червоні → горизонтальні смуги (різні висоти)
+      </div>
+      <div class="step">
+        <span class="num">4</span> <span class="fig cyl">Cylinder</span> ⌀18, H=1 + <span class="fig tor">Torus</span> ⌀18 → балкон з перилами
+      </div>
+      <div class="step">
+        <span class="num">5</span> <span class="fig cyl">Cylinder</span> ⌀10, H=8, жовтий → ліхтар (скло)
+      </div>
+      <div class="step">
+        <span class="num">6</span> <span class="fig cone">Cone</span> ⌀12, H=6, червоний → дах
+      </div>
+      <div class="step">
+        <span class="num">7</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> → двері внизу + 2× <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> → вікна
+      </div>
+      <div class="step">
+        <span class="num">8</span> 3–4× <span class="fig sph">Sphere</span> сірі, сплющені → скелі навколо
+      </div>
+    </div>
+    <div>
+      <svg width="200" height="260" viewBox="0 0 200 260">
+        <ellipse cx="100" cy="240" rx="70" ry="10" fill="#95a5a6"/>
+        <ellipse cx="60" cy="235" rx="22" ry="8" fill="#7f8c8d"/>
+        <ellipse cx="145" cy="238" rx="18" ry="6" fill="#95a5a6"/>
+        <ellipse cx="100" cy="242" rx="15" ry="5" fill="#7f8c8d"/>
+        <rect x="70" y="225" width="60" height="15" rx="2" fill="#bdc3c7"/>
+        <polygon points="75,225 100,50 125,225" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <rect x="72" y="185" width="56" height="12" rx="1" fill="#e74c3c"/>
+        <rect x="77" y="130" width="46" height="12" rx="1" fill="#e74c3c"/>
+        <rect x="82" y="80" width="36" height="10" rx="1" fill="#e74c3c"/>
+        <rect x="88" y="200" width="8" height="16" rx="1" fill="#2d3436" opacity="0.6"/>
+        <circle cx="92" cy="155" r="4" fill="#2d3436" opacity="0.4"/>
+        <circle cx="108" cy="110" r="3.5" fill="#2d3436" opacity="0.4"/>
+        <rect x="80" y="42" width="40" height="2" rx="1" fill="#636e72"/>
+        <ellipse cx="100" cy="42" rx="22" ry="3" fill="#636e72" opacity="0.3"/>
+        <rect x="87" y="22" width="26" height="20" rx="3" fill="#f1c40f" opacity="0.7"/>
+        <polygon points="87,22 100,10 113,22" fill="#e74c3c"/>
+      </svg>
+      <blockquote class="fun">💡 Смуги маяка: червоні Cylinder трохи більші за башту — вони «виглядають» через білий конус!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Task 4 — Pirate Ship -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — Піратський корабель ⛵</h2>
+  <p>Повноцінний корабель з вітрилами та гарматами! ~30 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Конструкція:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig box">Box</span> 50×18×10 − 2× <span class="fig wedge">Wedge</span> <span class="fig hole">Hole</span> → корпус
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig box">Box</span> 46×16×1, темний → палуба зверху
+      </div>
+      <div class="step">
+        <span class="num">3</span> 2× <span class="fig cyl">Cylinder</span> ⌀2, H=35 та H=25 → щогли
+      </div>
+      <div class="step">
+        <span class="num">4</span> 2× <span class="fig cyl">Cylinder</span> ⌀1, горизонтально → перекладини
+      </div>
+      <div class="step">
+        <span class="num">5</span> 2× <span class="fig box">Box</span> білі тонкі → вітрила
+      </div>
+      <div class="step">
+        <span class="num">6</span> <span class="fig box">Box</span> 6×0.5×4, чорний → прапор на верхівці
+      </div>
+      <div class="step">
+        <span class="num">7</span> 6× <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀2 → гарматні люки (3+3)
+      </div>
+      <div class="step">
+        <span class="num">8</span> <span class="fig cone">Cone</span> горизонтальний, золотий → ніс корабля
+      </div>
+      <div class="step">
+        <span class="num">9</span> Штурвал: <span class="fig cyl">Cylinder</span> + 4× <span class="fig box">Box</span> (Ctrl+D, 45°)
+      </div>
+    </div>
+    <div>
+      <svg width="300" height="200" viewBox="0 0 300 200">
+        <polygon points="30,120 50,155 250,155 270,120 260,105 40,105" fill="#8B4513"/>
+        <polygon points="40,105 260,105 250,100 50,100" fill="#6B3E1F"/>
+        <line x1="50" y1="130" x2="250" y2="130" stroke="#5D3A1A" stroke-width="1"/>
+        <circle cx="80" cy="130" r="4" fill="#2d3436"/><circle cx="110" cy="130" r="4" fill="#2d3436"/>
+        <circle cx="140" cy="130" r="4" fill="#2d3436"/>
+        <circle cx="180" cy="130" r="4" fill="#2d3436"/><circle cx="210" cy="130" r="4" fill="#2d3436"/>
+        <rect x="144" y="18" width="4" height="82" rx="1" fill="#5D3A1A"/>
+        <rect x="89" y="38" width="3" height="62" rx="1" fill="#5D3A1A"/>
+        <rect x="120" y="25" width="55" height="3" rx="1" fill="#5D3A1A"/>
+        <rect x="73" y="42" width="40" height="3" rx="1" fill="#5D3A1A"/>
+        <rect x="122" y="30" width="50" height="30" rx="1" fill="#fff" opacity="0.85"/>
+        <rect x="76" y="47" width="35" height="22" rx="1" fill="#fff" opacity="0.85"/>
+        <rect x="140" y="10" width="15" height="8" rx="1" fill="#2d3436"/>
+        <polygon points="30,120 20,112 40,105" fill="#f1c40f"/>
+        <rect x="235" y="94" width="12" height="12" rx="6" fill="#6B3E1F"/>
+        <line x1="241" y1="88" x2="241" y2="112" stroke="#5D3A1A" stroke-width="1.5"/>
+        <line x1="235" y1="100" x2="247" y2="100" stroke="#5D3A1A" stroke-width="1.5"/>
+        <path d="M35,155 Q150,175 265,155" fill="none" stroke="#74b9ff" stroke-width="2" opacity="0.4"/>
+      </svg>
+      <blockquote class="warn">⚠️ <strong>Wedge Hole</strong> — ключовий трюк! Два клини з боків Box = форма корабля. Спочатку зроби корпус, потім все інше.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Summary -->
+<div class="slide light">
+  <h2>🏴‍☠️ Підсумки</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Фігури</th><th>Нове</th></tr>
+    <tr><td>⭐</td><td>Скриня 💰</td><td>Box, Half Cylinder, Sphere</td><td>Half Cylinder для кришки</td></tr>
+    <tr><td>⭐⭐</td><td>Прапор ☠️</td><td>Cylinder, Box, Sphere, Hole</td><td>Hole для очниць черепа</td></tr>
+    <tr><td>⭐⭐⭐</td><td>Маяк 🏗️</td><td>Cone, Cylinder, Torus, Hole</td><td>Cone як башта, смуги</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td>Корабель ⛵</td><td>Box, Wedge Hole, Cylinder, Cone</td><td>Wedge Hole для корпусу</td></tr>
+  </table>
+  <blockquote>🏠 <strong>Домашнє:</strong> додай до свого корабля каюту, бочки або ще один вітрило!</blockquote>
+  <blockquote class="fun">🏴‍☠️ Справжній пірат — той, хто не боїться складних моделей! Йо-хо-хо! ⚓</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+<script>
+const slides=document.querySelectorAll('.slide');let idx=0;
+document.getElementById('total').textContent=slides.length;
+function show(i){slides[idx].classList.remove('active');idx=Math.max(0,Math.min(i,slides.length-1));slides[idx].classList.add('active');document.getElementById('current').textContent=idx+1}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.addEventListener('click',e=>{e.clientX>window.innerWidth/2?show(idx+1):show(idx-1)});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?show(idx+1):show(idx-1)}},{passive:true});
+</script>
+</body>
+</html>

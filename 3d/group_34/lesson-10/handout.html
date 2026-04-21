@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Роздатковий — Піратська пригода</title>
+<style>
+  @page { size: A4 portrait; margin: 8mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Arial, sans-serif; width: 210mm; margin: 0 auto; }
+  @media print { body { width: 100%; } }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3mm;
+    width: 194mm;
+    height: 277mm;
+    margin: 0 auto;
+  }
+  .cell {
+    border: 1.5px solid #d35400;
+    border-radius: 6px;
+    padding: 4mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cell-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #d35400;
+    margin-bottom: 2mm;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cell-title span { font-size: 11px; color: #636e72; font-weight: 400; }
+  .views {
+    display: flex;
+    gap: 2mm;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    min-height: 0;
+  }
+  .view-label { font-size: 8px; fill: #b2bec3; text-anchor: middle; }
+  .desc {
+    font-size: 10px;
+    color: #2d3436;
+    line-height: 1.4;
+    flex-shrink: 0;
+    margin-top: 2mm;
+    border-top: 1px solid #dfe6e9;
+    padding-top: 2mm;
+  }
+  .desc b { color: #d35400; }
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+<!-- CELL 1: Скриня -->
+<div class="cell">
+  <div class="cell-title">⭐ Скриня зі скарбами 💰 <span>~10 елементів</span></div>
+  <div class="views">
+    <svg width="110" height="105" viewBox="0 0 110 105">
+      <text x="55" y="9" class="view-label">спереду</text>
+      <rect x="15" y="48" width="80" height="38" rx="3" fill="#8B4513"/>
+      <rect x="20" y="52" width="70" height="30" rx="2" fill="#5D3A1A"/>
+      <line x1="18" y1="58" x2="92" y2="58" stroke="#6B3E1F" stroke-width="1.5"/>
+      <ellipse cx="55" cy="48" rx="40" ry="14" fill="#8B4513"/>
+      <ellipse cx="55" cy="48" rx="36" ry="11" fill="#6B3E1F"/>
+      <rect x="46" y="48" width="18" height="12" rx="2" fill="#f1c40f"/>
+      <rect x="49" y="51" width="12" height="6" rx="1" fill="#d4a017"/>
+      <circle cx="42" cy="62" r="4" fill="#f1c40f"/>
+      <circle cx="55" cy="66" r="3" fill="#f1c40f"/>
+      <circle cx="68" cy="63" r="4" fill="#f1c40f"/>
+      <circle cx="56" cy="60" r="3" fill="#e74c3c"/>
+      <text x="55" y="98" class="view-label">Box + Half Cylinder кришка</text>
+    </svg>
+    <svg width="75" height="105" viewBox="0 0 75 105">
+      <text x="37" y="9" class="view-label">збоку</text>
+      <rect x="12" y="48" width="50" height="38" rx="3" fill="#8B4513"/>
+      <ellipse cx="37" cy="48" rx="25" ry="14" fill="#8B4513"/>
+      <ellipse cx="37" cy="48" rx="22" ry="11" fill="#6B3E1F"/>
+      <circle cx="30" cy="62" r="3" fill="#f1c40f"/>
+      <circle cx="40" cy="64" r="3" fill="#f1c40f"/>
+    </svg>
+    <svg width="75" height="105" viewBox="0 0 75 105">
+      <text x="37" y="9" class="view-label">зверху</text>
+      <rect x="8" y="25" width="58" height="45" rx="3" fill="#8B4513" opacity="0.6"/>
+      <ellipse cx="37" cy="47" rx="29" ry="12" fill="#8B4513"/>
+      <circle cx="28" cy="42" r="3" fill="#f1c40f"/>
+      <circle cx="37" cy="38" r="3" fill="#f1c40f"/>
+      <circle cx="46" cy="42" r="3" fill="#f1c40f"/>
+      <circle cx="37" cy="45" r="2.5" fill="#e74c3c"/>
+      <text x="37" y="80" class="view-label">скарби видно зверху!</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Box 30×20×14 − Box Hole 26×16×12. <b>Кришка</b>: Half Cylinder (нахилена ~30°). <b>Замок</b>: Box золотий. <b>Скарби</b>: 4–5 Sphere золоті + Cyl червоний (рубін).
+  </div>
+</div>
+
+<!-- CELL 2: Прапор -->
+<div class="cell">
+  <div class="cell-title">⭐⭐ Піратський прапор ☠️ <span>~14 елементів</span></div>
+  <div class="views">
+    <svg width="85" height="110" viewBox="0 0 85 110">
+      <text x="42" y="9" class="view-label">спереду</text>
+      <rect x="13" y="14" width="4" height="82" rx="1" fill="#636e72"/>
+      <rect x="17" y="18" width="55" height="38" rx="2" fill="#2d3436"/>
+      <circle cx="44" cy="30" r="8" fill="#fff"/>
+      <circle cx="41" cy="28" r="2" fill="#2d3436"/>
+      <circle cx="47" cy="28" r="2" fill="#2d3436"/>
+      <rect x="38" y="34" width="12" height="2" rx=".5" fill="#2d3436"/>
+      <line x1="34" y1="46" x2="54" y2="38" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="34" y1="38" x2="54" y2="46" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="15" cy="98" rx="12" ry="3" fill="#636e72"/>
+    </svg>
+    <svg width="55" height="110" viewBox="0 0 55 110">
+      <text x="27" y="9" class="view-label">збоку</text>
+      <rect x="25" y="14" width="4" height="82" rx="1" fill="#636e72"/>
+      <rect x="22" y="18" width="10" height="38" rx="1" fill="#2d3436"/>
+      <ellipse cx="27" cy="98" rx="12" ry="3" fill="#636e72"/>
+    </svg>
+    <svg width="85" height="110" viewBox="0 0 85 110">
+      <text x="42" y="9" class="view-label">план черепа</text>
+      <circle cx="42" cy="45" r="16" fill="#eee" stroke="#bbb" stroke-width="1"/>
+      <circle cx="37" cy="41" r="4" fill="#2d3436"/>
+      <circle cx="47" cy="41" r="4" fill="#2d3436"/>
+      <rect x="36" y="50" width="12" height="3" rx="1" fill="#2d3436"/>
+      <line x1="30" y1="65" x2="54" y2="55" stroke="#bbb" stroke-width="3" stroke-linecap="round"/>
+      <line x1="30" y1="55" x2="54" y2="65" stroke="#bbb" stroke-width="3" stroke-linecap="round"/>
+      <text x="42" y="88" class="view-label">Sphere − 2× Cyl Hole (очі)</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Щогла</b>: Cyl ⌀2, H=40. <b>Тканина</b>: Box 22×1×16 (чорн.). <b>Череп</b>: Sphere ⌀7 (біл.) − 2 Cyl Hole (очниці) − Box Hole (рот). <b>Кістки</b>: 2× Cyl ⌀1 білі під 45°. <b>Підставка</b>: Cyl ⌀8.
+  </div>
+</div>
+
+<!-- CELL 3: Маяк -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐ Маяк 🏗️ <span>~20 елементів</span></div>
+  <div class="views">
+    <svg width="80" height="110" viewBox="0 0 80 110">
+      <text x="40" y="9" class="view-label">спереду</text>
+      <ellipse cx="40" cy="98" rx="30" ry="5" fill="#95a5a6"/>
+      <ellipse cx="28" cy="96" rx="10" ry="4" fill="#7f8c8d"/>
+      <ellipse cx="54" cy="97" rx="8" ry="3" fill="#7f8c8d"/>
+      <rect x="28" y="90" width="24" height="6" rx="1" fill="#bdc3c7"/>
+      <polygon points="30" fill="#fff"/>
+      <path d="M32,90 L37,30 L43,30 L48,90 Z" fill="#fff" stroke="#ddd" stroke-width=".5"/>
+      <rect x="30" y="72" width="20" height="5" rx="1" fill="#e74c3c"/>
+      <rect x="33" y="52" width="14" height="5" rx="1" fill="#e74c3c"/>
+      <rect x="35" y="36" width="10" height="4" rx="1" fill="#e74c3c"/>
+      <rect x="36" y="82" width="4" height="7" rx="1" fill="#2d3436" opacity="0.4"/>
+      <circle cx="38" cy="62" r="2" fill="#2d3436" opacity="0.3"/>
+      <rect x="33" y="26" width="14" height="1" rx=".5" fill="#636e72"/>
+      <rect x="36" y="18" width="8" height="8" rx="1" fill="#f1c40f" opacity="0.7"/>
+      <polygon points="36,18 40,13 44,18" fill="#e74c3c"/>
+    </svg>
+    <svg width="60" height="110" viewBox="0 0 60 110">
+      <text x="30" y="9" class="view-label">збоку</text>
+      <ellipse cx="30" cy="98" rx="25" ry="5" fill="#95a5a6"/>
+      <rect x="20" y="90" width="20" height="6" rx="1" fill="#bdc3c7"/>
+      <path d="M23,90 L27,30 L33,30 L37,90 Z" fill="#fff" stroke="#ddd" stroke-width=".5"/>
+      <rect x="21" y="72" width="18" height="5" rx="1" fill="#e74c3c"/>
+      <rect x="24" y="52" width="12" height="5" rx="1" fill="#e74c3c"/>
+      <circle cx="28" cy="45" r="2" fill="#2d3436" opacity="0.3"/>
+      <rect x="25" y="26" width="10" height="1" rx=".5" fill="#636e72"/>
+      <rect x="27" y="18" width="6" height="8" rx="1" fill="#f1c40f" opacity="0.7"/>
+      <polygon points="27,18 30,13 33,18" fill="#e74c3c"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">зверху</text>
+      <circle cx="35" cy="50" r="28" fill="#95a5a6" opacity="0.3"/>
+      <circle cx="35" cy="50" r="16" fill="#fff" opacity="0.5"/>
+      <circle cx="35" cy="50" r="8" fill="#636e72" opacity="0.4"/>
+      <circle cx="35" cy="50" r="5" fill="#f1c40f" opacity="0.5"/>
+      <circle cx="25" cy="68" r="8" fill="#7f8c8d" opacity="0.3"/>
+      <circle cx="50" cy="64" r="6" fill="#7f8c8d" opacity="0.3"/>
+      <text x="35" y="92" class="view-label">Cone башта + Cyl балкон</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Фундамент</b>: Cyl ⌀24. <b>Башта</b>: Cone ⌀20→⌀14, H=35 (біл.). <b>Смуги</b>: 3× Cyl червоні. <b>Балкон</b>: Cyl + Torus (перила). <b>Ліхтар</b>: Cyl жовтий. <b>Дах</b>: Cone черв. <b>Двері/вікна</b>: Box/Cyl Hole. <b>Скелі</b>: Sphere сплющ.
+  </div>
+</div>
+
+<!-- CELL 4: Корабель -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐⭐ Піратський корабель ⛵ <span>~30 елементів</span></div>
+  <div class="views">
+    <svg width="130" height="105" viewBox="0 0 130 105">
+      <text x="65" y="9" class="view-label">збоку</text>
+      <polygon points="10,55 20,70 110,70 120,55 115,48 15,48" fill="#8B4513"/>
+      <line x1="20" y1="60" x2="110" y2="60" stroke="#5D3A1A" stroke-width=".8"/>
+      <circle cx="35" cy="60" r="2.5" fill="#2d3436"/>
+      <circle cx="50" cy="60" r="2.5" fill="#2d3436"/>
+      <circle cx="65" cy="60" r="2.5" fill="#2d3436"/>
+      <circle cx="85" cy="60" r="2.5" fill="#2d3436"/>
+      <rect x="63" y="14" width="3" height="34" rx=".5" fill="#5D3A1A"/>
+      <rect x="38" y="22" width="2.5" height="26" rx=".5" fill="#5D3A1A"/>
+      <rect x="50" y="18" width="28" height="2" rx=".5" fill="#5D3A1A"/>
+      <rect x="30" y="26" width="20" height="1.5" rx=".5" fill="#5D3A1A"/>
+      <rect x="51" y="21" width="25" height="14" rx="1" fill="#fff" opacity="0.8"/>
+      <rect x="31" y="28" width="18" height="10" rx="1" fill="#fff" opacity="0.8"/>
+      <rect x="60" y="10" width="10" height="5" rx="1" fill="#2d3436"/>
+      <polygon points="10,55 5,52 15,48" fill="#f1c40f"/>
+    </svg>
+    <svg width="110" height="105" viewBox="0 0 110 105">
+      <text x="55" y="9" class="view-label">зверху</text>
+      <polygon points="55,15 15,45 15,65 55,85 95,65 95,45" fill="#8B4513" opacity="0.6"/>
+      <polygon points="55,20 20,45 20,60 55,78 90,60 90,45" fill="#6B3E1F" opacity="0.5"/>
+      <rect x="52" y="28" width="6" height="45" rx="1" fill="#6B3E1F" opacity="0.6"/>
+      <circle cx="55" cy="40" r="2" fill="#5D3A1A"/>
+      <circle cx="55" cy="55" r="2" fill="#5D3A1A"/>
+      <rect x="25" y="38" width="60" height="2" rx=".5" fill="#5D3A1A" opacity="0.4"/>
+      <rect x="33" y="50" width="44" height="1.5" rx=".5" fill="#5D3A1A" opacity="0.4"/>
+      <text x="55" y="96" class="view-label">Box − 2× Wedge Hole</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Box 50×18×10 − 2× Wedge Hole (звузити ніс/корму). <b>Палуба</b>: Box зверху. <b>2 щогли</b>: Cyl + перекладини + Box-вітрила (білі). <b>Прапор</b>: Box чорний. <b>Гармати</b>: 6× Cyl Hole. <b>Ніс</b>: Cone золотий. <b>Штурвал</b>: Cyl + 4× Box (Ctrl+D, 45°).
+  </div>
+</div>
+
+</div>
+</body>
+</html>

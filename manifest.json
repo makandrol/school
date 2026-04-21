@@ -81,6 +81,15 @@
             {"label": "Завдання 3 — Математичний тренажер 🧮", "url": ""},
             {"label": "Завдання 4 — Математичний спринт ⏱️", "url": ""}
           ]
+        },
+        {
+          "n": 8, "title": "🐍 Гра «Змійка» на micro:bit", "date": "21.04.2026",
+          "published": true,
+          "shared": "robotics/shared/lesson-snake",
+          "files": ["presentation.html", "google_classroom.md"],
+          "makecode": [
+            {"label": "Змійка — базова версія 🐍", "url": ""}
+          ]
         }
       ]
     },
@@ -145,6 +154,15 @@
             {"label": "Завдання 2 — Два кубики 🎲🎲", "url": ""},
             {"label": "Завдання 3 — Математичний тренажер 🧮", "url": ""},
             {"label": "Завдання 4 — Математичний спринт ⏱️", "url": ""}
+          ]
+        },
+        {
+          "n": 10, "title": "🐍 Гра «Змійка» на micro:bit", "date": "23.04.2026",
+          "published": true,
+          "shared": "robotics/shared/lesson-snake",
+          "files": ["presentation.html", "google_classroom.md"],
+          "makecode": [
+            {"label": "Змійка — базова версія 🐍", "url": ""}
           ]
         }
       ]
@@ -223,6 +241,17 @@
             {"label": "Квітка у вазоні", "url": ""},
             {"label": "Фонтан", "url": ""},
             {"label": "Дитячий майданчик", "url": ""}
+          ]
+        },
+        {
+          "n": 10, "title": "🏴‍☠️ Піратська пригода — скриня, прапор, маяк, корабель", "date": "21.04.2026",
+          "published": true,
+          "files": ["presentation.html", "handout.html"],
+          "tinkercad": [
+            {"label": "Скриня зі скарбами", "url": ""},
+            {"label": "Піратський прапор", "url": ""},
+            {"label": "Маяк", "url": ""},
+            {"label": "Піратський корабель", "url": ""}
           ]
         }
       ]
