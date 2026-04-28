@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Моделі для 3D-друку</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#1a1a2e;overflow:hidden}
+  .slide{display:none;width:100vw;height:100vh;padding:50px 70px;flex-direction:column;justify-content:center;overflow-y:auto;opacity:0;transition:opacity .3s ease}
+  .slide.active{display:flex;opacity:1}
+  .slide.light{background:#fff;color:#2d3436}
+  .slide.lead{background:linear-gradient(135deg,#6c5ce7 0%,#a29bfe 50%,#fd79a8 100%);color:#fff;text-align:center;align-items:center}
+  h1{font-size:2.8em;margin-bottom:15px}
+  h2{font-size:2em;color:#6c5ce7;margin-bottom:18px}
+  .lead h1,.lead h2,.lead p{color:#fff}.lead h2{font-size:2.2em}.lead p{font-size:1.3em;opacity:0.9}
+  h3{font-size:1.3em;color:#00b894;margin:12px 0 6px}
+  p,li{font-size:1.15em;line-height:1.6}
+  ul,ol{padding-left:30px}li{margin:5px 0}
+  table{border-collapse:collapse;margin:12px 0;width:100%}
+  th,td{border:1px solid #ddd;padding:8px 14px;text-align:left;font-size:1.05em}
+  th{background:#f1f2f6}
+  blockquote{border-left:4px solid #6c5ce7;background:#f8f7ff;padding:10px 18px;margin:10px 0;border-radius:0 6px 6px 0;font-size:1.05em}
+  .warn{border-left-color:#fdcb6e;background:#fef9e7}
+  .fun{border-left-color:#00b894;background:#f0fff4}
+  .page-num{position:fixed;bottom:20px;right:30px;color:#b2bec3;font-size:0.9em}
+  .nav-hint{position:fixed;bottom:20px;left:30px;color:#b2bec3;font-size:0.8em}
+  .two-col{display:flex;gap:40px;align-items:flex-start}.two-col>div{flex:1}
+  .step{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:12px 16px;margin:8px 0}
+  .step .num{display:inline-block;background:#6c5ce7;color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;line-height:24px;font-weight:700;font-size:.9em;margin-right:8px}
+  .fig{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.9em;font-weight:600;color:#fff;margin:2px}
+  .fig.box{background:#e17055}.fig.cyl{background:#0984e3}.fig.sph{background:#6c5ce7}
+  .fig.cone{background:#fdcb6e;color:#2d3436}.fig.tor{background:#e84393}
+  .fig.half{background:#00b894}.fig.txt{background:#636e72}.fig.hole{background:#2d3436}
+  .rule-box{background:#fff3e0;border:2px solid #fdcb6e;border-radius:12px;padding:18px 22px;margin:14px 0}
+  .rule-box h3{color:#e17055;margin-top:0}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>3D-моделювання</h1>
+  <h2>🖨️ Моделі для 3D-друку!</h2>
+  <p>Заняття 11 — створюємо модель, яку надрукуємо!</p>
+  <p style="margin-top:15px;font-size:1.1em">Брелок 🔑 • Підставка 📱 • Дзига 🌀 • Стаканчик-звірятко 🐸</p>
+  <p style="margin-top:25px;font-size:1.4em;font-weight:700">Обери одну модель — і вона стане справжньою!</p>
+</div>
+
+<!-- Slide 2: Rules for 3D printing -->
+<div class="slide light">
+  <h2>📏 Правила моделювання для друку</h2>
+  <div class="two-col">
+    <div>
+      <div class="rule-box">
+        <h3>1. Товщина стінок ≥ 2 мм</h3>
+        <p>Тонше за 2 мм — зламається при друку або після!</p>
+        <svg width="200" height="60" viewBox="0 0 200 60">
+          <rect x="10" y="10" width="60" height="40" rx="2" fill="#dfe6e9" stroke="#b2bec3"/>
+          <rect x="12" y="12" width="56" height="36" rx="1" fill="#fff"/>
+          <text x="40" y="55" font-size="9" fill="#e74c3c" text-anchor="middle">❌ 0.5 мм</text>
+          <rect x="110" y="10" width="60" height="40" rx="2" fill="#dfe6e9" stroke="#b2bec3"/>
+          <rect x="116" y="16" width="48" height="28" rx="1" fill="#fff"/>
+          <text x="140" y="55" font-size="9" fill="#00b894" text-anchor="middle">✅ 3 мм</text>
+        </svg>
+      </div>
+      <div class="rule-box">
+        <h3>2. Плоска основа</h3>
+        <p>Модель має стійко стояти. Нижня частина — рівна площина.</p>
+      </div>
+    </div>
+    <div>
+      <div class="rule-box">
+        <h3>3. Розмір ~8 см</h3>
+        <p>Найбільша сторона ≈ 80 мм. Не більше і не менше!</p>
+      </div>
+      <div class="rule-box">
+        <h3>4. Все в одну Group!</h3>
+        <p>Перед експортом: виділити все → <strong>Ctrl+G</strong>. Має бути одна суцільна модель.</p>
+      </div>
+      <blockquote class="warn">⚠️ Текст (Text 3D) має бути не менше 2 мм товщини і висотою ≥ 5 мм, інакше не надрукується!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Task 1 — Keychain -->
+<div class="slide light">
+  <h2>⭐ Варіант 1 — Брелок з ім'ям 🔑</h2>
+  <p>Персональний брелок на рюкзак або ключі! ~6 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig box">Box</span> 40×18×4 — основа (закруглити кути!)
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀4 — отвір для кільця (в кутку)
+      </div>
+      <div class="step">
+        <span class="num">3</span> <span class="fig txt">Text</span> "Андрій" висотою 3 мм — зверху на основі
+      </div>
+      <div class="step">
+        <span class="num">4</span> Декор: зірочка, серце або Cylinder збоку
+      </div>
+      <div class="step">
+        <span class="num">5</span> Все Group → Export STL!
+      </div>
+      <blockquote class="fun">💡 Круглий варіант: замість Box — <span class="fig cyl">Cylinder</span> сплющений (⌀35, H=4). Виглядає як медальйон!</blockquote>
+    </div>
+    <div>
+      <svg width="280" height="160" viewBox="0 0 280 160">
+        <rect x="30" y="30" width="220" height="90" rx="16" fill="#a29bfe"/>
+        <rect x="35" y="35" width="210" height="80" rx="14" fill="#6c5ce7"/>
+        <circle cx="60" cy="75" r="12" fill="#6c5ce7" stroke="#fff" stroke-width="3"/>
+        <circle cx="60" cy="75" r="5" fill="#a29bfe"/>
+        <text x="155" y="85" font-size="28" fill="#fff" font-weight="700" text-anchor="middle" font-family="Arial">Анна</text>
+        <circle cx="230" cy="55" r="8" fill="#fd79a8"/>
+        <polygon points="230,43 233,51 241,51 234,56 237,64 230,59 223,64 226,56 219,51 227,51" fill="#ffeaa7" transform="scale(0.7) translate(100,25)"/>
+      </svg>
+      <p style="text-align:center;color:#636e72;font-size:.9em;margin-top:8px">Реальний розмір: ~4 × 2 см</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Task 2 — Phone Stand -->
+<div class="slide light">
+  <h2>⭐⭐ Варіант 2 — Підставка для телефону 📱</h2>
+  <p>Корисна річ на стіл! ~12 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig box">Box</span> 50×40×5 — основа
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig box">Box</span> 50×5×45, нахил ~15° → спинка
+      </div>
+      <div class="step">
+        <span class="num">3</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> 44×8×3 → виріз-тримач знизу спинки
+      </div>
+      <div class="step">
+        <span class="num">4</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> 10×10×5 → отвір для кабелю
+      </div>
+      <div class="step">
+        <span class="num">5</span> <span class="fig txt">Text</span> на спинці — ім'я
+      </div>
+      <div class="step">
+        <span class="num">6</span> Декор: <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> → ажурні кола на спинці
+      </div>
+    </div>
+    <div>
+      <svg width="260" height="200" viewBox="0 0 260 200">
+        <rect x="40" y="145" width="180" height="25" rx="4" fill="#b2bec3"/>
+        <g transform="rotate(-15, 130, 145)">
+          <rect x="55" y="30" width="150" height="115" rx="4" fill="#dfe6e9"/>
+          <circle cx="95" cy="70" r="10" fill="#fff" opacity="0.5"/>
+          <circle cx="130" cy="55" r="8" fill="#fff" opacity="0.5"/>
+          <circle cx="160" cy="75" r="12" fill="#fff" opacity="0.5"/>
+          <circle cx="125" cy="95" r="7" fill="#fff" opacity="0.5"/>
+          <text x="130" y="130" font-size="16" fill="#636e72" font-weight="600" text-anchor="middle">Максим</text>
+        </g>
+        <rect x="60" y="142" width="140" height="12" rx="2" fill="#95a5a6"/>
+        <rect x="105" y="155" width="50" height="20" rx="2" fill="#fff" opacity="0.3"/>
+        <rect x="55" y="150" width="52" height="3" rx="1" fill="#2d3436" opacity="0.15"/>
+        <rect x="155" y="150" width="52" height="3" rx="1" fill="#2d3436" opacity="0.15"/>
+      </svg>
+      <blockquote class="warn">⚠️ Перевір що телефон поміщається у виріз! Ширина вирізу ≈ 8 мм.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Task 3 — Spinning Top -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Варіант 3 — Дзига 🌀</h2>
+  <p>Крути і змагайся з друзями! ~10 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig cone">Cone</span> ⌀40, H=15 → основний корпус (широке зверху)
+      </div>
+      <div class="step">
+        <span class="num">2</span> <span class="fig sph">Sphere</span> ⌀6 знизу → вістря (на чому крутиться)
+      </div>
+      <div class="step">
+        <span class="num">3</span> <span class="fig cyl">Cylinder</span> ⌀8, H=12 зверху → ручка (за що крутити)
+      </div>
+      <div class="step">
+        <span class="num">4</span> 6× <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀4 по колу зверху → заглиблення-декор (Ctrl+D, 60°)
+      </div>
+      <h3>Або варіант з лопатями:</h3>
+      <div class="step">
+        <span class="num">★</span> 3× <span class="fig box">Box</span> як лопаті (Ctrl+D, 120°) замість суцільного конуса → крутиться інакше!
+      </div>
+    </div>
+    <div>
+      <svg width="200" height="210" viewBox="0 0 200 210">
+        <rect x="90" y="22" width="20" height="40" rx="8" fill="#636e72"/>
+        <polygon points="100,62 55,130 145,130" fill="#a29bfe"/>
+        <polygon points="100,62 60,128 140,128" fill="#6c5ce7"/>
+        <circle cx="80" cy="85" r="5" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="120" cy="85" r="5" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="100" cy="95" r="5" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="75" cy="105" r="4" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="125" cy="105" r="4" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="100" cy="115" r="4" fill="#a29bfe" opacity="0.6"/>
+        <circle cx="100" cy="135" r="8" fill="#636e72"/>
+        <text x="100" y="170" font-size="11" fill="#636e72" text-anchor="middle">Конус + сфера + ручка</text>
+        <text x="100" y="185" font-size="11" fill="#6c5ce7" text-anchor="middle">Можна змагатись!</text>
+      </svg>
+      <blockquote class="fun">💡 Секрет хорошої дзиги: центр ваги має бути якомога нижче. Тому конус широкий зверху!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Task 4 — Animal Cup -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Варіант 4 — Стаканчик-звірятко 🐸</h2>
+  <p>Стаканчик для олівців у вигляді тваринки! ~18 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step">
+        <span class="num">1</span> <span class="fig cyl">Cylinder</span> ⌀40, H=50 − <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀36, H=47 → стакан
+      </div>
+      <div class="step">
+        <span class="num">2</span> Обери тваринку:
+      </div>
+      <table style="font-size:.9em">
+        <tr><th>Тварина</th><th>Очі</th><th>Вуха</th><th>Рот</th></tr>
+        <tr><td>🐸 Жаба</td><td>2 Sphere великі зверху</td><td>—</td><td>Torus (посмішка)</td></tr>
+        <tr><td>🐱 Кіт</td><td>2 Cylinder витягнуті</td><td>2 Cone гострі</td><td>маленький Sphere (ніс)</td></tr>
+        <tr><td>🦉 Сова</td><td>2 великі Cylinder</td><td>2 Cone (пір'я)</td><td>Cone (дзьоб)</td></tr>
+        <tr><td>🤖 Робот</td><td>2 Box квадратні</td><td>2 Cylinder (антени)</td><td>Box (рот-сітка)</td></tr>
+      </table>
+      <div class="step">
+        <span class="num">3</span> 2× <span class="fig sph">Sphere</span> сплющені → лапки-ніжки знизу
+      </div>
+      <div class="step">
+        <span class="num">4</span> <span class="fig txt">Text</span> ззаду → ім'я
+      </div>
+    </div>
+    <div>
+      <svg width="240" height="220" viewBox="0 0 240 220">
+        <ellipse cx="120" cy="200" rx="40" ry="8" fill="#dfe6e9"/>
+        <rect x="80" y="70" width="80" height="130" rx="35" fill="#27ae60"/>
+        <rect x="85" y="75" width="70" height="120" rx="30" fill="#2ecc71"/>
+        <ellipse cx="120" cy="75" rx="38" ry="10" fill="#27ae60"/>
+        <ellipse cx="120" cy="75" rx="33" ry="7" fill="#1a1a2e" opacity="0.3"/>
+        <circle cx="100" cy="55" r="16" fill="#2ecc71"/>
+        <circle cx="140" cy="55" r="16" fill="#2ecc71"/>
+        <circle cx="100" cy="55" r="12" fill="#fff"/>
+        <circle cx="140" cy="55" r="12" fill="#fff"/>
+        <circle cx="103" cy="53" r="5" fill="#2d3436"/>
+        <circle cx="143" cy="53" r="5" fill="#2d3436"/>
+        <circle cx="105" cy="51" r="2" fill="#fff"/>
+        <circle cx="145" cy="51" r="2" fill="#fff"/>
+        <path d="M105,95 Q120,105 135,95" stroke="#1a6b3c" stroke-width="2.5" fill="none"/>
+        <ellipse cx="95" cy="195" rx="12" ry="5" fill="#27ae60"/>
+        <ellipse cx="145" cy="195" rx="12" ry="5" fill="#27ae60"/>
+        <rect x="115" y="90" width="5" height="40" rx="1" fill="#f1c40f" opacity="0.4"/>
+        <rect x="108" y="85" width="3" height="50" rx="1" fill="#e74c3c" opacity="0.4"/>
+        <rect x="125" y="88" width="4" height="42" rx="1" fill="#3498db" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Export + Summary -->
+<div class="slide light">
+  <h2>📤 Експорт та підсумки</h2>
+  <div class="two-col">
+    <div>
+      <h3>Як зберегти для друку:</h3>
+      <div class="step"><span class="num">1</span> Виділити все: <strong>Ctrl+A</strong></div>
+      <div class="step"><span class="num">2</span> Об'єднати: <strong>Ctrl+G</strong> (Group)</div>
+      <div class="step"><span class="num">3</span> Export → <strong>.STL</strong></div>
+      <div class="step"><span class="num">4</span> Перевір розмір у Tinkercad: ~80 мм</div>
+      <blockquote class="warn">⚠️ Якщо забув Group — принтер надрукує деталі окремо і вони не будуть з'єднані!</blockquote>
+    </div>
+    <div>
+      <h3>Обери свою модель!</h3>
+      <table>
+        <tr><th>⭐</th><th>Модель</th><th>Для кого</th></tr>
+        <tr><td>⭐</td><td>Брелок 🔑</td><td>Швидко і просто, носиш з собою</td></tr>
+        <tr><td>⭐⭐</td><td>Підставка 📱</td><td>Корисна річ на стіл</td></tr>
+        <tr><td>⭐⭐⭐</td><td>Дзига 🌀</td><td>Можна крутити і змагатись</td></tr>
+        <tr><td>⭐⭐⭐⭐</td><td>Стаканчик 🐸</td><td>Для олівців, дуже милий!</td></tr>
+      </table>
+      <blockquote class="fun">🖨️ Через кілька днів ви отримаєте свою модель надруковану на 3D-принтері!</blockquote>
+    </div>
+  </div>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+<script>
+const slides=document.querySelectorAll('.slide');let idx=0;
+document.getElementById('total').textContent=slides.length;
+function show(i){slides[idx].classList.remove('active');idx=Math.max(0,Math.min(i,slides.length-1));slides[idx].classList.add('active');document.getElementById('current').textContent=idx+1}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.addEventListener('click',e=>{e.clientX>window.innerWidth/2?show(idx+1):show(idx-1)});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?show(idx+1):show(idx-1)}},{passive:true});
+</script>
+</body>
+</html>

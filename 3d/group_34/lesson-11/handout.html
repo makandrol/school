@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Роздатковий — Моделі для 3D-друку</title>
+<style>
+  @page { size: A4 portrait; margin: 8mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", Arial, sans-serif; width: 210mm; margin: 0 auto; }
+  @media print { body { width: 100%; } }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3mm;
+    width: 194mm;
+    height: 277mm;
+    margin: 0 auto;
+  }
+  .cell {
+    border: 1.5px solid #6c5ce7;
+    border-radius: 6px;
+    padding: 4mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cell-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6c5ce7;
+    margin-bottom: 2mm;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .cell-title span { font-size: 11px; color: #636e72; font-weight: 400; }
+  .views {
+    display: flex;
+    gap: 2mm;
+    justify-content: center;
+    flex: 1;
+    align-items: center;
+    min-height: 0;
+  }
+  .view-label { font-size: 8px; fill: #b2bec3; text-anchor: middle; }
+  .desc {
+    font-size: 10px;
+    color: #2d3436;
+    line-height: 1.4;
+    flex-shrink: 0;
+    margin-top: 2mm;
+    border-top: 1px solid #dfe6e9;
+    padding-top: 2mm;
+  }
+  .desc b { color: #6c5ce7; }
+  .rules {
+    font-size: 9px;
+    color: #636e72;
+    text-align: center;
+    margin-top: 1mm;
+    padding: 1mm 0;
+    border-top: 1px dashed #dfe6e9;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+<!-- CELL 1: Брелок -->
+<div class="cell">
+  <div class="cell-title">⭐ Брелок з ім'ям 🔑 <span>~6 елементів</span></div>
+  <div class="views">
+    <svg width="120" height="100" viewBox="0 0 120 100">
+      <text x="60" y="9" class="view-label">вид зверху</text>
+      <rect x="10" y="20" width="100" height="45" rx="10" fill="#a29bfe"/>
+      <rect x="13" y="23" width="94" height="39" rx="8" fill="#6c5ce7"/>
+      <circle cx="28" cy="42" r="6" fill="#6c5ce7" stroke="#fff" stroke-width="2"/>
+      <circle cx="28" cy="42" r="2.5" fill="#a29bfe"/>
+      <text x="68" y="48" font-size="16" fill="#fff" font-weight="700" text-anchor="middle" font-family="Arial">Іван</text>
+    </svg>
+    <svg width="65" height="100" viewBox="0 0 65 100">
+      <text x="32" y="9" class="view-label">збоку</text>
+      <rect x="10" y="35" width="45" height="7" rx="2" fill="#6c5ce7"/>
+      <rect x="12" y="28" width="40" height="5" rx="1" fill="#a29bfe" opacity="0.6"/>
+      <text x="32" y="60" class="view-label">товщина 4 мм</text>
+    </svg>
+    <svg width="75" height="100" viewBox="0 0 75 100">
+      <text x="37" y="9" class="view-label">варіант: медальйон</text>
+      <circle cx="37" cy="48" r="25" fill="#6c5ce7"/>
+      <circle cx="37" cy="48" r="22" fill="#a29bfe"/>
+      <circle cx="37" cy="28" r="4" fill="#a29bfe" stroke="#6c5ce7" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="1.5" fill="#6c5ce7"/>
+      <text x="37" y="53" font-size="11" fill="#fff" font-weight="700" text-anchor="middle">А</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Основа</b>: Box 40×18×4 (закругл.) або Cylinder сплющений. <b>Отвір</b>: Cyl Hole ⌀4 (для кільця). <b>Ім'я</b>: Text 3D (висота ≥2мм!). <b>Декор</b>: зірочка, серце або форма збоку.
+  </div>
+</div>
+
+<!-- CELL 2: Підставка -->
+<div class="cell">
+  <div class="cell-title">⭐⭐ Підставка для телефону 📱 <span>~12 елементів</span></div>
+  <div class="views">
+    <svg width="100" height="105" viewBox="0 0 100 105">
+      <text x="50" y="9" class="view-label">спереду</text>
+      <rect x="10" y="70" width="80" height="15" rx="3" fill="#b2bec3"/>
+      <g transform="rotate(-12, 50, 70)">
+        <rect x="15" y="18" width="70" height="52" rx="3" fill="#dfe6e9"/>
+        <circle cx="35" cy="35" r="5" fill="#fff" opacity="0.5"/>
+        <circle cx="55" cy="30" r="4" fill="#fff" opacity="0.5"/>
+        <circle cx="65" cy="42" r="6" fill="#fff" opacity="0.5"/>
+        <text x="50" y="60" font-size="8" fill="#636e72" text-anchor="middle">Анна</text>
+      </g>
+      <rect x="20" y="67" width="60" height="8" rx="2" fill="#95a5a6"/>
+    </svg>
+    <svg width="65" height="105" viewBox="0 0 65 105">
+      <text x="32" y="9" class="view-label">збоку</text>
+      <rect x="15" y="70" width="35" height="15" rx="3" fill="#b2bec3"/>
+      <g transform="rotate(-12, 35, 70)">
+        <rect x="30" y="18" width="8" height="52" rx="2" fill="#dfe6e9"/>
+      </g>
+      <rect x="18" y="67" width="6" height="8" rx="1" fill="#95a5a6"/>
+      <rect x="30" y="76" width="15" height="8" rx="1" fill="#fff" opacity="0.3"/>
+      <text x="32" y="98" class="view-label">виріз для кабелю</text>
+    </svg>
+    <svg width="85" height="105" viewBox="0 0 85 105">
+      <text x="42" y="9" class="view-label">зверху</text>
+      <rect x="8" y="25" width="70" height="50" rx="3" fill="#b2bec3" opacity="0.6"/>
+      <rect x="12" y="28" width="62" height="6" rx="1" fill="#dfe6e9"/>
+      <rect x="20" y="30" width="46" height="3" rx="1" fill="#95a5a6" opacity="0.5"/>
+      <rect x="32" y="58" width="22" height="10" rx="2" fill="#fff" opacity="0.5"/>
+      <text x="42" y="92" class="view-label">виріз 44×8 мм для телефону</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Основа</b>: Box 50×40×5. <b>Спинка</b>: Box 50×5×45 (нахил 15°). <b>Тримач</b>: Box Hole 44×8×3 (знизу спинки). <b>Кабель</b>: Box Hole 10×10 (по центру). <b>Декор</b>: Cyl Hole — ажурні кола + Text ім'я.
+  </div>
+</div>
+
+<!-- CELL 3: Дзига -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐ Дзига 🌀 <span>~10 елементів</span></div>
+  <div class="views">
+    <svg width="90" height="110" viewBox="0 0 90 110">
+      <text x="45" y="9" class="view-label">збоку</text>
+      <rect x="35" y="20" width="20" height="25" rx="8" fill="#636e72"/>
+      <polygon points="45,45 18,85 72,85" fill="#6c5ce7"/>
+      <polygon points="45,45 22,83 68,83" fill="#a29bfe"/>
+      <circle cx="45" cy="90" r="6" fill="#636e72"/>
+      <text x="45" y="105" class="view-label">Cone + Sphere + Cyl</text>
+    </svg>
+    <svg width="80" height="110" viewBox="0 0 80 110">
+      <text x="40" y="9" class="view-label">зверху</text>
+      <circle cx="40" cy="52" r="28" fill="#6c5ce7"/>
+      <circle cx="40" cy="52" r="25" fill="#a29bfe"/>
+      <circle cx="40" cy="52" r="8" fill="#636e72"/>
+      <circle cx="40" cy="30" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <circle cx="58" cy="41" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <circle cx="58" cy="63" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <circle cx="40" cy="74" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <circle cx="22" cy="63" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <circle cx="22" cy="41" r="4" fill="#6c5ce7" opacity="0.5"/>
+      <text x="40" y="92" class="view-label">6 заглиблень (Ctrl+D, 60°)</text>
+    </svg>
+    <svg width="80" height="110" viewBox="0 0 80 110">
+      <text x="40" y="9" class="view-label">варіант: лопаті</text>
+      <circle cx="40" cy="52" r="6" fill="#636e72"/>
+      <rect x="37" y="22" width="6" height="30" rx="2" fill="#a29bfe" transform="rotate(0,40,52)"/>
+      <rect x="37" y="22" width="6" height="30" rx="2" fill="#a29bfe" transform="rotate(120,40,52)"/>
+      <rect x="37" y="22" width="6" height="30" rx="2" fill="#a29bfe" transform="rotate(240,40,52)"/>
+      <text x="40" y="92" class="view-label">3 Box (Ctrl+D, 120°)</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Cone ⌀40, H=15 (широке зверху). <b>Вістря</b>: Sphere ⌀6 знизу. <b>Ручка</b>: Cyl ⌀8, H=12 зверху. <b>Декор</b>: 6× Cyl Hole ⌀4 по колу (Ctrl+D, 60°). <b>Варіант</b>: 3 лопаті замість конуса.
+  </div>
+</div>
+
+<!-- CELL 4: Стаканчик-звірятко -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐⭐ Стаканчик-звірятко 🐸 <span>~18 елементів</span></div>
+  <div class="views">
+    <svg width="80" height="110" viewBox="0 0 80 110">
+      <text x="40" y="9" class="view-label">жаба</text>
+      <rect x="15" y="35" width="50" height="55" rx="22" fill="#2ecc71"/>
+      <ellipse cx="40" cy="37" rx="23" ry="6" fill="#27ae60"/>
+      <circle cx="30" cy="26" r="9" fill="#2ecc71"/>
+      <circle cx="50" cy="26" r="9" fill="#2ecc71"/>
+      <circle cx="30" cy="26" r="6" fill="#fff"/>
+      <circle cx="50" cy="26" r="6" fill="#fff"/>
+      <circle cx="31" cy="25" r="3" fill="#2d3436"/>
+      <circle cx="51" cy="25" r="3" fill="#2d3436"/>
+      <path d="M32,60 Q40,67 48,60" stroke="#1a6b3c" stroke-width="1.5" fill="none"/>
+      <ellipse cx="28" cy="90" rx="8" ry="3" fill="#27ae60"/>
+      <ellipse cx="52" cy="90" rx="8" ry="3" fill="#27ae60"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">кіт</text>
+      <rect x="10" y="35" width="50" height="55" rx="22" fill="#b2bec3"/>
+      <ellipse cx="35" cy="37" rx="23" ry="6" fill="#95a5a6"/>
+      <polygon points="14,38 10,15 26,30" fill="#b2bec3"/>
+      <polygon points="56,38 60,15 44,30" fill="#b2bec3"/>
+      <circle cx="26" cy="50" r="4" fill="#2ecc71"/>
+      <circle cx="44" cy="50" r="4" fill="#2ecc71"/>
+      <circle cx="26" cy="50" r="2" fill="#2d3436"/>
+      <circle cx="44" cy="50" r="2" fill="#2d3436"/>
+      <circle cx="35" cy="58" r="3" fill="#ff6b81"/>
+      <line x1="14" y1="55" x2="28" y2="57" stroke="#95a5a6" stroke-width=".8"/>
+      <line x1="14" y1="60" x2="28" y2="59" stroke="#95a5a6" stroke-width=".8"/>
+      <line x1="42" y1="57" x2="56" y2="55" stroke="#95a5a6" stroke-width=".8"/>
+      <line x1="42" y1="59" x2="56" y2="60" stroke="#95a5a6" stroke-width=".8"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">сова</text>
+      <rect x="10" y="35" width="50" height="55" rx="22" fill="#8B4513"/>
+      <ellipse cx="35" cy="37" rx="23" ry="6" fill="#6B3E1F"/>
+      <polygon points="15,35 10,18 24,30" fill="#8B4513"/>
+      <polygon points="55,35 60,18 46,30" fill="#8B4513"/>
+      <circle cx="25" cy="48" r="8" fill="#fff"/>
+      <circle cx="45" cy="48" r="8" fill="#fff"/>
+      <circle cx="25" cy="48" r="4" fill="#f39c12"/>
+      <circle cx="45" cy="48" r="4" fill="#f39c12"/>
+      <circle cx="25" cy="48" r="2" fill="#2d3436"/>
+      <circle cx="45" cy="48" r="2" fill="#2d3436"/>
+      <polygon points="35,57 32,63 38,63" fill="#f39c12"/>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Стакан</b>: Cyl ⌀40, H=50 − Cyl Hole ⌀36, H=47. <b>Очі</b>: Sphere або Cyl на стінці. <b>Вуха</b>: Cone (кіт/сова) або Sphere (жаба). <b>Рот</b>: Torus/Sphere/Cone. <b>Лапки</b>: 2 Sphere сплющені.
+  </div>
+  <div class="rules">📏 Стінки ≥ 2мм • Плоска основа • Все Ctrl+G • Export STL • Розмір ~8 см</div>
+</div>
+
+</div>
+</body>
+</html>
