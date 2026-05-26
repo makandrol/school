@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>3D-моделювання | Транспорт майбутнього</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background:#1a1a2e;overflow:hidden}
+  .slide{display:none;width:100vw;height:100vh;padding:50px 70px;flex-direction:column;justify-content:center;overflow-y:auto;opacity:0;transition:opacity .3s ease}
+  .slide.active{display:flex;opacity:1}
+  .slide.light{background:#fff;color:#2d3436}
+  .slide.lead{background:linear-gradient(135deg,#0984e3 0%,#6c5ce7 50%,#00cec9 100%);color:#fff;text-align:center;align-items:center}
+  h1{font-size:2.8em;margin-bottom:15px}
+  h2{font-size:2em;color:#0984e3;margin-bottom:18px}
+  .lead h1,.lead h2,.lead p{color:#fff}.lead h2{font-size:2.2em}.lead p{font-size:1.3em;opacity:0.9}
+  h3{font-size:1.3em;color:#6c5ce7;margin:12px 0 6px}
+  p,li{font-size:1.15em;line-height:1.6}
+  ul,ol{padding-left:30px}li{margin:5px 0}
+  table{border-collapse:collapse;margin:12px 0;width:100%}
+  th,td{border:1px solid #ddd;padding:8px 14px;text-align:left;font-size:1.05em}
+  th{background:#f1f2f6}
+  blockquote{border-left:4px solid #0984e3;background:#f0f8ff;padding:10px 18px;margin:10px 0;border-radius:0 6px 6px 0;font-size:1.05em}
+  .warn{border-left-color:#fdcb6e;background:#fef9e7}
+  .fun{border-left-color:#00b894;background:#f0fff4}
+  .page-num{position:fixed;bottom:20px;right:30px;color:#b2bec3;font-size:0.9em}
+  .nav-hint{position:fixed;bottom:20px;left:30px;color:#b2bec3;font-size:0.8em}
+  .two-col{display:flex;gap:40px;align-items:flex-start}.two-col>div{flex:1}
+  .step{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:12px 16px;margin:8px 0}
+  .step .num{display:inline-block;background:#0984e3;color:#fff;border-radius:50%;width:24px;height:24px;text-align:center;line-height:24px;font-weight:700;font-size:.9em;margin-right:8px}
+  .fig{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.9em;font-weight:600;color:#fff;margin:2px}
+  .fig.box{background:#e17055}.fig.cyl{background:#0984e3}.fig.sph{background:#6c5ce7}
+  .fig.cone{background:#fdcb6e;color:#2d3436}.fig.tor{background:#e84393}
+  .fig.half{background:#00b894}.fig.txt{background:#636e72}.fig.hole{background:#2d3436}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide lead">
+  <h1>3D-моделювання</h1>
+  <h2>🚀 Транспорт майбутнього</h2>
+  <p>Заняття 13 — вигадуємо транспорт якого ще не існує!</p>
+  <p style="margin-top:15px;font-size:1.1em">Летюча машина 🚗 • Дрон-таксі 🚁 • Монорейка 🚝 • Космічне таксі 🛸</p>
+</div>
+
+<!-- Slide 2: Concept -->
+<div class="slide light">
+  <h2>🆕 Обтічні форми та ротори</h2>
+  <div class="two-col">
+    <div>
+      <h3>Обтічний корпус:</h3>
+      <p>Транспорт майбутнього — гладкий і швидкий!</p>
+      <svg width="260" height="80" viewBox="0 0 260 80">
+        <circle cx="30" cy="40" r="20" fill="#6c5ce7" opacity="0.3"/>
+        <text x="30" y="70" font-size="9" fill="#636e72" text-anchor="middle">Sphere</text>
+        <text x="75" y="44" font-size="16" fill="#636e72">+</text>
+        <rect x="95" y="25" width="50" height="30" rx="3" fill="#0984e3" opacity="0.3"/>
+        <text x="120" y="70" font-size="9" fill="#636e72" text-anchor="middle">Cylinder</text>
+        <text x="165" y="44" font-size="16" fill="#636e72">+</text>
+        <polygon points="185,40 220,25 220,55" fill="#fdcb6e" opacity="0.4"/>
+        <text x="200" y="70" font-size="9" fill="#636e72" text-anchor="middle">Cone</text>
+        <text x="230" y="44" font-size="16" fill="#636e72">=</text>
+        <ellipse cx="255" cy="40" rx="15" ry="12" fill="#0984e3" opacity="0.5"/>
+      </svg>
+      <blockquote class="fun">💡 Обтічна форма = Half Sphere (ніс) + Cylinder (тіло) + Cone (хвіст)</blockquote>
+    </div>
+    <div>
+      <h3>4 ротори (Ctrl+D, 90°):</h3>
+      <p>Для дронів — 4 однакових елементи хрестом!</p>
+      <div class="step"><span class="num">1</span> Зроби 1 промінь з ротором</div>
+      <div class="step"><span class="num">2</span> <strong>Ctrl+D</strong> → повернути на <strong>90°</strong></div>
+      <div class="step"><span class="num">3</span> <strong>Ctrl+D</strong> ще двічі → 4 ротори!</div>
+      <blockquote class="warn">⚠️ Не забудь: спочатку один промінь від центру, а потім вже дублювання!</blockquote>
+      <h3>Творча свобода!</h3>
+      <p>Тут немає «правильної» відповіді. Фантазуй!</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3: Task 1 — Flying Car -->
+<div class="slide light">
+  <h2>⭐ Завдання 1 — Летюча машина 🚗💨</h2>
+  <p>Машина з крилами та турбінами! ~10 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step"><span class="num">1</span> <span class="fig box">Box</span> 30×15×10 → корпус</div>
+      <div class="step"><span class="num">2</span> <span class="fig half">Half Sphere</span> ⌀14 зверху → кабіна</div>
+      <div class="step"><span class="num">3</span> 2× <span class="fig box">Box</span> 20×8×1 з боків (кут вгору) → крила</div>
+      <div class="step"><span class="num">4</span> 2× <span class="fig cyl">Cylinder</span> ⌀5, H=8 під крилами → турбіни</div>
+      <div class="step"><span class="num">5</span> 2× <span class="fig cyl">Cylinder</span> ⌀4, H=2 знизу → колеса (складені)</div>
+      <div class="step"><span class="num">6</span> <span class="fig cone">Cone</span> ⌀3 ззаду, голубий → реактивний вихлоп</div>
+    </div>
+    <div>
+      <svg width="260" height="160" viewBox="0 0 260 160">
+        <rect x="60" y="60" width="140" height="45" rx="12" fill="#636e72"/>
+        <ellipse cx="130" cy="55" rx="35" ry="18" fill="#74b9ff" opacity="0.5"/>
+        <rect x="20" y="68" width="55" height="6" rx="2" fill="#b2bec3" transform="rotate(-5,47,71)"/>
+        <rect x="185" y="68" width="55" height="6" rx="2" fill="#b2bec3" transform="rotate(5,212,71)"/>
+        <ellipse cx="38" cy="82" rx="8" ry="5" fill="#636e72"/><ellipse cx="222" cy="82" rx="8" ry="5" fill="#636e72"/>
+        <circle cx="90" cy="110" r="8" fill="#2d3436"/><circle cx="170" cy="110" r="8" fill="#2d3436"/>
+        <polygon points="200,82 230,75 230,90" fill="#74b9ff" opacity="0.6"/>
+        <rect x="55" y="98" width="3" height="15" rx="1" fill="#2d3436"/>
+        <rect x="200" y="98" width="3" height="15" rx="1" fill="#2d3436"/>
+      </svg>
+      <blockquote>Найпростіший варіант! Схоже на звичайну машину, тільки з крилами і турбінами.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: Task 2 — Drone Taxi -->
+<div class="slide light">
+  <h2>⭐⭐ Завдання 2 — Дрон-таксі 🚁</h2>
+  <p>Пасажирський дрон з 4 роторами! ~16 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step"><span class="num">1</span> <span class="fig sph">Sphere</span> сплющена ⌀30, H=12 → корпус</div>
+      <div class="step"><span class="num">2</span> <span class="fig half">Half Sphere</span> ⌀20, жовтий → кабіна зверху</div>
+      <div class="step"><span class="num">3</span> <span class="fig box">Box</span> 18×3×2 від центру → 1 промінь</div>
+      <div class="step"><span class="num">4</span> Ctrl+D → 90° → ще 2 рази = <strong>4 промені</strong></div>
+      <div class="step"><span class="num">5</span> 4× <span class="fig cyl">Cylinder</span> ⌀12, H=1 → ротори на кінцях</div>
+      <div class="step"><span class="num">6</span> 4× <span class="fig cyl">Cylinder</span> ⌀1, H=6 → шасі (ніжки)</div>
+      <div class="step"><span class="num">7</span> 4× <span class="fig sph">Sphere</span> ⌀2 різнокольорові → ліхтарі</div>
+    </div>
+    <div>
+      <svg width="240" height="180" viewBox="0 0 240 180">
+        <ellipse cx="120" cy="100" rx="40" ry="18" fill="#636e72"/>
+        <ellipse cx="120" cy="90" rx="30" ry="20" fill="#f1c40f" opacity="0.5"/>
+        <rect x="116" y="98" width="8" height="50" rx="2" fill="#95a5a6" opacity="0.5"/>
+        <rect x="50" y="96" width="60" height="5" rx="2" fill="#95a5a6"/>
+        <rect x="130" y="96" width="60" height="5" rx="2" fill="#95a5a6"/>
+        <circle cx="50" cy="98" r="16" fill="#b2bec3" opacity="0.4" stroke="#95a5a6"/>
+        <circle cx="190" cy="98" r="16" fill="#b2bec3" opacity="0.4" stroke="#95a5a6"/>
+        <rect x="117" y="55" width="6" height="43" rx="2" fill="#95a5a6" opacity="0.3"/>
+        <circle cx="50" cy="98" r="3" fill="#e74c3c"/><circle cx="190" cy="98" r="3" fill="#2ecc71"/>
+        <line x1="108" y1="150" x2="108" y2="160" stroke="#636e72" stroke-width="2"/>
+        <line x1="132" y1="150" x2="132" y2="160" stroke="#636e72" stroke-width="2"/>
+        <text x="120" y="175" font-size="10" fill="#636e72" text-anchor="middle">Ctrl+D, 90° для 4 променів!</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Task 3 — Monorail -->
+<div class="slide light">
+  <h2>⭐⭐⭐ Завдання 3 — Монорейка 🚝</h2>
+  <p>Швидкісний потяг на одній рейці! ~22 елементи</p>
+  <div class="two-col">
+    <div>
+      <h3>Крок за кроком:</h3>
+      <div class="step"><span class="num">1</span> <span class="fig box">Box</span> 80×3×3 → рейка (горизонтально)</div>
+      <div class="step"><span class="num">2</span> 3× <span class="fig box">Box</span> 3×3×20 → опори (стовпи)</div>
+      <div class="step"><span class="num">3</span> <span class="fig cyl">Cylinder</span> ⌀14, H=30, горизонтально → вагон</div>
+      <div class="step"><span class="num">4</span> <span class="fig half">Half Sphere</span> ⌀14 спереду → ніс</div>
+      <div class="step"><span class="num">5</span> <span class="fig cone">Cone</span> ⌀14, H=6 ззаду → хвіст</div>
+      <div class="step"><span class="num">6</span> 8× <span class="fig box">Box</span> <span class="fig hole">Hole</span> 5×1×4 → вікна (4+4)</div>
+      <div class="step"><span class="num">7</span> <span class="fig box">Box</span> <span class="fig hole">Hole</span> 4×1×8 → двері</div>
+      <div class="step"><span class="num">8</span> <span class="fig box">Box</span> 8×5×3 зверху → кріплення до рейки</div>
+      <div class="step"><span class="num">9</span> <span class="fig cyl">Cylinder</span> ⌀1 → смуга-декор збоку</div>
+    </div>
+    <div>
+      <svg width="280" height="170" viewBox="0 0 280 170">
+        <rect x="10" y="50" width="260" height="5" rx="2" fill="#636e72"/>
+        <rect x="50" y="55" width="5" height="60" rx="1" fill="#95a5a6"/>
+        <rect x="130" y="55" width="5" height="60" rx="1" fill="#95a5a6"/>
+        <rect x="210" y="55" width="5" height="60" rx="1" fill="#95a5a6"/>
+        <rect x="70" y="25" width="120" height="28" rx="14" fill="#0984e3"/>
+        <ellipse cx="70" cy="39" rx="14" ry="14" fill="#0984e3"/>
+        <polygon points="190,25 210,39 190,53" fill="#0984e3"/>
+        <rect x="90" y="29" width="8" height="6" rx="1" fill="#74b9ff" opacity="0.7"/>
+        <rect x="105" y="29" width="8" height="6" rx="1" fill="#74b9ff" opacity="0.7"/>
+        <rect x="120" y="29" width="8" height="6" rx="1" fill="#74b9ff" opacity="0.7"/>
+        <rect x="135" y="29" width="8" height="6" rx="1" fill="#74b9ff" opacity="0.7"/>
+        <rect x="155" y="29" width="12" height="10" rx="1" fill="#74b9ff" opacity="0.5"/>
+        <rect x="115" y="18" width="15" height="8" rx="2" fill="#95a5a6"/>
+        <line x1="75" y1="44" x2="190" y2="44" stroke="#00cec9" stroke-width="1.5"/>
+      </svg>
+      <blockquote class="fun">💡 Вагон = Cylinder горизонтально! Повернути Cylinder на 90° по осі X.</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Task 4 — Space Taxi -->
+<div class="slide light">
+  <h2>⭐⭐⭐⭐ Завдання 4 — Космічне таксі 🛸</h2>
+  <p>Літаюча тарілка для пасажирів! ~28 елементів</p>
+  <div class="two-col">
+    <div>
+      <h3>Конструкція:</h3>
+      <div class="step"><span class="num">1</span> <span class="fig sph">Sphere</span> сплющена ⌀40, H=15 → корпус</div>
+      <div class="step"><span class="num">2</span> <span class="fig half">Half Sphere</span> ⌀24, прозорий → купол-кабіна</div>
+      <div class="step"><span class="num">3</span> 4× <span class="fig cone">Cone</span> ⌀6, соплами вниз → двигуни (Ctrl+D, 90°)</div>
+      <div class="step"><span class="num">4</span> <span class="fig tor">Torus</span> ⌀36 обрізаний → світлова смуга</div>
+      <div class="step"><span class="num">5</span> <span class="fig cyl">Cylinder</span> ⌀1, H=10 + <span class="fig sph">Sphere</span> ⌀3 → антена</div>
+      <div class="step"><span class="num">6</span> 3× <span class="fig sph">Sphere</span> ⌀4 знизу → шасі</div>
+      <div class="step"><span class="num">7</span> <span class="fig txt">Text</span> "TX-42" збоку</div>
+      <div class="step"><span class="num">8</span> 4× <span class="fig cyl">Cylinder</span> <span class="fig hole">Hole</span> ⌀3 → ілюмінатори</div>
+      <div class="step"><span class="num">9</span> <span class="fig cone">Cone</span> ⌀8, голубий знизу → реактивний слід</div>
+    </div>
+    <div>
+      <svg width="250" height="190" viewBox="0 0 250 190">
+        <ellipse cx="125" cy="95" rx="75" ry="22" fill="#636e72"/>
+        <ellipse cx="125" cy="88" rx="70" ry="20" fill="#95a5a6"/>
+        <ellipse cx="125" cy="75" rx="38" ry="25" fill="#74b9ff" opacity="0.4"/>
+        <ellipse cx="125" cy="88" rx="55" ry="4" fill="#00cec9" opacity="0.5"/>
+        <circle cx="75" cy="95" r="4" fill="#fff" opacity="0.4"/>
+        <circle cx="100" cy="98" r="4" fill="#fff" opacity="0.4"/>
+        <circle cx="150" cy="98" r="4" fill="#fff" opacity="0.4"/>
+        <circle cx="175" cy="95" r="4" fill="#fff" opacity="0.4"/>
+        <polygon points="85,110 80,130 90,130" fill="#fdcb6e" opacity="0.5"/>
+        <polygon points="165,110 160,130 170,130" fill="#fdcb6e" opacity="0.5"/>
+        <polygon points="125,110 120,130 130,130" fill="#fdcb6e" opacity="0.3"/>
+        <rect x="122" y="48" width="3" height="15" rx="1" fill="#636e72"/>
+        <circle cx="123" cy="45" r="4" fill="#e74c3c"/>
+        <circle cx="95" cy="120" r="5" fill="#636e72"/><circle cx="125" cy="122" r="5" fill="#636e72"/><circle cx="155" cy="120" r="5" fill="#636e72"/>
+        <polygon points="125,125 115,165 135,165" fill="#74b9ff" opacity="0.3"/>
+        <text x="165" y="85" font-size="8" fill="#2d3436" font-weight="600">TX-42</text>
+      </svg>
+      <blockquote class="warn">⚠️ Сплющити Sphere: зменшити висоту (H) залишивши ширину — тягнути за верхню точку з Shift!</blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Summary -->
+<div class="slide light">
+  <h2>🚀 Підсумки</h2>
+  <table>
+    <tr><th>⭐</th><th>Завдання</th><th>Форма</th><th>Нове</th></tr>
+    <tr><td>⭐</td><td>Летюча машина 🚗</td><td>Box + Box-крила</td><td>Турбіни під крилами</td></tr>
+    <tr><td>⭐⭐</td><td>Дрон-таксі 🚁</td><td>Sphere + промені</td><td>Ctrl+D 90° — 4 ротори</td></tr>
+    <tr><td>⭐⭐⭐</td><td>Монорейка 🚝</td><td>Cylinder горизонт.</td><td>Обтічний ніс + вікна Hole</td></tr>
+    <tr><td>⭐⭐⭐⭐</td><td>Космічне таксі 🛸</td><td>Sphere сплющена</td><td>Torus-вогні, Text номер</td></tr>
+  </table>
+  <blockquote>🏠 <strong>Домашнє:</strong> придумай свій транспорт! Може підводний? Або підземний?</blockquote>
+  <blockquote class="fun">🚀 Сьогоднішня фантазія — завтрашня реальність! Може саме ти винайдеш транспорт майбутнього!</blockquote>
+</div>
+
+<div class="page-num"><span id="current">1</span> / <span id="total"></span></div>
+<div class="nav-hint">← → стрілки для навігації</div>
+<script>
+const slides=document.querySelectorAll('.slide');let idx=0;
+document.getElementById('total').textContent=slides.length;
+function show(i){slides[idx].classList.remove('active');idx=Math.max(0,Math.min(i,slides.length-1));slides[idx].classList.add('active');document.getElementById('current').textContent=idx+1}
+show(0);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+document.addEventListener('click',e=>{e.clientX>window.innerWidth/2?show(idx+1):show(idx-1)});
+let tx=0;document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50){dx<0?show(idx+1):show(idx-1)}},{passive:true});
+</script>
+</body>
+</html>

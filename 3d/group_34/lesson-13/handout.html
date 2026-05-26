@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Роздатковий — Транспорт майбутнього</title>
+<style>
+  @page{size:A4 portrait;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Arial,sans-serif;width:210mm;margin:0 auto}
+  @media print{body{width:100%}}
+  .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3mm;width:194mm;height:277mm;margin:0 auto}
+  .cell{border:1.5px solid #0984e3;border-radius:6px;padding:4mm;display:flex;flex-direction:column;overflow:hidden}
+  .cell-title{font-size:13px;font-weight:700;color:#0984e3;margin-bottom:2mm;text-align:center;flex-shrink:0}
+  .cell-title span{font-size:11px;color:#636e72;font-weight:400}
+  .views{display:flex;gap:2mm;justify-content:center;flex:1;align-items:center;min-height:0}
+  .view-label{font-size:8px;fill:#b2bec3;text-anchor:middle}
+  .desc{font-size:10px;color:#2d3436;line-height:1.4;flex-shrink:0;margin-top:2mm;border-top:1px solid #dfe6e9;padding-top:2mm}
+  .desc b{color:#0984e3}
+</style>
+</head>
+<body>
+<div class="grid">
+
+<!-- CELL 1: Летюча машина -->
+<div class="cell">
+  <div class="cell-title">⭐ Летюча машина 🚗💨 <span>~10 елементів</span></div>
+  <div class="views">
+    <svg width="120" height="100" viewBox="0 0 120 100">
+      <text x="60" y="9" class="view-label">збоку</text>
+      <rect x="20" y="35" width="80" height="25" rx="8" fill="#636e72"/>
+      <ellipse cx="60" cy="32" rx="20" ry="12" fill="#74b9ff" opacity="0.5"/>
+      <rect x="5" y="38" width="30" height="4" rx="1" fill="#b2bec3" transform="rotate(-5,20,40)"/>
+      <rect x="85" y="38" width="30" height="4" rx="1" fill="#b2bec3" transform="rotate(5,100,40)"/>
+      <ellipse cx="15" cy="48" rx="5" ry="3" fill="#636e72"/>
+      <ellipse cx="105" cy="48" rx="5" ry="3" fill="#636e72"/>
+      <circle cx="40" cy="63" r="5" fill="#2d3436"/>
+      <circle cx="80" cy="63" r="5" fill="#2d3436"/>
+      <polygon points="100,47 115,44 115,51" fill="#74b9ff" opacity="0.6"/>
+    </svg>
+    <svg width="80" height="100" viewBox="0 0 80 100">
+      <text x="40" y="9" class="view-label">спереду</text>
+      <rect x="20" y="35" width="40" height="25" rx="6" fill="#636e72"/>
+      <ellipse cx="40" cy="32" rx="15" ry="10" fill="#74b9ff" opacity="0.5"/>
+      <rect x="5" y="42" width="15" height="4" rx="1" fill="#b2bec3"/>
+      <rect x="60" y="42" width="15" height="4" rx="1" fill="#b2bec3"/>
+      <circle cx="15" cy="52" r="4" fill="#636e72"/>
+      <circle cx="65" cy="52" r="4" fill="#636e72"/>
+      <circle cx="30" cy="63" r="5" fill="#2d3436"/>
+      <circle cx="50" cy="63" r="5" fill="#2d3436"/>
+    </svg>
+    <svg width="80" height="100" viewBox="0 0 80 100">
+      <text x="40" y="9" class="view-label">зверху</text>
+      <ellipse cx="40" cy="50" rx="15" ry="30" fill="#636e72" opacity="0.6"/>
+      <rect x="5" y="35" width="30" height="15" rx="2" fill="#b2bec3" opacity="0.5"/>
+      <rect x="45" y="35" width="30" height="15" rx="2" fill="#b2bec3" opacity="0.5"/>
+      <ellipse cx="40" cy="42" rx="10" ry="8" fill="#74b9ff" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Box 30×15×10. <b>Кабіна</b>: Half Sphere ⌀14. <b>Крила</b>: 2× Box 20×8×1 (кут вгору). <b>Турбіни</b>: 2× Cyl ⌀5 під крилами. <b>Колеса</b>: 2× Cyl ⌀4. <b>Вихлоп</b>: Cone голубий ззаду.
+  </div>
+</div>
+
+<!-- CELL 2: Дрон-таксі -->
+<div class="cell">
+  <div class="cell-title">⭐⭐ Дрон-таксі 🚁 <span>~16 елементів</span></div>
+  <div class="views">
+    <svg width="110" height="100" viewBox="0 0 110 100">
+      <text x="55" y="9" class="view-label">збоку</text>
+      <ellipse cx="55" cy="45" rx="25" ry="12" fill="#636e72"/>
+      <ellipse cx="55" cy="38" rx="18" ry="13" fill="#f1c40f" opacity="0.5"/>
+      <rect x="15" y="42" width="35" height="4" rx="1" fill="#95a5a6"/>
+      <rect x="60" y="42" width="35" height="4" rx="1" fill="#95a5a6"/>
+      <circle cx="15" cy="44" r="8" fill="#b2bec3" opacity="0.4" stroke="#95a5a6" stroke-width=".5"/>
+      <circle cx="95" cy="44" r="8" fill="#b2bec3" opacity="0.4" stroke="#95a5a6" stroke-width=".5"/>
+      <line x1="42" y1="57" x2="42" y2="68" stroke="#636e72" stroke-width="1.5"/>
+      <line x1="68" y1="57" x2="68" y2="68" stroke="#636e72" stroke-width="1.5"/>
+      <circle cx="15" cy="44" r="2" fill="#e74c3c"/>
+      <circle cx="95" cy="44" r="2" fill="#2ecc71"/>
+    </svg>
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <text x="50" y="9" class="view-label">зверху</text>
+      <circle cx="50" cy="50" r="18" fill="#636e72" opacity="0.4"/>
+      <circle cx="50" cy="50" r="13" fill="#f1c40f" opacity="0.3"/>
+      <rect x="48" y="18" width="4" height="30" rx="1" fill="#95a5a6"/>
+      <rect x="48" y="52" width="4" height="30" rx="1" fill="#95a5a6"/>
+      <rect x="18" y="48" width="30" height="4" rx="1" fill="#95a5a6"/>
+      <rect x="52" y="48" width="30" height="4" rx="1" fill="#95a5a6"/>
+      <circle cx="50" cy="18" r="9" fill="#b2bec3" opacity="0.3" stroke="#95a5a6" stroke-width=".5"/>
+      <circle cx="50" cy="82" r="9" fill="#b2bec3" opacity="0.3" stroke="#95a5a6" stroke-width=".5"/>
+      <circle cx="18" cy="50" r="9" fill="#b2bec3" opacity="0.3" stroke="#95a5a6" stroke-width=".5"/>
+      <circle cx="82" cy="50" r="9" fill="#b2bec3" opacity="0.3" stroke="#95a5a6" stroke-width=".5"/>
+      <text x="50" y="96" class="view-label">Ctrl+D, 90° для 4 променів</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Sphere сплющ. ⌀30. <b>Кабіна</b>: Half Sphere ⌀20 (жовт.). <b>Промені</b>: 1× Box → Ctrl+D, 90° (×3) = 4 шт. <b>Ротори</b>: 4× Cyl ⌀12. <b>Шасі</b>: 4× Cyl ⌀1. <b>Ліхтарі</b>: 4× Sphere ⌀2.
+  </div>
+</div>
+
+<!-- CELL 3: Монорейка -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐ Монорейка 🚝 <span>~22 елементи</span></div>
+  <div class="views">
+    <svg width="140" height="100" viewBox="0 0 140 100">
+      <text x="70" y="9" class="view-label">збоку</text>
+      <rect x="5" y="38" width="130" height="4" rx="1" fill="#636e72"/>
+      <rect x="25" y="42" width="4" height="35" rx="1" fill="#95a5a6"/>
+      <rect x="65" y="42" width="4" height="35" rx="1" fill="#95a5a6"/>
+      <rect x="105" y="42" width="4" height="35" rx="1" fill="#95a5a6"/>
+      <rect x="30" y="20" width="70" height="18" rx="9" fill="#0984e3"/>
+      <ellipse cx="30" cy="29" rx="9" ry="9" fill="#0984e3"/>
+      <polygon points="100,20 115,29 100,38" fill="#0984e3"/>
+      <rect x="42" y="22" width="6" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="52" y="22" width="6" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="62" y="22" width="6" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="72" y="22" width="6" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="82" y="22" width="8" height="7" rx="1" fill="#74b9ff" opacity="0.5"/>
+      <line x1="32" y1="32" x2="100" y2="32" stroke="#00cec9" stroke-width="1"/>
+    </svg>
+    <svg width="70" height="100" viewBox="0 0 70 100">
+      <text x="35" y="9" class="view-label">спереду</text>
+      <rect x="32" y="40" width="6" height="35" rx="1" fill="#95a5a6"/>
+      <rect x="33" y="35" width="4" height="5" rx="1" fill="#636e72"/>
+      <circle cx="35" cy="28" r="12" fill="#0984e3"/>
+      <circle cx="35" cy="28" r="9" fill="#0984e3"/>
+      <rect x="28" y="22" width="4" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="38" y="22" width="4" height="5" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <text x="35" y="88" class="view-label">Cyl горизонтально = вагон</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Рейка</b>: Box 80×3×3. <b>Опори</b>: 3× Box вертик. <b>Вагон</b>: Cyl ⌀14, H=30 (горизонт.). <b>Ніс</b>: Half Sphere ⌀14. <b>Хвіст</b>: Cone ⌀14. <b>Вікна</b>: 8× Box Hole. <b>Двері</b>: Box Hole ширший. <b>Кріплення</b>: Box зверху.
+  </div>
+</div>
+
+<!-- CELL 4: Космічне таксі -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐⭐ Космічне таксі 🛸 <span>~28 елементів</span></div>
+  <div class="views">
+    <svg width="120" height="100" viewBox="0 0 120 100">
+      <text x="60" y="9" class="view-label">збоку</text>
+      <ellipse cx="60" cy="42" rx="48" ry="14" fill="#95a5a6"/>
+      <ellipse cx="60" cy="38" rx="44" ry="12" fill="#b2bec3"/>
+      <ellipse cx="60" cy="32" rx="22" ry="14" fill="#74b9ff" opacity="0.4"/>
+      <ellipse cx="60" cy="40" rx="36" ry="3" fill="#00cec9" opacity="0.5"/>
+      <rect x="58" y="16" width="2" height="12" rx=".5" fill="#636e72"/>
+      <circle cx="59" cy="14" r="3" fill="#e74c3c"/>
+      <polygon points="40,54 37,70 43,70" fill="#fdcb6e" opacity="0.4"/>
+      <polygon points="60,56 57,72 63,72" fill="#fdcb6e" opacity="0.3"/>
+      <polygon points="80,54 77,70 83,70" fill="#fdcb6e" opacity="0.4"/>
+      <circle cx="40" cy="58" r="3" fill="#636e72"/>
+      <circle cx="60" cy="60" r="3" fill="#636e72"/>
+      <circle cx="80" cy="58" r="3" fill="#636e72"/>
+    </svg>
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <text x="50" y="9" class="view-label">зверху</text>
+      <circle cx="50" cy="50" r="35" fill="#b2bec3" opacity="0.4"/>
+      <circle cx="50" cy="50" r="30" fill="#95a5a6" opacity="0.3"/>
+      <circle cx="50" cy="50" r="25" fill="none" stroke="#00cec9" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="50" cy="50" r="15" fill="#74b9ff" opacity="0.3"/>
+      <circle cx="50" cy="20" r="3" fill="#fff" opacity="0.4"/>
+      <circle cx="80" cy="50" r="3" fill="#fff" opacity="0.4"/>
+      <circle cx="50" cy="80" r="3" fill="#fff" opacity="0.4"/>
+      <circle cx="20" cy="50" r="3" fill="#fff" opacity="0.4"/>
+      <text x="63" y="44" font-size="6" fill="#2d3436">TX-42</text>
+      <circle cx="50" cy="50" r="3" fill="#636e72"/>
+      <text x="50" y="96" class="view-label">Sphere сплющена + Torus</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Sphere ⌀40 сплющ. (H=15). <b>Кабіна</b>: Half Sphere ⌀24. <b>Двигуни</b>: 4× Cone (Ctrl+D, 90°). <b>Вогні</b>: Torus ⌀36 обрізаний. <b>Антена</b>: Cyl+Sphere. <b>Шасі</b>: 3× Sphere. <b>Номер</b>: Text "TX-42". <b>Ілюмінатори</b>: 4× Cyl Hole.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Роздатковий — Останній дзвоник</title>
+<style>
+  @page{size:A4 portrait;margin:8mm}*{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Arial,sans-serif;width:210mm;margin:0 auto}
+  @media print{body{width:100%}}
+  .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3mm;width:194mm;height:277mm;margin:0 auto}
+  .cell{border:1.5px solid #e74c3c;border-radius:6px;padding:4mm;display:flex;flex-direction:column;overflow:hidden}
+  .cell-title{font-size:13px;font-weight:700;color:#e74c3c;margin-bottom:2mm;text-align:center;flex-shrink:0}
+  .cell-title span{font-size:11px;color:#636e72;font-weight:400}
+  .views{display:flex;gap:2mm;justify-content:center;flex:1;align-items:center;min-height:0}
+  .view-label{font-size:8px;fill:#b2bec3;text-anchor:middle}
+  .desc{font-size:10px;color:#2d3436;line-height:1.4;flex-shrink:0;margin-top:2mm;border-top:1px solid #dfe6e9;padding-top:2mm}
+  .desc b{color:#e74c3c}
+</style>
+</head>
+<body>
+<div class="grid">
+
+<!-- CELL 1: Дзвіночок -->
+<div class="cell">
+  <div class="cell-title">⭐ Шкільний дзвіночок 🔔 <span>~10 елементів</span></div>
+  <div class="views">
+    <svg width="90" height="110" viewBox="0 0 90 110">
+      <text x="45" y="9" class="view-label">спереду</text>
+      <rect x="42" y="14" width="5" height="16" rx="1.5" fill="#636e72"/>
+      <ellipse cx="35" cy="28" rx="12" ry="5" fill="#f1c40f"/>
+      <ellipse cx="55" cy="28" rx="12" ry="5" fill="#0984e3"/>
+      <circle cx="45" cy="28" r="4" fill="#e74c3c"/>
+      <path d="M28,42 Q30,32 45,30 Q60,32 62,42 L66,85 Q45,92 24,85 Z" fill="#f1c40f"/>
+      <ellipse cx="45" cy="87" rx="22" ry="5" fill="#d4a017"/>
+      <circle cx="45" cy="78" r="3.5" fill="#636e72"/>
+      <rect x="43.5" y="78" width="3" height="10" rx="1" fill="#636e72"/>
+    </svg>
+    <svg width="60" height="110" viewBox="0 0 60 110">
+      <text x="30" y="9" class="view-label">збоку</text>
+      <rect x="28" y="14" width="4" height="16" rx="1" fill="#636e72"/>
+      <ellipse cx="30" cy="28" rx="8" ry="5" fill="#f1c40f"/>
+      <path d="M18,42 Q20,32 30,30 Q40,32 42,42 L44,85 Q30,90 16,85 Z" fill="#f1c40f"/>
+      <ellipse cx="30" cy="87" rx="15" ry="4" fill="#d4a017"/>
+      <circle cx="30" cy="78" r="3" fill="#636e72"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">зверху (бантик)</text>
+      <ellipse cx="22" cy="50" rx="14" ry="7" fill="#f1c40f"/>
+      <ellipse cx="48" cy="50" rx="14" ry="7" fill="#0984e3"/>
+      <circle cx="35" cy="50" r="5" fill="#e74c3c"/>
+      <text x="35" y="80" class="view-label">2× Sphere сплющ. + вузлик</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Paraboloid ⌀25 перевернутий − Paraboloid Hole (порожнина). <b>Язичок</b>: Sphere ⌀4 + Cyl ⌀1. <b>Бантик</b>: 2× Sphere сплющені (жовт./син.) + Sphere-вузлик. <b>Стрічка</b>: Cyl ⌀1 зверху.
+  </div>
+</div>
+
+<!-- CELL 2: Медаль -->
+<div class="cell">
+  <div class="cell-title">⭐⭐ Медаль випускника 🏅 <span>~14 елементів</span></div>
+  <div class="views">
+    <svg width="95" height="110" viewBox="0 0 95 110">
+      <text x="47" y="9" class="view-label">спереду</text>
+      <rect x="35" y="12" width="10" height="28" rx="2" fill="#f1c40f"/>
+      <rect x="50" y="12" width="10" height="28" rx="2" fill="#0984e3"/>
+      <circle cx="47" cy="70" r="30" fill="#f1c40f"/>
+      <circle cx="47" cy="70" r="27" fill="#ffd700"/>
+      <circle cx="47" cy="70" r="24" fill="none" stroke="#d4a017" stroke-width="1.5"/>
+      <polygon points="47,50 51,62 64,62 53,70 57,82 47,74 37,82 41,70 30,62 43,62" fill="#d4a017"/>
+      <text x="47" y="93" font-size="9" fill="#8B4513" text-anchor="middle" font-weight="700">2026</text>
+      <circle cx="47" cy="38" r="4" fill="#f1c40f" stroke="#d4a017"/>
+    </svg>
+    <svg width="50" height="110" viewBox="0 0 50 110">
+      <text x="25" y="9" class="view-label">збоку</text>
+      <rect x="22" y="12" width="6" height="28" rx="1" fill="#f1c40f"/>
+      <rect x="20" y="42" width="10" height="5" rx="2" fill="#d4a017"/>
+      <rect x="22" y="47" width="6" height="50" rx="3" fill="#ffd700"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">деталі</text>
+      <rect x="5" y="20" width="60" height="11" rx="2" fill="#f8f9fa" stroke="#ddd"/>
+      <text x="35" y="28" font-size="7" fill="#636e72" text-anchor="middle">Диск: Cyl ⌀35, H=3</text>
+      <rect x="5" y="34" width="60" height="11" rx="2" fill="#f8f9fa" stroke="#ddd"/>
+      <text x="35" y="42" font-size="7" fill="#636e72" text-anchor="middle">Край: Torus ⌀37 обріз.</text>
+      <rect x="5" y="48" width="60" height="11" rx="2" fill="#f8f9fa" stroke="#ddd"/>
+      <text x="35" y="56" font-size="7" fill="#636e72" text-anchor="middle">Зірка: 3× Box під 60°</text>
+      <rect x="5" y="62" width="60" height="11" rx="2" fill="#f8f9fa" stroke="#ddd"/>
+      <text x="35" y="70" font-size="7" fill="#636e72" text-anchor="middle">Текст: "2026"</text>
+      <rect x="5" y="76" width="60" height="11" rx="2" fill="#f8f9fa" stroke="#ddd"/>
+      <text x="35" y="84" font-size="7" fill="#636e72" text-anchor="middle">Стрічка: жовт.+син. Box</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Диск</b>: Cyl ⌀35, H=3 (золотий). <b>Край</b>: Torus ⌀37 обрізаний. <b>Зірка</b>: 3× Box під 60° або Star shape. <b>Текст</b>: "2026". <b>Стрічка</b>: Box жовт. + Box син. (прапор). <b>Кріплення</b>: Cyl + Cyl Hole.
+  </div>
+</div>
+
+<!-- CELL 3: Рюкзак -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐ Рюкзак 🎒 <span>~20 елементів</span></div>
+  <div class="views">
+    <svg width="80" height="110" viewBox="0 0 80 110">
+      <text x="40" y="9" class="view-label">спереду</text>
+      <rect x="15" y="22" width="50" height="72" rx="8" fill="#e74c3c"/>
+      <rect x="18" y="25" width="44" height="66" rx="6" fill="#c0392b"/>
+      <rect x="20" y="50" width="40" height="30" rx="4" fill="#e74c3c" stroke="#b2bec3" stroke-width=".8"/>
+      <line x1="23" y1="50" x2="57" y2="50" stroke="#bdc3c7" stroke-width="1"/>
+      <circle cx="40" cy="50" r="2" fill="#bdc3c7"/>
+      <rect x="15" y="18" width="50" height="10" rx="5" fill="#c0392b"/>
+      <path d="M32,16 Q40,8 48,16" stroke="#636e72" stroke-width="3" fill="none"/>
+      <circle cx="40" cy="67" r="6" fill="#0984e3"/>
+      <text x="40" y="70" font-size="7" fill="#fff" text-anchor="middle">★</text>
+    </svg>
+    <svg width="60" height="110" viewBox="0 0 60 110">
+      <text x="30" y="9" class="view-label">збоку</text>
+      <rect x="15" y="22" width="30" height="72" rx="6" fill="#e74c3c"/>
+      <rect x="10" y="50" width="10" height="30" rx="3" fill="#c0392b"/>
+      <rect x="40" y="30" width="5" height="55" rx="2" fill="#c0392b" opacity="0.6"/>
+      <rect x="42" y="30" width="4" height="55" rx="2" fill="#c0392b" opacity="0.4"/>
+    </svg>
+    <svg width="70" height="110" viewBox="0 0 70 110">
+      <text x="35" y="9" class="view-label">ззаду (лямки)</text>
+      <rect x="12" y="22" width="46" height="72" rx="8" fill="#c0392b"/>
+      <rect x="16" y="28" width="5" height="55" rx="2" fill="#e74c3c"/>
+      <rect x="49" y="28" width="5" height="55" rx="2" fill="#e74c3c"/>
+      <path d="M28,16 Q35,8 42,16" stroke="#636e72" stroke-width="2.5" fill="none"/>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Корпус</b>: Box 25×12×30 (закругл.). <b>Кишеня</b>: Box 20×4×15 спереду. <b>Клапан</b>: Box зверху. <b>Лямки</b>: 2× Cyl ⌀1.5 ззаду. <b>Бічні</b>: 2× Box. <b>Ручка</b>: Half Torus. <b>Значок</b>: Cyl/Text.
+  </div>
+</div>
+
+<!-- CELL 4: Стіл -->
+<div class="cell">
+  <div class="cell-title">⭐⭐⭐⭐ Шкільний стіл з приладдям 🏫 <span>~30 елементів</span></div>
+  <div class="views">
+    <svg width="140" height="100" viewBox="0 0 140 100">
+      <text x="70" y="9" class="view-label">вид збоку</text>
+      <rect x="10" y="35" width="120" height="5" rx="1" fill="#8B4513"/>
+      <rect x="15" y="40" width="4" height="45" rx="1" fill="#8B4513"/>
+      <rect x="121" y="40" width="4" height="45" rx="1" fill="#8B4513"/>
+      <rect x="15" y="18" width="30" height="17" rx="2" fill="#e74c3c"/>
+      <rect x="17" y="20" width="26" height="13" rx="1" fill="#fff"/>
+      <rect x="55" y="22" width="20" height="13" rx="1" fill="#74b9ff"/>
+      <rect x="82" y="20" width="2.5" height="15" rx=".5" fill="#f1c40f"/>
+      <polygon points="83.2,18 81,20 85.5,20" fill="#2d3436"/>
+      <rect x="90" y="22" width="8" height="13" rx="3" fill="#b2bec3"/>
+      <circle cx="115" cy="22" r="8" fill="#0984e3" opacity="0.5"/>
+      <line x1="115" y1="14" x2="115" y2="30" stroke="#636e72" stroke-width=".8"/>
+      <circle cx="128" cy="28" r="5" fill="#e74c3c"/>
+      <rect x="127" y="20" width="1.5" height="6" rx=".3" fill="#8B4513"/>
+    </svg>
+    <svg width="100" height="100" viewBox="0 0 100 100">
+      <text x="50" y="9" class="view-label">зверху (план)</text>
+      <rect x="10" y="15" width="80" height="55" rx="2" fill="#8B4513" opacity="0.5"/>
+      <rect x="15" y="20" width="25" height="18" rx="1" fill="#e74c3c" opacity="0.6"/>
+      <rect x="45" y="22" width="18" height="12" rx="1" fill="#74b9ff" opacity="0.5"/>
+      <rect x="68" y="20" width="2" height="14" fill="#f1c40f" opacity="0.7"/>
+      <circle cx="78" cy="30" r="6" fill="#b2bec3" opacity="0.4"/>
+      <circle cx="55" cy="55" r="7" fill="#0984e3" opacity="0.3"/>
+      <circle cx="30" cy="55" r="4" fill="#e74c3c" opacity="0.4"/>
+      <text x="50" y="85" class="view-label">книга + зошит + олівець + глобус + яблуко</text>
+    </svg>
+  </div>
+  <div class="desc">
+    <b>Стіл</b>: Box + 4 Cyl-ніжки. <b>Книга</b>: Box кольор. + Box білий. <b>Зошит</b>: Box + лінії Hole. <b>Олівець</b>: Cyl жовт. + Cone + Cyl рожев. <b>Стаканчик</b>: Cyl − Cyl Hole. <b>Глобус</b>: Sphere + Cyl + Torus. <b>Яблуко</b>: Sphere + хвостик + листок.
+  </div>
+</div>
+
+</div>
+</body>
+</html>
